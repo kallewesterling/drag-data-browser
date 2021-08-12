@@ -17,9 +17,8 @@
         <div class="container-xxl">
             {% include 'includes/menu.html' %}
             <div>
-                {% if data.relative %} {% if data.relative.prev %} {{
-                data.relative.prev }} {% endif %} {% if data.relative.next %} {{
-                data.relative.next }} {% endif %} {% endif %}
+                {% if data.relative %} {% include 'includes/nav.html' %} {%
+                endif %}
             </div>
 
             <section id="body">{% block body %}{% endblock %}</section>
