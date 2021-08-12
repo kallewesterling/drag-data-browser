@@ -40,7 +40,7 @@ endblock %} {% block body %}
     <h2>Associated Performers</h2>
     <ul>
         {% for name, slug in data.associated_performers.items() %}
-        <li><a href="/performer/{{ slug }}/">{{ name }}</a></li>
+        <li><a href="{{ BASE_URL }}performer/{{ slug }}/">{{ name }}</a></li>
         {% endfor %}
     </ul>
     {% endif %}

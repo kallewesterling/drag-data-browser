@@ -55,7 +55,7 @@ endblock %} {% block body %}
     <h2>Venues</h2>
     <ul>
         {% for venue, slug in data.full_venues.items() %}
-        <li><a href="/venue/{{ slug }}/">{{ venue }}</a></li>
+        <li><a href="{{ BASE_URL }}venue/{{ slug }}/">{{ venue }}</a></li>
         {% endfor %}
     </ul>
     {% endif %} {% if data.cities %}

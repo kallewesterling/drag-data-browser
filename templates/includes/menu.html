@@ -20,10 +20,12 @@
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/performer/">Performers</a>
+                    <a class="nav-link" href="{{ BASE_URL }}performer/"
+                        >Performers</a
+                    >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/venue/">Venues</a>
+                    <a class="nav-link" href="{{ BASE_URL }}venue/">Venues</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a
@@ -43,7 +45,7 @@
                         <li>
                             <a
                                 class="dropdown-item"
-                                href="/performer/{{ slug }}/"
+                                href="{{ BASE_URL }}performer/{{ slug }}/"
                                 >{{ performer }}</a
                             >
                         </li>
@@ -63,7 +65,9 @@
                     <ul class="dropdown-menu" aria-labelledby="venuesDropdown">
                         {% for venue, slug in ALL_VENUES.items() %}
                         <li>
-                            <a class="dropdown-item" href="/venue/{{ slug }}/"
+                            <a
+                                class="dropdown-item"
+                                href="{{ BASE_URL }}venue/{{ slug }}/"
                                 >{{ venue }}</a
                             >
                         </li>

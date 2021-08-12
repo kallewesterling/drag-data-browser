@@ -22,7 +22,7 @@ body %}
                 <th scope="row">
                     <span
                         ><a
-                            href="/performer/{{ get_performer_slug(performer) }}/"
+                            href="{{ BASE_URL }}performer/{{ get_performer_slug(performer) }}/"
                             >{{ performer }}</a
                         ></span
                     >
@@ -40,5 +40,8 @@ body %}
     </table>
 </div>
 {% endblock %} {% block javascript %}
-<script src="/includes/js/tableFilter.js" crossorigin="anonymous"></script>
+<script
+    src="{{ BASE_URL }}includes/js/tableFilter.js"
+    crossorigin="anonymous"
+></script>
 {% endblock %}

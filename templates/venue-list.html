@@ -21,7 +21,8 @@ body %}
             <tr>
                 <th scope="row">
                     <span
-                        ><a href="/venue/{{ get_venue_slug(venue) }}/"
+                        ><a
+                            href="{{ BASE_URL }}venue/{{ get_venue_slug(venue) }}/"
                             >{{ venue }}</a
                         ></span
                     >
@@ -39,5 +40,8 @@ body %}
     </table>
 </div>
 {% endblock %} {% block javascript %}
-<script src="/includes/js/tableFilter.js" crossorigin="anonymous"></script>
+<script
+    src="{{ BASE_URL }}includes/js/tableFilter.js"
+    crossorigin="anonymous"
+></script>
 {% endblock %}
