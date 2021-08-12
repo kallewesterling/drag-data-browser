@@ -10,7 +10,7 @@
             integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
             crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
+        <link rel="stylesheet" href="/docs/includes/style.css" />
         <title>Performer | Jarahal</title>
     </head>
     <body>
@@ -37,79 +37,61 @@
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/drag-data-browser/performer/"
+                    <a class="nav-link" href="/docs/performer/"
                         >Performers</a
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/drag-data-browser/venue/">Venues</a>
+                    <a class="nav-link" href="/docs/venue/">Venues</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                    Search
-                </button>
-            </form>
+            
+            <nav aria-label="Page navigation">
+                <ul
+                    class="
+                        pagination
+                        justify-content-center
+                        me-auto
+                        mb-2 mb-lg-0
+                    "
+                >
+                    <!-- Previous -->
+                    
+                    <li class="page-item">
+                        <a
+                            class="page-link"
+                            href="/docs/performer/jan-lee"
+                            tabindex="-1"
+                            aria-disabled="false"
+                            >&#8592; Jan Lee</a
+                        >
+                    </li>
+                    
+                    <!-- Next -->
+                    
+                    <li class="page-item">
+                        <a
+                            class="page-link"
+                            href="/docs/performer/jay-albert"
+                            tabindex="-1"
+                            aria-disabled="false"
+                            >Jay Albert &#8594;</a
+                        >
+                    </li>
+                    
+                </ul>
+            </nav>
+            
         </div>
     </div>
 </nav>
             <div>
-                 NAV
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <!-- Previous -->
-        
-        <li class="page-item">
-            <a
-                class="page-link"
-                href="/drag-data-browser/performer/jan-lee"
-                tabindex="-1"
-                aria-disabled="false"
-                >&#8592; Jan Lee</a
-            >
-        </li>
-        
-        <!-- Next -->
-        
-        <li class="page-item">
-            <a
-                class="page-link"
-                href="/drag-data-browser/performer/jay-albert"
-                tabindex="-1"
-                aria-disabled="false"
-                >Jay Albert &#8594;</a
-            >
-        </li>
-        
-    </ul>
-</nav> 
+                  
             </div>
 
             <section id="body">
 
 <h1>Jarahal</h1>
-
-<section id="comments">
-    
-    <h2>Comments</h2>
-    <ul>
-        
-        <li>Could name be Jarvis Hall? (Pittsburgh Courier, March 16, 1929, 14)</li>
-        
-        <li>No longer in drag, likely. Here called "Prince Jara Hall," a "specialist in two vocal registers". (New York Age, November 23, 1935, 5)</li>
-        
-        <li>"exotic sex Interpeter [sic] Dancers" Unsure whether this is Jarahal but at least it seems like it could be...? (Chicago World, November 12, 1949, 3)</li>
-        
-    </ul>
-    
-</section>
 
 <section id="yearsActive">
     <h2>Years</h2>
@@ -218,6 +200,96 @@
     </ul>
 </section>
 
+<section id="comments accordion accordion-flush">
+    
+    <h2>Comments</h2>
+    
+    <div class="accordion-item">
+        <p class="accordion-header" id="comment-1">
+            <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#comment-1-sources"
+                aria-expanded="true"
+                aria-controls="comment-1-sources"
+            >
+                Could name be Jarvis Hall?
+            </button>
+        </p>
+        <div
+            id="comment-1-sources"
+            class="accordion-collapse collapse"
+            aria-labelledby="comment-1"
+        >
+            <div class="accordion-body">
+                
+                <div class="source">
+                    Pittsburgh Courier, March 16, 1929, 14
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="accordion-item">
+        <p class="accordion-header" id="comment-2">
+            <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#comment-2-sources"
+                aria-expanded="true"
+                aria-controls="comment-2-sources"
+            >
+                No longer in drag, likely. Here called "Prince Jara Hall," a "specialist in two vocal registers".
+            </button>
+        </p>
+        <div
+            id="comment-2-sources"
+            class="accordion-collapse collapse"
+            aria-labelledby="comment-2"
+        >
+            <div class="accordion-body">
+                
+                <div class="source">
+                    New York Age, November 23, 1935, 5
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="accordion-item">
+        <p class="accordion-header" id="comment-3">
+            <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#comment-3-sources"
+                aria-expanded="true"
+                aria-controls="comment-3-sources"
+            >
+                "exotic sex Interpeter [sic] Dancers" Unsure whether this is Jarahal but at least it seems like it could be...?
+            </button>
+        </p>
+        <div
+            id="comment-3-sources"
+            class="accordion-collapse collapse"
+            aria-labelledby="comment-3"
+        >
+            <div class="accordion-body">
+                
+                <div class="source">
+                    Chicago World, November 12, 1949, 3
+                </div>
+                
+            </div>
+        </div>
+    </div>
+     
+</section>
+
 <section id="demoData">
       
     <h2>Indications of legal name</h2>
@@ -234,15 +306,15 @@
     <h2>Venues</h2>
     <ul>
         
-        <li><a href="/drag-data-browser/venue/sally-lou-s-club-new-york-ny/">Sally Lou's Club (New York, NY)</a></li>
+        <li><a href="/docs/venue/sally-lou-s-club-new-york-ny/">Sally Lou's Club (New York, NY)</a></li>
         
-        <li><a href="/drag-data-browser/venue/royale-theatre-new-york-ny/">Royale Theatre (New York, NY)</a></li>
+        <li><a href="/docs/venue/royale-theatre-new-york-ny/">Royale Theatre (New York, NY)</a></li>
         
-        <li><a href="/drag-data-browser/venue/joe-s-deluxe-chicago-il/">Joe's Deluxe (Chicago, IL)</a></li>
+        <li><a href="/docs/venue/joe-s-deluxe-chicago-il/">Joe's Deluxe (Chicago, IL)</a></li>
         
-        <li><a href="/drag-data-browser/venue/united-social-club-new-york-ny/">United Social Club (New York, NY)</a></li>
+        <li><a href="/docs/venue/united-social-club-new-york-ny/">United Social Club (New York, NY)</a></li>
         
-        <li><a href="/drag-data-browser/venue/trinity-baptist-church-new-york-ny/">Trinity Baptist Church (New York, NY)</a></li>
+        <li><a href="/docs/venue/trinity-baptist-church-new-york-ny/">Trinity Baptist Church (New York, NY)</a></li>
         
     </ul>
      

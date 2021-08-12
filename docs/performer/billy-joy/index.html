@@ -10,7 +10,7 @@
             integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
             crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
+        <link rel="stylesheet" href="/docs/includes/style.css" />
         <title>Performer | Billy Joy</title>
     </head>
     <body>
@@ -37,79 +37,61 @@
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/drag-data-browser/performer/"
+                    <a class="nav-link" href="/docs/performer/"
                         >Performers</a
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/drag-data-browser/venue/">Venues</a>
+                    <a class="nav-link" href="/docs/venue/">Venues</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                    Search
-                </button>
-            </form>
+            
+            <nav aria-label="Page navigation">
+                <ul
+                    class="
+                        pagination
+                        justify-content-center
+                        me-auto
+                        mb-2 mb-lg-0
+                    "
+                >
+                    <!-- Previous -->
+                    
+                    <li class="page-item">
+                        <a
+                            class="page-link"
+                            href="/docs/performer/billy-irwin"
+                            tabindex="-1"
+                            aria-disabled="false"
+                            >&#8592; Billy Irwin</a
+                        >
+                    </li>
+                    
+                    <!-- Next -->
+                    
+                    <li class="page-item">
+                        <a
+                            class="page-link"
+                            href="/docs/performer/billy-kamp"
+                            tabindex="-1"
+                            aria-disabled="false"
+                            >Billy Kamp &#8594;</a
+                        >
+                    </li>
+                    
+                </ul>
+            </nav>
+            
         </div>
     </div>
 </nav>
             <div>
-                 NAV
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <!-- Previous -->
-        
-        <li class="page-item">
-            <a
-                class="page-link"
-                href="/drag-data-browser/performer/billy-irwin"
-                tabindex="-1"
-                aria-disabled="false"
-                >&#8592; Billy Irwin</a
-            >
-        </li>
-        
-        <!-- Next -->
-        
-        <li class="page-item">
-            <a
-                class="page-link"
-                href="/drag-data-browser/performer/billy-kamp"
-                tabindex="-1"
-                aria-disabled="false"
-                >Billy Kamp &#8594;</a
-            >
-        </li>
-        
-    </ul>
-</nav> 
+                  
             </div>
 
             <section id="body">
 
 <h1>Billy Joy</h1>
-
-<section id="comments">
-    
-    <h2>Comments</h2>
-    <ul>
-        
-        <li>"Humor by Billy Joy" (Detroit Free Press, January 18, 1940, 19)</li>
-        
-        <li>comedian and "monolog specialist" (Detroit Free Press, February 7, 1940, 12)</li>
-        
-        <li>comedian (Detroit Free Press, February 24, 1940, 13)</li>
-        
-    </ul>
-    
-</section>
 
 <section id="yearsActive">
     <h2>Years</h2>
@@ -218,6 +200,96 @@
     </ul>
 </section>
 
+<section id="comments accordion accordion-flush">
+    
+    <h2>Comments</h2>
+    
+    <div class="accordion-item">
+        <p class="accordion-header" id="comment-1">
+            <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#comment-1-sources"
+                aria-expanded="true"
+                aria-controls="comment-1-sources"
+            >
+                "Humor by Billy Joy"
+            </button>
+        </p>
+        <div
+            id="comment-1-sources"
+            class="accordion-collapse collapse"
+            aria-labelledby="comment-1"
+        >
+            <div class="accordion-body">
+                
+                <div class="source">
+                    Detroit Free Press, January 18, 1940, 19
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="accordion-item">
+        <p class="accordion-header" id="comment-2">
+            <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#comment-2-sources"
+                aria-expanded="true"
+                aria-controls="comment-2-sources"
+            >
+                comedian and "monolog specialist"
+            </button>
+        </p>
+        <div
+            id="comment-2-sources"
+            class="accordion-collapse collapse"
+            aria-labelledby="comment-2"
+        >
+            <div class="accordion-body">
+                
+                <div class="source">
+                    Detroit Free Press, February 7, 1940, 12
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="accordion-item">
+        <p class="accordion-header" id="comment-3">
+            <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#comment-3-sources"
+                aria-expanded="true"
+                aria-controls="comment-3-sources"
+            >
+                comedian
+            </button>
+        </p>
+        <div
+            id="comment-3-sources"
+            class="accordion-collapse collapse"
+            aria-labelledby="comment-3"
+        >
+            <div class="accordion-body">
+                
+                <div class="source">
+                    Detroit Free Press, February 24, 1940, 13
+                </div>
+                
+            </div>
+        </div>
+    </div>
+     
+</section>
+
 <section id="demoData">
       
 </section>
@@ -227,11 +299,11 @@
     <h2>Venues</h2>
     <ul>
         
-        <li><a href="/drag-data-browser/venue/moroccan-village-new-york-ny/">Moroccan Village (New York, NY)</a></li>
+        <li><a href="/docs/venue/moroccan-village-new-york-ny/">Moroccan Village (New York, NY)</a></li>
         
-        <li><a href="/drag-data-browser/venue/club-top-hat-detroit-mi/">Club Top Hat (Detroit, MI)</a></li>
+        <li><a href="/docs/venue/club-top-hat-detroit-mi/">Club Top Hat (Detroit, MI)</a></li>
         
-        <li><a href="/drag-data-browser/venue/club-frontenac-detroit-mi/">Club Frontenac (Detroit, MI)</a></li>
+        <li><a href="/docs/venue/club-frontenac-detroit-mi/">Club Frontenac (Detroit, MI)</a></li>
         
     </ul>
      

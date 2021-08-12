@@ -3,17 +3,6 @@ endblock %} {% block body %}
 
 <h1>{{ data.name }}</h1>
 
-<section id="comments">
-    {% if data.comments %}
-    <h2>Comments</h2>
-    <ul>
-        {% for source, comment in data.comments.items() %}
-        <li>{{ comment }} ({{ source }})</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-</section>
-
 <section id="yearsActive">
     <h2>Years</h2>
     <ul>
@@ -23,6 +12,51 @@ endblock %} {% block body %}
         <li class="inactive">{{ year }}</li>
         {% endif %} {% endfor %}
     </ul>
+</section>
+
+<section id="comments accordion accordion-flush">
+    {% if data.comments %}
+    <h2>Comments</h2>
+    {% for comment, sources in data.comments.items() %}
+    <div class="accordion-item">
+        <p class="accordion-header" id="comment-{{ loop.index }}">
+            <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#comment-{{ loop.index }}-sources"
+                aria-expanded="true"
+                aria-controls="comment-{{ loop.index }}-sources"
+            >
+                {{ comment }}
+            </button>
+        </p>
+        <div
+            id="comment-{{ loop.index }}-sources"
+            class="accordion-collapse collapse"
+            aria-labelledby="comment-{{ loop.index }}"
+        >
+            <div class="accordion-body">
+                {% for source in sources %}
+                <div class="source">
+                    {% if source in NEWSPAPERS_LINKS %}
+                    <a
+                        href="http://www.newspapers.com/image/{{ NEWSPAPERS_LINKS[source][source] }}"
+                        target="_blank"
+                    >
+                        {% elif source in EIMA_LINKS %}<a
+                            href="http://search.proquest.com/docview/{{ EIMA_LINKS[source][source] }}"
+                            target="_blank"
+                            >{% endif %}{{ source }}{% if source in
+                            NEWSPAPERS_LINKS %}</a
+                        >{% elif source in EIMA_LINKS %}</a
+                    >{% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %} {% endif %}
 </section>
 
 <section id="demoData">

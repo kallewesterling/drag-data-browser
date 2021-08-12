@@ -10,7 +10,7 @@
             integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
             crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
+        <link rel="stylesheet" href="/docs/includes/style.css" />
         <title>Performer | Charles Wilhelm</title>
     </head>
     <body>
@@ -37,75 +37,61 @@
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/drag-data-browser/performer/"
+                    <a class="nav-link" href="/docs/performer/"
                         >Performers</a
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/drag-data-browser/venue/">Venues</a>
+                    <a class="nav-link" href="/docs/venue/">Venues</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                    Search
-                </button>
-            </form>
+            
+            <nav aria-label="Page navigation">
+                <ul
+                    class="
+                        pagination
+                        justify-content-center
+                        me-auto
+                        mb-2 mb-lg-0
+                    "
+                >
+                    <!-- Previous -->
+                    
+                    <li class="page-item">
+                        <a
+                            class="page-link"
+                            href="/docs/performer/charles-moore"
+                            tabindex="-1"
+                            aria-disabled="false"
+                            >&#8592; Charles Moore</a
+                        >
+                    </li>
+                    
+                    <!-- Next -->
+                    
+                    <li class="page-item">
+                        <a
+                            class="page-link"
+                            href="/docs/performer/charley-anderson"
+                            tabindex="-1"
+                            aria-disabled="false"
+                            >Charley Anderson &#8594;</a
+                        >
+                    </li>
+                    
+                </ul>
+            </nav>
+            
         </div>
     </div>
 </nav>
             <div>
-                 NAV
-
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <!-- Previous -->
-        
-        <li class="page-item">
-            <a
-                class="page-link"
-                href="/drag-data-browser/performer/charles-moore"
-                tabindex="-1"
-                aria-disabled="false"
-                >&#8592; Charles Moore</a
-            >
-        </li>
-        
-        <!-- Next -->
-        
-        <li class="page-item">
-            <a
-                class="page-link"
-                href="/drag-data-browser/performer/charley-anderson"
-                tabindex="-1"
-                aria-disabled="false"
-                >Charley Anderson &#8594;</a
-            >
-        </li>
-        
-    </ul>
-</nav> 
+                  
             </div>
 
             <section id="body">
 
 <h1>Charles Wilhelm</h1>
-
-<section id="comments">
-    
-    <h2>Comments</h2>
-    <ul>
-        
-        <li>"His name may be recalled by vaudeville patrons of a score and more years ago. The 76-year-old man once trod the boards as a female impersonator and his name appeared in lights outside the theatres. His body, clad in one of the costumes he wore at the height of his career, was found this morning lying face downward on his bed. Beneath his nostrils was a wad of cotton soaked with chloroform." "Wilhelm was dressed in silken underwear, silk stockings, white, hiehg-heeled pumps and on his head was a blond wig. It was the one costume he cherished." "police opined it was not poverty, but loneliness that caused him to put on his costume and play his last role in life." (Washington DC Evening Star, November 27, 1936, A2)</li>
-        
-    </ul>
-    
-</section>
 
 <section id="yearsActive">
     <h2>Years</h2>
@@ -212,6 +198,40 @@
         <li class="inactive">1949</li>
          
     </ul>
+</section>
+
+<section id="comments accordion accordion-flush">
+    
+    <h2>Comments</h2>
+    
+    <div class="accordion-item">
+        <p class="accordion-header" id="comment-1">
+            <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#comment-1-sources"
+                aria-expanded="true"
+                aria-controls="comment-1-sources"
+            >
+                "His name may be recalled by vaudeville patrons of a score and more years ago. The 76-year-old man once trod the boards as a female impersonator and his name appeared in lights outside the theatres. His body, clad in one of the costumes he wore at the height of his career, was found this morning lying face downward on his bed. Beneath his nostrils was a wad of cotton soaked with chloroform." "Wilhelm was dressed in silken underwear, silk stockings, white, hiehg-heeled pumps and on his head was a blond wig. It was the one costume he cherished." "police opined it was not poverty, but loneliness that caused him to put on his costume and play his last role in life."
+            </button>
+        </p>
+        <div
+            id="comment-1-sources"
+            class="accordion-collapse collapse"
+            aria-labelledby="comment-1"
+        >
+            <div class="accordion-body">
+                
+                <div class="source">
+                    Washington DC Evening Star, November 27, 1936, A2
+                </div>
+                
+            </div>
+        </div>
+    </div>
+     
 </section>
 
 <section id="demoData">

@@ -28,17 +28,63 @@
                     <a class="nav-link" href="{{ BASE_URL }}venue/">Venues</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input
-                    class="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                />
-                <button class="btn btn-outline-success" type="submit">
-                    Search
-                </button>
-            </form>
+            {% if data.relative %}
+            <nav aria-label="Page navigation">
+                <ul
+                    class="
+                        pagination
+                        justify-content-center
+                        me-auto
+                        mb-2 mb-lg-0
+                    "
+                >
+                    <!-- Previous -->
+                    {% if data.relative.prev %}
+                    <li class="page-item">
+                        <a
+                            class="page-link"
+                            href="{{ data.relative.prev.url }}"
+                            tabindex="-1"
+                            aria-disabled="false"
+                            >&#8592; {{ data.relative.prev.label }}</a
+                        >
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a
+                            class="page-link"
+                            href="#"
+                            tabindex="-1"
+                            aria-disabled="true"
+                            >&#8592;
+                        </a>
+                    </li>
+                    {% endif %}
+                    <!-- Next -->
+                    {% if data.relative.next %}
+                    <li class="page-item">
+                        <a
+                            class="page-link"
+                            href="{{ data.relative.next.url }}"
+                            tabindex="-1"
+                            aria-disabled="false"
+                            >{{ data.relative.next.label }} &#8594;</a
+                        >
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a
+                            class="page-link"
+                            href="#"
+                            tabindex="-1"
+                            aria-disabled="true"
+                            >&#8594;</a
+                        >
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
         </div>
     </div>
 </nav>
