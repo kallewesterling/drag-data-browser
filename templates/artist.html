@@ -1,0 +1,114 @@
+{% extends 'base.html' %} {% block title %}Performer | {{ data.name }}{%
+endblock %} {% block body %}
+
+<h1>{{ data.name }}</h1>
+
+<section id="comments">
+    {% if data.comments %}
+    <h2>Comments</h2>
+    <ul>
+        {% for source, comment in data.comments.items() %}
+        <li>{{ comment }} ({{ source }})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+
+<section id="yearsActive">
+    <h2>Years</h2>
+    <ul>
+        {% for year in ALL_YEARS %} {% if year in data.years_active %}
+        <li>{{ year }}</li>
+        {% else %}
+        <li class="inactive">{{ year }}</li>
+        {% endif %} {% endfor %}
+    </ul>
+</section>
+
+<section id="demoData">
+    {% if data.birth_year %}
+    <h2>Indications of birth year</h2>
+    <ul>
+        {% for source, birth_year in data.birth_year.items() %}
+        <li>{{ birth_year }} ({{ source }})</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% if data.age %}
+    <h2>Indications of age</h2>
+    <ul>
+        {% for source, age in data.age.items() %}
+        <li>{{ age }} ({{ source }})</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% if data.legal_name %}
+    <h2>Indications of legal name</h2>
+    <ul>
+        {% for source, legal_name in data.legal_name.items() %}
+        <li>{{ legal_name }} ({{ source }})</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+
+<section id="geoData">
+    {% if data.full_venues %}
+    <h2>Venues</h2>
+    <ul>
+        {% for venue, slug in data.full_venues.items() %}
+        <li><a href="/venue/{{ slug }}/">{{ venue }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% if data.cities %}
+    <h2>Cities</h2>
+    <ul>
+        {% for city in data.cities %}
+        <li>{{ city }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+
+<section id="images">
+    {% if data.images %}
+    <h2>Images</h2>
+    <ul>
+        {% for source in data.images %}
+        <li>{{ source }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+
+<section id="indications">
+    {% if data.in_blackface %}
+    <h2>Indications that they appeared in blackface</h2>
+    <ul>
+        {% for source in data.in_blackface %}
+        <li>{{ source }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% if data.sepia_performer %}
+    <h2>Indications that they were "sepia performers"</h2>
+    <ul>
+        {% for source in data.sepia_performer %}
+        <li>{{ source }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% if data.sepia_performer %}
+    <h2>Indications that they were fan dancers</h2>
+    <ul>
+        {% for source in data.fan_dancer %}
+        <li>{{ source }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% if data.exotic_dancer %}
+    <h2>Indications that they were exotic dancers</h2>
+    <ul>
+        {% for source in data.exotic_dancer %}
+        <li>{{ source }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</section>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block title %}All Venues{% endblock %} {% block
+body %}
+<h1>All Venues</h1>
+<input type="text" class="table-filter" data-table="venueOverview" />
+<div class="table-responsive">
+    <table
+        class="table table-responsive table-sm venueOverview"
+        id="venueOverview"
+    >
+        <thead>
+            <tr>
+                <th scope="col"><span>Venue name</span></th>
+                {% for year in data.venues_years_range %}
+                <th scope="col"><span>{{ year }}</span></th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for venue, years_active in
+            data.venues_active_dates_overview.items() %}
+            <tr>
+                <th scope="row">
+                    <span
+                        ><a href="/venue/{{ get_venue_slug(venue) }}/"
+                            >{{ venue }}</a
+                        ></span
+                    >
+                </th>
+                {% for year in data.venues_years_range %}
+                <td>
+                    <span class="{% if year in years_active %}active{% endif %}"
+                        >{{ year }}</span
+                    >
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %} {% block javascript %}
+<script src="/includes/js/tableFilter.js" crossorigin="anonymous"></script>
+{% endblock %}

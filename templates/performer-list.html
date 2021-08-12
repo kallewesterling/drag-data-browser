@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block title %}All Performers{% endblock %} {% block
+body %}
+<h1>All Performers</h1>
+<input type="text" class="table-filter" data-table="performerOverview" />
+<div class="table-responsive">
+    <table
+        class="table table-responsive table-sm performerOverview"
+        id="performerOverview"
+    >
+        <thead>
+            <tr>
+                <th scope="col"><span>Performer name</span></th>
+                {% for year in data.performer_years_range %}
+                <th scope="col"><span>{{ year }}</span></th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for performer, years_active in
+            data.performers_active_dates_overview.items() %}
+            <tr>
+                <th scope="row">
+                    <span
+                        ><a
+                            href="/performer/{{ get_performer_slug(performer) }}/"
+                            >{{ performer }}</a
+                        ></span
+                    >
+                </th>
+                {% for year in data.performer_years_range %}
+                <td>
+                    <span class="{% if year in years_active %}active{% endif %}"
+                        >{{ year }}</span
+                    >
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %} {% block javascript %}
+<script src="/includes/js/tableFilter.js" crossorigin="anonymous"></script>
+{% endblock %}
