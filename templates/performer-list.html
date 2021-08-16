@@ -21,7 +21,7 @@ body %}
             <tr>
                 <th scope="row">
                     <span
-                        ><a
+                        >{% if performer in PERFORMER_CLIPPINGS %}<a href="{{ BASE_URL }}clippings/"><i class="me-1 bi bi-file-earmark-check"></i></a>{% endif %}<a
                             href="{{ BASE_URL }}performer/{{ get_performer_slug(performer) }}/"
                             >{{ performer }}</a
                         ></span

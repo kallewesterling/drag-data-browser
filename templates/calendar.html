@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block title %}Calendar{% endblock %} {% block body
+%}
+<h1>Calendar</h1>
+
+{% for year in CALENDAR %}
+    {% for month in CALENDAR[year] %}
+        <div id="cal-{{ year}}-{{ month }}" class="col-3">
+            <h2>{{ year }} {{ month }}</h2>
+            <table>
+                {% for day in CALENDAR[year][month] %}
+                    <td>{{ day }}</td>
+                    <td>{{ CALENDAR[year][month][day] }}</td>
+                {% endfor %}
+            </table>
+        </div>
+    {% endfor %}
+{% endfor %}
+
+{% endblock %}

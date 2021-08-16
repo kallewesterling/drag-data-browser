@@ -3,6 +3,13 @@ endblock %} {% block body %}
 
 <h1>{{ data.name }}</h1>
 
+{% if data.name in PERFORMER_CLIPPINGS %}
+    <section id="clippingsExist">
+        <p>This performer exists in <a href="{{ BASE_URL }}clippings/">Kalle Westerling's clippings</a></p>
+    </section>
+{% endif %}
+
+
 <section id="yearsActive">
     <h2>Years</h2>
     <ul>
