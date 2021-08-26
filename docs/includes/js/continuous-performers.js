@@ -402,9 +402,9 @@ const setupInteractivity = (tolerance) => {
 
         xLocSnap = xScale(dataPoint.date);
         if (snap) {
-            d3.select(`.mouse-line-${tolerance}`).attr("d", `M${xLocSnap},${height} ${xLocSnap},0`); // set correct X on mouseline
+            d3.select(`.mouse-line-${tolerance}`).attr("d", `M${xLocSnap},${height+margin.top} ${xLocSnap},${-margin.top}`); // set correct X on mouseline
         } else {
-            d3.select(`.mouse-line-${tolerance}`).attr("d", `M${xLoc},${height} ${xLoc},0`); // set correct X on mouseline
+            d3.select(`.mouse-line-${tolerance}`).attr("d", `M${xLoc},${height+margin.top} ${xLoc},${-margin.top}`); // set correct X on mouseline
         }
 
         if (dataPoint.num_artists) {
