@@ -1,5 +1,6 @@
 let store = {
     continuousPerformanceData: {},
+    continuousPerformanceDataDetail: {},
     rawData: {},
     oneMonth: 0,
     scales: {}
@@ -393,6 +394,13 @@ const setupInteractivity = (tolerance) => {
             popup.classed('d-none', true);
         }
     }
+
+    const mouseClick = (loc, event, snap=true) => {
+        let [xLoc, yLoc] = loc;
+        datePoint = xScale.invert(xLoc);
+        dataPoint = reverseData(data, datePoint);
+        console.log(dataPoint);
+    }
     
     const mouseMove = (loc, event, snap=false) => {
         data = store.continuousPerformanceData[`tolerance${tolerance}`]
@@ -421,7 +429,8 @@ const setupInteractivity = (tolerance) => {
     d3.select(`g .mouse-over-effects-${tolerance} rect`)
         .on('mouseout', () => mouseEvent(false))
         .on('mouseover', () => mouseEvent(true))
-        .on('mousemove', (evt) => mouseMove(d3.pointer(evt), evt, true));
+        .on('mousemove', (evt) => mouseMove(d3.pointer(evt), evt, true))
+        .on('click', (evt) => mouseClick(d3.pointer(evt), evt, true));
 
 }
 
@@ -471,11 +480,24 @@ loader = [];
     loader.push(d3.json(DATA_DIR + `continuous-performances-tolerance-${tolerance}.json`))
 });
 
+detail_loader = [];
+[0, 1, 2, 3].forEach(tolerance=>{
+    loader.push(d3.json(DATA_DIR + `continuous-performances-tolerance-${tolerance}-detail.json`))
+});
+
 Promise.all(loader).then(function(files) {
     [0, 1, 2, 3].forEach(tolerance => {
         store.continuousPerformanceData[`tolerance${tolerance}`] = files[tolerance];
     })
-
+    
+    Promise.all(loader).then(function(files) {
+        [0, 1, 2, 3].forEach(tolerance => {
+            store.continuousPerformanceDataDetail[`tolerance${tolerance}`] = files[tolerance];
+        })
+    }).catch(function(err) {
+        console.error(err)
+    })
+        
     Object.keys(store.continuousPerformanceData).forEach(key=>{
         tolerance = key.replace('tolerance', '')
         renderContinousPerformanceData(tolerance);
