@@ -1,3 +1,8 @@
+function zoom() {
+    svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    console.log("translate: " + d3.event.translate + ", scale: " + d3.event.scale);
+}
+
 var imgHeight = 1025, imgWidth = 1538,      // Image dimensions (don't change these)
     width =  960, height = 650,             // Dimensions of cropped region
     translate0 = [-290, -180], scale0 = 1;  // Initial offset & scale
@@ -20,8 +25,3 @@ svg.append("image")
     .attr("width",  imgWidth + "px")
     .attr("height", imgHeight + "px")
     .attr("xlink:href", BASE_URL + 'includes/img/method-early-version.png');
-
-function zoom() {
-    svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-    console.log("translate: " + d3.event.translate + ", scale: " + d3.event.scale);
-}
