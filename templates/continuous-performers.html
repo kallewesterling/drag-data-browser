@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}Continuous Performers{% endblock %}
+
+{% block extra_head %}<link href="{{ BASE_URL }}includes/continuous-performers.css" rel="stylesheet" crossorigin="anonymous" />{% endblock %}
+
+
+{% block precontainer %}
+
+<div class="p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 fw-normal">Continuous Performers</h1>
+        <p class="lead fw-normal">Given that the dataset of drag performers in the 1930s is likely very limited due to the record, etc., here I outline some assumptions that can be made to run algorithms in order to show what the dataset could look like under certain assumed conditions.</p>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block body %}
+<div id="popup" class="d-none d-block p-1 bg-light rounded shadow border border-dark small">
+    <div id="displayNum"></div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h2>Tolerance: 0</h2>
+        Explanation goes here
+        <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance0" role="button" aria-expanded="false" aria-controls="datasetTolerance0" id="toggleTolerance0"><i></i> Show data</a>
+        <div class="collapse" id="datasetTolerance0">
+            <table id="tolerance0" class="table table-sm table-light table-striped">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <svg class="overflow-auto border shadow-sm my-4" id="tolerance0"></svg>
+        
+        <h2>Tolerance: 1</h2>
+        Explanation goes here
+        <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance1" role="button" aria-expanded="false" aria-controls="datasetTolerance1" id="toggleTolerance1"><i></i> Show data</a>
+        <div class="collapse" id="datasetTolerance1">
+            <table id="tolerance1" class="table table-sm table-light table-striped">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <svg class="overflow-auto border shadow-sm my-4" id="tolerance1"></svg>
+
+        <h2>Tolerance: 2</h2>
+        Explanation goes here
+        <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance2" role="button" aria-expanded="false" aria-controls="datasetTolerance2" id="toggleTolerance2"><i></i> Show data</a>
+        <div class="collapse" id="datasetTolerance2">
+            <table id="tolerance2" class="table table-sm table-light table-striped">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <svg class="overflow-auto border shadow-sm my-4" id="tolerance2"></svg>
+
+        <h2>Tolerance: 3</h2>
+        Explanation goes here
+        <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance3" role="button" aria-expanded="false" aria-controls="datasetTolerance3" id="toggleTolerance3"><i></i> Show data</a>
+        <div class="collapse" id="datasetTolerance3">
+            <table id="tolerance3" class="table table-sm table-light table-striped">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <svg class="overflow-auto border shadow-sm my-4" id="tolerance3"></svg>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ BASE_URL }}includes/js/continuous-performers.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/load-live-data.js" crossorigin="anonymous"></script>
+{% endblock %}

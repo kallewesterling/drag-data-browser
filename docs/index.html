@@ -1,72 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
             rel="stylesheet"
-            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
             crossorigin="anonymous"
         />
-        <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
-        <title>Start</title>
+        <link rel="stylesheet" href="/docs/includes/style.css" />
+        <script>
+            const BASE_URL = "/docs/";
+            const DATASET_URL = "/docs/dataset/";
+            const DATA_DIR = BASE_URL + "data/";
+        </script>
+        <title>U.S. Drag Performers in the 1930s | Start</title>
+        
     </head>
     <body>
-        <div class="container-xxl">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/drag-data-browser//">Drag Data Browser</a>
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="home" viewBox="0 0 16 16">
+                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"></path>
+            </symbol>
+            <symbol id="speedometer2" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"></path>
+                <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"></path>
+            </symbol>
+            <symbol id="speedometer" viewBox="0 0 16 16">
+                <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"></path>
+                <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"></path>
+            </symbol>
+            <symbol id="network" viewBox="0 0 16 16">
+                <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+            </symbol>
+            <symbol id="dataset" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"/>
+            </symbol>
+            <symbol id="clippings" viewBox="0 0 16 16">
+                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+            </symbol>
+            <symbol id="globe" viewBox="0 0 16 16">
+                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
+            </symbol>
+        </svg>
+        <main>
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;  height: -webkit-fill-available; height: 100vh; max-height: 100vh; z-index: 600;">
+                <a href="/docs/" class="d-flex align-items-start mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" fill="white"><use xlink:href="#speedometer2"></use></svg>
+                <span class="fs-4">U.S. Drag Performers in the 1930s</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <!--
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"
-                        >Home</a
-                    >
+                    <a href="#" class="nav-link text-white" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#home"></use></svg>
+                        Home
+                    </a>
                 </li>
+                -->
+                <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pb-1">Visualizations</li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/drag-data-browser/performer/"
-                        >Performers</a
-                    >
+                    <a href="/docs/network/" class="nav-link text-white" aria-current="page"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#network"></use></svg>
+                        Network
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/drag-data-browser/venue/">Venues</a>
+                <li>
+                    <a href="/docs/continuous-performers/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#speedometer2"></use></svg>
+                        Continuous performers
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/drag-data-browser/clippings/">Clippings</a>
+                <li>
+                    <a href="/docs/geo/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#globe"></use></svg>
+                        Geodata (alpha)
+                    </a>
+                </li>
+                <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pt-4 pb-1">Data</li>
+                <li>
+                    <a href="/docs/dataset/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#dataset"></use></svg>
+                        Dataset
+                    </a>
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-3">
+                        <li><a href="/docs/dataset/performer/" class="text-white rounded">Performers</a></li>
+                        <li><a href="/docs/dataset/venue/" class="text-white rounded">Venues</a></li>
+                        <!--<li><a href="#" class="text-white rounded">Cities</a></li>-->
+                    </ul>
+                </li>
+                <li>
+                    <a href="/docs/dataset/clippings/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#clippings"></use></svg>
+                        Clippings
+                    </a>
                 </li>
             </ul>
-            
-        </div>
-    </div>
-</nav>
-            <div>
-                
+            <hr>
+            <div class="dropdown">
+                <!--
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/kallewesterling.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>kallewesterling</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+                -->
             </div>
-
-            <section id="body">
-<h1>Hello!</h1>
-
-</section>
         </div>
+        <div class="d-flex flex-column overflow-auto w-100">
+            
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-            crossorigin="anonymous"
-        ></script>
+<div class="p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 fw-normal">U.S. Drag Performers in the 1930s</h1>
+        <p class="lead fw-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
+        <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+    </div>
+</div>
+
+
+            <div class="container">
+                
+<p class="lead">Id nostrud cupidatat ea duis eu. Exercitation sint eu aute cupidatat. Non sint ea ullamco pariatur do laborum ex amet commodo sint do anim ea. Eu officia Lorem anim laborum exercitation Lorem. Enim ex proident consectetur laboris mollit pariatur consectetur.</p>
+<p>Eu ipsum occaecat nisi reprehenderit veniam culpa esse exercitation sunt laborum. Commodo pariatur ex pariatur ut non dolor sit ullamco officia. Deserunt ut sunt sit quis est sit. Culpa sit eu in ad minim aliqua eiusmod pariatur deserunt fugiat laboris. Enim incididunt aliquip enim excepteur cillum incididunt nisi reprehenderit eiusmod excepteur ut elit eiusmod laborum.</p>
+<p>Cillum enim ea id laborum dolor incididunt consequat ad. Aliquip est veniam nisi ullamco officia id magna. Et reprehenderit incididunt deserunt nisi cupidatat in incididunt duis. Labore tempor nostrud incididunt do ipsum.</p>
+<hr />
+<h2>About the Researcher</h2>
+<p>Kalle Westerling is a Ph.D. Candidate in Theatre and Performance at The Graduate Center, CUNY, where he works on a dissertation about the history and aesthetics of male-identified bodies in 20th-century burlesque and 21st-century boylesque. He is also the project manager for the NEH-funded project “Expanding Communities of Practice,” aimed at helping to create infrastructure for digital humanities across several higher education institutions across the U.S.</p>
+<p>For the past four years, Kalle was the Director of HASTAC Scholars, leading a vibrant student network within The Humanities, Arts, Science, and Technology Alliance and Collaboratory (HASTAC). After that, he was an Instructional Technology Fellow at Macaulay Honors College, CUNY.</p>
+<p>Kalle has taught courses at New York University, Villanova University, Baruch College, Hunter College, and Stockholm University, and has guest lectured at Yale University, The New School, Carleton University, and Stockholm Academy of Dramatic Arts. He regularly presents on the topics of queer and LGBT studies, the digital humanities, the public humanities, and on how to leverage digital technology for effective pedagogy.</p>
+<p>His monograph, La Dolce Vita (Normal 2006) treats the history of the Swedish drag company After Dark. He regularly delivers scholarly papers at the annual conferences for the American Society for Theatre Researchers (ASTR) and the Association for Theatre in Higher Education (ATHE). His performance-related theatre work has included an English translation and dramaturgy of August Strindberg’s The Pelican for the Voyage Theatre Company’s 2016 production in New York City.</p>
+<p>As part of his service to the academic profession, Kalle frequently blogs and employs social media to connect others and build communities. He has organized many conferences, including contributions to HASTAC’s annual international conferences 2015–2017, and the After Marriage Conference in New York City. Kalle has also held board appointments with CLAGS: Center for LGBTQ Studies (Chair of Programming), the open-source publishing platform OpenCUNY, and the CUNY Doctoral Theatre Students’ Association.</p>
+
+            </div>
+        </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
         
     </body>

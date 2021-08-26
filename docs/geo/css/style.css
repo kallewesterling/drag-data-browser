@@ -1,0 +1,286 @@
+@import "variables.css";
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    max-width: 300px;
+    background: var(--tooltip-background);
+    color: white;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.5px);
+}
+
+div.citytip {
+    position: absolute;
+    text-align: left;
+    max-width: 400px;
+    z-index: 500;
+    background: white !important;
+    color: black !important;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.5px);
+}
+
+div.helptip {
+    position: absolute;
+    text-align: left;
+    max-width: 400px;
+    z-index: 500;
+    background: white !important;
+    color: black !important;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(1.5px);
+}
+
+span[data-cluster-id],
+span[data-display-info="true"] {
+    cursor: pointer;
+}
+
+#switchMode::before {
+    content: "\f288";
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -0.125em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 0.25rem !important;
+}
+
+.theme-dark nav #switchMode::after {
+    content: "Light mode" !important;
+}
+
+.theme-light nav #switchMode::after {
+    content: "Dark mode" !important;
+}
+
+body {
+    background-color: var(--background);
+}
+
+svg#map {
+    background-color: var(--map-background);
+}
+
+.theme-light .text-white-muted {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+#settings.card {
+    background-color: var(--background-settings) !important;
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+#settings .list-group-item {
+    background-color: inherit;
+}
+
+#settings {
+    position: absolute;
+    top: 4.5em;
+    left: 1em;
+    max-height: 91%;
+    z-index: 400;
+    max-width: 350px;
+    min-width: 350px;
+}
+
+.theme-dark #settingsContent .list-group-item {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+.theme-dark #settings .card-header {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+#settingsContent {
+    overflow: hidden;
+    overflow-y: scroll;
+    /* background-color: var(--background-settings) !important; */
+}
+
+#settingsToggle {
+    background-color: var(--background-settings) !important;
+    cursor: grab;
+}
+#settings button {
+    background-color: var(--background-settings);
+    color: var(--text-color);
+}
+
+nav {
+    background-color: var(--header-color);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    z-index: 400;
+    height: 3em;
+    color: var(--text-color);
+}
+
+nav .btn {
+    color: var(--text-color);
+}
+#toggledSettings::before {
+    content: "\f14b";
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -0.125em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.toggled #toggledSettings::before {
+    content: "\f14c";
+}
+
+.noUi-pips-horizontal {
+    height: auto !important;
+}
+
+#popBackSettings {
+    position: absolute;
+    top: 4em;
+    left: 1em;
+    width: 3em;
+    height: 3em;
+    background-color: white;
+    cursor: pointer;
+}
+
+#loadingDot[data-running="true"] {
+    color: rgb(255, 116, 2);
+    -webkit-animation: 0.75s linear infinite spinner-grow;
+    animation: 0.75s linear infinite spinner-grow;
+}
+
+@media (prefers-reduced-motion) {
+    .animation {
+        -webkit-animation: none;
+        animation: none;
+    }
+}
+
+#loadingDot[data-running="false"] {
+    color: green;
+}
+
+#warnings {
+    position: absolute;
+    top: 4em;
+    right: 1em;
+}
+
+#warnings .alert {
+    margin-bottom: 0 !important;
+}
+
+#warnings .alert svg {
+    background-color: inherit !important;
+}
+
+.theme-light .text-black-20 {
+    color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.theme-dark .text-black-20 {
+    color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.theme-light .text-black-60 {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.theme-dark .text-black-60 {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+#clusterList span {
+    box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.05),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.04),
+        0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.07),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.08),
+        0 100px 80px rgba(0, 0, 0, 0.1)
+}
+
+#clusterList span:hover {
+    box-shadow:
+        0 2.8px 2.2px rgba(0, 0, 0, 0.005),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.004),
+        0 12.5px 10px rgba(0, 0, 0, 0.006),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.007),
+        0 41.8px 33.4px rgba(0, 0, 0, 0.008),
+        0 100px 80px rgba(0, 0, 0, 0.01)
+}
+
+.w-40 {
+    width: 40%!important;
+}
+
+/* SVG */
+
+text.cityName {
+    font-size: 0.5em;
+    fill: var(--city-name) !important;
+    text-anchor: right;
+    alignment-baseline: central;
+}
+
+path.land {
+    fill: var(--land);
+}
+
+path.state {
+    fill: none;
+    stroke-width: 0.1px;
+    stroke: var(--state-border);
+}
+
+path.county {
+    fill: none;
+    stroke-width: 0.1px;
+    stroke: var(--county-border);
+}
+
+.generalCityCircle {
+    fill: var(--general-city-circle);
+    cursor: pointer;
+}
+
+.cityCircle {
+    fill: var(--city-circle);
+    cursor: pointer;
+}
+
+path.travelLine {
+    stroke: var(--travel-line);
+    stroke-width: 1px;
+}
+
+circle.travelCircle {
+    fill: var(--travel-circle);
+}

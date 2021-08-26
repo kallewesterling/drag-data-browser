@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}All Performers{% endblock %}
+
+{% block extra_head %}<script src="{{ BASE_URL }}includes/js/tableSort.js" crossorigin="anonymous"></script>{% endblock %}
+
+{% block precontainer %}
+{% endblock %}
+
+{% block body %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb shadow-sm rounded p-4 my-4">
+        <li class="breadcrumb-item"><a href="{{ DATASET_URL }}">Dataset</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Performers</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-12">
+        <h1>Performers</h1>
+        <p class="lead">This is a list of all the performers that appear in the dataset, which you can <a href="{{ DATA_SHEET }}" target="_blank"><strong>see live here</strong></a>.</p>
+        
+        <div class="d-flex flex-row-reverse">
+            <div>Filter by performer name: <input type="text" class="table-filter" data-table="performerOverview" /></div>
+        </div>
+        <div class="table-responsive">
+            <table
+                class="table table-responsive table-sm performerOverview"
+                id="performerOverview"
+                data-sorted="none"
+            >
+                <thead>
+                    <tr>
+                        <th id="sort" scope="col" style="min-width:200px; cursor:pointer;"><span><i></i> Performer name</span></th>
+                        {% for year in data.performer_years_range %}
+                        <th scope="col"><span>{{ year }}</span></th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for performer, years_active in
+                    data.performers_active_dates_overview.items() %}
+                    <tr>
+                        <th scope="row">
+                            <span
+                                >{% if performer in PERFORMER_CLIPPINGS %}<a href="{{ DATASET_URL }}clippings/"><i class="me-1 bi bi-file-earmark-check"></i></a>{% endif %}<a
+                                    href="{{ DATASET_URL }}performer/{{ get_performer_slug(performer) }}/"
+                                    >{% if NAME_MAPPING[performer][2] and NAME_MAPPING[performer][0] %}
+                                        {{ NAME_MAPPING[performer][2] }}, {{ NAME_MAPPING[performer][0] }}
+                                    {% elif NAME_MAPPING[performer][0] %}
+                                        {{ NAME_MAPPING[performer][0] }}
+                                    {% else %}
+                                        -- {{ performer }}
+                                    {% endif %}
+                                </a></span
+                            >
+                        </th>
+                        {% for year in data.performer_years_range %}
+                        <td>
+                            <span class="{% if year in years_active %}active{% endif %}"
+                                >{{ year }}</span
+                            >
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block javascript %}
+<script src="{{ BASE_URL }}includes/js/tableFilter.js" crossorigin="anonymous"></script>
+{% endblock %}

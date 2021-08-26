@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="/docs/includes/style.css" />
+        <script>
+            const BASE_URL = "/docs/";
+            const DATASET_URL = "/docs/dataset/";
+            const DATA_DIR = BASE_URL + "data/";
+        </script>
+        <title>U.S. Drag Performers in the 1930s | Performer | Karyl Norman</title>
+        
+    </head>
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="home" viewBox="0 0 16 16">
+                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"></path>
+            </symbol>
+            <symbol id="speedometer2" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"></path>
+                <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"></path>
+            </symbol>
+            <symbol id="speedometer" viewBox="0 0 16 16">
+                <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"></path>
+                <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"></path>
+            </symbol>
+            <symbol id="network" viewBox="0 0 16 16">
+                <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+            </symbol>
+            <symbol id="dataset" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"/>
+            </symbol>
+            <symbol id="clippings" viewBox="0 0 16 16">
+                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+            </symbol>
+            <symbol id="globe" viewBox="0 0 16 16">
+                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
+            </symbol>
+        </svg>
+        <main>
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;  height: -webkit-fill-available; height: 100vh; max-height: 100vh; z-index: 600;">
+                <a href="/docs/" class="d-flex align-items-start mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" fill="white"><use xlink:href="#speedometer2"></use></svg>
+                <span class="fs-4">U.S. Drag Performers in the 1930s</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <!--
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#home"></use></svg>
+                        Home
+                    </a>
+                </li>
+                -->
+                <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pb-1">Visualizations</li>
+                <li class="nav-item">
+                    <a href="/docs/network/" class="nav-link text-white" aria-current="page"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#network"></use></svg>
+                        Network
+                    </a>
+                </li>
+                <li>
+                    <a href="/docs/continuous-performers/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#speedometer2"></use></svg>
+                        Continuous performers
+                    </a>
+                </li>
+                <li>
+                    <a href="/docs/geo/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#globe"></use></svg>
+                        Geodata (alpha)
+                    </a>
+                </li>
+                <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pt-4 pb-1">Data</li>
+                <li>
+                    <a href="/docs/dataset/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#dataset"></use></svg>
+                        Dataset
+                    </a>
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-3">
+                        <li><a href="/docs/dataset/performer/" class="text-white rounded">Performers</a></li>
+                        <li><a href="/docs/dataset/venue/" class="text-white rounded">Venues</a></li>
+                        <!--<li><a href="#" class="text-white rounded">Cities</a></li>-->
+                    </ul>
+                </li>
+                <li>
+                    <a href="/docs/dataset/clippings/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#clippings"></use></svg>
+                        Clippings
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <!--
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/kallewesterling.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>kallewesterling</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+                -->
+            </div>
+        </div>
+        <div class="d-flex flex-column overflow-auto w-100">
+            
+
+            <div class="container">
+                
+<nav aria-label="breadcrumb" class="d-flex align-items-center rounded p-4 my-4 shadow-sm justify-content-between">
+    <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item"><a href="/docs/dataset/">Dataset</a></li>
+        <li class="breadcrumb-item"><a href="/docs/dataset/performer/">Performers</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Karyl Norman</li>
+    </ol>
+    <div>
+        
+<nav aria-label="Page navigation">
+    <ul
+        class="
+            pagination
+            justify-content-center
+            me-auto
+            mb-2 mb-lg-0
+        "
+    >
+        <!-- Previous -->
+        
+        <li class="page-item">
+            <a
+                class="page-link"
+                href="/docs/dataset/performer/karlon-owens"
+                tabindex="-1"
+                aria-disabled="false"
+                >&#8592; Karlon Owens</a
+            >
+        </li>
+        
+        <!-- Next -->
+        
+        <li class="page-item">
+            <a
+                class="page-link"
+                href="/docs/dataset/performer/keane-waters"
+                tabindex="-1"
+                aria-disabled="false"
+                >Keane Waters &#8594;</a
+            >
+        </li>
+        
+    </ul>
+</nav>
+
+    </div>
+</nav>
+<div class="row">
+    <div class="col-12">
+        <h1>Karyl Norman</h1>
+
+        
+            <section id="clippingsExist">
+                <p>This performer exists in <a href="/docs/dataset/clippings/">Kalle Westerling's clippings</a></p>
+            </section>
+        
+
+
+        <section id="yearsActive">
+            <h2>Years</h2>
+            <ul>
+                 
+                <li class="inactive">1900</li>
+                  
+                <li class="inactive">1901</li>
+                  
+                <li class="inactive">1902</li>
+                  
+                <li class="inactive">1903</li>
+                  
+                <li class="inactive">1904</li>
+                  
+                <li class="inactive">1905</li>
+                  
+                <li class="inactive">1906</li>
+                  
+                <li class="inactive">1907</li>
+                  
+                <li class="inactive">1908</li>
+                  
+                <li class="inactive">1909</li>
+                  
+                <li class="inactive">1910</li>
+                  
+                <li class="inactive">1911</li>
+                  
+                <li class="inactive">1912</li>
+                  
+                <li class="inactive">1913</li>
+                  
+                <li class="inactive">1914</li>
+                  
+                <li class="inactive">1915</li>
+                  
+                <li class="inactive">1916</li>
+                  
+                <li class="inactive">1917</li>
+                  
+                <li class="inactive">1918</li>
+                  
+                <li class="inactive">1919</li>
+                  
+                <li>1920</li>
+                  
+                <li>1921</li>
+                  
+                <li>1922</li>
+                  
+                <li>1923</li>
+                  
+                <li>1924</li>
+                  
+                <li>1925</li>
+                  
+                <li>1926</li>
+                  
+                <li>1927</li>
+                  
+                <li>1928</li>
+                  
+                <li>1929</li>
+                  
+                <li>1930</li>
+                  
+                <li>1931</li>
+                  
+                <li>1932</li>
+                  
+                <li>1933</li>
+                  
+                <li>1934</li>
+                  
+                <li>1935</li>
+                  
+                <li>1936</li>
+                  
+                <li>1937</li>
+                  
+                <li class="inactive">1938</li>
+                  
+                <li>1939</li>
+                  
+                <li>1940</li>
+                  
+                <li>1941</li>
+                  
+                <li>1942</li>
+                  
+                <li>1943</li>
+                  
+                <li class="inactive">1944</li>
+                  
+                <li class="inactive">1945</li>
+                  
+                <li class="inactive">1946</li>
+                  
+                <li>1947</li>
+                  
+                <li class="inactive">1948</li>
+                  
+                <li class="inactive">1949</li>
+                 
+            </ul>
+        </section>
+
+        <section id="comments accordion accordion-flush">
+            
+            <h2>Comments</h2>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-1">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-1-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-1-sources"
+                    >
+                        3 year contract
+                    </button>
+                </p>
+                <div
+                    id="comment-1-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-1"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Philadelphia Inquirer, January 2, 1921, page unknown
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-2">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-2-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-2-sources"
+                    >
+                        stopped his act halfway because he was not receiving enough applause - he was later rebuked for his action and the head of the Keith Circuit wrote "informing him in part he would never again be afforded an opportunity to criticize any audience in any of the houses on the Keith Circuit."
+                    </button>
+                </p>
+                <div
+                    id="comment-2-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-2"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, April 12, 1923, page unknown
+                        </div>
+                        
+                        <div class="source">
+                            Variety, April 19, 1923, page unknown
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-3">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-3-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-3-sources"
+                    >
+                        "Karyl Norman next proved himself the king of female impersonators, or should we have said queen? It's so hard to get your genders straight in a case like this. He wears dazzling gowns most fetchingly and we don't think it amiss to add naturally. He also sings in a very feminine voice when he wills and in a very masculine voice as well. Quite an accomplishment. He got a rousing reception."
+                    </button>
+                </p>
+                <div
+                    id="comment-3-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-3"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, June 14, 1924, 12
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-4">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-4-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-4-sources"
+                    >
+                        "following a contract with the [Keith] vaudeville people for a period of five years, has walked out on them and is now playing motion picture house dates. That he will not return to vaudeville seems to be definite, inasmuch as he has signed with Abe Carlos for a series of feature pictures and will make personal appearances in conjunction with these productions when they are released."
+                    </button>
+                </p>
+                <div
+                    id="comment-4-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-4"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, May 5, 1926, page unknown
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-5">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-5-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-5-sources"
+                    >
+                        "seen at the Columbia for the past several years, has evidently quit the vaudeville stage for the present . . . signd with Abe Carlos, husband of Gilda Gray to do a number of feature pictures."
+                    </button>
+                </p>
+                <div
+                    id="comment-5-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-5"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Davenport IA Democrat, November 5, 1926, page unknown
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-6">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-6-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-6-sources"
+                    >
+                        ". . . about to start on a tour of the Fox Houses around New York. For many seasons Keith-Albee and the Orpheum circuits have utilized Norman as a headliner. Seeing no farther benefit to himself in clinging to three-a-day time at two-a-day salary, Norman has taken the jump."
+                    </button>
+                </p>
+                <div
+                    id="comment-6-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-6"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, November 30, 1927
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-7">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-7-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-7-sources"
+                    >
+                        originally scheduled to appear but was "pulled out yesterday"
+                    </button>
+                </p>
+                <div
+                    id="comment-7-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-7"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, June 21, 1930, 16 (Vaudeville Reviews: The Palace, New York)
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-8">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-8-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-8-sources"
+                    >
+                        "the 'Creole Fashion Plate,' female impersonator extraordinary, is featured at the Bradford Cascades atop the Hotel Bradford this week with a scintillating floor show. Norman, now the tops in his art, dons the latest creations and many 18th century gowns, and fools even the ladies with his perfect impersonations."
+                    </button>
+                </p>
+                <div
+                    id="comment-8-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-8"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Boston Globe, March 18, 1936, 21
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-9">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-9-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-9-sources"
+                    >
+                        "the Creole Fashion Plate, headlines the stage show at the Fox. . . . The world-famous female impersonator carries 35 beautiful gowns for his act and wears a different creation at every performance."
+                    </button>
+                </p>
+                <div
+                    id="comment-9-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-9"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Brooklyn Daily Eagle, June 10, 1934, BC9
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-10">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-10-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-10-sources"
+                    >
+                        "'Creole Fashion Plate' . . . Keith and vaudeville headliner for 14 years, and who was starred on Broadway in 'Greenwich Village Follies,' 'That's My Boy,' and 'Lady Do,' will bring his revue to New lookout House for a brief engagement beginning THursday night. 'The Creole Fashion Plate' makes 20 complete changes and carries a $20,000 wardrobe. This will be his first time in Greater Cincinnati in eight years. The resent floor show . . . will continue until Wednesday night. There will be another amateur contest tomorrow night."
+                    </button>
+                </p>
+                <div
+                    id="comment-10-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-10"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Cincinnati Enquirer, July 21, 1935, 46
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-11">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-11-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-11-sources"
+                    >
+                        "known as 'The Creole Fashion Plate,' opens a brief engagement Thursday night in Terrace Garden, New Lookout House. 'The Creole Fashion Plate' is coming from New York, bringing his extensive wardribe with which to make 20 complete costume changes. This female impersonator imitates Mae West, Anna Mae Wong and other notables, and will be seen here with his own revue."
+                    </button>
+                </p>
+                <div
+                    id="comment-11-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-11"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Cincinnati Enquirer, July 22, 1935, 6
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-12">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-12-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-12-sources"
+                    >
+                        "The veteran Karly [sic] Norman, a female impersonator, won the plaudits of the crowd in the 'Creole Fashion Plate,' billed as the top act."
+                    </button>
+                </p>
+                <div
+                    id="comment-12-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-12"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Des Moines Register, November 20, 1937, 12
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-13">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-13-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-13-sources"
+                    >
+                        "Karyl Norman, female impersonator, who headlined vaudeville a decade ago, returned to Des Moines via burlesque to obtain thorough approval of the President theater audience Friday night. Billed as 'The Creole Fashion plate,' his impersonation of the 'strip tease act' proved a fitting mimic to the number of like acts offered by the fair ladies of the east."
+                    </button>
+                </p>
+                <div
+                    id="comment-13-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-13"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Des Moines Tribune, November 20, 1937, 3
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-14">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-14-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-14-sources"
+                    >
+                        "billed as 'The Creole Fashion Plate,' is the best known member of the company. He has played big time vaudeville in New York and elsewhere for years."
+                    </button>
+                </p>
+                <div
+                    id="comment-14-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-14"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Fort Worth TX Star-Telegram, December 15, 1936, 22
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-15">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-15-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-15-sources"
+                    >
+                        "Headliner of the bill is Karyl Norman. He trips buxomly to the microphone in the last trappings of femininity with all the aplomb of the night club divas, and in a clear soprano head-voice sings sweetly of love and laughter. The payoff comes when he sweeps off the wig and unleashes a mighty baritone. His impersonation of Mae West was also received in gasping admiration. Mr. Norman parodies all the flutterings of the night club entertainers with biting irony and through it all succeeds in keeping the game clean."
+                    </button>
+                </p>
+                <div
+                    id="comment-15-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-15"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Gazette, March 5, 1935, 14
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-16">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-16-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-16-sources"
+                    >
+                        "has been handed his notice at the Club New Yorker and washes up with the club when Ted Healy and his gang arrive here from New York to replace him."
+                    </button>
+                </p>
+                <div
+                    id="comment-16-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-16"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Hollywood Reporter, February 16, 1933, 3
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-17">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-17-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-17-sources"
+                    >
+                        "The chef who mixed up the concoction for the Majestic patrons, is a past master in the art of serving real food for tired people. . . . The meat of the bill is Karyl Norman, 'the creole fashion plate', and one of America's foremost female impersonators. He is ably aided and abetted in his delectable offering 'In Rehearsal' by Bob Hamil who tickles the ivories for his many delightful vocal numbers."
+                    </button>
+                </p>
+                <div
+                    id="comment-17-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-17"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Morning Call, May 15, 1935, 12
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-18">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-18-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-18-sources"
+                    >
+                        "The Creole Fashion Plate", "The World's Greatest Female Impersonator"
+                    </button>
+                </p>
+                <div
+                    id="comment-18-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-18"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            New Castle PA News, November 3, 1936, 6
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-19">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-19-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-19-sources"
+                    >
+                        "Heading the stage end of the delightful program that has been arranged . . . is none other than Karyl Norman, one of the world's foremost female impersonators. Assisting this versatile stars in his offering which he calls 'In Rehearsal', is Bob Hamil. He was a big hit at all of yesterday's performances with his voice and immaculate female attire."
+                    </button>
+                </p>
+                <div
+                    id="comment-19-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-19"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            News, May 15, 1935, 10
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-20">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-20-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-20-sources"
+                    >
+                        "He will sing in two voices and tell why movie producers say 'he looks more like Mae West than Mae'."
+                    </button>
+                </p>
+                <div
+                    id="comment-20-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-20"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Pittsburgh Press, November 17, 1936, 22
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-21">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-21-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-21-sources"
+                    >
+                        "reverts to a bygone vaudeville program . . . Norman appears to depreciate the old type turn to the extent that he is not a 'female impersonator,' but rather a 'character delineator.'"
+                    </button>
+                </p>
+                <div
+                    id="comment-21-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-21"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, July 23, 1930, page unknown
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-22">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-22-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-22-sources"
+                    >
+                        has discarded wigs for Tux and straight baritone singing
+                    </button>
+                </p>
+                <div
+                    id="comment-22-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-22"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, July 19, 1939, 37 (Vaude-Night-Clubs: Karyl Norman, Who Once Meant Big B.O. in Cleve., Brought Back by Jabin)
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-23">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-23-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-23-sources"
+                    >
+                        "Under the leadership of Karyl Norman, master of ceremonies, the members of the cast will offer new songs, dances and comedy"
+                    </button>
+                </p>
+                <div
+                    id="comment-23-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-23"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Detroit Free Press, January 18, 1940, 19
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-24">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-24-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-24-sources"
+                    >
+                        "Twenty-one years in show business have given Karyl Norman, master of ceremonies and producer and singing star of Club Frontenac's revues, ample experience for any job. Norman joined a minstrel show in Baltimore when he was 15 years old. Since that time he has appeared as a headliner in vaudeville, starred in musical comedy and for the last five years has been in the cabaret field."
+                    </button>
+                </p>
+                <div
+                    id="comment-24-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-24"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Detroit Free Press, February 7, 1940, 12
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-25">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-25-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-25-sources"
+                    >
+                        "continues to be featured"
+                    </button>
+                </p>
+                <div
+                    id="comment-25-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-25"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Detroit Free Press, March 21, 1940, 15
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-26">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-26-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-26-sources"
+                    >
+                        "Karyl Norman's All-Male Revue is completing its 30th week at the Club Frontenac, Bowery-type night spot. Four among the veterans, Del Le Roy, Francis David, Gene LaMonte and Bobby Bell, continue."
+                    </button>
+                </p>
+                <div
+                    id="comment-26-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-26"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, July 27, 1940, 23
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-27">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-27-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-27-sources"
+                    >
+                        "Karyl Norman is again making his stand at the Club Frontenac, Detroit, and will be there for the season."
+                    </button>
+                </p>
+                <div
+                    id="comment-27-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-27"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, October 26, 1940, 21
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-28">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-28-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-28-sources"
+                    >
+                        Unclear whether he appeared in drag.
+                    </button>
+                </p>
+                <div
+                    id="comment-28-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-28"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Detroit Free Press, September 17, 1941, 10
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-29">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-29-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-29-sources"
+                    >
+                        Norman is not doing any dress numbers; he is doing vocals in a rich baritone
+                    </button>
+                </p>
+                <div
+                    id="comment-29-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-29"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, June 14, 1942, page unknown
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-30">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-30-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-30-sources"
+                    >
+                        likely not performing but managing
+                    </button>
+                </p>
+                <div
+                    id="comment-30-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-30"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Lima OH News, August 9, 1942
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-31">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-31-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-31-sources"
+                    >
+                        "Vet impersonator recuping from serious illness in Ft. Lauderdale" = Jewel Box had a benefit performance
+                    </button>
+                </p>
+                <div
+                    id="comment-31-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-31"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, July 23, 1947, page unknown
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-32">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-32-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-32-sources"
+                    >
+                        "New Yorkers just learning of the death in California of Caryl [sic] Norman, onetime headliner at the Palace as a female impersonators. He was completely broke."
+                    </button>
+                </p>
+                <div
+                    id="comment-32-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-32"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            New York Daily News, September 15, 1947, C12
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+             
+        </section>
+
+        <section id="demoData">
+            
+            <h2>Indications of birth year</h2>
+            <ul>
+                
+                <li>1904 (Detroit Free Press, February 7, 1940, 12)</li>
+                
+            </ul>
+             
+            <h2>Indications of age</h2>
+            <ul>
+                
+                <li>36 (Detroit Free Press, February 7, 1940, 12)</li>
+                
+            </ul>
+             
+        </section>
+
+        <section id="geoData">
+            
+            <h2>Venues</h2>
+            <ul>
+                
+                <li><a href="/docs/dataset/venue/palace-theatre-new-york-ny/">Palace Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loew-s-metropolitan-theatre-new-york-ny/">Loew's Metropolitan Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/fox-theatre-new-york-ny/">Fox Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-jewel-box-miami-fl/">Club Jewel Box (Miami, FL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/orpheum-theatre-sioux-city-ia/">Orpheum Theatre (Sioux City, IA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loew-s-hillside-theatre-new-york-ny/">Loew's Hillside Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/oakland-orpheum-san-francisco-ca/">Oakland Orpheum (San Francisco, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/bushwick-theatre-new-york-ny/">Bushwick Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/orpheum-theatre-salt-lake-city-ut/">Orpheum Theatre (Salt Lake City, UT)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-frontenac-detroit-mi/">Club Frontenac (Detroit, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/chez-maurice-montreal-canada/">Chez Maurice (Montreal, Canada)</a></li>
+                
+                <li><a href="/docs/dataset/venue/keith-s-theater-cleveland-oh/">Keith's Theater (Cleveland, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/samovar-chicago-il/">Samovar (Chicago, IL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/president-theatre-des-moines-ia/">President Theatre (Des Moines, IA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/torch-club-new-york-ny/">Torch Club (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/grey-wolf-tavern-masury-oh/">Grey Wolf Tavern (Masury, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/warner-theatre-new-york-ny/">Warner Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/e-f-albee-s-theatre-new-york-ny/">E. F. Albee's Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/colosimo-s-chicago-il/">Colosimo's (Chicago, IL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/karyl-norman-supper-club-chicago-il/">Karyl Norman Supper Club (Chicago, IL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/fox-theatre-philadelphia-pa/">Fox Theatre (Philadelphia, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/orpheum-theatre-lincoln-ne/">Orpheum Theatre (Lincoln, NE)</a></li>
+                
+                <li><a href="/docs/dataset/venue/werba-s-brooklyn-new-york-ny/">Werba's Brooklyn (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/finocchio-s-san-francisco-ca/">Finocchio's (San Francisco, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/new-lookout-house-cincinnati-oh/">New Lookout House (Cincinnati, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/riverside-theatre-new-york-ny/">Riverside Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/pansy-club-new-york-ny/">Pansy Club (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/torch-club-cleveland-oh/">Torch Club (Cleveland, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/rochester-theatre-rochester-ny/">Rochester Theatre (Rochester, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/la-boheme-club-los-angeles-ca/">La Boheme Club (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/bradford-cascades-hotel-bradford-boston-ma/">Bradford Cascades, Hotel Bradford (Boston, MA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/keith-s-theater-philadelphia-pa/">Keith's Theater (Philadelphia, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/castle-farms-nite-club-detroit-mi/">Castle Farms Nite Club (Detroit, MI)</a></li>
+                
+            </ul>
+             
+            <h2>Cities</h2>
+            <ul>
+                
+                <li>Cincinnati, OH</li>
+                
+                <li>San Francisco, CA</li>
+                
+                <li>Rochester, NY</li>
+                
+                <li>Des Moines, IA</li>
+                
+                <li>Philadelphia, PA</li>
+                
+                <li>Sioux City, IA</li>
+                
+                <li>Chicago, IL</li>
+                
+                <li>Cleveland, OH</li>
+                
+                <li>Masury, OH</li>
+                
+                <li>Boston, MA</li>
+                
+                <li>Montreal, Canada</li>
+                
+                <li>New York, NY</li>
+                
+                <li>Salt Lake City, UT</li>
+                
+                <li>Detroit, MI</li>
+                
+                <li>Los Angeles, CA</li>
+                
+                <li>Lincoln, NE</li>
+                
+                <li>Miami, FL</li>
+                
+            </ul>
+            
+        </section>
+
+        <section id="images">
+            
+            <h2>Images</h2>
+            <ul>
+                
+                <li>Variety, October 14, 1921, page unknown</li>
+                
+                <li>Oakland CA Tribune, October 15, 1922, page unknown</li>
+                
+                <li>Winnipeg Free Press, April 18, 1925, page unknown</li>
+                
+                <li>Detroit Free Press, September 17, 1941, 10</li>
+                
+            </ul>
+            
+        </section>
+
+        <section id="indications">
+               
+        </section>
+    </div>
+</div>
+
+            </div>
+        </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+        
+    </body>
+</html>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ BASE_URL }}/">Drag Data Browser</a>
+        <a class="navbar-brand" href="{{ DATASET_URL }}/">Drag Data Browser</a>
         <button
             class="navbar-toggler"
             type="button"
@@ -20,15 +20,15 @@
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ BASE_URL }}performer/"
+                    <a class="nav-link" href="{{ DATASET_URL }}performer/"
                         >Performers</a
                     >
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ BASE_URL }}venue/">Venues</a>
+                    <a class="nav-link" href="{{ DATASET_URL }}venue/">Venues</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ BASE_URL }}clippings/">Clippings</a>
+                    <a class="nav-link" href="{{ DATASET_URL }}clippings/">Clippings</a>
                 </li>
             </ul>
             {% if data.relative %}

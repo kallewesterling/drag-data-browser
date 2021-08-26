@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Performer | {{ data.name }}{% endblock %}
+
+
+{% block precontainer %}
+{% endblock %}
+
+
+{% block body %}
+<nav aria-label="breadcrumb" class="d-flex align-items-center rounded p-4 my-4 shadow-sm justify-content-between">
+    <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item"><a href="{{ DATASET_URL }}">Dataset</a></li>
+        <li class="breadcrumb-item"><a href="{{ DATASET_URL }}venue/">Venues</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ data.name }}</li>
+    </ol>
+    <div>
+        {% include 'includes/data-relative.html' %}
+    </div>
+</nav>
+<div class="row">
+    <div class="col-12">
+        <h1>{{ data.name }}</h1>
+
+        <section id="comments">
+            {% if data.comments %}
+            <h2>Comments</h2>
+            <ul>
+                {% for source, comment in data.comments.items() %}
+                <li>{{ comment }} ({{ source }})</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </section>
+
+        <section id="yearsActive">
+            <h2>Years</h2>
+            <ul>
+                {% for year in ALL_YEARS %} {% if year in data.years_active %}
+                <li>{{ year }}</li>
+                {% else %}
+                <li class="inactive"><span>{{ year }}</span></li>
+                {% endif %} {% endfor %}
+            </ul>
+        </section>
+
+        <section id="geoData">
+            {% if data.addresses %}
+            <h2>Addresses Indicated in Sources</h2>
+            <ul>
+                {% for source, address in data.addresses.items() %}
+                <li>{{ address }} ({{ source }})</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </section>
+
+        <section id="associatedPerformers">
+            {% if data.associated_performers %}
+            <h2>Associated Performers</h2>
+            <ul>
+                {% for name, slug in data.associated_performers.items() %}
+                <li><a href="{{ DATASET_URL }}performer/{{ slug }}/">{{ name }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </section>
+    </div>
+</div>
+{% endblock %}

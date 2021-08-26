@@ -53,3 +53,51 @@ span.caret {
 #comments .comment-container {
     cursor: pointer;
 }
+
+body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+main {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+    height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.btn-toggle-nav a {
+    display: inline-flex;
+    padding: .1875rem .5rem;
+    margin-top: .125rem;
+    margin-left: 1.25rem;
+    text-decoration: none;
+  }
+  .btn-toggle-nav a:hover,
+  .btn-toggle-nav a:focus {
+    background-color: #3c3c3c;
+  }
+  
+table[data-sorted] thead tr th i::before {
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: -.125em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+table[data-sorted="none"] thead tr th i::before, table[data-sorted="asc"] thead tr th i::before {
+    content: "\f571";
+}
+table[data-sorted="none"] thead tr th i::before {
+    color:rgba(0, 0, 0, 0.25)
+}
+table[data-sorted="desc"] thead tr th i::before {
+    content: "\f573";
+}

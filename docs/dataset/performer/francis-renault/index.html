@@ -1,0 +1,2813 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="/docs/includes/style.css" />
+        <script>
+            const BASE_URL = "/docs/";
+            const DATASET_URL = "/docs/dataset/";
+            const DATA_DIR = BASE_URL + "data/";
+        </script>
+        <title>U.S. Drag Performers in the 1930s | Performer | Francis Renault</title>
+        
+    </head>
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="home" viewBox="0 0 16 16">
+                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"></path>
+            </symbol>
+            <symbol id="speedometer2" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"></path>
+                <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"></path>
+            </symbol>
+            <symbol id="speedometer" viewBox="0 0 16 16">
+                <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"></path>
+                <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"></path>
+            </symbol>
+            <symbol id="network" viewBox="0 0 16 16">
+                <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+            </symbol>
+            <symbol id="dataset" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"/>
+            </symbol>
+            <symbol id="clippings" viewBox="0 0 16 16">
+                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+            </symbol>
+            <symbol id="globe" viewBox="0 0 16 16">
+                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
+            </symbol>
+        </svg>
+        <main>
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;  height: -webkit-fill-available; height: 100vh; max-height: 100vh; z-index: 600;">
+                <a href="/docs/" class="d-flex align-items-start mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" fill="white"><use xlink:href="#speedometer2"></use></svg>
+                <span class="fs-4">U.S. Drag Performers in the 1930s</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <!--
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#home"></use></svg>
+                        Home
+                    </a>
+                </li>
+                -->
+                <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pb-1">Visualizations</li>
+                <li class="nav-item">
+                    <a href="/docs/network/" class="nav-link text-white" aria-current="page"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#network"></use></svg>
+                        Network
+                    </a>
+                </li>
+                <li>
+                    <a href="/docs/continuous-performers/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#speedometer2"></use></svg>
+                        Continuous performers
+                    </a>
+                </li>
+                <li>
+                    <a href="/docs/geo/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#globe"></use></svg>
+                        Geodata (alpha)
+                    </a>
+                </li>
+                <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pt-4 pb-1">Data</li>
+                <li>
+                    <a href="/docs/dataset/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#dataset"></use></svg>
+                        Dataset
+                    </a>
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-3">
+                        <li><a href="/docs/dataset/performer/" class="text-white rounded">Performers</a></li>
+                        <li><a href="/docs/dataset/venue/" class="text-white rounded">Venues</a></li>
+                        <!--<li><a href="#" class="text-white rounded">Cities</a></li>-->
+                    </ul>
+                </li>
+                <li>
+                    <a href="/docs/dataset/clippings/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#clippings"></use></svg>
+                        Clippings
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <!--
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/kallewesterling.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>kallewesterling</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+                -->
+            </div>
+        </div>
+        <div class="d-flex flex-column overflow-auto w-100">
+            
+
+            <div class="container">
+                
+<nav aria-label="breadcrumb" class="d-flex align-items-center rounded p-4 my-4 shadow-sm justify-content-between">
+    <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item"><a href="/docs/dataset/">Dataset</a></li>
+        <li class="breadcrumb-item"><a href="/docs/dataset/performer/">Performers</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Francis Renault</li>
+    </ol>
+    <div>
+        
+<nav aria-label="Page navigation">
+    <ul
+        class="
+            pagination
+            justify-content-center
+            me-auto
+            mb-2 mb-lg-0
+        "
+    >
+        <!-- Previous -->
+        
+        <li class="page-item">
+            <a
+                class="page-link"
+                href="/docs/dataset/performer/francis-loite"
+                tabindex="-1"
+                aria-disabled="false"
+                >&#8592; Francis Loite</a
+            >
+        </li>
+        
+        <!-- Next -->
+        
+        <li class="page-item">
+            <a
+                class="page-link"
+                href="/docs/dataset/performer/francis-ritz"
+                tabindex="-1"
+                aria-disabled="false"
+                >Francis Ritz &#8594;</a
+            >
+        </li>
+        
+    </ul>
+</nav>
+
+    </div>
+</nav>
+<div class="row">
+    <div class="col-12">
+        <h1>Francis Renault</h1>
+
+        
+            <section id="clippingsExist">
+                <p>This performer exists in <a href="/docs/dataset/clippings/">Kalle Westerling's clippings</a></p>
+            </section>
+        
+
+
+        <section id="yearsActive">
+            <h2>Years</h2>
+            <ul>
+                 
+                <li class="inactive">1900</li>
+                  
+                <li class="inactive">1901</li>
+                  
+                <li class="inactive">1902</li>
+                  
+                <li class="inactive">1903</li>
+                  
+                <li class="inactive">1904</li>
+                  
+                <li class="inactive">1905</li>
+                  
+                <li class="inactive">1906</li>
+                  
+                <li class="inactive">1907</li>
+                  
+                <li class="inactive">1908</li>
+                  
+                <li class="inactive">1909</li>
+                  
+                <li class="inactive">1910</li>
+                  
+                <li class="inactive">1911</li>
+                  
+                <li class="inactive">1912</li>
+                  
+                <li class="inactive">1913</li>
+                  
+                <li class="inactive">1914</li>
+                  
+                <li>1915</li>
+                  
+                <li class="inactive">1916</li>
+                  
+                <li class="inactive">1917</li>
+                  
+                <li class="inactive">1918</li>
+                  
+                <li class="inactive">1919</li>
+                  
+                <li class="inactive">1920</li>
+                  
+                <li class="inactive">1921</li>
+                  
+                <li class="inactive">1922</li>
+                  
+                <li class="inactive">1923</li>
+                  
+                <li class="inactive">1924</li>
+                  
+                <li>1925</li>
+                  
+                <li>1926</li>
+                  
+                <li class="inactive">1927</li>
+                  
+                <li>1928</li>
+                  
+                <li class="inactive">1929</li>
+                  
+                <li>1930</li>
+                  
+                <li>1931</li>
+                  
+                <li>1932</li>
+                  
+                <li>1933</li>
+                  
+                <li>1934</li>
+                  
+                <li>1935</li>
+                  
+                <li>1936</li>
+                  
+                <li>1937</li>
+                  
+                <li>1938</li>
+                  
+                <li>1939</li>
+                  
+                <li>1940</li>
+                  
+                <li>1941</li>
+                  
+                <li class="inactive">1942</li>
+                  
+                <li class="inactive">1943</li>
+                  
+                <li class="inactive">1944</li>
+                  
+                <li>1945</li>
+                  
+                <li>1946</li>
+                  
+                <li>1947</li>
+                  
+                <li>1948</li>
+                  
+                <li>1949</li>
+                 
+            </ul>
+        </section>
+
+        <section id="comments accordion accordion-flush">
+            
+            <h2>Comments</h2>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-1">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-1-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-1-sources"
+                    >
+                        "THE SLAVE OF FASHION"; "International Star"
+                    </button>
+                </p>
+                <div
+                    id="comment-1-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-1"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/302940817"
+                                target="_blank"
+                            >
+                                Davenport IA Daily Times, January 28, 1930, 5</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/507682053"
+                                target="_blank"
+                            >
+                                Rock Island Argus, January 29, 1930, 18</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-2">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-2-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-2-sources"
+                    >
+                        "Headlining the vaudeville program is Francis Renault, presenting the 'Slave of Fashion.'"
+                    </button>
+                </p>
+                <div
+                    id="comment-2-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-2"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/302940911"
+                                target="_blank"
+                            >
+                                Davenport IA Daily Times, January 28, 1930, 7</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-3">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-3-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-3-sources"
+                    >
+                        "FRANCIS RENAULT WILL DISPLAY HIS $50,000 WARDROBE. LADIES, DON'T MISS IT!"
+                    </button>
+                </p>
+                <div
+                    id="comment-3-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-3"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/302943155"
+                                target="_blank"
+                            >
+                                Davenport IA Daily Times, January 30, 1930, 5</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-4">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-4-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-4-sources"
+                    >
+                        "We came out of this performance with a smile from ear to ear. By all means time yourself so that you can leave at the close of this act. Don't let anything spoil the excellent taste it leaves. Now, just a minute—don't get us all wrong. There wasn't a whole lot of applause, but we believe there was more than for any act in the last three weeks. Personally, we haven't enjoyed ourself [sic] so much since away back in November when a pair of superb Spanish dancers performed. This man is superior. He has a high class of humor so seldom found that it is delicious. We would enjoy seeing him again. He is said to have a $50,000 wardrobe and we believe it. He's going to display it at Friday's matinee and it'll be worth the time of the style-minded ladies to take a look at it, we think. What does he do? He's a female impersonator and just about perfect at it. There's Queen Marie as big as life and nineteen times as entertaining. There's the 'Red Book cover' lady. There's Madame Butterfly, and an opera singer. If you are one of those who is discriminating and hard to please, here's your act. We don't know how it strikes the average theater goer, but to the particular it is splendid."
+                    </button>
+                </p>
+                <div
+                    id="comment-4-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-4"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/302943273"
+                                target="_blank"
+                            >
+                                Davenport IA Daily Times, January 30, 1930, 7</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-5">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-5-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-5-sources"
+                    >
+                        "The Slave of Fashion"
+                    </button>
+                </p>
+                <div
+                    id="comment-5-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-5"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/301144752"
+                                target="_blank"
+                            >
+                                Davenport IA Quad-City Times, January 28, 1930, 10</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/66423523"
+                                target="_blank"
+                            >
+                                Lincoln Journal Star, February 14, 1930, 6</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/62825557"
+                                target="_blank"
+                            >
+                                Lincoln Star, February 14, 1930, 8</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/314124242"
+                                target="_blank"
+                            >
+                                Nebraska State Journal, February 14, 1930, 8</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/500980934"
+                                target="_blank"
+                            >
+                                Windsor Star, February 24, 1930, 8</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-6">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-6-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-6-sources"
+                    >
+                        "Headed by the International Star"; "'The Slave of Fashion' With a Wardrobe Valued at $50,000"
+                    </button>
+                </p>
+                <div
+                    id="comment-6-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-6"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/301145119"
+                                target="_blank"
+                            >
+                                Davenport IA Quad-City Times, January 29, 1930, 13</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-7">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-7-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-7-sources"
+                    >
+                        "Headlining the vaudeville bill is Francis Renault, presenting 'The Slave of Fashion.'"
+                    </button>
+                </p>
+                <div
+                    id="comment-7-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-7"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/301145190"
+                                target="_blank"
+                            >
+                                Davenport IA Quad-City Times, January 29, 1930, 18</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-8">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-8-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-8-sources"
+                    >
+                        "female impersonator, with a load of fancy clothes"
+                    </button>
+                </p>
+                <div
+                    id="comment-8-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-8"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/301145541"
+                                target="_blank"
+                            >
+                                Davenport IA Quad-City Times, January 30, 1930, 18</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-9">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-9-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-9-sources"
+                    >
+                        "With his wardrobe costing $50,000 including new gowns, millinery, shoes, hosiery, lingerie, and jewelry, Francis Renault, famous female impersonator will headline the RKO vaudeville bill. Promenading and posing are said to be only a part of his routine which consists of new songs and dances."
+                    </button>
+                </p>
+                <div
+                    id="comment-9-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-9"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/127603380"
+                                target="_blank"
+                            >
+                                Des Moines Register, February 16, 1930, Section 10</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-10">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-10-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-10-sources"
+                    >
+                        "The International Star"
+                    </button>
+                </p>
+                <div
+                    id="comment-10-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-10"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/127603624"
+                                target="_blank"
+                            >
+                                Des Moines Register, February 17, 1930, 3</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/127603732"
+                                target="_blank"
+                            >
+                                Des Moines Register, February 18, 1930, 5</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/325147891"
+                                target="_blank"
+                            >
+                                Des Moines Tribune, February 17, 1930, 9</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/325148080"
+                                target="_blank"
+                            >
+                                Des Moines Tribune, February 18, 1930, 3A</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            Sioux City IA Journal, January 25, 1930, 2
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/251879659"
+                                target="_blank"
+                            >
+                                Star Press, March 30, 1930, 21</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-11">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-11-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-11-sources"
+                    >
+                        "Francis Renault who calls himself 'A Slave to Fashion,' will display his $50,000 worth of finery and offer his bits of character acting."
+                    </button>
+                </p>
+                <div
+                    id="comment-11-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-11"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/325147810"
+                                target="_blank"
+                            >
+                                Des Moines Tribune, February 15, 1930, 7</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-12">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-12-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-12-sources"
+                    >
+                        "veteran female impersonator, with his celebrated wardrobe valued at $50,000, labored, successfully through his headline act Sunday night, burdened by sorrow over the death of his mother early Sunday."
+                    </button>
+                </p>
+                <div
+                    id="comment-12-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-12"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/325147878"
+                                target="_blank"
+                            >
+                                Des Moines Tribune, February 17, 1930, 6</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-13">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-13-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-13-sources"
+                    >
+                        "A Slave of Fashion"
+                    </button>
+                </p>
+                <div
+                    id="comment-13-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-13"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/97977353"
+                                target="_blank"
+                            >
+                                Detroit Free Press, March 6, 1930, 17</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/97977989"
+                                target="_blank"
+                            >
+                                Detroit Free Press, March 7, 1930, 10</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/97979154"
+                                target="_blank"
+                            >
+                                Detroit Free Press, March 8, 1930, 15</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-14">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-14-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-14-sources"
+                    >
+                        "Francis Renault, 'The Slave of Fashion' with a wardrobe representing $50,000 expenditure for gorgeous clothes tops the stage entertainment at the Hollywood. Renault is a clever entertainer whose sartorial splendor is made a fitting complement to his act."
+                    </button>
+                </p>
+                <div
+                    id="comment-14-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-14"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/97977504"
+                                target="_blank"
+                            >
+                                Detroit Free Press, March 6, 1930, 21</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-15">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-15-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-15-sources"
+                    >
+                        "Slave of Fashion Revue"
+                    </button>
+                </p>
+                <div
+                    id="comment-15-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-15"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/3782017"
+                                target="_blank"
+                            >
+                                Evening Independent, May 14, 1936, 11</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-16">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-16-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-16-sources"
+                    >
+                        "The world's premier and incomparable female impersonator . . . In His SLAVE OF FASHION REVUE"
+                    </button>
+                </p>
+                <div
+                    id="comment-16-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-16"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/3782951"
+                                target="_blank"
+                            >
+                                Evening Independent, May 16, 1936, 7</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-17">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-17-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-17-sources"
+                    >
+                        "The One and Only", "America's Foremost Female Impersonator"
+                    </button>
+                </p>
+                <div
+                    id="comment-17-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-17"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Evening Independent, April 22, 1937, 18
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-18">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-18-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-18-sources"
+                    >
+                        "'The Slave of Fashion'"; "The International Star"
+                    </button>
+                </p>
+                <div
+                    id="comment-18-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-18"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/549450368"
+                                target="_blank"
+                            >
+                                Gazette, February 1, 1930, 4</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/204059645"
+                                target="_blank"
+                            >
+                                Lansing State Journal, February 20, 1930, 15</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/62825275"
+                                target="_blank"
+                            >
+                                Lincoln Star, February 10, 1930, 6</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/249274718"
+                                target="_blank"
+                            >
+                                Muncie IN Evening Press, March 29, 1930, 5</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/314123843"
+                                target="_blank"
+                            >
+                                Nebraska State Journal, February 10, 1930, 5</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/251879612"
+                                target="_blank"
+                            >
+                                Star Press, March 29, 1930, 15</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-19">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-19-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-19-sources"
+                    >
+                        "The international star, Francis Renault, known as 'The Slave of Fashion' will display a wardrobe that is said to represent $50,000 worth of finery. Renault is an impersonator of international repute and his offering is the gorgeous display of magnificant gowns which he wears with the grace and dignity of a queen."
+                    </button>
+                </p>
+                <div
+                    id="comment-19-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-19"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/549450659"
+                                target="_blank"
+                            >
+                                Gazette, February 2, 1930, 4</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-20">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-20-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-20-sources"
+                    >
+                        "Returning From European Triumphs"
+                    </button>
+                </p>
+                <div
+                    id="comment-20-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-20"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/549450673"
+                                target="_blank"
+                            >
+                                Gazette, February 2, 1930, 5</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-21">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-21-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-21-sources"
+                    >
+                        "THe feature of Frances Renault's presentation, 'The Slave of Fashion' is the wardrobe of brilliant gowns and headdresses. Renault wears these gowns gracefully in his impersonations of various feminine stars of the stage. The impersonations are international in their scope."
+                    </button>
+                </p>
+                <div
+                    id="comment-21-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-21"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/549450952"
+                                target="_blank"
+                            >
+                                Gazette, February 3, 1930, 7</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-22">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-22-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-22-sources"
+                    >
+                        "The Star of All Female Impersonators", "Never Before Has A Nite Club Offered Such A High Paid Star"
+                    </button>
+                </p>
+                <div
+                    id="comment-22-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-22"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Herald-Press, December 8, 1936, 2
+                        </div>
+                        
+                        <div class="source">
+                            News-Palladium, December 8, 1936, 2
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-23">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-23-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-23-sources"
+                    >
+                        Our day in Youngstown was well spent. Attended the shows and met in person Francis Rennult [sic], a female impersonator. He took the gang up to his room and, dressed in his costume, we could hardly tell the difference, whether it was a man or woman. He is working in a night club outside of Youngstown. He told us he would make a trip to Hawaii in the near future.
+                    </button>
+                </p>
+                <div
+                    id="comment-23-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-23"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/274979469"
+                                target="_blank"
+                            >
+                                Honolulu Star-Bulletin, June 25, 1936, 16</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-24">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-24-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-24-sources"
+                    >
+                        feature act
+                    </button>
+                </p>
+                <div
+                    id="comment-24-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-24"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Idaho Falls Post-Register, April 4, 1935, 9
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-25">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-25-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-25-sources"
+                    >
+                        "called 'The Slave of Fashion,' offers the headline presentation. His act is said to feature impersonations of various sorts."
+                    </button>
+                </p>
+                <div
+                    id="comment-25-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-25"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/37494232"
+                                target="_blank"
+                            >
+                                Indianapolis News, April 5, 1930, 20</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-26">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-26-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-26-sources"
+                    >
+                        "Slave of Fashion"; "Extra—Thursday Matinee—$50,000 Fashion DIsplay of Latest Gowns and Wraps by FRANCIS RENAULT In Addition to Regular Show! LADIES—Don't Miss This!"
+                    </button>
+                </p>
+                <div
+                    id="comment-26-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-26"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/37494291"
+                                target="_blank"
+                            >
+                                Indianapolis News, April 7, 1930, 12</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-27">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-27-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-27-sources"
+                    >
+                        "a female impersonator with a sense of humor, is the featured performer on the four-act vaudeville bill. his array of feminine finery, together with his refusal to take his impersonations too seriously, makes Mr. Renault's offering a pleasant one."
+                    </button>
+                </p>
+                <div
+                    id="comment-27-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-27"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/37494295"
+                                target="_blank"
+                            >
+                                Indianapolis News, April 7, 1930, 14</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-28">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-28-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-28-sources"
+                    >
+                        "The Internationally Famous Celebrity"; "'The Slave of Fashion' (IN PERSON)"; "A Gorgeous Bevel of Fun, Frills, Song and Dance"
+                    </button>
+                </p>
+                <div
+                    id="comment-28-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-28"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/104980976"
+                                target="_blank"
+                            >
+                                Indianapolis Star, April 4, 1930, 9</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-29">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-29-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-29-sources"
+                    >
+                        "Getting back to the stage show and its headliner, Francis Renault. Renault is a female impersonator of international repute. He has made himself the talk of the fashionable set of every capital in Europe and America."
+                    </button>
+                </p>
+                <div
+                    id="comment-29-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-29"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/104981126"
+                                target="_blank"
+                            >
+                                Indianapolis Star, April 5, 1930, 7</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-30">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-30-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-30-sources"
+                    >
+                        "A triple headline stage show embracing such sterling vaudeville artists as Francis Renault, ..."; "Francis Renault gives the stage show as an act a glittering fashion show, for the well known impersonator wears one beautiful costume after another, all of which are said to represent in money approximately $50,000. Promenading and posing are not the only features of the entertaining routine. Renault sings and dances too and through all of his work there is a bright beam of fun."
+                    </button>
+                </p>
+                <div
+                    id="comment-30-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-30"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/104981909"
+                                target="_blank"
+                            >
+                                Indianapolis Star, April 6, 1930, 2</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-31">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-31-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-31-sources"
+                    >
+                        "the masculine fashion show"; "headliner of the stage bill, is one of our prominent female impersonators, and his display of gorgeous costumes will delight feminine eyes. His act is brightened with music and amusing chatter."; "Slave of Fashion"; "Extra—Thursday Matinee—$50,000 Fashion DIsplay of Latest Gowns and Wraps by FRANCIS RENAULT In Addition to Regular Show! LADIES—Don't Miss This!"
+                    </button>
+                </p>
+                <div
+                    id="comment-31-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-31"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/104982357"
+                                target="_blank"
+                            >
+                                Indianapolis Star, April 7, 1930, 5</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-32">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-32-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-32-sources"
+                    >
+                        "A display of fashions designed to thrill the heart and dazzle the eye of every woman is worn by Francis Renault, internationally known star in his stage presentation at the LYRIC this week."
+                    </button>
+                </p>
+                <div
+                    id="comment-32-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-32"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/104982728"
+                                target="_blank"
+                            >
+                                Indianapolis Star, April 8, 1930, 12</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-33">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-33-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-33-sources"
+                    >
+                        "Francis Renault, international star, presents 'Slaves of Fashion,' . . ."
+                    </button>
+                </p>
+                <div
+                    id="comment-33-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-33"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/204058392"
+                                target="_blank"
+                            >
+                                Lansing State Journal, February 19, 1930, 14</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-34">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-34-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-34-sources"
+                    >
+                        "Francis Renault, female impersonator, shares the spotlight in his humorous skit, in which are seen a number of lavish costumes."
+                    </button>
+                </p>
+                <div
+                    id="comment-34-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-34"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/204062027"
+                                target="_blank"
+                            >
+                                Lansing State Journal, February 21, 1930, 29</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-35">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-35-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-35-sources"
+                    >
+                        "THE FASHION PLATE OF THE STAGE DISPLAYING ELABORATELY GORGEOUS GOWNS"' "LADIES, 'FRANCIS RENAULT' The Slave of Fashion will give a SPECIAL FASHION SHOW At the 3 o'clock show DISPLAYING $50,000 Worth of Gowns and Wraps"
+                    </button>
+                </p>
+                <div
+                    id="comment-35-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-35"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/66422884"
+                                target="_blank"
+                            >
+                                Lincoln Journal Star, February 11, 1930, 8</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-36">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-36-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-36-sources"
+                    >
+                        "The Slave of Fashion"; "LADIES—FRANCIS RENAULT The Slave of Fashion Will Give a SPECIAL FASHION SHOW THURSDAY At the 3 o'Clock Show Displaying $50,000.00 WORTH OF GORGEOUS GOWNS DON'T MISS THIS"
+                    </button>
+                </p>
+                <div
+                    id="comment-36-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-36"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/66423130"
+                                target="_blank"
+                            >
+                                Lincoln Journal Star, February 12, 1930, 11</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/66423359"
+                                target="_blank"
+                            >
+                                Lincoln Journal Star, February 13, 1930, 13</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/314124007"
+                                target="_blank"
+                            >
+                                Nebraska State Journal, February 12, 1930, 2</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/314124126"
+                                target="_blank"
+                            >
+                                Nebraska State Journal, February 13, 1930, 5</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-37">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-37-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-37-sources"
+                    >
+                        "THE FASHION PLATE OF THE STAGE DISPLAYING ELABORATELY GORGEOUS GOWNS"' "LADIES! FRANCIS RENAULT The Slave of Fashion Will Give a SPECIAL FASHION SHOW THURSDAY At the 3 O'clock Show Displaying $50,000.00 WORTH OF GORGEOUS GOWNS. DON'T MISS THIS"
+                    </button>
+                </p>
+                <div
+                    id="comment-37-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-37"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/62825321"
+                                target="_blank"
+                            >
+                                Lincoln Star, February 11, 1930, 4</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-38">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-38-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-38-sources"
+                    >
+                        "The Slave of Fashion"; "LADIES! FRANCIS RENAULT The Slave of Fashion Will Give a SPECIAL FASHION SHOW THURSDAY At the 3 o'Clock Show Displaying $50,000.00 WORTH OF GORGEOUS GOWNS DON'T MISS THIS"
+                    </button>
+                </p>
+                <div
+                    id="comment-38-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-38"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/62825387"
+                                target="_blank"
+                            >
+                                Lincoln Star, February 12, 1930, 6</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/62825475"
+                                target="_blank"
+                            >
+                                Lincoln Star, February 13, 1930, 10</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-39">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-39-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-39-sources"
+                    >
+                        "GOWNS representing expenditure of more than $4,000 within the last year, are worn by Francis Renault, vaudeville's foremost impersonator of women characters, headlining the Pantages vaudeville program this week. Each gown and head dress worn in the act is the creation of Renault himself, and his entire wardrobe is valued at more than $25,000. Unlike many impersonators of female performers, Renault does not depend upon his attire to carry him over. True, he wears gowns and headdress creations equal of which are seldom seen upon a vaudeville stage, but it is ability to sing in a soprano voice, his ability to pitch his voice into an effeminite [sic] key, and his grace of figure and carriage which combine to score his stage triumphs."
+                    </button>
+                </p>
+                <div
+                    id="comment-39-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-39"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Minneapolis MN Star Tribune, January 18, 1930, 34
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-40">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-40-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-40-sources"
+                    >
+                        "Gowns, representing an expenditure of more than $4,000 within the last year, are worn by Francis Renault, the stage's foremost impersonator of women characters who is headlining the Pantages vaudeville program this week and each gown and head-dress worn in the course of the act, is the creation of Mr. Renault, his manager explained. Unlike many impersonators of female performers, Renault does not depend upon his attire to carry him over. True, he wears gowns and headdress creations equal of which are seldom seen upon a vaudeville stage, but it is ability to sing in a soprano voice, his ability to pitch his voice into an effeminite [sic] key, and his grace of figure and carriage which combine to score his stage triumphs. In his dressing rooms back stage at Pantages, Mr. Renault has 11 trunks and each contains many gowns, each representing hours and days of study in designing. This work of designing occupies much of his time and so successful has he been in this work, that often times he is asked to assist in the designing work of gowns for the featured women of the bigger New York stage productions. Renault was the first vaudeville star to introduce the radium gown and in the 'Passing Show' in which he was featured with Willie and Eugene Howard, his display of gowns and head pieces was featured. In his Pantages appearance, Mr. Renault sings, dances and gives a comedy monologue."
+                    </button>
+                </p>
+                <div
+                    id="comment-40-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-40"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Minneapolis MN Star Tribune, January 19, 1930, 6
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-41">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-41-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-41-sources"
+                    >
+                        "An impersonation of the queen of Rumania on her recent American visit is the highlight of the performance of Francis Renault, who headlines the bill at the Pantages this week. Renault is one of the best known of the present day female impersonators. He also appears as Madame Butterfly."
+                    </button>
+                </p>
+                <div
+                    id="comment-41-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-41"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Minneapolis MN Star Tribune, January 20, 1930, 13
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-42">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-42-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-42-sources"
+                    >
+                        "Slave of Fashion"
+                    </button>
+                </p>
+                <div
+                    id="comment-42-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-42"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/338633570"
+                                target="_blank"
+                            >
+                                Moline IL Dispatch, January 30, 1930, 23</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-43">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-43-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-43-sources"
+                    >
+                        "THE FASHION PLATE OF THE STAGE DISPLAYING ELABORATELY GORGEOUS GOWNS"' "LADIES Francis P. Renault The Slave of Fashion will give a SPECIAL FASHION SHOW THURSDAY At the 3 o'clock show $50,000 Worth of Gorgeous Gowns! DON'T MISS THIS"
+                    </button>
+                </p>
+                <div
+                    id="comment-43-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-43"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/314123904"
+                                target="_blank"
+                            >
+                                Nebraska State Journal, February 11, 1930, 5</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-44">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-44-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-44-sources"
+                    >
+                        "Accompanied by a $20,000 wardrobe, Francis Renault, star female impersonator, now is appearing at the Palais Royal, a mile east of Benton Harbor on Territorial road. Renault, a Keith circuit vaudeville headliner, said to be the highest paid night club entertainer, comes here today from the State Lake theater in Chicago. He has appeared before many of the notables of Europe."
+                    </button>
+                </p>
+                <div
+                    id="comment-44-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-44"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/365629789"
+                                target="_blank"
+                            >
+                                News-Palladium, December 8, 1936, 6</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-45">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-45-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-45-sources"
+                    >
+                        "main attraction Francis Renault, who is bringing intact his $20,000 wardrobe."
+                    </button>
+                </p>
+                <div
+                    id="comment-45-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-45"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/171133088"
+                                target="_blank"
+                            >
+                                Philadelphia Inquirer, March 10, 1937, 16</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-46">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-46-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-46-sources"
+                    >
+                        Allegedly running a rooming house in Toledo
+                    </button>
+                </p>
+                <div
+                    id="comment-46-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-46"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/523309834"
+                                target="_blank"
+                            >
+                                Pittsburgh Sun-Telegraph, April 28, 1937, 12</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-47">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-47-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-47-sources"
+                    >
+                        "Headlining the vaudeville program is Francis Renault, 'The Slave of Fashion,' whose wardrobe of finery is said to represent an investment of $50,000."
+                    </button>
+                </p>
+                <div
+                    id="comment-47-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-47"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Sioux City IA Journal, January 26, 1930, B5
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-48">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-48-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-48-sources"
+                    >
+                        "The Slave of Fashion"; "Wearing Gowns Valued at $50,000"
+                    </button>
+                </p>
+                <div
+                    id="comment-48-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-48"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/138651841"
+                                target="_blank"
+                            >
+                                St. Louis Post-Dispatch, March 22, 1930, 8A</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/138652140"
+                                target="_blank"
+                            >
+                                St. Louis Post-Dispatch, March 24, 1930, 4C</a
+                                >
+                        </div>
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/203930383"
+                                target="_blank"
+                            >
+                                St. Louis Star and Times, March 24, 1930, 9</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-49">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-49-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-49-sources"
+                    >
+                        "Next comes 'the international star,' Francis Renault, in 'The Slave of Fashion,' known the world over as the foremost impersonator of the fair sex. The Renault act is a glittering fashion show, with a gorgeous array of costly gowns, millinery, shoes, hosiery, lingerie and jewelry. Promenading and posing are not the only features of the entertaining routine, as this star sings and dances as well."
+                    </button>
+                </p>
+                <div
+                    id="comment-49-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-49"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/251879657"
+                                target="_blank"
+                            >
+                                Star Press, March 30, 1930, 20</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-50">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-50-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-50-sources"
+                    >
+                        "female impersonator, heads the revue which opens this week"
+                    </button>
+                </p>
+                <div
+                    id="comment-50-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-50"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, November 26, 1930, 67 (Francis' on Floor)
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-51">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-51-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-51-sources"
+                    >
+                        dropped out after two performances
+                    </button>
+                </p>
+                <div
+                    id="comment-51-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-51"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, May 17, 1932, 29 (Film House Reviews: WARFIELD. FRISCO)
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-52">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-52-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-52-sources"
+                    >
+                        "internationally famous female impersonator and fashion plate, is the second act on the stage bill. The wardrobe he displays is said to be worth $50,000, while his impersonations of femininityhave won him wide acclaim."
+                    </button>
+                </p>
+                <div
+                    id="comment-52-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-52"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/500980476"
+                                target="_blank"
+                            >
+                                Windsor Star, February 22, 1930, 13</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-53">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-53-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-53-sources"
+                    >
+                        "the banana-throwing, rose-giving female impersonator"
+                    </button>
+                </p>
+                <div
+                    id="comment-53-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-53"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            New York Daily News, September 4, 1949, 4
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-54">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-54-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-54-sources"
+                    >
+                        "Renault, it transpires, is a 'former Ziegfeld Follies star, who has been named as correspondent in three divorce actions, wooed by the emperor, assaulted by enraged wives and has been dubbed 'the mystery of science and sex.' His tricks run from an imitation of Mae West to Mary Pickford."
+                    </button>
+                </p>
+                <div
+                    id="comment-54-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-54"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Brooklyn Daily Eagle, September 16, 1949, 14
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+             
+        </section>
+
+        <section id="demoData">
+              
+            <h2>Indications of legal name</h2>
+            <ul>
+                
+                <li>Antonio Auriemma (Albuquerque Journal, April 23, 1932, 5)</li>
+                
+            </ul>
+            
+        </section>
+
+        <section id="geoData">
+            
+            <h2>Venues</h2>
+            <ul>
+                
+                <li><a href="/docs/dataset/venue/binghamton-theatre-binghamton-ny/">Binghamton Theatre (Binghamton, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/76-club-battle-creek-mi/">76 Club (Battle Creek, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/airport-tavern-cleveland-oh/">Airport Tavern (Cleveland, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/riverside-theatre-milwaukee-wi/">Riverside Theatre (Milwaukee, WI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/variety-club-baltimore-md/">Variety Club (Baltimore, MD)</a></li>
+                
+                <li><a href="/docs/dataset/venue/merry-go-round-tap-room-akron-oh/">Merry Go-Round Tap Room (Akron, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/hartman-theatre-marysville-oh/">Hartman Theatre (Marysville, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/orpheum-theatre-sioux-city-ia/">Orpheum Theatre (Sioux City, IA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/hamrick-theatre-gaffney-sc/">Hamrick Theatre (Gaffney, SC)</a></li>
+                
+                <li><a href="/docs/dataset/venue/universal-theatre-fitchburg-ma/">Universal Theatre (Fitchburg, MA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/fay-s-theater-rochester-ny/">Fay's Theater (Rochester, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-don-juan-new-york-ny/">Club Don Juan (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/iowa-theatre-cedar-rapids-ia/">Iowa Theatre (Cedar Rapids, IA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/kenosha-theatre-kenosha-wi/">Kenosha Theatre (Kenosha, WI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loew-s-46th-street-new-york-ny/">Loew's 46th Street (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/jefferson-theatre-birmingham-al/">Jefferson Theatre (Birmingham, AL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/tennessee-theatre-johnson-city-tn/">Tennessee Theatre (Johnson City, TN)</a></li>
+                
+                <li><a href="/docs/dataset/venue/stuart-theatre-lincoln-ne/">Stuart Theatre (Lincoln, NE)</a></li>
+                
+                <li><a href="/docs/dataset/venue/president-theatre-new-york-ny/">President Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/state-lake-theatre-chicago-il/">State-Lake Theatre (Chicago, IL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/strand-theatre-red-bank-nj/">Strand Theatre (Red Bank, NJ)</a></li>
+                
+                <li><a href="/docs/dataset/venue/lensic-theatre-santa-fe-nm/">Lensic Theatre (Santa Fe, NM)</a></li>
+                
+                <li><a href="/docs/dataset/venue/america-theatre-casper-wy/">America Theatre (Casper, WY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/elk-s-hall-chattanooga-tn/">Elk's Hall (Chattanooga, TN)</a></li>
+                
+                <li><a href="/docs/dataset/venue/19th-hole-new-york-ny/">19th Hole (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loew-s-orpheum-theatre-boston-ma/">Loew's Orpheum Theatre (Boston, MA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/joy-gardens-new-castle-pa/">Joy Gardens (New Castle, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loew-s-gates-theatre-new-york-ny/">Loew's Gates Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/half-moon-nite-club-pittsburgh-pa/">Half-Moon-Nite Club (Pittsburgh, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/everglades-new-york-ny/">Everglades (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/mcvicker-s-theatre-chicago-il/">McVicker's Theatre (Chicago, IL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/colonial-theatre-detroit-mi/">Colonial Theatre (Detroit, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/pansy-club-atlantic-city-nj/">Pansy Club (Atlantic City, NJ)</a></li>
+                
+                <li><a href="/docs/dataset/venue/lyric-theatre-new-york-ny/">Lyric Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/victoria-theatre-lawrence-ma/">Victoria Theatre (Lawrence, MA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/jimmie-dwyer-s-sawdust-trail-new-york-ny/">Jimmie Dwyer's Sawdust Trail (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/lyric-music-hall-new-york-ny/">Lyric Music Hall (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/marlow-theatre-helena-mt/">Marlow Theatre (Helena, MT)</a></li>
+                
+                <li><a href="/docs/dataset/venue/fox-theatre-detroit-mi/">Fox Theatre (Detroit, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/palais-royal-lansing-mi/">Palais Royal (Lansing, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-rio-allentown-pa/">Club Rio (Allentown, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/grey-wold-tavern-pittsburgh-pa/">Grey Wold Tavern (Pittsburgh, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-paree-hartford-ct/">Club Paree (Hartford, CT)</a></li>
+                
+                <li><a href="/docs/dataset/venue/kimo-theatre-albuquerque-nm/">KiMo Theatre (Albuquerque, NM)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-imperial-detroit-mi/">Club Imperial (Detroit, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/giddy-s-asbury-park-nj/">Giddy's (Asbury Park, NJ)</a></li>
+                
+                <li><a href="/docs/dataset/venue/fox-playhouse-canandaigua-ny/">Fox Playhouse (Canandaigua, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loew-s-pitkin-theatre-new-york-ny/">Loew's Pitkin Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/orpheum-theatre-des-moines-ia/">Orpheum Theatre (Des Moines, IA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-monte-carlo-new-york-ny/">Club Monte Carlo (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/rko-palace-theatre-fort-wayne-in/">RKO Palace Theatre (Fort Wayne, IN)</a></li>
+                
+                <li><a href="/docs/dataset/venue/colonial-theatre-florence-sc/">Colonial Theatre (Florence, SC)</a></li>
+                
+                <li><a href="/docs/dataset/venue/strand-theatre-cincinnati-oh/">Strand Theatre (Cincinnati, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/paramount-theatre-idaho-falls-id/">Paramount Theatre (Idaho Falls, ID)</a></li>
+                
+                <li><a href="/docs/dataset/venue/capitol-theatre-logan-ut/">Capitol Theatre (Logan, UT)</a></li>
+                
+                <li><a href="/docs/dataset/venue/shubert-theatre-newark-nj/">Shubert Theatre (Newark, NJ)</a></li>
+                
+                <li><a href="/docs/dataset/venue/rko-royal-theatre-new-york-ny/">RKO Royal Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/clarke-s-los-angeles-ca/">Clarke's (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/pantages-theatre-minneapolis-mn/">Pantages Theatre (Minneapolis, MN)</a></li>
+                
+                <li><a href="/docs/dataset/venue/alabama-theatre-dothan-al/">Alabama Theatre (Dothan, AL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/park-lane-theatre-new-york-ny/">Park Lane Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/national-garment-company-albuquerque-nm/">National Garment Company (Albuquerque, NM)</a></li>
+                
+                <li><a href="/docs/dataset/venue/crawford-house-boston-ma/">Crawford House (Boston, MA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/silver-slipper-mansfield-oh/">Silver Slipper (Mansfield, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/paramount-theatre-des-moines-ia/">Paramount Theatre (Des Moines, IA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-palm-beach-detroit-mi/">Club Palm Beach (Detroit, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loew-s-new-triboro-new-york-ny/">Loew's New Triboro (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loew-s-theatre-montreal-canada/">Loew's Theatre (Montreal, Canada)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loews-yonkers-theatre-new-york-ny/">Loew’s Yonkers Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/fox-dome-theatre-los-angeles-ca/">Fox Dome Theatre (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/31-club-philadelphia-pa/">31 Club (Philadelphia, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/bowery-cafe-detroit-mi/">Bowery Cafe (Detroit, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/pantages-theatre-kansas-city-mo/">Pantages Theatre (Kansas City, MO)</a></li>
+                
+                <li><a href="/docs/dataset/venue/hi-life-club-toledo-oh/">Hi Life Club (Toledo, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-calais-new-york-ny/">Club Calais (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-76-battle-creek-mi/">Club 76 (Battle Creek, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/rko-palace-theatre-akron-oh/">RKO Palace Theatre (Akron, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/navarre-hotel-taproom-toledo-oh/">Navarre Hotel Taproom (Toledo, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/rialto-theatre-flint-mi/">Rialto Theatre (Flint, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/carolina-theatre-greenville-sc/">Carolina Theatre (Greenville, SC)</a></li>
+                
+                <li><a href="/docs/dataset/venue/stark-s-bohemian-cafe-los-angeles-ca/">Stark's Bohemian Cafe (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/knights-of-pythias-lodge-hartford-ct/">Knights of Pythias Lodge (Hartford, CT)</a></li>
+                
+                <li><a href="/docs/dataset/venue/liberty-theatre-sedalia-mo/">Liberty Theatre (Sedalia, MO)</a></li>
+                
+                <li><a href="/docs/dataset/venue/carolina-theatre-orangeburg-sc/">Carolina Theatre (Orangeburg, SC)</a></li>
+                
+                <li><a href="/docs/dataset/venue/paramount-club-kansas-city-mo/">Paramount Club (Kansas City, MO)</a></li>
+                
+                <li><a href="/docs/dataset/venue/rivoli-theatre-muncie-in/">Rivoli Theatre (Muncie, IN)</a></li>
+                
+                <li><a href="/docs/dataset/venue/eddie-peyton-s-pittsburgh-pa/">Eddie Peyton's (Pittsburgh, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/hollywood-theatre-detroit-mi/">Hollywood Theatre (Detroit, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/embassy-theatre-new-york-ny/">Embassy Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/warfield-theatre-san-francisco-ca/">Warfield Theatre (San Francisco, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/carnegie-hall-new-york-ny/">Carnegie Hall (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/national-garment-company-santa-fe-nm/">National Garment Company (Santa Fe, NM)</a></li>
+                
+                <li><a href="/docs/dataset/venue/capitol-theatre-davenport-ia/">Capitol Theatre (Davenport, IA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/strand-theatre-lansing-mi/">Strand Theatre (Lansing, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/paramount-theatre-munster-in/">Paramount Theatre (Munster, IN)</a></li>
+                
+                <li><a href="/docs/dataset/venue/state-theatre-aiken-sc/">State Theatre (Aiken, SC)</a></li>
+                
+                <li><a href="/docs/dataset/venue/tivoli-theatre-richmond-in/">Tivoli Theatre (Richmond, IN)</a></li>
+                
+                <li><a href="/docs/dataset/venue/grand-theatre-huntville-al/">Grand Theatre (Huntville, AL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/granada-theatre-bluefield-wv/">Granada Theatre (Bluefield, WV)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loew-s-national-new-york-ny/">Loew's National (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/grand-opera-house-st-louis-mo/">Grand Opera House (St. Louis, MO)</a></li>
+                
+                <li><a href="/docs/dataset/venue/lyric-theatre-cullman-al/">Lyric Theatre (Cullman, AL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/lyric-theatre-indianapolis-in/">Lyric Theatre (Indianapolis, IN)</a></li>
+                
+                <li><a href="/docs/dataset/venue/brooklyn-academy-of-music-new-york-ny/">Brooklyn Academy of Music (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-renault-atlantic-city-nj/">Club Renault (Atlantic City, NJ)</a></li>
+                
+                <li><a href="/docs/dataset/venue/gayety-theatre-boston-ma/">Gayety Theatre (Boston, MA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/state-theatre-los-angeles-ca/">State Theatre (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/scollay-square-theatre-boston-ma/">Scollay Square Theatre (Boston, MA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/town-club-cicero-il/">Town Club (Cicero, IL)</a></li>
+                
+                <li><a href="/docs/dataset/venue/loew-s-warfield-theatre-san-francisco-ca/">Loew's Warfield Theatre (San Francisco, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/hippodrome-new-york-ny/">Hippodrome (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/orpheum-theatre-green-bay-wi/">Orpheum Theatre (Green Bay, WI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/keeney-theatre-elmira-ny/">Keeney Theatre (Elmira, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/paramount-theatre-north-adams-ma/">Paramount Theatre (North Adams, MA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/broadway-theatre-kingston-ny/">Broadway Theatre (Kingston, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/american-theatre-chattanooga-tn/">American Theatre (Chattanooga, TN)</a></li>
+                
+                <li><a href="/docs/dataset/venue/liberty-theatre-zanesville-oh/">Liberty Theatre (Zanesville, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/washington-theatre-pittsburgh-pa/">Washington Theatre (Pittsburgh, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/bonnie-theatre-price-ut/">Bonnie Theatre (Price, UT)</a></li>
+                
+                <li><a href="/docs/dataset/venue/majestic-theatre-paterson-nj/">Majestic Theatre (Paterson, NJ)</a></li>
+                
+                <li><a href="/docs/dataset/venue/princess-theatre-nashville-tn/">Princess Theatre (Nashville, TN)</a></li>
+                
+                <li><a href="/docs/dataset/venue/bay-ridge-theatre-new-york-ny/">Bay Ridge Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/cameo-theatre-hartford-ct/">Cameo Theatre (Hartford, CT)</a></li>
+                
+                <li><a href="/docs/dataset/venue/avalon-supper-club-st-louis-mo/">Avalon Supper Club (St. Louis, MO)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-frolic-atlantic-city-nj/">Club Frolic (Atlantic City, NJ)</a></li>
+                
+                <li><a href="/docs/dataset/venue/b-b-b-s-los-angeles-ca/">B.B.B.'s (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/palmetto-cafe-detroit-mi/">Palmetto Cafe (Detroit, MI)</a></li>
+                
+                <li><a href="/docs/dataset/venue/state-theatre-greenville-oh/">State Theatre (Greenville, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/ritz-theatre-scranton-pa/">Ritz Theatre (Scranton, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/fay-s-theatre-pennsylvania-pa/">Fay's Theatre (Pennsylvania, PA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/bowdoin-square-theatre-boston-ma/">Bowdoin Square Theatre (Boston, MA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/peacock-beauty-salon-albuquerque-nm/">Peacock Beauty Salon (Albuquerque, NM)</a></li>
+                
+                <li><a href="/docs/dataset/venue/capitol-theatre-windsor-canada/">Capitol Theatre (Windsor, Canada)</a></li>
+                
+                <li><a href="/docs/dataset/venue/rko-proctor-s-theatre-new-york-ny/">RKO Proctor's Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/torch-club-akron-oh/">Torch Club (Akron, OH)</a></li>
+                
+                <li><a href="/docs/dataset/venue/ambassador-theatre-st-louis-mo/">Ambassador Theatre (St. Louis, MO)</a></li>
+                
+            </ul>
+             
+            <h2>Cities</h2>
+            <ul>
+                
+                <li>San Francisco, CA</li>
+                
+                <li>Cullman, AL</li>
+                
+                <li>Nashville, TN</li>
+                
+                <li>Sioux City, IA</li>
+                
+                <li>Asbury Park, NJ</li>
+                
+                <li>Chattanooga, TN</li>
+                
+                <li>Detroit, MI</li>
+                
+                <li>Milwaukee, WI</li>
+                
+                <li>Hollywood, CA</li>
+                
+                <li>Muncie, IN</li>
+                
+                <li>Santa Fe, NM</li>
+                
+                <li>Boston, MA</li>
+                
+                <li>New York, NY</li>
+                
+                <li>Toledo, OH</li>
+                
+                <li>Flint, MI</li>
+                
+                <li>Mansfield, OH</li>
+                
+                <li>Cleveland, OH</li>
+                
+                <li>Pittsburgh, PA</li>
+                
+                <li>Youngstown, OH</li>
+                
+                <li>Huntville, AL</li>
+                
+                <li>Kingston, NY</li>
+                
+                <li>Newark, NJ</li>
+                
+                <li>Lansing, MI</li>
+                
+                <li>Zanesville, OH</li>
+                
+                <li>Davenport, IA</li>
+                
+                <li>Cicero, IL</li>
+                
+                <li>Hartford, CT</li>
+                
+                <li>Green Bay, WI</li>
+                
+                <li>Los Angeles, CA</li>
+                
+                <li>Fort Wayne, IN</li>
+                
+                <li>Munster, IN</li>
+                
+                <li>Aiken, SC</li>
+                
+                <li>Kansas City, MO</li>
+                
+                <li>Richmond, IN</li>
+                
+                <li>Pennsylvania, PA</li>
+                
+                <li>St. Louis, MO</li>
+                
+                <li>Logan, UT</li>
+                
+                <li>Lawrence, MA</li>
+                
+                <li>Minneapolis, MN</li>
+                
+                <li>Atlantic City, NJ</li>
+                
+                <li>Windsor, Canada</li>
+                
+                <li>Cedar Rapids, IA</li>
+                
+                <li>North Adams, MA</li>
+                
+                <li>Johnson City, TN</li>
+                
+                <li>Dothan, AL</li>
+                
+                <li>Orangeburg, SC</li>
+                
+                <li>Canandaigua, NY</li>
+                
+                <li>Lincoln, NE</li>
+                
+                <li>Helena, MT</li>
+                
+                <li>Des Moines, IA</li>
+                
+                <li>Rochester, NY</li>
+                
+                <li>New Castle, PA</li>
+                
+                <li>Chicago, IL</li>
+                
+                <li>Idaho Falls, ID</li>
+                
+                <li>Kenosha, WI</li>
+                
+                <li>Battle Creek, MI</li>
+                
+                <li>Binghamton, NY</li>
+                
+                <li>Bluefield, WV</li>
+                
+                <li>Florence, SC</li>
+                
+                <li>Scranton, PA</li>
+                
+                <li>Allentown, PA</li>
+                
+                <li>Sedalia, MO</li>
+                
+                <li>Red Bank, NJ</li>
+                
+                <li>Greenville, OH</li>
+                
+                <li>Paterson, NJ</li>
+                
+                <li>Indianapolis, IN</li>
+                
+                <li>Cincinnati, OH</li>
+                
+                <li>Philadelphia, PA</li>
+                
+                <li>Greenville, SC</li>
+                
+                <li>Baltimore, MD</li>
+                
+                <li>Birmingham, AL</li>
+                
+                <li>Montreal, Canada</li>
+                
+                <li>Price, UT</li>
+                
+                <li>Albuquerque, NM</li>
+                
+                <li>Gaffney, SC</li>
+                
+                <li>Elmira, NY</li>
+                
+                <li>Fitchburg, MA</li>
+                
+                <li>Akron, OH</li>
+                
+                <li>Marysville, OH</li>
+                
+                <li>Casper, WY</li>
+                
+            </ul>
+            
+        </section>
+
+        <section id="images">
+            
+            <h2>Images</h2>
+            <ul>
+                
+                <li>Akron OH Beacon Journal, December 9, 1935, 13</li>
+                
+                <li>Allentown PA Morning Call, November 24, 1935, 15</li>
+                
+                <li>Allentown PA Morning Call, December 1, 1935, 15</li>
+                
+                <li>Boston Globe, July 24, 1931, 12</li>
+                
+                <li>Cincinnati Enquirer, June 11, 1933, Sun Section 3,, 2</li>
+                
+                <li>Des Moines Tribune, February 17, 1930, 6</li>
+                
+                <li>Des Moines Tribune, November 2, 1932, 7</li>
+                
+                <li>Hartford Courant, January 30, 1935, 9</li>
+                
+                <li>Idaho Falls Post-Register, April 4, 1935, 9</li>
+                
+                <li>Johnson City Chronicle, March 25, 1934, 4B</li>
+                
+                <li>Minneapolis MN Star Tribune, January 18, 1930, 34</li>
+                
+                <li>New Castle PA News, June 7, 1939, 5</li>
+                
+                <li>News-Palladium, December 8, 1936, 6</li>
+                
+                <li>Philadelphia Inquirer, March 10, 1937, 16</li>
+                
+                <li>Scranton PA Tribune, August 7, 1931, 12</li>
+                
+                <li>Times and Democrat, January 18, 1934, 6</li>
+                
+                <li>Battle Creek Enquirer, June 20, 1940, 7</li>
+                
+            </ul>
+            
+        </section>
+
+        <section id="indications">
+               
+        </section>
+    </div>
+</div>
+
+            </div>
+        </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+        
+    </body>
+</html>

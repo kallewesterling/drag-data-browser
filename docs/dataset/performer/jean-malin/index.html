@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="/docs/includes/style.css" />
+        <script>
+            const BASE_URL = "/docs/";
+            const DATASET_URL = "/docs/dataset/";
+            const DATA_DIR = BASE_URL + "data/";
+        </script>
+        <title>U.S. Drag Performers in the 1930s | Performer | Jean Malin</title>
+        
+    </head>
+    <body>
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="home" viewBox="0 0 16 16">
+                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"></path>
+            </symbol>
+            <symbol id="speedometer2" viewBox="0 0 16 16">
+                <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"></path>
+                <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"></path>
+            </symbol>
+            <symbol id="speedometer" viewBox="0 0 16 16">
+                <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"></path>
+                <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"></path>
+            </symbol>
+            <symbol id="network" viewBox="0 0 16 16">
+                <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+            </symbol>
+            <symbol id="dataset" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15.817.113A.5.5 0 0 1 16 .5v14a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 15.01l-4.902.98A.5.5 0 0 1 0 15.5v-14a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0L10.5.99l4.902-.98a.5.5 0 0 1 .415.103zM10 1.91l-4-.8v12.98l4 .8V1.91zm1 12.98 4-.8V1.11l-4 .8v12.98zm-6-.8V1.11l-4 .8v12.98l4-.8z"/>
+            </symbol>
+            <symbol id="clippings" viewBox="0 0 16 16">
+                <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+            </symbol>
+            <symbol id="globe" viewBox="0 0 16 16">
+                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z"/>
+            </symbol>
+        </svg>
+        <main>
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;  height: -webkit-fill-available; height: 100vh; max-height: 100vh; z-index: 600;">
+                <a href="/docs/" class="d-flex align-items-start mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" fill="white"><use xlink:href="#speedometer2"></use></svg>
+                <span class="fs-4">U.S. Drag Performers in the 1930s</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+                <!--
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white" aria-current="page">
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#home"></use></svg>
+                        Home
+                    </a>
+                </li>
+                -->
+                <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pb-1">Visualizations</li>
+                <li class="nav-item">
+                    <a href="/docs/network/" class="nav-link text-white" aria-current="page"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#network"></use></svg>
+                        Network
+                    </a>
+                </li>
+                <li>
+                    <a href="/docs/continuous-performers/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#speedometer2"></use></svg>
+                        Continuous performers
+                    </a>
+                </li>
+                <li>
+                    <a href="/docs/geo/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#globe"></use></svg>
+                        Geodata (alpha)
+                    </a>
+                </li>
+                <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pt-4 pb-1">Data</li>
+                <li>
+                    <a href="/docs/dataset/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#dataset"></use></svg>
+                        Dataset
+                    </a>
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-3">
+                        <li><a href="/docs/dataset/performer/" class="text-white rounded">Performers</a></li>
+                        <li><a href="/docs/dataset/venue/" class="text-white rounded">Venues</a></li>
+                        <!--<li><a href="#" class="text-white rounded">Cities</a></li>-->
+                    </ul>
+                </li>
+                <li>
+                    <a href="/docs/dataset/clippings/" class="nav-link text-white"><!-- add `active` class here... -->
+                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#clippings"></use></svg>
+                        Clippings
+                    </a>
+                </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+                <!--
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/kallewesterling.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong>kallewesterling</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+                -->
+            </div>
+        </div>
+        <div class="d-flex flex-column overflow-auto w-100">
+            
+
+            <div class="container">
+                
+<nav aria-label="breadcrumb" class="d-flex align-items-center rounded p-4 my-4 shadow-sm justify-content-between">
+    <ol class="breadcrumb m-0">
+        <li class="breadcrumb-item"><a href="/docs/dataset/">Dataset</a></li>
+        <li class="breadcrumb-item"><a href="/docs/dataset/performer/">Performers</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Jean Malin</li>
+    </ol>
+    <div>
+        
+<nav aria-label="Page navigation">
+    <ul
+        class="
+            pagination
+            justify-content-center
+            me-auto
+            mb-2 mb-lg-0
+        "
+    >
+        <!-- Previous -->
+        
+        <li class="page-item">
+            <a
+                class="page-link"
+                href="/docs/dataset/performer/jean-lures"
+                tabindex="-1"
+                aria-disabled="false"
+                >&#8592; Jean Lures</a
+            >
+        </li>
+        
+        <!-- Next -->
+        
+        <li class="page-item">
+            <a
+                class="page-link"
+                href="/docs/dataset/performer/jean-marlow"
+                tabindex="-1"
+                aria-disabled="false"
+                >Jean Marlow &#8594;</a
+            >
+        </li>
+        
+    </ul>
+</nav>
+
+    </div>
+</nav>
+<div class="row">
+    <div class="col-12">
+        <h1>Jean Malin</h1>
+
+        
+            <section id="clippingsExist">
+                <p>This performer exists in <a href="/docs/dataset/clippings/">Kalle Westerling's clippings</a></p>
+            </section>
+        
+
+
+        <section id="yearsActive">
+            <h2>Years</h2>
+            <ul>
+                 
+                <li class="inactive">1900</li>
+                  
+                <li class="inactive">1901</li>
+                  
+                <li class="inactive">1902</li>
+                  
+                <li class="inactive">1903</li>
+                  
+                <li class="inactive">1904</li>
+                  
+                <li class="inactive">1905</li>
+                  
+                <li class="inactive">1906</li>
+                  
+                <li class="inactive">1907</li>
+                  
+                <li class="inactive">1908</li>
+                  
+                <li class="inactive">1909</li>
+                  
+                <li class="inactive">1910</li>
+                  
+                <li class="inactive">1911</li>
+                  
+                <li class="inactive">1912</li>
+                  
+                <li class="inactive">1913</li>
+                  
+                <li class="inactive">1914</li>
+                  
+                <li class="inactive">1915</li>
+                  
+                <li class="inactive">1916</li>
+                  
+                <li class="inactive">1917</li>
+                  
+                <li class="inactive">1918</li>
+                  
+                <li class="inactive">1919</li>
+                  
+                <li class="inactive">1920</li>
+                  
+                <li class="inactive">1921</li>
+                  
+                <li class="inactive">1922</li>
+                  
+                <li class="inactive">1923</li>
+                  
+                <li class="inactive">1924</li>
+                  
+                <li class="inactive">1925</li>
+                  
+                <li class="inactive">1926</li>
+                  
+                <li class="inactive">1927</li>
+                  
+                <li>1928</li>
+                  
+                <li>1929</li>
+                  
+                <li>1930</li>
+                  
+                <li>1931</li>
+                  
+                <li>1932</li>
+                  
+                <li>1933</li>
+                  
+                <li>1934</li>
+                  
+                <li class="inactive">1935</li>
+                  
+                <li class="inactive">1936</li>
+                  
+                <li class="inactive">1937</li>
+                  
+                <li class="inactive">1938</li>
+                  
+                <li class="inactive">1939</li>
+                  
+                <li class="inactive">1940</li>
+                  
+                <li>1941</li>
+                  
+                <li class="inactive">1942</li>
+                  
+                <li class="inactive">1943</li>
+                  
+                <li class="inactive">1944</li>
+                  
+                <li class="inactive">1945</li>
+                  
+                <li class="inactive">1946</li>
+                  
+                <li class="inactive">1947</li>
+                  
+                <li class="inactive">1948</li>
+                  
+                <li class="inactive">1949</li>
+                 
+            </ul>
+        </section>
+
+        <section id="comments accordion accordion-flush">
+            
+            <h2>Comments</h2>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-1">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-1-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-1-sources"
+                    >
+                        "The common or garden variety of chorus boy is played by the well-known Jean Malin with his own inimitable floruishes."
+                    </button>
+                </p>
+                <div
+                    id="comment-1-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-1"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, November 1, 1930, 32
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-2">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-2-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-2-sources"
+                    >
+                        "booked by Jack Bertell into the New Yorker Club . . . . has ignored the agent's claim for commissions, according to . . . Bertell's lawyer. Agent is also contemplating suit for commissions on a movie contract which was the result of the club showing." He was also, according to Variety, Mar 21, 1933, 50, sued for rent that he did not pay. Also see Variety, Jun 20, 1933, 32 for follow up and Variety, Jul 11, 1933, 47 for the dropping of the suit.
+                    </button>
+                </p>
+                <div
+                    id="comment-2-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-2"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, March 4, 1933, 5
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-3">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-3-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-3-sources"
+                    >
+                        "has returned as master of ceremonies and is supervising a star-studded show"
+                    </button>
+                </p>
+                <div
+                    id="comment-3-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-3"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, April 15, 1933, 19
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-4">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-4-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-4-sources"
+                    >
+                        "fem impersonator and featured at the club since its opening last fall, is filling in with picture work [when Club New Yorker is closed for the summer."
+                    </button>
+                </p>
+                <div
+                    id="comment-4-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-4"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, June 3, 1933, 15
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-5">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-5-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-5-sources"
+                    >
+                        "heading the floor show"
+                    </button>
+                </p>
+                <div
+                    id="comment-5-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-5"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, June 24, 1933, 16, 19
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-6">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-6-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-6-sources"
+                    >
+                        "held over for another two weeks at the Ship Cafe in Venice"
+                    </button>
+                </p>
+                <div
+                    id="comment-6-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-6"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Billboard, August 12, 1933, 11
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-7">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-7-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-7-sources"
+                    >
+                        "(both of 'em [Jean Malin and Jackie Maye] flaming femme impersonators), we can't help but wonder whatever happened to that police edict barring female impersonators from the local nite clubs—you know, the edict that got so much publicity immediately after the Club Abbey shooting."
+                    </button>
+                </p>
+                <div
+                    id="comment-7-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-7"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Brooklyn Daily Eagle, March 21, 1931, 9
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-8">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-8-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-8-sources"
+                    >
+                        "Billy Bryant, who came to town as a legendary show-boat figure of the Ohio and Mississippi, winds up in night club—and in the same show, at the Club Richman, is that wise cracking effeminate master-of-ceremonies, Jean Malin . . . Yes, Broadway makes strange floorshow fellows."
+                    </button>
+                </p>
+                <div
+                    id="comment-8-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-8"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/449876950"
+                                target="_blank"
+                            >
+                                Chambersburg PA Public Opinion, March 5, 1932, 10 (Gilbert Swan, "In New York", 449876950)</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-9">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-9-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-9-sources"
+                    >
+                        Appeared earlier at Club Rubiyat
+                    </button>
+                </p>
+                <div
+                    id="comment-9-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-9"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Cumberland MD Evening Times, January 24, 1931, page unknown
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-10">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-10-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-10-sources"
+                    >
+                        "Jean Malin is returning to his cinema city night club . . . at the request of the flicker stars who miss him . . . Jean is trying to get Jackie Maye and Francis Dunn out there to work with him."
+                    </button>
+                </p>
+                <div
+                    id="comment-10-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-10"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Daily News, April 4, 1933, 39
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-11">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-11-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-11-sources"
+                    >
+                        "a female impersonator of no small ability who acts as master of ceremonies and who, just a few years ago, was just another shrinking violet. Mallin [sic] has been a 'wow' as a box office attraction and is mentioned almost daily by the out-and-out Broadway paragraphers."
+                    </button>
+                </p>
+                <div
+                    id="comment-11-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-11"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Elmira NY Star-Gazette, September 25, 1930, 6
+                        </div>
+                        
+                        <div class="source">
+                            Fitchburg MA Sentinel, September 29, 1930, 6
+                        </div>
+                        
+                        <div class="source">
+                            Meriden Daily Journal, October 3, 1930, 10
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-12">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-12-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-12-sources"
+                    >
+                        "Were you at the Club New Yorker the other eve when Jean Malin announced that he 'was all fagged out'? Whoops!"
+                    </button>
+                </p>
+                <div
+                    id="comment-12-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-12"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Hollywood Reporter, September 29, 1932, 2
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-13">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-13-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-13-sources"
+                    >
+                        "is doing Queen Victoria [at Club New Yorker] these nights"
+                    </button>
+                </p>
+                <div
+                    id="comment-13-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-13"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Hollywood Reporter, October 1, 1932, 2
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-14">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-14-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-14-sources"
+                    >
+                        "Healy will leave the Club New York in two weeks to be replaced by Jean Malin."
+                    </button>
+                </p>
+                <div
+                    id="comment-14-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-14"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Hollywood Reporter, March 23, 1933, 3
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-15">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-15-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-15-sources"
+                    >
+                        misspelled as "Jean Mallin"
+                    </button>
+                </p>
+                <div
+                    id="comment-15-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-15"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Lubbock TX Avalanche-Journal, October 5, 1930, page unknown
+                        </div>
+                        
+                        <div class="source">
+                            Portsmouth OH Times, October 12, 1930, page unknown
+                        </div>
+                        
+                        <div class="source">
+                            <a
+                                    href="http://search.proquest.com/docview/1475937071"
+                                    target="_blank"
+                                    >Variety, September 10, 1930, 1 (Pansy' Places on Broadway)</a
+                            >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-16">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-16-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-16-sources"
+                    >
+                        Winner: $50
+                    </button>
+                </p>
+                <div
+                    id="comment-16-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-16"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            New York Amsterdam News, February 19, 1930, 3 (Mere Male Blossoms Out in Garb of Milady at Big Hamilton Lodge Ball)
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-17">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-17-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-17-sources"
+                    >
+                        "At the Club Argonaut, Jean Malin still continues to be the big attraction of Broadway's night life. Now a swell floor show has been built around Mr. Malin (am I getting personal?) and I especially recommend the 'Love for Sale' number.
+                    </button>
+                </p>
+                <div
+                    id="comment-17-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-17"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            New York Daily News, March 31, 1931, 31
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-18">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-18-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-18-sources"
+                    >
+                        "After watching Jean Malin work for a while Saul said: 'I don't understand why you columnists call him 'Man or Myth?' He's just a performer."; "'Just wait until we hear the 'Love for Sale' number. Then we leave and go to the Calais club.'"
+                    </button>
+                </p>
+                <div
+                    id="comment-18-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-18"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            New York Daily News, April 17, 1931, 53
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-19">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-19-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-19-sources"
+                    >
+                        "Jean Malin's burlesque radio number is one of the high spots of the new show at the Club Richman"
+                    </button>
+                </p>
+                <div
+                    id="comment-19-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-19"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/414556477"
+                                target="_blank"
+                            >
+                                New York Daily News, February 26, 1932, page unknown (414556477)</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-20">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-20-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-20-sources"
+                    >
+                        ". . . Jean Malin is the chief attraction for the naughtic clan."
+                    </button>
+                </p>
+                <div
+                    id="comment-20-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-20"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/414643934"
+                                target="_blank"
+                            >
+                                New York Daily News, March 15, 1932, 36</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-21">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-21-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-21-sources"
+                    >
+                        giving an impersonation of Aimee Semple McPherson that is something
+                    </button>
+                </p>
+                <div
+                    id="comment-21-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-21"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            NC Times Daily News, November 21, 1932, page unknown
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-22">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-22-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-22-sources"
+                    >
+                        "Jean Malin keeps on climbing! In the tryout of 'Sisters of the Chorus,' he had a small part, having previously been a dancer in ensembles. Since them he attracted throngs to the now defunct Robaiyat, and became the star attraction at the Abbey. Having made a hit with his distinctive personality, he returns to 'Sisters of the Chorus' for the New York engagement, this time . . . . doubling at the Abbey. Texas Guinan returns to the Abbey shortly, Jean will move to the Chateau Madrid."
+                    </button>
+                </p>
+                <div
+                    id="comment-22-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-22"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, April 30, 1930, 54
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-23">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-23-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-23-sources"
+                    >
+                        "Backstage mixed with the underworld . . . a pansy who 'never resists police.' It's a lingering drama that should not hang around long. . . . Jean Malin's the pansy. The m.c. of the Club Abbey does his usual violet routine, and in an experienced manner doesn't act like a man for some laughs and more curiousity from a motley array of cut-raters who will come here when they do. That's no break for the club that screams credit for itself for Malin in the program. . . . Malin's job is wrist slapping once or twice through each act dropping a wisecrack and a gesture."
+                    </button>
+                </p>
+                <div
+                    id="comment-23-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-23"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            <a
+                                    href="http://search.proquest.com/docview/1529324747"
+                                    target="_blank"
+                                    >Variety, October 29, 1930, 71</a
+                            >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-24">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-24-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-24-sources"
+                    >
+                        "Tex Guinan accepted a hurry-up booking for Fanchon & Marco . . . Tex has left her nite club. Jean Mallin [sic] replaces her as hostess."
+                    </button>
+                </p>
+                <div
+                    id="comment-24-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-24"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, March 4, 1931, 40
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-25">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-25-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-25-sources"
+                    >
+                        "very New York, landed solidly both with those who knew him from the east and with the local filmites. His wise cracks and flip remarks, especially to noisy guests, had the home girls and boys wondering what it was all about."; "Malin takes up about half of the floor show time with his femme impersonations. A class entertainer, he shows most of the local cafe performers how it should be done. He's at his best when being fed by Jack Oakie, Polly Moran, William Haines or some of the other picture names who are nightly patrons."
+                    </button>
+                </p>
+                <div
+                    id="comment-25-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-25"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, October 4, 1932, 52-53
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-26">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-26-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-26-sources"
+                    >
+                        "filed a suit for divorce" in Mexico!
+                    </button>
+                </p>
+                <div
+                    id="comment-26-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-26"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, November 22, 1932, 44
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-27">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-27-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-27-sources"
+                    >
+                        "Malin gives all the acts a break, builds them up well and allows them to work without interference, something local club m. c.'s should learn. In his own work, he's still the town's hot boy as far as wisecracking is concerned but the local wisecrackers are laying off him. Took the count too often, No small aid to Malin is his piano player, Charlie Russell."
+                    </button>
+                </p>
+                <div
+                    id="comment-27-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-27"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, November 29, 1932, 55
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-28">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-28-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-28-sources"
+                    >
+                        "Jean Malin and his floor show return to that spot."
+                    </button>
+                </p>
+                <div
+                    id="comment-28-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-28"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, April 4, 1933, 41
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-29">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-29-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-29-sources"
+                    >
+                        "will impersonate Mae West"
+                    </button>
+                </p>
+                <div
+                    id="comment-29-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-29"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, May 30, 1933, 30
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-30">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-30-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-30-sources"
+                    >
+                        His age corroborated from http://sfbaytimes.com/jean-malin-broadways-queen-of-queens-2/
+                    </button>
+                </p>
+                <div
+                    id="comment-30-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-30"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            Variety, August 15, 1933, 55
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <p class="accordion-header" id="comment-31">
+                    <button
+                        class="accordion-button collapsed"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#comment-31-sources"
+                        aria-expanded="true"
+                        aria-controls="comment-31-sources"
+                    >
+                        "Most of his spare time in the [Belasco] theatre was utilized by him to sew dresses for the soirees at Rockland Palace, the Harlem Casino and other spots of that type. Dressed as a woman, Malin was a consistent winner of first prizes in these contests."
+                    </button>
+                </p>
+                <div
+                    id="comment-31-sources"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="comment-31"
+                >
+                    <div class="accordion-body">
+                        
+                        <div class="source">
+                            
+                            <a
+                                href="http://www.newspapers.com/image/416445086|205476186|97646094"
+                                target="_blank"
+                            >
+                                New York Daily News, January 1, 1929, 35 (416445086); 1933-08-15 Detroit Free Press, 17 (97646094); 1933-08-15 The St. Louis Star and Times, 4 (205476186)</a
+                                >
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+             
+        </section>
+
+        <section id="demoData">
+            
+            <h2>Indications of birth year</h2>
+            <ul>
+                
+                <li>1908 (Variety, August 15, 1933, 55)</li>
+                
+            </ul>
+             
+            <h2>Indications of age</h2>
+            <ul>
+                
+                <li>25 (Variety, August 15, 1933, 55)</li>
+                
+            </ul>
+             
+            <h2>Indications of legal name</h2>
+            <ul>
+                
+                <li>Jean Malin (Variety, August 15, 1933, 55)</li>
+                
+            </ul>
+            
+        </section>
+
+        <section id="geoData">
+            
+            <h2>Venues</h2>
+            <ul>
+                
+                <li><a href="/docs/dataset/venue/masquers-club-los-angeles-ca/">Masquers Club (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-calais-new-york-ny/">Club Calais (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/jean-malin-s-los-angeles-ca/">Jean Malin's (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-argonaut-new-york-ny/">Club Argonaut (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/ship-cafe-los-angeles-ca/">Ship Cafe (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/show-place-new-york-ny/">Show Place (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-rubiyat-new-york-ny/">Club Rubiyat (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/follies-bergere-club-new-york-ny/">Follies Bergere Club (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/belasco-theatre-new-york-ny/">Belasco Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-richman-new-york-ny/">Club Richman (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/rockland-palace-new-york-ny/">Rockland Palace (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/chinese-theatre-los-angeles-ca/">Chinese Theatre (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-abbey-new-york-ny/">Club Abbey (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/ritz-theatre-new-york-ny/">Ritz Theatre (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/fox-theatre-los-angeles-ca/">Fox Theatre (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/pavillion-royal-new-york-ny/">Pavillion Royal (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/chateau-madrid-new-york-ny/">Chateau Madrid (New York, NY)</a></li>
+                
+                <li><a href="/docs/dataset/venue/plantation-los-angeles-ca/">Plantation (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/club-new-yorker-los-angeles-ca/">Club New Yorker (Los Angeles, CA)</a></li>
+                
+                <li><a href="/docs/dataset/venue/star-casino-new-york-ny/">Star Casino (New York, NY)</a></li>
+                
+            </ul>
+             
+            <h2>Cities</h2>
+            <ul>
+                
+                <li>Los Angeles, CA</li>
+                
+                <li>New York, NY</li>
+                
+            </ul>
+            
+        </section>
+
+        <section id="images">
+            
+        </section>
+
+        <section id="indications">
+               
+        </section>
+    </div>
+</div>
+
+            </div>
+        </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+        
+    </body>
+</html>
