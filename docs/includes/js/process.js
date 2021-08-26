@@ -18,7 +18,7 @@ svg.append("rect")
 
 svg = svg.append("g")
     .attr("transform", "translate(" + translate0 + ")scale(" + scale0 + ")")
-    .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", zoom))
+    .call(d3.zoom().scaleExtent([1, 8]).on("zoom", zoom))
     .append("g");
 
 svg.append("image")
