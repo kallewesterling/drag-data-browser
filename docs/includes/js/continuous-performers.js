@@ -490,7 +490,7 @@ Promise.all(loader).then(function(files) {
         store.continuousPerformanceData[`tolerance${tolerance}`] = files[tolerance];
     })
     
-    Promise.all(loader).then(function(files) {
+    Promise.all(detail_loader).then(function(files) {
         [0, 1, 2, 3].forEach(tolerance => {
             store.continuousPerformanceDataDetail[`tolerance${tolerance}`] = files[tolerance];
         })
