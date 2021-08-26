@@ -13,6 +13,6 @@ svg = svg.append("g")
 
 svg.append("image")
     .attr("width",  "100%")
-    .attr("height", imgHeight + "px")
+    .attr("height", "400px")
     .attr("xlink:href", BASE_URL + 'includes/img/method-early-version.png');
 
