@@ -1,10 +1,5 @@
 function zoomed(event, d) {
-    g.attr("transform", event.transform);
-}
-
-function zoom() {
-    svg.attr("transform", d3.event.transform);
-    console.log("translate: " + d3.event.translate + ", scale: " + d3.event.scale);
+    d3.select(this).attr("transform", event.transform);
 }
 
 var imgHeight = 1025, imgWidth = 1538,      // Image dimensions (don't change these)
@@ -13,7 +8,9 @@ var imgHeight = 1025, imgWidth = 1538,      // Image dimensions (don't change th
 
 svg = d3.select("svg#process")
     .attr("width",  width + "px")
-    .attr("height", height + "px");
+    .attr("height", height + "px")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 600 400");
 
 svg.append("rect")
     .attr("class", "overlay")
@@ -29,3 +26,4 @@ svg.append("image")
     .attr("width",  imgWidth + "px")
     .attr("height", imgHeight + "px")
     .attr("xlink:href", BASE_URL + 'includes/img/method-early-version.png');
+

@@ -8,6 +8,21 @@
         fill: none;
         pointer-events: all;
     }
+    .svg-container {
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%; /* aspect ratio */
+        vertical-align: top;
+        overflow: hidden;
+    }
+    .svg-content-responsive {
+        display: inline-block;
+        position: absolute;
+        top: 10px;
+        left: 0;
+    }
+
 </style>    
 {% endblock %}
 
@@ -20,12 +35,14 @@
         <p class="lead fw-normal">XYZ XYZ.</p>
     </div>
 </div>
+<div class="svg-container">
+    <svg id="process" class="svg-content-responsive"></svg>
+</div>
 
 {% endblock %}
 
 
 {% block body %}
-<svg id="process"></svg>
 {% endblock %}
 
 {% block javascript %}
