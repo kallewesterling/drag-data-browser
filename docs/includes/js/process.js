@@ -7,7 +7,7 @@ svg = d3.select("svg#process")
     .attr("viewBox", "0 0 600 400");
 
 svg = svg.append("g")
-    .attr("transform", "translate(" + translate0 + ")scale(" + scale0 + ")")
+    .attr("transform", "translate(0,0) scale(0.6)")
     .call(d3.zoom().scaleExtent([0.1, 8]).on("zoom", zoomed))
     .append("g");
 
