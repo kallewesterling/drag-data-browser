@@ -8,7 +8,7 @@ svg = d3.select("svg#process")
 
 svg = svg.append("g")
     .attr("transform", "translate(" + translate0 + ")scale(" + scale0 + ")")
-    .call(d3.zoom().scaleExtent([1, 8]).on("zoom", zoomed))
+    .call(d3.zoom().scaleExtent([0.1, 8]).on("zoom", zoomed))
     .append("g");
 
 svg.append("image")
