@@ -1,5 +1,5 @@
 function zoom() {
-    svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+    svg.attr("transform", d3.event.transform);
     console.log("translate: " + d3.event.translate + ", scale: " + d3.event.scale);
 }
 
