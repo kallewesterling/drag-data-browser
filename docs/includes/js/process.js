@@ -1,3 +1,7 @@
+function zoomed(event, d) {
+    g.attr("transform", event.transform);
+}
+
 function zoom() {
     svg.attr("transform", d3.event.transform);
     console.log("translate: " + d3.event.translate + ", scale: " + d3.event.scale);
@@ -18,7 +22,7 @@ svg.append("rect")
 
 svg = svg.append("g")
     .attr("transform", "translate(" + translate0 + ")scale(" + scale0 + ")")
-    .call(d3.zoom().scaleExtent([1, 8]).on("zoom", zoom))
+    .call(d3.zoom().scaleExtent([1, 8]).on("zoom", zoomed))
     .append("g");
 
 svg.append("image")
