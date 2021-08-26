@@ -22,7 +22,7 @@
             const DATASET_URL = "{{ DATASET_URL }}";
             const DATA_DIR = BASE_URL + "data/";
         </script>
-        <title>U.S. Drag Performers in the 1930s | {% block title %}{% endblock %}</title>
+        <title>{{ SITE_TITLE }} | {% block title %}{% endblock %}</title>
         {% block extra_head %}{% endblock %}
     </head>
     <body>
@@ -60,61 +60,28 @@
             <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;  height: -webkit-fill-available; height: 100vh; max-height: 100vh; z-index: 600;">
                 <a href="{{ BASE_URL }}" class="d-flex align-items-start mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <svg class="bi me-2" width="40" height="32" fill="white"><use xlink:href="#speedometer2"></use></svg>
-                <span class="fs-4">U.S. Drag Performers in the 1930s</span>
+                <span class="fs-4">{{ SITE_TITLE }}</span>
             </a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
-                <!--
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white" aria-current="page">
-                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#home"></use></svg>
-                        Home
-                    </a>
-                </li>
-                -->
-                <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pb-1">Visualizations</li>
-                <li class="nav-item">
-                    <a href="{{ BASE_URL }}network/" class="nav-link text-white" aria-current="page"><!-- add `active` class here... -->
-                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#network"></use></svg>
-                        Network
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ BASE_URL }}continuous-performers/" class="nav-link text-white"><!-- add `active` class here... -->
-                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#speedometer2"></use></svg>
-                        Continuous performers
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ BASE_URL }}geo/" class="nav-link text-white"><!-- add `active` class here... -->
-                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#globe"></use></svg>
-                        Geodata (alpha)
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ BASE_URL }}process/" class="nav-link text-white"><!-- add `active` class here... -->
-                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#process"></use></svg>
-                        Research Process
-                    </a>
-                </li>
-                <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pt-4 pb-1">Data</li>
-                <li>
-                    <a href="{{ DATASET_URL }}" class="nav-link text-white"><!-- add `active` class here... -->
-                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#dataset"></use></svg>
-                        Dataset
-                    </a>
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-3">
-                        <li><a href="{{ DATASET_URL }}performer/" class="text-white rounded">Performers</a></li>
-                        <li><a href="{{ DATASET_URL }}venue/" class="text-white rounded">Venues</a></li>
-                        <!--<li><a href="#" class="text-white rounded">Cities</a></li>-->
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{ DATASET_URL }}clippings/" class="nav-link text-white"><!-- add `active` class here... -->
-                        <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#clippings"></use></svg>
-                        Clippings
-                    </a>
-                </li>
+                {% for category in NAVBAR.structure %}
+                    <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pb-1">{{ category }}</li>
+                    {% for item in NAVBAR.structure[category] %}
+                        <li class="nav-item">
+                            <a href="{{ item.url }}" class="nav-link text-white" aria-current="page"><!-- add `active` class here... -->
+                                <svg class="bi me-2" width="16" height="16" fill="white"><use xlink:href="#{{ item.icon }}"></use></svg>
+                                {{ item.title }}
+                            </a>
+                        </li>
+                        {% if item.subcategories %}
+                            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-3">
+                            {% for subcategory in item.subcategories %}
+                                <li><a href="{{ subcategory.url }}" class="text-white rounded">{{ subcategory.title }}</a></li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
             </ul>
             <hr>
             <div class="dropdown">
