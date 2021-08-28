@@ -32,6 +32,9 @@ svg#tolerance0, svg#tolerance1, svg#tolerance2, svg#tolerance3 {
 .legendText {
     font-size: 0.8em;
 }
+.foundPerformer.hidden {
+    display: none;
+}
 .mouse-line-0, .mouse-line-1, .mouse-line-2, .mouse-line-3 {
     stroke: rgba(0, 0, 0, 0.05);
 }
@@ -69,4 +72,21 @@ svg#tolerance0, svg#tolerance1, svg#tolerance2, svg#tolerance3 {
 }
 #toggleTolerance0[aria-expanded=true] i::before, #toggleTolerance1[aria-expanded=true] i::before,#toggleTolerance2[aria-expanded=true] i::before,#toggleTolerance3[aria-expanded=true] i::before {
     content: "\f112";
+}
+circle.selected {
+    fill: red;
+}
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%; /* aspect ratio */
+  vertical-align: top;
+  overflow: hidden;
+}
+.svg-content-responsive {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 0;
 }

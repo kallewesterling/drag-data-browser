@@ -1,168 +1,280 @@
+"use strict";
+
 let store = {
-    continuousPerformanceData: {},
-    continuousPerformanceDataDetail: {},
+    data: {},
+    dataDetail: {},
     rawData: {},
     oneMonth: 0,
-    scales: {}
+    scales: {},
+    allPerformers: []
 };
+
+let STANDARD_CIRCLE = 1.5;
 
 // parse the date / time
 var dateParser = d3.timeParse("%Y-%m-%d");
-popup = d3.select('div#popup')
-display_num = popup.select('div#displayNum')
+let popup = d3.select('div#popup')
+let display_num = popup.select('div#displayNum')
 
 // setup standard sizes for the svgs
-var margin = {top: 20, right: 20, bottom: 50, left: 70},
-    width = 1200 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+const margin = () => {
+    return {top: 20, right: 20, bottom: 40, left: 40}
+}
+const width = () => {
+    let vizContainer = getComputedStyle(document.querySelector('#viz-container'));
+    let vizContainerWidth = vizContainer.width.replace('px','');
+    let paddingLeft = vizContainer.paddingLeft.replace('px','');
+    let paddingRight = vizContainer.paddingRight.replace('px','');
+    let returnVal = vizContainerWidth - paddingLeft - paddingRight - margin().left - margin().right;
+    return returnVal;
+}
+const height = () => {
+    return 300 - margin().top - margin().bottom;
+}
 
-[0, 1, 2, 3].forEach(tolerance => {
-    store.scales[`tolerance${tolerance}`] = {};
-    store.scales[`tolerance${tolerance}`].xScale = d3.scaleTime().range([0, width]);
-    store.scales[`tolerance${tolerance}`].yScale = yScale = d3.scaleLinear().range([height, 0]);
-})
+const getScale = (xOrY, tolerance) => {
+    let localData = store.data['tolerance' + tolerance];
+    if (xOrY === 'x') {
+        return d3.scaleTime().range([0, width()]).domain(d3.extent(localData, d=>d.date));
+    } else if (xOrY === 'y') {
+        return d3.scaleLinear().range([height(), 0]).domain([0, d3.max(localData, d=>d.num_artists)]);
+    } else {
+        log.error('NOPE')
+    }
+}
+
+const searchPerformer = (name) => {
+    let found = {};
+    [0, 1, 2, 3, 4, 5].forEach(tolerance => {
+        let years = Object.keys(store.dataDetail[`tolerance${tolerance}`]);
+        years.forEach(year=>{
+            let months = Object.keys(store.dataDetail[`tolerance${tolerance}`][year]);
+            months.forEach(month=>{
+                let performers = store.dataDetail[`tolerance${tolerance}`][year][month];
+                if (performers.includes(name)) {
+                    if (!Object.keys(found).includes(`tolerance${tolerance}`)) {
+                        found[`tolerance${tolerance}`] = []
+                    }
+                    if (!found[`tolerance${tolerance}`].includes(`${year},${month}`)) {
+                        found[`tolerance${tolerance}`].push(`${year},${month}`)
+                    }
+                }
+            });
+        });
+    });
+    return found
+}
+
+const searchPerformerAcrossAll = (name) => {
+    let found = searchPerformer(name);
+    [0, 1, 2, 3, 4, 5].forEach(tolerance=>{
+        // console.log();
+        markFound(found[`tolerance${tolerance}`], tolerance);
+    });
+}
+
+const getDetailData = (tolerance, year, month) => {
+    switch (tolerance) {
+        case 0:
+            return store['dataDetail'].tolerance0[year][month].sort();
+        case 1:
+            return store['dataDetail'].tolerance1[year][month].sort();
+        case 2:
+            return store['dataDetail'].tolerance2[year][month].sort();
+        case 3:
+            return store['dataDetail'].tolerance3[year][month].sort();
+    }
+}
+
+const mouseClick = (loc, event, snap=true, tolerance) => {
+    let data = store.data['tolerance' + tolerance];
+    let [xLoc, yLoc] = loc;
+    let xScale = getScale('x', tolerance);
+    let datePoint = xScale.invert(xLoc);
+    let dataPoint = reverseData(data, datePoint);
+    console.log(getDetailData(tolerance, dataPoint.year, dataPoint.month));
+}
+
+const reverseData = (localData, datePoint) => {
+    var bisect = d3.bisector(function(d) { return d.date; }).right;
+    let ix = bisect(localData, datePoint);
+    return localData[ix];
+}
+
+const getLegend = (tolerance) => {
+    switch (tolerance) {
+        case 0:
+            return 'Number of performers performing within a given month'
+        case 1:
+            return 'Number of performers normalized from the surrounding 3-month period (± 1mo)'
+        case 2:
+            return 'Number of performers normalized from the surrounding 5-month period (± 2mo)'
+        case 3:
+            return 'Number of performers normalized from the surrounding 7-month period (± 3mo)'
+        case 4:
+            return 'Number of performers normalized from the surrounding 9-month period (± 4mo)'
+        case 5:
+            return 'Number of performers normalized from the surrounding 11-month period (± 5mo)'
+    }
+    return 'undefined'
+}
+
+const makeLegend = (tolerance) => {
+
+    let svg = d3.select(`svg#tolerance${tolerance}`);
+
+    svg = svg.select(`g#tolerance-${tolerance}`);
+
+    if (svg.select('g.legend').node()) {
+        // console.log('legend already exists')
+        return true;
+    }
+
+    var legend = svg
+        .append('g')
+        .attr('class', 'legend');
+    
+    legend.append('circle')
+        .attr('cx', 30 + 5)
+        .attr('cy', 30)
+        .attr('r', 5)
+        .classed('foundPerformer', true)
+        .classed('hidden', true)
+        .style('fill', 'red');
+
+    legend.append('rect')
+        .attr('x', 30)
+        .attr('y', (d, i) => i * 20)
+        .attr('width', 10)
+        .attr('height', 10)
+        .style('fill', 'steelblue');
+
+    legend.append('text')
+        .attr('x', 45)
+        .attr('y', function(d, i) {
+            return 30 + 5;
+        })
+        .text(() => 'Month when performer appears in dataset')
+        .classed('foundPerformer', true)
+        .classed('hidden', true)
+        .classed('legendText', true);
+
+    legend.append('text')
+        .attr('x', 45)
+        .attr('y', function(d, i) {
+            return (i * 20) + 9;
+        })
+        .text(() => getLegend(tolerance))
+        .attr('class', 'legendText');
+};
+
+const makeAxes = (tolerance) => {
+    let svg = d3.select(`svg#tolerance${tolerance} g#tolerance-${tolerance}`);
+
+    let xScale = getScale('x', tolerance);
+    let yScale = getScale('y', tolerance);
+
+    if (!svg.select(`g.xScale-${tolerance}`).node()) {
+        svg.append("g")
+            .attr("class", `xScale-${tolerance}`)
+            .attr("transform", "translate(0," + height() + ")")
+            .call(d3.axisBottom(xScale));
+    } else {
+        svg.select(`g.xScale-${tolerance}`)
+            .attr("transform", "translate(0," + height() + ")")
+            .call(d3.axisBottom(xScale));
+    }
+
+    // add y Axis
+    if (!svg.select(`g.yScale-${tolerance}`).node()) {
+        svg.append("g")
+            .attr("class", `yScale-${tolerance}`)
+            .call(d3.axisLeft(yScale));
+    } else {
+        svg.select(`g.yScale-${tolerance}`)
+            .call(d3.axisLeft(yScale));
+    }
+}
+
+const makeMouseLine = (tolerance) => {
+    let svg = d3.select(`svg#tolerance${tolerance} g#tolerance-${tolerance}`);
+
+    if (svg.select(`g.mouse-over-effects-${tolerance}`).node()) {
+        return true;
+    }
+
+    svg.append("g")
+        .attr("class", `mouse-over-effects-${tolerance}`);
+    
+    let months = 0;
+
+    switch (tolerance) {
+        case 0:
+            months = 1;
+            break;
+        case 1:
+            months = 3;
+            break;
+        case 2:
+            months = 5;
+            break;
+        case 3:
+            months = 7;
+            break;
+    }
+    
+    d3.select(`g.mouse-over-effects-${tolerance}`)
+        .append("path") // this is the black vertical line to follow mouse
+        .attr("class", `mouse-line-${tolerance}`)
+        .style("stroke-width", `${store.oneMonth}px`) // * months
+        .style("opacity", "0");
+
+    d3.select(`g.mouse-over-effects-${tolerance}`)
+        .append('svg:rect') // append a rect to catch mouse movements on canvas
+        .attr('width', width()) // can't catch mouse events on a g element
+        .attr('height', height())
+        .attr('fill', 'none')
+        .attr('pointer-events', 'all')
+}
 
 const renderContinousPerformanceData = (tolerance=0) => {
-    console.log(`renderContinuousPerformanceData called with tolerance=${tolerance}`)
-
-    const makeLegend = (tolerance) => {
-        const getLegend = (tolerance) => {
-            console.log(tolerance)
-            switch (tolerance) {
-                case "0":
-                    return 'Number of performers performing within a given month'
-                case "1":
-                    return 'Number of performers performing within a given 3-month period (± 1mo)'
-                case "2":
-                    return 'Number of performers performing within a given 5-month period (± 2mo)'
-                case "3":
-                    return 'Number of performers performing within a given 7-month period (± 3mo)'
-            }
-            return 'undefined'
-        }
-
-        svg = d3.select(`svg#tolerance${tolerance} g#tolerance-${tolerance}`);
-
-        if (svg.select('g.legend').node()) {
-            console.log('legend already exists')
-            return true;
-        }
-
-        var legend = svg
-            .append('g')
-            .attr('class', 'legend');
-        
-        legend.append('rect')
-            .attr('x', 30)
-            .attr('y', (d, i) => i * 20)
-            .attr('width', 10)
-            .attr('height', 10)
-            .style('fill', 'steelblue');
-
-        legend.append('text')
-            .attr('x', 45)
-            .attr('y', function(d, i) {
-                return (i * 20) + 9;
-            })
-            .text(() => getLegend(tolerance))
-            .attr('class', 'legendText');
-    };
-
-    const makeAxes = (tolerance) => {
-        svg = d3.select(`svg#tolerance${tolerance} g#tolerance-${tolerance}`);
-
-        if (!svg.select(`g.xScale-${tolerance}`).node()) {
-            svg.append("g")
-                .attr("class", `xScale-${tolerance}`)
-                .attr("transform", "translate(0," + height + ")")
-                .call(d3.axisBottom(xScale));
-        }
-
-        // add y Axis
-        if (!svg.select(`g.yScale-${tolerance}`).node()) {
-            svg.append("g")
-                .attr("class", `yScale-${tolerance}`)
-                .call(d3.axisLeft(yScale));
-        }
-    }
-
-    const makeMouseLine = (tolerance) => {
-        svg = d3.select(`svg#tolerance${tolerance} g#tolerance-${tolerance}`);
-
-        if (svg.select(`g.mouse-over-effects-${tolerance}`).node()) {
-            return true;
-        }
-
-        svg.append("g")
-            .attr("class", `mouse-over-effects-${tolerance}`);
-        
-        switch (tolerance) {
-            case "0":
-                months = 1;
-                break;
-            case "1":
-                months = 3;
-                break;
-            case "2":
-                months = 5;
-                break;
-            case "3":
-                months = 7;
-                break;
-        }
-        
-        d3.select(`g.mouse-over-effects-${tolerance}`)
-            .append("path") // this is the black vertical line to follow mouse
-            .attr("class", `mouse-line-${tolerance}`)
-            .style("stroke-width", `${store.oneMonth * months}px`)
-            .style("opacity", "0");
-
-        d3.select(`g.mouse-over-effects-${tolerance}`)
-            .append('svg:rect') // append a rect to catch mouse movements on canvas
-            .attr('width', width) // can't catch mouse events on a g element
-            .attr('height', height)
-            .attr('fill', 'none')
-            .attr('pointer-events', 'all')
-    }
-        
+    let svg = '';
     if (d3.select(`svg#tolerance${tolerance} g#tolerance-${tolerance}`).node()) {
-        console.log('found existing svg with tolerance', tolerance)
-        svg = d3.select(`svg#tolerance${tolerance} g#tolerance-${tolerance}`)
+        // console.log('found existing svg with tolerance', tolerance)
+        svg = d3.select(`svg#tolerance${tolerance}`)
+            .attr("width", width() + margin().left + margin().right)
+            .attr("height", height() + margin().top + margin().bottom);
+        svg = svg.select(`g#tolerance-${tolerance}`);
     } else {
-        var svg = d3.select(`svg#tolerance${tolerance}`)
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
+        svg = d3.select(`svg#tolerance${tolerance}`)
+            .attr("width", width() + margin().left + margin().right)
+            .attr("height", height() + margin().top + margin().bottom)
             .append("g")
             .attr("id", `tolerance-${tolerance}`)
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform", "translate(" + margin().left + "," + margin().top + ")");
     }
 
-    data = store.continuousPerformanceData[`tolerance${tolerance}`];
-    data.forEach(d=>{if (typeof d.date === 'string') { d.date = dateParser(d.date) } }); // fix dates
-    data = data.filter(d=>d.date.getFullYear() >= 1930 && d.date.getFullYear() < 1940)
-
+    let data = store.data[`tolerance${tolerance}`];
+    
     // set the ranges
-    xScale = store.scales[`tolerance${tolerance}`].xScale;
-    yScale = store.scales[`tolerance${tolerance}`].yScale;
-
-    xScale.domain(d3.extent(data, d=>d.date));
-    yScale.domain([0, d3.max(data, d=>d.num_artists)]);
+    let xScale = getScale('x', tolerance);
+    let yScale = getScale('y', tolerance);
 
     store.oneMonth = xScale(dateParser('1930-02-01')) - xScale(dateParser('1930-01-01'))
 
     // define the line
-    var valueline = d3.line()
+    let valueline = d3.line()
         .x(d => xScale(d.date))
         .y(d => yScale(d.num_artists));
 
     // draw our two main lines
-    pathGroup = svg
+    let pathGroup = svg
         .selectAll("g.paths")
         .data([data])
         .join(enter=>enter.append('g')
         .attr('class', 'paths'))
 
-    line = pathGroup
+    let line = pathGroup
         .selectAll("path.line")
         .data([data])
         .join(
@@ -175,7 +287,7 @@ const renderContinousPerformanceData = (tolerance=0) => {
     line
         .attr("class", "line");
     
-    shadowLine = pathGroup
+    let shadowLine = pathGroup
         .selectAll("path.shadowLine")
         .data([data])
         .join(
@@ -191,7 +303,7 @@ const renderContinousPerformanceData = (tolerance=0) => {
         .attr('transform', 'translate(2 2)');
     
     // add circles
-    circleGroup = svg
+    let circleGroup = svg
         .selectAll("g.circles")
         .data([data])
         .join(
@@ -200,7 +312,7 @@ const renderContinousPerformanceData = (tolerance=0) => {
                 .attr('class', 'circles')
         )
     
-    circle = circleGroup
+    let circle = circleGroup
         .selectAll("circle")
         .data(data)
         .join(
@@ -211,9 +323,10 @@ const renderContinousPerformanceData = (tolerance=0) => {
     
     circle
         .attr('class', 'node')
-        .attr("r", 1.5)
+        .attr("r", STANDARD_CIRCLE)
         .attr('cx', d => xScale(d.date))
         .attr('cy', d => yScale(d.num_artists))
+        .attr('id', d=>`${d.month}-${d.year}`)
 
     // make both axes
     makeAxes(tolerance);
@@ -224,219 +337,214 @@ const renderContinousPerformanceData = (tolerance=0) => {
     makeMouseLine(tolerance);
 };
 
-const setupInteractivity = (tolerance) => {
 
-    const getText = (dataPoint) => {
-
-        const getMonthRange = (month, year, range) => {
-            switch (month) {
-                case 'Jan':
-                    switch (range) {
-                        case 0:
-                            return `Jan 1–31, ${year}`
-                        case 1:
-                            return `Dec ${year-1}–Feb ${year}`
-                        case 2:
-                            return `Nov ${year-1}–Mar ${year}`
-                        case 3:
-                            return `Oct ${year-1}–Apr ${year}`
-                    }
-                case 'Feb':
-                    switch (range) {
-                        case 0:
-                            return `Feb 1–28, ${year}`
-                        case 1:
-                            return `Jan–Mar ${year}`
-                        case 2:
-                            return `Dec ${year-1}–Apr ${year}`
-                        case 3:
-                            return `Nov ${year-1}–May ${year}`
-                    }
-                case 'Mar':
-                    switch (range) {
-                        case 0:
-                            return `Mar 1–31, ${year}`
-                        case 1:
-                            return `Feb–Apr ${year}`
-                        case 2:
-                            return `Jan–May ${year}`
-                        case 3:
-                            return `Dec ${year-1}–Jun ${year}`
-                    }
-                case 'Apr':
-                    switch (range) {
-                        case 0:
-                            return `Apr 1–30, ${year}`
-                        case 1:
-                            return `Mar–May ${year}`
-                        case 2:
-                            return `Feb–Jun ${year}`
-                        case 3:
-                            return `Jan–Jul ${year}`
-                    }
-                case 'May':
-                    switch (range) {
-                        case 0:
-                            return `May 1–31, ${year}`
-                        case 1:
-                            return `Apr–Jun ${year}`
-                        case 2:
-                            return `Mar–Jul ${year}`
-                        case 3:
-                            return `Feb–Aug ${year}`
-                    }
-                case 'Jun':
-                    switch (range) {
-                        case 0:
-                            return `Jun 1–30, ${year}`
-                        case 1:
-                            return `May–Jul ${year}`
-                        case 2:
-                            return `Apr–Aug ${year}`
-                        case 3:
-                            return `Mar–Sep ${year}`
-                    }
-                case 'Jul':
-                    switch (range) {
-                        case 0:
-                            return `Jul 1–31, ${year}`
-                        case 1:
-                            return `Jun–Aug ${year}`
-                        case 2:
-                            return `May–Sep ${year}`
-                        case 3:
-                            return `Apr–Oct ${year}`
-                    }
-                case 'Aug':
-                    switch (range) {
-                        case 0:
-                            return `Aug 1–31, ${year}`
-                        case 1:
-                            return `Jul–Sep ${year}`
-                        case 2:
-                            return `Jun–Mar ${year}`
-                        case 3:
-                            return `May–Apr ${year}`
-                    }
-                case 'Sep':
-                    switch (range) {
-                        case 0:
-                            return `Sep 1–30, ${year}`
-                        case 1:
-                            return `Aug–Oct ${year}`
-                        case 2:
-                            return `Jul–Nov ${year}`
-                        case 3:
-                            return `Jun–Dec ${year}`
-                    }
-                case 'Oct':
-                    switch (range) {
-                        case 0:
-                            return `Oct 1–31, ${year}`
-                        case 1:
-                            return `Sep–Nov ${year}`
-                        case 2:
-                            return `Aug–Dec ${year}`
-                        case 3:
-                            return `Jul ${year}–Jan ${year+1}`
-                    }
-                case 'Nov':
-                    switch (range) {
-                        case 0:
-                            return `Nov 1–30, ${year}`
-                        case 1:
-                            return `Oct–Dec ${year}`
-                        case 2:
-                            return `Sep ${year}–Jan ${year+1}`
-                        case 3:
-                            return `Aug ${year}–Feb ${year+1}`
-                    }
-                case 'Dec':
-                    switch (range) {
-                        case 0:
-                            return `Dec 1–31, ${year}`
-                        case 1:
-                            return `Nov ${year}–Jan ${year+1}`
-                        case 2:
-                            return `Oct ${year}–Feb ${year+1}`
-                        case 3:
-                            return `Sep ${year}–Mar ${year+1}`
-                    }
+const getMonthRange = (month, year, range) => {
+    switch (month) {
+        case 'Jan':
+            switch (range) {
+                case 0:
+                    return `<strong>Jan 1–31, ${year}</strong>`
+                case 1:
+                    return `<strong>Jan</strong><br/>normalized over<br/>Dec ${year-1}–Feb ${year}`
+                case 2:
+                    return `<strong>Jan</strong><br/>normalized over<br/>Nov ${year-1}–Mar ${year}`
+                case 3:
+                    return `<strong>Jan</strong><br/>normalized over<br/>Oct ${year-1}–Apr ${year}`
             }
-        }
-        if (tolerance == 0)
-            return `<strong>${getMonthRange(dataPoint.month, dataPoint.year, 0)}</strong>: ${dataPoint.num_artists}`
-        
-        if (tolerance == 1)
-            return `<strong>${getMonthRange(dataPoint.month, dataPoint.year, 1)}</strong>: ${dataPoint.num_artists}`
-        
-        if (tolerance == 2)
-            return `<strong>${getMonthRange(dataPoint.month, dataPoint.year, 2)}</strong>: ${dataPoint.num_artists}`
-
-        if (tolerance == 3)
-            return `<strong>${getMonthRange(dataPoint.month, dataPoint.year, 3)}</strong>: ${dataPoint.num_artists}`
+        case 'Feb':
+            switch (range) {
+                case 0:
+                    return `<strong>Feb 1–28, ${year}</strong>`
+                case 1:
+                    return `<strong>Feb</strong><br/>normalized over<br/>Jan–Mar ${year}`
+                case 2:
+                    return `<strong>Feb</strong><br/>normalized over<br/>Dec ${year-1}–Apr ${year}`
+                case 3:
+                    return `<strong>Feb</strong><br/>normalized over<br/>Nov ${year-1}–May ${year}`
+            }
+        case 'Mar':
+            switch (range) {
+                case 0:
+                    return `<strong>Mar 1–31, ${year}</strong>`
+                case 1:
+                    return `<strong>Mar</strong><br/>normalized over<br/>Feb–Apr ${year}`
+                case 2:
+                    return `<strong>Mar</strong><br/>normalized over<br/>Jan–May ${year}`
+                case 3:
+                    return `<strong>Mar</strong><br/>normalized over<br/>Dec ${year-1}–Jun ${year}`
+            }
+        case 'Apr':
+            switch (range) {
+                case 0:
+                    return `<strong>Apr 1–30, ${year}</strong>`
+                case 1:
+                    return `<strong>Apr</strong><br/>normalized over<br/>Mar–May ${year}`
+                case 2:
+                    return `<strong>Apr</strong><br/>normalized over<br/>Feb–Jun ${year}`
+                case 3:
+                    return `<strong>Apr</strong><br/>normalized over<br/>Jan–Jul ${year}`
+            }
+        case 'May':
+            switch (range) {
+                case 0:
+                    return `<strong>May 1–31, ${year}</strong>`
+                case 1:
+                    return `<strong>May</strong><br/>normalized over<br/>Apr–Jun ${year}`
+                case 2:
+                    return `<strong>May</strong><br/>normalized over<br/>Mar–Jul ${year}`
+                case 3:
+                    return `<strong>May</strong><br/>normalized over<br/>Feb–Aug ${year}`
+            }
+        case 'Jun':
+            switch (range) {
+                case 0:
+                    return `<strong>Jun 1–30, ${year}</strong>`
+                case 1:
+                    return `<strong>Jun</strong><br/>normalized over<br/>May–Jul ${year}`
+                case 2:
+                    return `<strong>Jun</strong><br/>normalized over<br/>Apr–Aug ${year}`
+                case 3:
+                    return `<strong>Jun</strong><br/>normalized over<br/>Mar–Sep ${year}`
+            }
+        case 'Jul':
+            switch (range) {
+                case 0:
+                    return `<strong>Jul 1–31, ${year}</strong>`
+                case 1:
+                    return `<strong>Jul</strong><br/>normalized over<br/>Jun–Aug ${year}`
+                case 2:
+                    return `<strong>Jul</strong><br/>normalized over<br/>May–Sep ${year}`
+                case 3:
+                    return `<strong>Jul</strong><br/>normalized over<br/>Apr–Oct ${year}`
+            }
+        case 'Aug':
+            switch (range) {
+                case 0:
+                    return `<strong>Aug 1–31, ${year}</strong>`
+                case 1:
+                    return `<strong>Aug</strong><br/>normalized over<br/>Jul–Sep ${year}`
+                case 2:
+                    return `<strong>Aug</strong><br/>normalized over<br/>Jun–Mar ${year}`
+                case 3:
+                    return `<strong>Aug</strong><br/>normalized over<br/>May–Apr ${year}`
+            }
+        case 'Sep':
+            switch (range) {
+                case 0:
+                    return `<strong>Sep 1–30, ${year}</strong>`
+                case 1:
+                    return `<strong>Sep</strong><br/>normalized over<br/>Aug–Oct ${year}`
+                case 2:
+                    return `<strong>Sep</strong><br/>normalized over<br/>Jul–Nov ${year}`
+                case 3:
+                    return `<strong>Sep</strong><br/>normalized over<br/>Jun–Dec ${year}`
+            }
+        case 'Oct':
+            switch (range) {
+                case 0:
+                    return `<strong>Oct 1–31, ${year}</strong>`
+                case 1:
+                    return `<strong>Oct</strong><br/>normalized over<br/>Sep–Nov ${year}`
+                case 2:
+                    return `<strong>Oct</strong><br/>normalized over<br/>Aug–Dec ${year}`
+                case 3:
+                    return `<strong>Oct</strong><br/>normalized over<br/>Jul ${year}–Jan ${year+1}`
+            }
+        case 'Nov':
+            switch (range) {
+                case 0:
+                    return `<strong>Nov 1–30, ${year}</strong>`
+                case 1:
+                    return `<strong>Nov</strong><br/>normalized over<br/>Oct–Dec ${year}`
+                case 2:
+                    return `<strong>Nov</strong><br/>normalized over<br/>Sep ${year}–Jan ${year+1}`
+                case 3:
+                    return `<strong>Nov</strong><br/>normalized over<br/>Aug ${year}–Feb ${year+1}`
+            }
+        case 'Dec':
+            switch (range) {
+                case 0:
+                    return `<strong>Dec 1–31, ${year}</strong>`
+                case 1:
+                    return `<strong>Dec</strong><br/>normalized over<br/>Nov ${year}–Jan ${year+1}`
+                case 2:
+                    return `<strong>Dec</strong><br/>normalized over<br/>Oct ${year}–Feb ${year+1}`
+                case 3:
+                    return `<strong>Dec</strong><br/>normalized over<br/>Sep ${year}–Mar ${year+1}`
+            }
     }
+}
 
-    const reverseData = (localData, datePoint) => {
-        var bisect = d3.bisector(function(d) { return d.date; }).right;
-        let ix = bisect(localData, datePoint);
-        return localData[ix];
-    }
-
-    const mouseEvent = (onOff) => {
-        if (onOff) {
-            d3.select(`.mouse-line-${tolerance}`)
-                .style("opacity", "1");
-            popup.classed('d-none', false);
-        } else {
-            d3.select(`.mouse-line-${tolerance}`)
-                .style("opacity", "0");
-            popup.classed('d-none', true);
-        }
-    }
-
-    const mouseClick = (loc, event, snap=true) => {
-        let [xLoc, yLoc] = loc;
-        datePoint = xScale.invert(xLoc);
-        dataPoint = reverseData(data, datePoint);
-        console.log(dataPoint);
-    }
+const getText = (dataPoint, tolerance) => {
+    switch (tolerance) {
+        case 0:
+            return `${getMonthRange(dataPoint.month, dataPoint.year, 0)}:<br/>${dataPoint.num_artists}`
     
-    const mouseMove = (loc, event, snap=false) => {
-        data = store.continuousPerformanceData[`tolerance${tolerance}`]
-        let [xLoc, yLoc] = loc;
-        datePoint = xScale.invert(xLoc);
-        dataPoint = reverseData(data, datePoint);
+        case 1:
+            return `${getMonthRange(dataPoint.month, dataPoint.year, 1)}:<br/>${dataPoint.num_artists}`
+    
+        case 2:
+            return `${getMonthRange(dataPoint.month, dataPoint.year, 2)}:<br/>${dataPoint.num_artists}`
 
-        xLocSnap = xScale(dataPoint.date);
-        if (snap) {
-            d3.select(`.mouse-line-${tolerance}`).attr("d", `M${xLocSnap},${height+margin.top} ${xLocSnap},${-margin.top}`); // set correct X on mouseline
-        } else {
-            d3.select(`.mouse-line-${tolerance}`).attr("d", `M${xLoc},${height+margin.top} ${xLoc},${-margin.top}`); // set correct X on mouseline
-        }
+        case 3:
+            return `${getMonthRange(dataPoint.month, dataPoint.year, 3)}:<br/>${dataPoint.num_artists}`
 
-        if (dataPoint.num_artists) {
-            display_num.html(getText(dataPoint));
-            popup.classed('d-none', false);
+        case 4:
+            return ``;
 
-            xOffset = getComputedStyle(d3.select('#popup').node()).width.replace('px', '')/2;
-            yLoc = d3.select(`svg#tolerance${tolerance} g.xScale-${tolerance}`).node().getBoundingClientRect().top
-            
-            popup.attr('style', `left: ${event.clientX-xOffset}px; top: ${yLoc}px`);
-        }
+        case 5:
+            return ``;
+    }
+}
+
+const mouseEvent = (onOff, tolerance) => {
+    if (onOff) {
+        d3.select(`.mouse-line-${tolerance}`)
+            .style("opacity", "1");
+        popup.classed('d-none', false);
+    } else {
+        d3.select(`.mouse-line-${tolerance}`)
+            .style("opacity", "0");
+        popup.classed('d-none', true);
+    }
+}
+
+const mouseMove = (loc, event, snap=false, tolerance) => {
+    let data = store.data[`tolerance${tolerance}`];
+    let [xLoc, yLoc] = loc;
+    let xScale = getScale('x', tolerance);
+    let datePoint = xScale.invert(xLoc);
+    let dataPoint = reverseData(data, datePoint);
+
+    let xLocSnap = xScale(dataPoint.date);
+    if (snap) {
+        d3.select(`.mouse-line-${tolerance}`).attr("d", `M${xLocSnap},${height()+margin().top} ${xLocSnap},${-margin().top}`); // set correct X on mouseline
+    } else {
+        d3.select(`.mouse-line-${tolerance}`).attr("d", `M${xLoc},${height()+margin().top} ${xLoc},${-margin().top}`); // set correct X on mouseline
     }
 
-    d3.select(`g .mouse-over-effects-${tolerance} rect`)
-        .on('mouseout', () => mouseEvent(false))
-        .on('mouseover', () => mouseEvent(true))
-        .on('mousemove', (evt) => mouseMove(d3.pointer(evt), evt, true))
-        .on('click', (evt) => mouseClick(d3.pointer(evt), evt, true));
+    if (dataPoint.num_artists) {
+        display_num.html(getText(dataPoint, tolerance));
+        popup.classed('d-none', false);
 
+        let xOffset = getComputedStyle(d3.select('#popup').node()).width.replace('px', '')/2;
+        yLoc = d3.select(`svg#tolerance${tolerance} g.xScale-${tolerance}`).node().getBoundingClientRect().top
+        
+        popup.attr('style', `left: ${event.clientX-xOffset}px; top: ${yLoc}px`);
+    }
+}
+
+const setupInteractivity = (tolerance) => {
+    d3.select(`g .mouse-over-effects-${tolerance} rect`)
+        .on('mouseout', () => mouseEvent(false, tolerance))
+        .on('mouseover', () => mouseEvent(true, tolerance))
+        .on('mousemove', (evt) => mouseMove(d3.pointer(evt), evt, true, tolerance))
+        .on('click', (evt) => mouseClick(d3.pointer(evt), evt, true, tolerance));
 }
 
 const addDataToTables = (tolerance) => {
-    data = store.continuousPerformanceData[`tolerance${tolerance}`];
-    data = data.filter(d=>d.year >= 1930 && d.year <= 1940)
+    let data = store.data[`tolerance${tolerance}`];
+    data = data.filter(d=>d.year >= 1930 && d.year <= 1940);
     function tabulate(data, columns) {
         var table = d3.select(`table#tolerance${tolerance}`);
         var thead = table.select('thead');
@@ -475,36 +583,108 @@ const addDataToTables = (tolerance) => {
 
 }
 
-loader = [];
-[0, 1, 2, 3].forEach(tolerance=>{
+const markFound = (found, tolerances, clear_first=true) => {
+    if (typeof tolerances === 'number') {
+        tolerances = [tolerances];
+    }
+    if (clear_first) {
+        tolerances.forEach(tolerance=>{
+            d3.selectAll(`svg#tolerance${tolerance} g.circles circle`).classed('selected', false).attr('r', STANDARD_CIRCLE);
+            d3.selectAll(`svg#tolerance${tolerance} .foundPerformer`).classed('hidden', true);
+        });
+    }
+    tolerances.forEach(tolerance=>{
+        found.forEach(f=>{
+            let [year, month] = f.split(',');
+            d3.select(`svg#tolerance${tolerance} g.circles circle#${month}-${year}`).classed('selected', true).transition().duration(1000).attr('r', 5);
+        })
+        // d3.selectAll(`svg#tolerance${tolerance} .foundPerformer`).text(`Month when ${performerName} appears in dataset`);
+        d3.selectAll(`svg#tolerance${tolerance} .foundPerformer`).classed('hidden', false);
+    })
+}
+
+const addOptions = (tolerance) => {
+    let dropDown = d3.select(`#tolerance${tolerance}-filter`)
+    let filterAll = d3.select(`#tolerance${tolerance}-filter-all`)
+    
+    let options = dropDown.selectAll('option')
+        .data(['', ...store.allPerformers])
+        .enter()
+        .append('option');
+
+    options.text(d => d)
+        .attr("value", d=>d);
+
+    dropDown.on("change", (evt) => {
+        let performerName = dropDown.node().value;
+        if(performerName === '') {
+            filterAll.classed('d-none', true);
+            d3.selectAll(`svg#tolerance${tolerance} g.circles circle`).classed('selected', false).attr('r', STANDARD_CIRCLE);
+        } else {
+            let found = searchPerformer(performerName)[`tolerance${tolerance}`];
+            markFound(found, tolerance);
+            filterAll.classed('d-none', false);
+            d3.select(`#tolerance${tolerance}-filter-all a`).attr('href', window.location.pathname + '?name=' + performerName);
+        }
+    })
+}
+
+let loader = [];
+[0, 1, 2, 3, 4, 5].forEach(tolerance=>{
     loader.push(d3.json(DATA_DIR + `continuous-performances-tolerance-${tolerance}.json`))
 });
 
-detail_loader = [];
-[0, 1, 2, 3].forEach(tolerance=>{
-    loader.push(d3.json(DATA_DIR + `continuous-performances-tolerance-${tolerance}-detail.json`))
+let detail_loader = [];
+[0, 1, 2, 3, 4, 5].forEach(tolerance=>{
+    detail_loader.push(d3.json(DATA_DIR + `continuous-performances-tolerance-${tolerance}-detail.json`))
 });
 
 Promise.all(loader).then(function(files) {
-    [0, 1, 2, 3].forEach(tolerance => {
-        store.continuousPerformanceData[`tolerance${tolerance}`] = files[tolerance];
+    [0, 1, 2, 3, 4, 5].forEach(tolerance => {
+        files[tolerance].forEach(d=>{if (typeof d.date === 'string') { d.date = dateParser(d.date) } }); // fix dates
+        store.data[`tolerance${tolerance}`] = files[tolerance].filter(d=>d.date.getFullYear() >= 1930 && d.date.getFullYear() < 1940)
     })
-    
+}).then(() => {
     Promise.all(detail_loader).then(function(files) {
-        [0, 1, 2, 3].forEach(tolerance => {
-            store.continuousPerformanceDataDetail[`tolerance${tolerance}`] = files[tolerance];
-        })
+        [0, 1, 2, 3, 4, 5].forEach(tolerance => {
+            store.dataDetail[`tolerance${tolerance}`] = files[tolerance];
+        });
     }).catch(function(err) {
         console.error(err)
-    })
-        
-    Object.keys(store.continuousPerformanceData).forEach(key=>{
-        tolerance = key.replace('tolerance', '')
-        renderContinousPerformanceData(tolerance);
-        setupInteractivity(tolerance);
-        addDataToTables(tolerance);
+    }).then(()=>{
+        Object.keys(store.data).forEach(key=>{
+            let tolerance = +key.replace('tolerance', '')
+            renderContinousPerformanceData(tolerance);
+            setupInteractivity(tolerance);
+            addDataToTables(tolerance);
+    
+            let data = store.dataDetail[`tolerance${tolerance}`];
+            Object.keys(data).forEach(year=>{
+                Object.keys(data[year]).forEach(month=>{
+                    data[year][month].forEach(performer=>{
+                        if (!store.allPerformers.includes(performer))
+                            store.allPerformers.push(performer)
+                    });
+                });
+            });
+            store.allPerformers.sort();
+    
+            addOptions(tolerance);
+        });
+    }).then(() => {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        if (params.name) {
+            searchPerformerAcrossAll(params.name);
+            [0, 1, 2, 3, 4, 5].forEach(tolerance => {
+                d3.select(`#tolerance${tolerance}-filter`).node().value = params.name;
+            });
+        }
     });
-}).catch(function(err) {
-    console.error(err)
-})
+});
 
+window.addEventListener("resize", (evt)=>{
+    [0, 1, 2, 3, 4, 5].forEach(tolerance => {
+        renderContinousPerformanceData(tolerance);
+    });
+});
