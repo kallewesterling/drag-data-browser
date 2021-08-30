@@ -35,20 +35,8 @@ svg#tolerance0, svg#tolerance1, svg#tolerance2, svg#tolerance3 {
 .foundPerformer.hidden {
     display: none;
 }
-.mouse-line-0, .mouse-line-1, .mouse-line-2, .mouse-line-3 {
+.mouse-line-0, .mouse-line-1, .mouse-line-2, .mouse-line-3, .mouse-line-4, .mouse-line-5 {
     stroke: rgba(0, 0, 0, 0.05);
-}
-.mouse-line-0 {
-    stroke-width: 5px;
-}
-.mouse-line-1 {
-    stroke-width: 30px;
-}
-.mouse-line-2 {
-    stroke-width: 60px;
-}
-.mouse-line-3 {
-    stroke-width: 90px;
 }
 .node {
     stroke: #fff;
@@ -77,16 +65,16 @@ circle.selected {
     fill: red;
 }
 .svg-container {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  padding-bottom: 100%; /* aspect ratio */
-  vertical-align: top;
-  overflow: hidden;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
 }
 .svg-content-responsive {
-  display: inline-block;
-  position: absolute;
-  top: 10px;
-  left: 0;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
 }

@@ -19,77 +19,19 @@
 
 {% block body %}
 <div class="row">
-    <div class="col-12" id="viz-container">
-        <h2>Tolerance: 0</h2>
-        <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance0" role="button" aria-expanded="false" aria-controls="datasetTolerance0" id="toggleTolerance0"><i></i> Show data</a>
-        <div class="collapse" id="datasetTolerance0">
-            <table id="tolerance0" class="table table-sm table-light table-striped">
-                <thead></thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="d-flex flex-row-reverse"><div class="d-flex"><span class="me-1">Filter by performer name:</span><select id="tolerance0-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="tolerance0-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-        <svg class="overflow-auto border shadow-sm my-4" id="tolerance0"></svg>
-        
-        <h2>Tolerance: 1</h2>
-        Explanation goes here
-        <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance1" role="button" aria-expanded="false" aria-controls="datasetTolerance1" id="toggleTolerance1"><i></i> Show data</a>
-        <div class="collapse" id="datasetTolerance1">
-            <table id="tolerance1" class="table table-sm table-light table-striped">
-                <thead></thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="d-flex flex-row-reverse"><div>Filter by performer name: <select id="tolerance1-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="tolerance1-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-        <svg class="overflow-auto border shadow-sm my-4" id="tolerance1"></svg>
-
-        <h2>Tolerance: 2</h2>
-        Explanation goes here
-        <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance2" role="button" aria-expanded="false" aria-controls="datasetTolerance2" id="toggleTolerance2"><i></i> Show data</a>
-        <div class="collapse" id="datasetTolerance2">
-            <table id="tolerance2" class="table table-sm table-light table-striped">
-                <thead></thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="d-flex flex-row-reverse"><div>Filter by performer name: <select id="tolerance2-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="tolerance2-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-        <svg class="overflow-auto border shadow-sm my-4" id="tolerance2"></svg>
-
-        <h2>Tolerance: 3</h2>
-        Explanation goes here
-        <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance3" role="button" aria-expanded="false" aria-controls="datasetTolerance3" id="toggleTolerance3"><i></i> Show data</a>
-        <div class="collapse" id="datasetTolerance3">
-            <table id="tolerance3" class="table table-sm table-light table-striped">
-                <thead></thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="d-flex flex-row-reverse"><div>Filter by performer name: <select id="tolerance3-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="tolerance3-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-        <svg class="overflow-auto border shadow-sm my-4" id="tolerance3"></svg>
-
-        <h2>Tolerance: 4</h2>
-        Explanation goes here
-        <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance4" role="button" aria-expanded="false" aria-controls="datasetTolerance4" id="toggleTolerance4"><i></i> Show data</a>
-        <div class="collapse" id="datasetTolerance4">
-            <table id="tolerance4" class="table table-sm table-light table-striped">
-                <thead></thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="d-flex flex-row-reverse"><div>Filter by performer name: <select id="tolerance4-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="tolerance4-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-        <svg class="overflow-auto border shadow-sm my-4" id="tolerance4"></svg>
-
-        <h2>Tolerance: 5</h2>
-        Explanation goes here
-        <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance5" role="button" aria-expanded="false" aria-controls="datasetTolerance5" id="toggleTolerance5"><i></i> Show data</a>
-        <div class="collapse" id="datasetTolerance5">
-            <table id="tolerance5" class="table table-sm table-light table-striped">
-                <thead></thead>
-                <tbody></tbody>
-            </table>
-        </div>
-        <div class="d-flex flex-row-reverse"><div>Filter by performer name: <select id="tolerance5-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="tolerance5-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-        <svg class="overflow-auto border shadow-sm my-4" id="tolerance5"></svg>
+    <div class="col-12 pb-5" id="viz-container">
+        {% for tolerance in [0, 1, 2, 3, 4, 5] %}
+            <h2>Tolerance: {{ tolerance }}</h2>
+            <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance{{ tolerance }} role="button" aria-expanded="false" aria-controls="datasetTolerance{{ tolerance }}" id="toggleTolerance{{ tolerance }}"><i></i> Show data</a>
+            <div class="collapse" id="datasetTolerance{{ tolerance }}">
+                <table id="tolerance{{ tolerance }}" class="table table-sm table-light table-striped">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="d-flex flex-row-reverse"><div class="d-flex"><span class="me-1">Filter by performer name:</span><select id="tolerance{{ tolerance }}-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="tolerance{{ tolerance }}-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
+            <svg class="overflow-auto border shadow-sm my-4" id="tolerance{{ tolerance }}"></svg>
+        {% endfor %}
     </div>
 </div>
 <div id="popup" class="d-none text-center d-block p-1 bg-light rounded shadow border border-dark small">

@@ -60,50 +60,8 @@
             </symbol>
         </svg>
         <main>
-            <nav class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark navbar-nav-scroll" style="width: 280px;  height: -webkit-fill-available; height: 100vh; max-height: 100vh; z-index: 600;">
-                <a href="{{ BASE_URL }}" class="d-flex align-items-start mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32" fill="white"><use xlink:href="#speedometer2"></use></svg>
-                    <span class="fs-4">{{ SITE_TITLE }}</span>
-                </a>
-                <hr>
-                <ul class="nav nav-pills flex-column mb-auto">
-                    {% for category in NAVBAR.structure %}
-                        <li class="nav-item ms-3 text-uppercase text-muted small fw-bold pb-1">{{ category }}</li>
-                        {% for item in NAVBAR.structure[category] %}
-                            <li class="nav-item">
-                                <a href="{{ item.url }}" class="d-flex nav-link text-white" aria-current="page"><!-- add `active` class here... -->
-                                    <svg class="bi me-2" width="16" height="16" fill="white" style="min-width:16px;"><use xlink:href="#{{ item.icon }}"></use></svg>
-                                    {{ item.title }}
-                                </a>
-                            </li>
-                            {% if item.subcategories %}
-                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-3">
-                                {% for subcategory in item.subcategories %}
-                                    <li><a href="{{ subcategory.url }}" class="text-white rounded">{{ subcategory.title }}</a></li>
-                                {% endfor %}
-                                </ul>
-                            {% endif %}
-                        {% endfor %}
-                    {% endfor %}
-                </ul>
-                <hr>
-                <div class="dropdown">
-                    <a href="{{ BASE_URL }}about/" class="text-white text-decoration-none small">About this website</a>
-                    <!--
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/kallewesterling.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>kallewesterling</strong>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
-                    -->
-                </div>
-            </nav>
+            {% include 'includes/mainNav.html' %}
+            <div id="horizontal-separator"></div>
             <section id="content" class="d-flex flex-column overflow-auto w-100">
                 {% block precontainer %}{% endblock %}
                 <div class="container">
@@ -115,5 +73,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
         {% block javascript %}{% endblock %}
+        <script src="{{ BASE_URL }}includes/js/tooltip-init.js"></script>
     </body>
 </html>

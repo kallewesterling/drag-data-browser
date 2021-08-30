@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+.container * {
+    font-family: 'Libre Baskerville', serif;
+}
+.container p, .container blockquote {
+    font-size: 1.2rem;
+    line-height: 1.9;
+    font-family: 'Libre Baskerville', serif;
+}
+.container blockquote {
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+}
+.container h3, h4 {
+    text-align: center;
+}
+.container h3 {
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+}
+.container h4 {
+    padding-top: 0.5em;
+    padding-bottom: 0.25em;
+}
+.footnote-back {
+    color: rgba(108, 117, 125, 0.2) !important;
+}
+.footnote-back:hover {
+    color: rgba(108, 117, 125, 1) !important;
+}
+#caseStudyMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 4.5em;
+    z-index: 1030;
+}

@@ -1,0 +1,20 @@
+<ul class="nav nav-pills flex-column mb-auto">
+    {% for category in NAVBAR.structure %}
+        <li class="nav-item ms-3 text-uppercase text-muted small fw-bold {% if not loop.index == 1 %}pt-4 {% endif %}pb-1">{{ category }}</li>
+        {% for item in NAVBAR.structure[category] %}
+            <li class="nav-item">
+                <a href="{{ item.url }}" class="d-flex nav-link text-white" aria-current="page"><!-- add `active` class here... -->
+                    <svg class="bi me-2" width="16" height="16" fill="white" style="min-width:16px;"><use xlink:href="#{{ item.icon }}"></use></svg>
+                    {{ item.title }}
+                </a>
+            </li>
+            {% if item.subcategories %}
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ms-3">
+                {% for subcategory in item.subcategories %}
+                    <li><a href="{{ subcategory.url }}" class="text-white rounded">{{ subcategory.title }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</ul>

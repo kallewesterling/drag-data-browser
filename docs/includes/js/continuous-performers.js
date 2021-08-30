@@ -10,6 +10,7 @@ let store = {
 };
 
 let STANDARD_CIRCLE = 1.5;
+let TOLERANCES = [0, 1, 2, 3, 4, 5];
 
 // parse the date / time
 var dateParser = d3.timeParse("%Y-%m-%d");
@@ -45,7 +46,7 @@ const getScale = (xOrY, tolerance) => {
 
 const searchPerformer = (name) => {
     let found = {};
-    [0, 1, 2, 3, 4, 5].forEach(tolerance => {
+    TOLERANCES.forEach(tolerance => {
         let years = Object.keys(store.dataDetail[`tolerance${tolerance}`]);
         years.forEach(year=>{
             let months = Object.keys(store.dataDetail[`tolerance${tolerance}`][year]);
@@ -67,23 +68,14 @@ const searchPerformer = (name) => {
 
 const searchPerformerAcrossAll = (name) => {
     let found = searchPerformer(name);
-    [0, 1, 2, 3, 4, 5].forEach(tolerance=>{
+    TOLERANCES.forEach(tolerance=>{
         // console.log();
         markFound(found[`tolerance${tolerance}`], tolerance);
     });
 }
 
 const getDetailData = (tolerance, year, month) => {
-    switch (tolerance) {
-        case 0:
-            return store['dataDetail'].tolerance0[year][month].sort();
-        case 1:
-            return store['dataDetail'].tolerance1[year][month].sort();
-        case 2:
-            return store['dataDetail'].tolerance2[year][month].sort();
-        case 3:
-            return store['dataDetail'].tolerance3[year][month].sort();
-    }
+    return store['dataDetail'][`tolerance${tolerance}`][year][month].sort();
 }
 
 const mouseClick = (loc, event, snap=true, tolerance) => {
@@ -205,23 +197,6 @@ const makeMouseLine = (tolerance) => {
 
     svg.append("g")
         .attr("class", `mouse-over-effects-${tolerance}`);
-    
-    let months = 0;
-
-    switch (tolerance) {
-        case 0:
-            months = 1;
-            break;
-        case 1:
-            months = 3;
-            break;
-        case 2:
-            months = 5;
-            break;
-        case 3:
-            months = 7;
-            break;
-    }
     
     d3.select(`g.mouse-over-effects-${tolerance}`)
         .append("path") // this is the black vertical line to follow mouse
@@ -350,6 +325,10 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>Jan</strong><br/>normalized over<br/>Nov ${year-1}–Mar ${year}`
                 case 3:
                     return `<strong>Jan</strong><br/>normalized over<br/>Oct ${year-1}–Apr ${year}`
+                case 4:
+                    return `<strong>Jan</strong><br/>normalized over<br/>Sep ${year-1}–May ${year}`
+                case 5:
+                    return `<strong>Jan</strong><br/>normalized over<br/>Aug ${year-1}–Jun ${year}`
             }
         case 'Feb':
             switch (range) {
@@ -361,6 +340,10 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>Feb</strong><br/>normalized over<br/>Dec ${year-1}–Apr ${year}`
                 case 3:
                     return `<strong>Feb</strong><br/>normalized over<br/>Nov ${year-1}–May ${year}`
+                case 4:
+                    return `<strong>Feb</strong><br/>normalized over<br/>Oct ${year-1}–Jun ${year}`
+                case 5:
+                    return `<strong>Feb</strong><br/>normalized over<br/>Sep ${year-1}–Jul ${year}`
             }
         case 'Mar':
             switch (range) {
@@ -372,6 +355,10 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>Mar</strong><br/>normalized over<br/>Jan–May ${year}`
                 case 3:
                     return `<strong>Mar</strong><br/>normalized over<br/>Dec ${year-1}–Jun ${year}`
+                case 4:
+                    return `<strong>Mar</strong><br/>normalized over<br/>Nov ${year-1}–Jul ${year}`
+                case 5:
+                    return `<strong>Mar</strong><br/>normalized over<br/>Oct ${year-1}–Aug ${year}`
             }
         case 'Apr':
             switch (range) {
@@ -383,6 +370,10 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>Apr</strong><br/>normalized over<br/>Feb–Jun ${year}`
                 case 3:
                     return `<strong>Apr</strong><br/>normalized over<br/>Jan–Jul ${year}`
+                case 4:
+                    return `<strong>Apr</strong><br/>normalized over<br/>Dec ${year-1}–Aug ${year}`
+                case 5:
+                    return `<strong>Apr</strong><br/>normalized over<br/>Nov ${year-1}–Sep ${year}`
             }
         case 'May':
             switch (range) {
@@ -394,6 +385,10 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>May</strong><br/>normalized over<br/>Mar–Jul ${year}`
                 case 3:
                     return `<strong>May</strong><br/>normalized over<br/>Feb–Aug ${year}`
+                case 4:
+                    return `<strong>May</strong><br/>normalized over<br/>Jan–Sep ${year}`
+                case 5:
+                    return `<strong>May</strong><br/>normalized over<br/>Dec ${year-1}–Oct ${year}`
             }
         case 'Jun':
             switch (range) {
@@ -405,6 +400,10 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>Jun</strong><br/>normalized over<br/>Apr–Aug ${year}`
                 case 3:
                     return `<strong>Jun</strong><br/>normalized over<br/>Mar–Sep ${year}`
+                case 4:
+                    return `<strong>Jun</strong><br/>normalized over<br/>Feb–Oct ${year}`
+                case 5:
+                    return `<strong>Jun</strong><br/>normalized over<br/>Jan–Nov ${year}`
             }
         case 'Jul':
             switch (range) {
@@ -416,6 +415,10 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>Jul</strong><br/>normalized over<br/>May–Sep ${year}`
                 case 3:
                     return `<strong>Jul</strong><br/>normalized over<br/>Apr–Oct ${year}`
+                case 4:
+                    return `<strong>Jul</strong><br/>normalized over<br/>Mar–Nov ${year}`
+                case 5:
+                    return `<strong>Jul</strong><br/>normalized over<br/>Feb–Dec ${year}`
             }
         case 'Aug':
             switch (range) {
@@ -424,9 +427,13 @@ const getMonthRange = (month, year, range) => {
                 case 1:
                     return `<strong>Aug</strong><br/>normalized over<br/>Jul–Sep ${year}`
                 case 2:
-                    return `<strong>Aug</strong><br/>normalized over<br/>Jun–Mar ${year}`
+                    return `<strong>Aug</strong><br/>normalized over<br/>Jun–Oct ${year}`
                 case 3:
-                    return `<strong>Aug</strong><br/>normalized over<br/>May–Apr ${year}`
+                    return `<strong>Aug</strong><br/>normalized over<br/>May–Nov ${year}`
+                case 4:
+                    return `<strong>Aug</strong><br/>normalized over<br/>Apr–Dec ${year}`
+                case 5:
+                    return `<strong>Aug</strong><br/>normalized over<br/>Mar ${year}–Jan ${year+1}`
             }
         case 'Sep':
             switch (range) {
@@ -438,6 +445,10 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>Sep</strong><br/>normalized over<br/>Jul–Nov ${year}`
                 case 3:
                     return `<strong>Sep</strong><br/>normalized over<br/>Jun–Dec ${year}`
+                case 4:
+                    return `<strong>Sep</strong><br/>normalized over<br/>May ${year}–Jan ${year+1}`
+                case 5:
+                    return `<strong>Sep</strong><br/>normalized over<br/>Apr ${year}–Feb ${year+1}`
             }
         case 'Oct':
             switch (range) {
@@ -449,6 +460,10 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>Oct</strong><br/>normalized over<br/>Aug–Dec ${year}`
                 case 3:
                     return `<strong>Oct</strong><br/>normalized over<br/>Jul ${year}–Jan ${year+1}`
+                case 4:
+                    return `<strong>Oct</strong><br/>normalized over<br/>Jun ${year}–Feb ${year+1}`
+                case 5:
+                    return `<strong>Oct</strong><br/>normalized over<br/>May ${year}–Mar ${year+1}`
             }
         case 'Nov':
             switch (range) {
@@ -460,6 +475,10 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>Nov</strong><br/>normalized over<br/>Sep ${year}–Jan ${year+1}`
                 case 3:
                     return `<strong>Nov</strong><br/>normalized over<br/>Aug ${year}–Feb ${year+1}`
+                case 4:
+                    return `<strong>Nov</strong><br/>normalized over<br/>Jul ${year}–Mar ${year+1}`
+                case 5:
+                    return `<strong>Nov</strong><br/>normalized over<br/>Jun ${year}–Apr ${year+1}`
             }
         case 'Dec':
             switch (range) {
@@ -471,30 +490,16 @@ const getMonthRange = (month, year, range) => {
                     return `<strong>Dec</strong><br/>normalized over<br/>Oct ${year}–Feb ${year+1}`
                 case 3:
                     return `<strong>Dec</strong><br/>normalized over<br/>Sep ${year}–Mar ${year+1}`
+                case 4:
+                    return `<strong>Dec</strong><br/>normalized over<br/>Aug ${year}–Apr ${year+1}`
+                case 5:
+                    return `<strong>Dec</strong><br/>normalized over<br/>Jul ${year}–May ${year+1}`
             }
     }
 }
 
 const getText = (dataPoint, tolerance) => {
-    switch (tolerance) {
-        case 0:
-            return `${getMonthRange(dataPoint.month, dataPoint.year, 0)}:<br/>${dataPoint.num_artists}`
-    
-        case 1:
-            return `${getMonthRange(dataPoint.month, dataPoint.year, 1)}:<br/>${dataPoint.num_artists}`
-    
-        case 2:
-            return `${getMonthRange(dataPoint.month, dataPoint.year, 2)}:<br/>${dataPoint.num_artists}`
-
-        case 3:
-            return `${getMonthRange(dataPoint.month, dataPoint.year, 3)}:<br/>${dataPoint.num_artists}`
-
-        case 4:
-            return ``;
-
-        case 5:
-            return ``;
-    }
+    return `${getMonthRange(dataPoint.month, dataPoint.year, tolerance)}:<br/>${dataPoint.num_artists}`;
 }
 
 const mouseEvent = (onOff, tolerance) => {
@@ -598,7 +603,6 @@ const markFound = (found, tolerances, clear_first=true) => {
             let [year, month] = f.split(',');
             d3.select(`svg#tolerance${tolerance} g.circles circle#${month}-${year}`).classed('selected', true).transition().duration(1000).attr('r', 5);
         })
-        // d3.selectAll(`svg#tolerance${tolerance} .foundPerformer`).text(`Month when ${performerName} appears in dataset`);
         d3.selectAll(`svg#tolerance${tolerance} .foundPerformer`).classed('hidden', false);
     })
 }
@@ -630,23 +634,23 @@ const addOptions = (tolerance) => {
 }
 
 let loader = [];
-[0, 1, 2, 3, 4, 5].forEach(tolerance=>{
+TOLERANCES.forEach(tolerance=>{
     loader.push(d3.json(DATA_DIR + `continuous-performances-tolerance-${tolerance}.json`))
 });
 
 let detail_loader = [];
-[0, 1, 2, 3, 4, 5].forEach(tolerance=>{
+TOLERANCES.forEach(tolerance=>{
     detail_loader.push(d3.json(DATA_DIR + `continuous-performances-tolerance-${tolerance}-detail.json`))
 });
 
 Promise.all(loader).then(function(files) {
-    [0, 1, 2, 3, 4, 5].forEach(tolerance => {
+    TOLERANCES.forEach(tolerance => {
         files[tolerance].forEach(d=>{if (typeof d.date === 'string') { d.date = dateParser(d.date) } }); // fix dates
         store.data[`tolerance${tolerance}`] = files[tolerance].filter(d=>d.date.getFullYear() >= 1930 && d.date.getFullYear() < 1940)
     })
 }).then(() => {
     Promise.all(detail_loader).then(function(files) {
-        [0, 1, 2, 3, 4, 5].forEach(tolerance => {
+        TOLERANCES.forEach(tolerance => {
             store.dataDetail[`tolerance${tolerance}`] = files[tolerance];
         });
     }).catch(function(err) {
@@ -676,7 +680,7 @@ Promise.all(loader).then(function(files) {
         const params = Object.fromEntries(urlSearchParams.entries());
         if (params.name) {
             searchPerformerAcrossAll(params.name);
-            [0, 1, 2, 3, 4, 5].forEach(tolerance => {
+            TOLERANCES.forEach(tolerance => {
                 d3.select(`#tolerance${tolerance}-filter`).node().value = params.name;
             });
         }
@@ -684,7 +688,7 @@ Promise.all(loader).then(function(files) {
 });
 
 window.addEventListener("resize", (evt)=>{
-    [0, 1, 2, 3, 4, 5].forEach(tolerance => {
+    TOLERANCES.forEach(tolerance => {
         renderContinousPerformanceData(tolerance);
     });
 });

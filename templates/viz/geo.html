@@ -35,7 +35,7 @@
                 justify-content-between
                 shadow-sm
                 border-bottom
-                d-none d-sm-flex
+                d-none d-md-flex
             "
         >
             <section class="d-flex">
@@ -65,10 +65,7 @@
                 title="zoomMin: undefined, zoomMax: undefined"
             ></i>
         </nav>
-        <div class="p-5 m-5 d-flex d-md-none">
-            <div style="padding-right: 10px"><i class="bi bi-wrench"></i></div>
-            <div>This part of the website requires a larger browser window.</div>
-        </div>
+        {% include 'includes/requires-larger.html' %}
         
 
 
@@ -133,7 +130,7 @@
     </div>
 </div>
 
-<svg xmlns="http://www.w3.org/2000/svg" id="map" width="100%" class="d-none d-sm-flex">
+<svg xmlns="http://www.w3.org/2000/svg" id="map" width="100%" class="d-none d-md-flex">
     <filter id="shadow" x="0" y="0" width="200%" height="200%">
         <feDropShadow dx="20" dy="20" stdDeviation="0" flood-color="black" flood-opacity="0.03"></feDropShadow>
       </filter>
