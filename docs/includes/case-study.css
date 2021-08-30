@@ -1,26 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
-.container * {
+.container-xl * {
     font-family: 'Libre Baskerville', serif;
 }
-.container p, .container blockquote {
+.container-xl p, .container blockquote {
     font-size: 1.2rem;
     line-height: 1.9;
     font-family: 'Libre Baskerville', serif;
 }
-.container blockquote {
+.container-xl blockquote {
     margin-left: 3em;
     margin-right: 3em;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
 }
-.container h3, h4 {
+.container-xl h3, h4 {
     text-align: center;
 }
-.container h3 {
+.container-xl h3 {
     padding-top: 1em;
     padding-bottom: 0.5em;
 }
-.container h4 {
+.container-xl h4 {
     padding-top: 0.5em;
     padding-bottom: 0.25em;
 }
@@ -36,4 +36,9 @@
     right: 0;
     left: 4.5em;
     z-index: 1030;
+}
+@media (max-width: 767.98px) {
+    #chapterTitle {
+        margin-top: 5rem !important;
+    }
 }
