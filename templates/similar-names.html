@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+{% endblock %}
+
+{% block body %}
+
+<h1>Similar names report</h1>
+    {% for cat in ["live", "v1"] %}
+        <h2>v1</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name 1<br /><small>Neighbors</small></td>
+                    <th scope="col">Name 2<br /><small>Neighbors</small></td>
+                    <th scope="col">Similarity<br /><small><a href="https://jellyfish.readthedocs.io/en/latest/comparison.html#jaro-winkler-similarity" target="_blank">jellyfish.jaro_winkler_similarity</a></small></td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in data.v1 %}
+                    <tr>
+                        <td>
+                            {{ d[0] }}
+                            <div class="small">
+                                <ul>
+                                    {% for node in d[3] %}
+                                        <li {% if node in d[4] %}class="fw-bold"{% endif %}>{{ node }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            {{ d[1] }}
+                            <div class="small">
+                                <ul>
+                                    {% for node in d[4] %}
+                                        <li {% if node in d[3] %}class="fw-bold"{% endif %}>{{ node }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </td>
+                        <td>{{ d[2] }}%</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
