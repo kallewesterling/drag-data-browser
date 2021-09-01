@@ -10,7 +10,7 @@ let store = {
 };
 
 let STANDARD_CIRCLE = 1.5;
-let TOLERANCES = [0, 1, 2, 3, 4, 5];
+let PADDINGS = [0, 1, 2, 3, 4, 5];
 
 // parse the date / time
 var dateParser = d3.timeParse("%Y-%m-%d");
@@ -33,8 +33,8 @@ const height = () => {
     return 300 - margin().top - margin().bottom;
 }
 
-const getScale = (xOrY, tolerance) => {
-    let localData = store.data['tolerance' + tolerance];
+const getScale = (xOrY, padding) => {
+    let localData = store.data['padding' + padding];
     if (xOrY === 'x') {
         return d3.scaleTime().range([0, width()]).domain(d3.extent(localData, d=>d.date));
     } else if (xOrY === 'y') {
@@ -46,18 +46,18 @@ const getScale = (xOrY, tolerance) => {
 
 const searchPerformer = (name) => {
     let found = {};
-    TOLERANCES.forEach(tolerance => {
-        let years = Object.keys(store.dataDetail[`tolerance${tolerance}`]);
+    PADDINGS.forEach(padding => {
+        let years = Object.keys(store.dataDetail[`padding${padding}`]);
         years.forEach(year=>{
-            let months = Object.keys(store.dataDetail[`tolerance${tolerance}`][year]);
+            let months = Object.keys(store.dataDetail[`padding${padding}`][year]);
             months.forEach(month=>{
-                let performers = store.dataDetail[`tolerance${tolerance}`][year][month];
+                let performers = store.dataDetail[`padding${padding}`][year][month];
                 if (performers.includes(name)) {
-                    if (!Object.keys(found).includes(`tolerance${tolerance}`)) {
-                        found[`tolerance${tolerance}`] = []
+                    if (!Object.keys(found).includes(`padding${padding}`)) {
+                        found[`padding${padding}`] = []
                     }
-                    if (!found[`tolerance${tolerance}`].includes(`${year},${month}`)) {
-                        found[`tolerance${tolerance}`].push(`${year},${month}`)
+                    if (!found[`padding${padding}`].includes(`${year},${month}`)) {
+                        found[`padding${padding}`].push(`${year},${month}`)
                     }
                 }
             });
@@ -68,30 +68,30 @@ const searchPerformer = (name) => {
 
 const searchPerformerAcrossAll = (name) => {
     let found = searchPerformer(name);
-    TOLERANCES.forEach(tolerance=>{
+    PADDINGS.forEach(padding=>{
         // console.log();
-        markFound(found[`tolerance${tolerance}`], tolerance);
+        markFound(found[`padding${padding}`], padding);
     });
 }
 
-const getDetailData = (tolerance, year, month) => {
-    return store['dataDetail'][`tolerance${tolerance}`][year][month].sort();
+const getDetailData = (padding, year, month) => {
+    return store['dataDetail'][`padding${padding}`][year][month].sort();
 }
 
-const mouseClick = (loc, event, snap=true, tolerance) => {
-    let data = store.data['tolerance' + tolerance];
+const mouseClick = (loc, event, snap=true, padding) => {
+    let data = store.data['padding' + padding];
     let [xLoc, yLoc] = loc;
-    let xScale = getScale('x', tolerance);
+    let xScale = getScale('x', padding);
     let datePoint = xScale.invert(xLoc);
     let dataPoint = reverseData(data, datePoint);
-    let performers = getDetailData(tolerance, dataPoint.year, dataPoint.month);
+    let performers = getDetailData(padding, dataPoint.year, dataPoint.month);
     d3.selectAll(`.performer-lists`).classed('d-none', true);
     let html = "";
     performers.forEach(performer => {
         html += `<span class="d-inline-block p-1 rounded-3 bg-dark m-1"><a class="text-white text-decoration-none" href="?name=${performer}">${performer}</a></span>`;
     })
-    d3.select(`#performers-${tolerance}`).html(html);
-    d3.select(`#performers-${tolerance}`).classed('d-none', false);
+    d3.select(`#performers-${padding}`).html(html);
+    d3.select(`#performers-${padding}`).classed('d-none', false);
 }
 
 const reverseData = (localData, datePoint) => {
@@ -100,8 +100,8 @@ const reverseData = (localData, datePoint) => {
     return localData[ix];
 }
 
-const getLegend = (tolerance) => {
-    switch (tolerance) {
+const getLegend = (padding) => {
+    switch (padding) {
         case 0:
             return 'Number of performers performing within a given month'
         case 1:
@@ -118,11 +118,11 @@ const getLegend = (tolerance) => {
     return 'undefined'
 }
 
-const makeLegend = (tolerance) => {
+const makeLegend = (padding) => {
 
-    let svg = d3.select(`svg#tolerance${tolerance}`);
+    let svg = d3.select(`svg#padding${padding}`);
 
-    svg = svg.select(`g#tolerance-${tolerance}`);
+    svg = svg.select(`g#padding-${padding}`);
 
     if (svg.select('g.legend').node()) {
         // console.log('legend already exists')
@@ -163,55 +163,55 @@ const makeLegend = (tolerance) => {
         .attr('y', function(d, i) {
             return (i * 20) + 9;
         })
-        .text(() => getLegend(tolerance))
+        .text(() => getLegend(padding))
         .attr('class', 'legendText');
 };
 
-const makeAxes = (tolerance) => {
-    let svg = d3.select(`svg#tolerance${tolerance} g#tolerance-${tolerance}`);
+const makeAxes = (padding) => {
+    let svg = d3.select(`svg#padding${padding} g#padding-${padding}`);
 
-    let xScale = getScale('x', tolerance);
-    let yScale = getScale('y', tolerance);
+    let xScale = getScale('x', padding);
+    let yScale = getScale('y', padding);
 
-    if (!svg.select(`g.xScale-${tolerance}`).node()) {
+    if (!svg.select(`g.xScale-${padding}`).node()) {
         svg.append("g")
-            .attr("class", `xScale-${tolerance}`)
+            .attr("class", `xScale-${padding}`)
             .attr("transform", "translate(0," + height() + ")")
             .call(d3.axisBottom(xScale));
     } else {
-        svg.select(`g.xScale-${tolerance}`)
+        svg.select(`g.xScale-${padding}`)
             .attr("transform", "translate(0," + height() + ")")
             .call(d3.axisBottom(xScale));
     }
 
     // add y Axis
-    if (!svg.select(`g.yScale-${tolerance}`).node()) {
+    if (!svg.select(`g.yScale-${padding}`).node()) {
         svg.append("g")
-            .attr("class", `yScale-${tolerance}`)
+            .attr("class", `yScale-${padding}`)
             .call(d3.axisLeft(yScale));
     } else {
-        svg.select(`g.yScale-${tolerance}`)
+        svg.select(`g.yScale-${padding}`)
             .call(d3.axisLeft(yScale));
     }
 }
 
-const makeMouseLine = (tolerance) => {
-    let svg = d3.select(`svg#tolerance${tolerance} g#tolerance-${tolerance}`);
+const makeMouseLine = (padding) => {
+    let svg = d3.select(`svg#padding${padding} g#padding-${padding}`);
 
-    if (svg.select(`g.mouse-over-effects-${tolerance}`).node()) {
+    if (svg.select(`g.mouse-over-effects-${padding}`).node()) {
         return true;
     }
 
     svg.append("g")
-        .attr("class", `mouse-over-effects-${tolerance}`);
+        .attr("class", `mouse-over-effects-${padding}`);
     
-    d3.select(`g.mouse-over-effects-${tolerance}`)
+    d3.select(`g.mouse-over-effects-${padding}`)
         .append("path") // this is the black vertical line to follow mouse
-        .attr("class", `mouse-line-${tolerance}`)
+        .attr("class", `mouse-line-${padding}`)
         .style("stroke-width", `${store.oneMonth}px`) // * months
         .style("opacity", "0");
 
-    d3.select(`g.mouse-over-effects-${tolerance}`)
+    d3.select(`g.mouse-over-effects-${padding}`)
         .append('svg:rect') // append a rect to catch mouse movements on canvas
         .attr('width', width()) // can't catch mouse events on a g element
         .attr('height', height())
@@ -219,28 +219,28 @@ const makeMouseLine = (tolerance) => {
         .attr('pointer-events', 'all')
 }
 
-const renderContinousPerformanceData = (tolerance=0) => {
+const renderContinousPerformanceData = (padding=0) => {
     let svg = '';
-    if (d3.select(`svg#tolerance${tolerance} g#tolerance-${tolerance}`).node()) {
-        // console.log('found existing svg with tolerance', tolerance)
-        svg = d3.select(`svg#tolerance${tolerance}`)
+    if (d3.select(`svg#padding${padding} g#padding-${padding}`).node()) {
+        // console.log('found existing svg with padding', padding)
+        svg = d3.select(`svg#padding${padding}`)
             .attr("width", width() + margin().left + margin().right)
             .attr("height", height() + margin().top + margin().bottom);
-        svg = svg.select(`g#tolerance-${tolerance}`);
+        svg = svg.select(`g#padding-${padding}`);
     } else {
-        svg = d3.select(`svg#tolerance${tolerance}`)
+        svg = d3.select(`svg#padding${padding}`)
             .attr("width", width() + margin().left + margin().right)
             .attr("height", height() + margin().top + margin().bottom)
             .append("g")
-            .attr("id", `tolerance-${tolerance}`)
+            .attr("id", `padding-${padding}`)
             .attr("transform", "translate(" + margin().left + "," + margin().top + ")");
     }
 
-    let data = store.data[`tolerance${tolerance}`];
+    let data = store.data[`padding${padding}`];
     
     // set the ranges
-    let xScale = getScale('x', tolerance);
-    let yScale = getScale('y', tolerance);
+    let xScale = getScale('x', padding);
+    let yScale = getScale('y', padding);
 
     store.oneMonth = xScale(dateParser('1930-02-01')) - xScale(dateParser('1930-01-01'))
 
@@ -311,12 +311,12 @@ const renderContinousPerformanceData = (tolerance=0) => {
         .attr('id', d=>`${d.month}-${d.year}`)
 
     // make both axes
-    makeAxes(tolerance);
+    makeAxes(padding);
 
     // make legend
-    makeLegend(tolerance);
+    makeLegend(padding);
 
-    makeMouseLine(tolerance);
+    makeMouseLine(padding);
 };
 
 
@@ -505,60 +505,60 @@ const getMonthRange = (month, year, range) => {
     }
 }
 
-const getText = (dataPoint, tolerance) => {
-    return `${getMonthRange(dataPoint.month, dataPoint.year, tolerance)}:<br/>${dataPoint.num_artists}`;
+const getText = (dataPoint, padding) => {
+    return `${getMonthRange(dataPoint.month, dataPoint.year, padding)}:<br/>${dataPoint.num_artists}`;
 }
 
-const mouseEvent = (onOff, tolerance) => {
+const mouseEvent = (onOff, padding) => {
     if (onOff) {
-        d3.select(`.mouse-line-${tolerance}`)
+        d3.select(`.mouse-line-${padding}`)
             .style("opacity", "1");
         popup.classed('d-none', false);
     } else {
-        d3.select(`.mouse-line-${tolerance}`)
+        d3.select(`.mouse-line-${padding}`)
             .style("opacity", "0");
         popup.classed('d-none', true);
     }
 }
 
-const mouseMove = (loc, event, snap=false, tolerance) => {
-    let data = store.data[`tolerance${tolerance}`];
+const mouseMove = (loc, event, snap=false, padding) => {
+    let data = store.data[`padding${padding}`];
     let [xLoc, yLoc] = loc;
-    let xScale = getScale('x', tolerance);
+    let xScale = getScale('x', padding);
     let datePoint = xScale.invert(xLoc);
     let dataPoint = reverseData(data, datePoint);
 
     let xLocSnap = xScale(dataPoint.date);
     if (snap) {
-        d3.select(`.mouse-line-${tolerance}`).attr("d", `M${xLocSnap},${height()+margin().top} ${xLocSnap},${-margin().top}`); // set correct X on mouseline
+        d3.select(`.mouse-line-${padding}`).attr("d", `M${xLocSnap},${height()+margin().top} ${xLocSnap},${-margin().top}`); // set correct X on mouseline
     } else {
-        d3.select(`.mouse-line-${tolerance}`).attr("d", `M${xLoc},${height()+margin().top} ${xLoc},${-margin().top}`); // set correct X on mouseline
+        d3.select(`.mouse-line-${padding}`).attr("d", `M${xLoc},${height()+margin().top} ${xLoc},${-margin().top}`); // set correct X on mouseline
     }
 
     if (dataPoint.num_artists) {
-        display_num.html(getText(dataPoint, tolerance));
+        display_num.html(getText(dataPoint, padding));
         popup.classed('d-none', false);
 
         let xOffset = getComputedStyle(d3.select('#popup').node()).width.replace('px', '')/2;
-        yLoc = d3.select(`svg#tolerance${tolerance} g.xScale-${tolerance}`).node().getBoundingClientRect().top
+        yLoc = d3.select(`svg#padding${padding} g.xScale-${padding}`).node().getBoundingClientRect().top
         
         popup.attr('style', `left: ${event.clientX-xOffset}px; top: ${yLoc}px`);
     }
 }
 
-const setupInteractivity = (tolerance) => {
-    d3.select(`g .mouse-over-effects-${tolerance} rect`)
-        .on('mouseout', () => mouseEvent(false, tolerance))
-        .on('mouseover', () => mouseEvent(true, tolerance))
-        .on('mousemove', (evt) => mouseMove(d3.pointer(evt), evt, true, tolerance))
-        .on('click', (evt) => mouseClick(d3.pointer(evt), evt, true, tolerance));
+const setupInteractivity = (padding) => {
+    d3.select(`g .mouse-over-effects-${padding} rect`)
+        .on('mouseout', () => mouseEvent(false, padding))
+        .on('mouseover', () => mouseEvent(true, padding))
+        .on('mousemove', (evt) => mouseMove(d3.pointer(evt), evt, true, padding))
+        .on('click', (evt) => mouseClick(d3.pointer(evt), evt, true, padding));
 }
 
-const addDataToTables = (tolerance) => {
-    let data = store.data[`tolerance${tolerance}`];
+const addDataToTables = (padding) => {
+    let data = store.data[`padding${padding}`];
     data = data.filter(d=>d.year >= 1930 && d.year <= 1940);
     function tabulate(data, columns) {
-        var table = d3.select(`table#tolerance${tolerance}`);
+        var table = d3.select(`table#padding${padding}`);
         var thead = table.select('thead');
         var tbody = table.select('tbody');
 		
@@ -595,31 +595,31 @@ const addDataToTables = (tolerance) => {
 
 }
 
-const markFound = (found, tolerances, clear_first=true) => {
-    if (typeof tolerances === 'number') {
-        tolerances = [tolerances];
+const markFound = (found, paddings, clear_first=true) => {
+    if (typeof paddings === 'number') {
+        paddings = [paddings];
     }
     if (clear_first) {
-        tolerances.forEach(tolerance=>{
-            d3.selectAll(`svg#tolerance${tolerance} g.circles circle`).classed('selected', false).attr('r', STANDARD_CIRCLE);
-            d3.selectAll(`svg#tolerance${tolerance} .foundPerformer`).classed('hidden', true);
+        paddings.forEach(padding=>{
+            d3.selectAll(`svg#padding${padding} g.circles circle`).classed('selected', false).attr('r', STANDARD_CIRCLE);
+            d3.selectAll(`svg#padding${padding} .foundPerformer`).classed('hidden', true);
         });
     }
-    tolerances.forEach(tolerance=>{
+    paddings.forEach(padding=>{
         found.forEach(f=>{
             let [year, month] = f.split(',');
-            d3.select(`svg#tolerance${tolerance} g.circles circle#${month}-${year}`).classed('selected', true).transition().duration(1000).attr('r', 5);
+            d3.select(`svg#padding${padding} g.circles circle#${month}-${year}`).classed('selected', true).transition().duration(1000).attr('r', 5);
         })
-        d3.selectAll(`svg#tolerance${tolerance} .foundPerformer`).classed('hidden', false);
+        d3.selectAll(`svg#padding${padding} .foundPerformer`).classed('hidden', false);
     })
 }
 
-const addOptions = (tolerance) => {
-    let dropDown = d3.select(`#tolerance${tolerance}-filter`)
-    let filterAll = d3.select(`#tolerance${tolerance}-filter-all`)
+const addOptions = (padding) => {
+    let dropDown = d3.select(`#padding${padding}-filter`)
+    let filterAll = d3.select(`#padding${padding}-filter-all`)
 
     let options = dropDown.selectAll('option')
-        .data(['', ...sortPerformersByCount(tolerance, true)])
+        .data(['', ...sortPerformersByCount(padding, true)])
         .join(
             enter => enter 
                         .append('option'),
@@ -631,55 +631,53 @@ const addOptions = (tolerance) => {
         .attr("value", d=>d)
         .html(d=>{
             if (d)
-                return `${d} (${countPerformer(d, tolerance)})`;
+                return `${d} (${countPerformer(d, padding)})`;
         });
 
     dropDown.on("change", (evt) => {
         let performerName = dropDown.node().value;
         if(performerName === '') {
             filterAll.classed('d-none', true);
-            d3.selectAll(`svg#tolerance${tolerance} g.circles circle`).classed('selected', false).attr('r', STANDARD_CIRCLE);
+            d3.selectAll(`svg#padding${padding} g.circles circle`).classed('selected', false).attr('r', STANDARD_CIRCLE);
         } else {
-            let found = searchPerformer(performerName)[`tolerance${tolerance}`];
-            markFound(found, tolerance);
+            let found = searchPerformer(performerName)[`padding${padding}`];
+            markFound(found, padding);
             filterAll.classed('d-none', false);
-            d3.select(`#tolerance${tolerance}-filter-all a`).attr('href', window.location.pathname + '?name=' + performerName);
+            d3.select(`#padding${padding}-filter-all a`).attr('href', window.location.pathname + '?name=' + performerName);
         }
     })
 }
 
 let loader = [];
-TOLERANCES.forEach(tolerance=>{
-    loader.push(d3.json(DATA_DIR + `continuous-performances-tolerance-${tolerance}.json`))
+PADDINGS.forEach(padding=>{
+    loader.push(d3.json(DATA_DIR + `continuous-performances-padding-${padding}.json`))
 });
 
 let detail_loader = [];
-TOLERANCES.forEach(tolerance=>{
-    detail_loader.push(d3.json(DATA_DIR + `continuous-performances-tolerance-${tolerance}-detail.json`))
+PADDINGS.forEach(padding=>{
+    detail_loader.push(d3.json(DATA_DIR + `continuous-performances-padding-${padding}-detail.json`))
 });
 
 Promise.all(loader).then(function(files) {
-    console.log('files loaded:', loader);
-    TOLERANCES.forEach(tolerance => {
-        files[tolerance].forEach(d=>{if (typeof d.date === 'string') { d.date = dateParser(d.date) } }); // fix dates
-        store.data[`tolerance${tolerance}`] = files[tolerance].filter(d=>d.date.getFullYear() >= 1930 && d.date.getFullYear() < 1940)
+    PADDINGS.forEach(padding => {
+        files[padding].forEach(d=>{if (typeof d.date === 'string') { d.date = dateParser(d.date) } }); // fix dates
+        store.data[`padding${padding}`] = files[padding].filter(d=>d.date.getFullYear() >= 1930 && d.date.getFullYear() < 1940)
     })
 }).then(() => {
     Promise.all(detail_loader).then(function(files) {
-        console.log('files loaded:', detail_loader);
-        TOLERANCES.forEach(tolerance => {
-            store.dataDetail[`tolerance${tolerance}`] = files[tolerance];
+        PADDINGS.forEach(padding => {
+            store.dataDetail[`padding${padding}`] = files[padding];
         });
     }).catch(function(err) {
         console.error(err)
     }).then(()=>{
         Object.keys(store.data).forEach(key=>{
-            let tolerance = +key.replace('tolerance', '')
-            renderContinousPerformanceData(tolerance);
-            setupInteractivity(tolerance);
-            addDataToTables(tolerance);
+            let padding = +key.replace('padding', '')
+            renderContinousPerformanceData(padding);
+            setupInteractivity(padding);
+            addDataToTables(padding);
     
-            let data = store.dataDetail[`tolerance${tolerance}`];
+            let data = store.dataDetail[`padding${padding}`];
             Object.keys(data).forEach(year=>{
                 Object.keys(data[year]).forEach(month=>{
                     data[year][month].forEach(performer=>{
@@ -690,40 +688,40 @@ Promise.all(loader).then(function(files) {
             });
             store.allPerformers.sort();
     
-            addOptions(tolerance);
+            addOptions(padding);
         });
     }).then(() => {
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
         if (params.name) {
             searchPerformerAcrossAll(params.name);
-            TOLERANCES.forEach(tolerance => {
-                d3.select(`#tolerance${tolerance}-filter`).node().value = params.name;
+            PADDINGS.forEach(padding => {
+                d3.select(`#padding${padding}-filter`).node().value = params.name;
             });
         }
     });
 });
 
 window.addEventListener("resize", (evt)=>{
-    TOLERANCES.forEach(tolerance => {
-        renderContinousPerformanceData(tolerance);
+    PADDINGS.forEach(padding => {
+        renderContinousPerformanceData(padding);
     });
 });
 
-const countPerformer = (name, tolerance=1) => {
+const countPerformer = (name, padding=1) => {
     let results = 0;
-    Object.keys(store.dataDetail[`tolerance${tolerance}`]).forEach(year=>{
-        Object.keys(store.dataDetail[`tolerance${tolerance}`][year]).forEach(month => {
-            if (store.dataDetail[`tolerance${tolerance}`][year][month].includes(name))
+    Object.keys(store.dataDetail[`padding${padding}`]).forEach(year=>{
+        Object.keys(store.dataDetail[`padding${padding}`][year]).forEach(month => {
+            if (store.dataDetail[`padding${padding}`][year][month].includes(name))
                 results += 1;
         });
     });
     return results;
 }
 
-const sortPerformersByCount = (tolerance=1, reverse=false) => {
+const sortPerformersByCount = (padding=1, reverse=false) => {
     if (reverse)
-        return store.allPerformers.sort((a, b) => (countPerformer(a, tolerance) > countPerformer(b, tolerance) ? -1 : 1))
+        return store.allPerformers.sort((a, b) => (countPerformer(a, padding) > countPerformer(b, padding) ? -1 : 1))
 
-    return store.allPerformers.sort((a, b) => (countPerformer(a, tolerance) > countPerformer(b, tolerance) ? 1 : -1))
+    return store.allPerformers.sort((a, b) => (countPerformer(a, padding) > countPerformer(b, padding) ? 1 : -1))
 }

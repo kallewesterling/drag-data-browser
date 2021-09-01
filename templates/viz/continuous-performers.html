@@ -20,18 +20,19 @@
 {% block body %}
 <div class="row">
     <div class="col-12 pb-5" id="viz-container">
-        {% for tolerance in [0, 1, 2, 3, 4, 5] %}
-            <h2>Tolerance: {{ tolerance }}</h2>
-            <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetTolerance{{ tolerance }} role="button" aria-expanded="false" aria-controls="datasetTolerance{{ tolerance }}" id="toggleTolerance{{ tolerance }}"><i></i> Show data</a>
-            <div class="collapse" id="datasetTolerance{{ tolerance }}">
-                <table id="tolerance{{ tolerance }}" class="table table-sm table-light table-striped">
+        {% for padding in [0, 1, 2, 3, 4, 5] %}
+            <h2>Padding: {{ padding }}</h2>
+            <p class="lead">{{ data.leads[padding] }}</p>
+            <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetPadding{{ padding }} role="button" aria-expanded="false" aria-controls="datasetPadding{{ padding }}" id="togglePadding{{ padding }}"><i></i> Show data</a>
+            <div class="collapse" id="datasetPadding{{ padding }}">
+                <table id="padding{{ padding }}" class="table table-sm table-light table-striped">
                     <thead></thead>
                     <tbody></tbody>
                 </table>
             </div>
-            <div class="d-flex flex-row-reverse"><div class="d-flex"><span class="me-1">Filter by performer name:</span><select id="tolerance{{ tolerance }}-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="tolerance{{ tolerance }}-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-            <svg class="overflow-auto border shadow-sm my-4" id="tolerance{{ tolerance }}"></svg>
-            <div id="performers-{{ tolerance }}" class="performer-lists d-none mb-3"></div>
+            <div class="d-flex flex-row-reverse"><div class="d-flex"><span class="me-1">Filter by performer name:</span><select id="padding{{ padding }}-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="padding{{ padding }}-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
+            <svg class="overflow-auto border shadow-sm my-4" id="padding{{ padding }}"></svg>
+            <div id="performers-{{ padding }}" class="performer-lists d-none mb-3"></div>
         {% endfor %}
     </div>
 </div>

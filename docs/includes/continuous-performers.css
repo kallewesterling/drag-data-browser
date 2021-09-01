@@ -11,7 +11,7 @@ main {
     overflow-x: auto;
     overflow-y: hidden;
 }
-svg#tolerance0, svg#tolerance1, svg#tolerance2, svg#tolerance3 {
+svg#padding0, svg#padding1, svg#padding2, svg#padding3 {
     background-color: rgba(0, 0, 0, 0.01);
     margin-bottom: 1rem;
 }
@@ -43,7 +43,7 @@ svg#tolerance0, svg#tolerance1, svg#tolerance2, svg#tolerance3 {
     stroke-width: 1px;
     fill: black;
 }
-#toggleTolerance0 i::before, #toggleTolerance1 i::before, #toggleTolerance2 i::before, #toggleTolerance3 i::before {
+#togglePadding0 i::before, #togglePadding1 i::before, #togglePadding2 i::before, #togglePadding3 i::before {
     display: inline-block;
     font-family: bootstrap-icons !important;
     font-style: normal;
@@ -55,10 +55,10 @@ svg#tolerance0, svg#tolerance1, svg#tolerance2, svg#tolerance3 {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-#toggleTolerance0[aria-expanded=false] i::before, #toggleTolerance1[aria-expanded=false] i::before,#toggleTolerance2[aria-expanded=false] i::before,#toggleTolerance3[aria-expanded=false] i::before {
+#togglePadding0[aria-expanded=false] i::before, #togglePadding1[aria-expanded=false] i::before,#togglePadding2[aria-expanded=false] i::before,#togglePadding3[aria-expanded=false] i::before {
     content: "\f114";
 }
-#toggleTolerance0[aria-expanded=true] i::before, #toggleTolerance1[aria-expanded=true] i::before,#toggleTolerance2[aria-expanded=true] i::before,#toggleTolerance3[aria-expanded=true] i::before {
+#togglePadding0[aria-expanded=true] i::before, #togglePadding1[aria-expanded=true] i::before,#togglePadding2[aria-expanded=true] i::before,#togglePadding3[aria-expanded=true] i::before {
     content: "\f112";
 }
 circle.selected {
