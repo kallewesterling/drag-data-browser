@@ -78,20 +78,28 @@ const getDetailData = (padding, year, month) => {
     return store['dataDetail'][`padding${padding}`][year][month].sort();
 }
 
+const showPerformers = (padding, dataPoint) => {
+    let performers = getDetailData(padding, dataPoint.year, dataPoint.month);
+    d3.selectAll(`.performer-lists`).classed('d-none', true);
+    let html = "";
+    performers.forEach(performer => {
+        if (window.searchName && window.searchName === performer) {
+            html += `<span class="d-inline-block px-2 py-1 rounded-3 bg-danger m-1"><a class="text-white text-decoration-none" href="?name=${performer}">${performer}</a></span>`;
+        } else {
+            html += `<span class="d-inline-block px-2 py-1 rounded-3 bg-dark m-1"><a class="text-white text-decoration-none" href="?name=${performer}">${performer}</a></span>`;
+        }
+    })
+    d3.select(`#performers-${padding}`).html(html);
+    d3.select(`#performers-${padding}`).classed('d-none', false);
+}
+
 const mouseClick = (loc, event, snap=true, padding) => {
     let data = store.data['padding' + padding];
     let [xLoc, yLoc] = loc;
     let xScale = getScale('x', padding);
     let datePoint = xScale.invert(xLoc);
     let dataPoint = reverseData(data, datePoint);
-    let performers = getDetailData(padding, dataPoint.year, dataPoint.month);
-    d3.selectAll(`.performer-lists`).classed('d-none', true);
-    let html = "";
-    performers.forEach(performer => {
-        html += `<span class="d-inline-block p-1 rounded-3 bg-dark m-1"><a class="text-white text-decoration-none" href="?name=${performer}">${performer}</a></span>`;
-    })
-    d3.select(`#performers-${padding}`).html(html);
-    d3.select(`#performers-${padding}`).classed('d-none', false);
+    showPerformers(padding, dataPoint);
 }
 
 const reverseData = (localData, datePoint) => {
@@ -527,6 +535,10 @@ const mouseMove = (loc, event, snap=false, padding) => {
     let xScale = getScale('x', padding);
     let datePoint = xScale.invert(xLoc);
     let dataPoint = reverseData(data, datePoint);
+    
+    if (event.buttons === 1) {
+        showPerformers(padding, dataPoint);
+    }
 
     let xLocSnap = xScale(dataPoint.date);
     if (snap) {
@@ -551,6 +563,7 @@ const setupInteractivity = (padding) => {
         .on('mouseout', () => mouseEvent(false, padding))
         .on('mouseover', () => mouseEvent(true, padding))
         .on('mousemove', (evt) => mouseMove(d3.pointer(evt), evt, true, padding))
+        .on('mousedown', (evt) => {console.log('mousedown')})
         .on('click', (evt) => mouseClick(d3.pointer(evt), evt, true, padding));
 }
 
@@ -694,6 +707,7 @@ Promise.all(loader).then(function(files) {
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
         if (params.name) {
+            window.searchName = params.name;
             searchPerformerAcrossAll(params.name);
             PADDINGS.forEach(padding => {
                 d3.select(`#padding${padding}-filter`).node().value = params.name;
