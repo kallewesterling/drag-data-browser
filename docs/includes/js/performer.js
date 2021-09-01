@@ -88,7 +88,7 @@ if (window.node_id) {
     }).catch((e)=>{
         if (e.message.includes('404')) {
             console.error(`The file could not be found: ${filename}`);
-            svg.remove();
+            d3.select("section#viz").remove();
         } else {
             throw e;
         }
