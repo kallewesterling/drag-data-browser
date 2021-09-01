@@ -27,6 +27,9 @@ endblock %}
             </section>
         {% endif %}
 
+        <section id="viz">
+            <svg id="network"></svg>
+        </section>
 
         <section id="yearsActive">
             <h2>Years</h2>
@@ -171,4 +174,12 @@ endblock %}
         </section>
     </div>
 </div>
+{% endblock %}
+
+
+{% block javascript %}
+<script>
+    window.node_id = "{{ data.node_id }}";
+</script>
+<script src="{{ BASE_URL }}includes/js/performer.js"></script>
 {% endblock %}
