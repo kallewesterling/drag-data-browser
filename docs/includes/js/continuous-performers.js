@@ -85,7 +85,7 @@ const mouseClick = (loc, event, snap=true, tolerance) => {
     let datePoint = xScale.invert(xLoc);
     let dataPoint = reverseData(data, datePoint);
     let performers = getDetailData(tolerance, dataPoint.year, dataPoint.month);
-    d3.select(`.performer-lists`).classed('d-none', true);
+    d3.selectAll(`.performer-lists`).classed('d-none', true);
     let html = "";
     performers.forEach(performer => {
         html += `<span class="d-inline-block p-1 rounded-3 bg-dark m-1"><a class="text-white text-decoration-none" href="?name=${performer}">${performer}</a></span>`;
