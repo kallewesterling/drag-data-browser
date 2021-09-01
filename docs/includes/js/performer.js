@@ -40,10 +40,11 @@ if (window.node_id) {
                 enter => enter
                     .append("circle")
                     .attr("r", 20)
-                    .style("fill", d => d.node_id === window.node_id ? "rgba(255, 217, 102)" : "rgba(255, 242, 204)")
+                    .style("fill", d => d.node_id === window.node_id ? "rgba(255, 217, 102, 1)" : "rgba(255, 250, 237,1)")
                     .style("stroke", "rgb(204, 153, 0)")
                     .style("stroke-width", "0.5px")
             );
+
 
         const label = g
             .selectAll("text")
@@ -52,22 +53,14 @@ if (window.node_id) {
                 enter => enter
                     .append("text")
                     .classed("user-select-none", true)
+                    .attr("style", d=> d.node_id === window.node_id ? "font-weight: bold;" : "")
                     .attr('id', d=>d.node_id)
                     .html(d=>d.id));
 
         label
             .attr('width', (d) => document.querySelector(`text#${d.node_id}`).getBBox().width);
 
-        simulation(data.nodes)
-            .force("link", d3.forceLink()
-                .id(d => d.id)
-                .links(data.links)
-            )
-            .force("charge", d3.forceManyBody().strength(-1000))
-            .force("center", d3.forceCenter(width / 2, height / 2))
-            .on("tick", tick);
-        
-        function tick() {
+        const tick = () => {
             link
                 .attr("x1", d => d.source.x)
                 .attr("y1", d => d.source.y)
@@ -82,8 +75,42 @@ if (window.node_id) {
                 let width = d3.select(`text#${d.node_id}`).attr("width");
                 return d.x-width/2;
             });
+            
             label.attr('y', d=>d.y);
         }
+        simulation(data.nodes)
+            .force("link", d3.forceLink()
+                .id(d => d.id)
+                .links(data.links)
+            )
+            .force("charge", d3.forceManyBody().strength(-1000))
+            .force("center", d3.forceCenter(width / 2, height / 2))
+            .on("tick", tick);
+        
+
+            const dragged = d3
+            .drag()
+            .on("start", (event, node) => {
+                console.log('start!');
+                console.log(node)
+                simulation().restart();
+                node.fx = node.x;
+                node.fy = node.y;
+            })
+            .on("drag", (event, node) => {
+                d3.select(`circle#${node.node_id}`).raise();
+                d3.select(`text[data-node=${node.node_id}]`).raise();
+                node.fx = event.x;
+                node.fy = event.y;
+                tick();
+            })
+            .on("end", (event, node) => {
+                simulation().restart();
+                node.fx = null;
+                node.fy = null;
+            })
+            node.call(dragged);
+            label.call(dragged);
 
     }).catch((e)=>{
         if (e.message.includes('404')) {
