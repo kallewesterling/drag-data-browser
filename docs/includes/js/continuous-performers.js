@@ -84,7 +84,14 @@ const mouseClick = (loc, event, snap=true, tolerance) => {
     let xScale = getScale('x', tolerance);
     let datePoint = xScale.invert(xLoc);
     let dataPoint = reverseData(data, datePoint);
-    console.log(getDetailData(tolerance, dataPoint.year, dataPoint.month));
+    let performers = getDetailData(tolerance, dataPoint.year, dataPoint.month);
+    d3.select(`.performer-lists`).classed('d-none', true);
+    let html = "";
+    performers.forEach(performer => {
+        html += `<span class="d-inline-block p-1 rounded-3 bg-dark m-1"><a class="text-white text-decoration-none" href="?name=${performer}">${performer}</a></span>`;
+    })
+    d3.select(`#performers-${tolerance}`).html(html);
+    d3.select(`#performers-${tolerance}`).classed('d-none', false);
 }
 
 const reverseData = (localData, datePoint) => {
@@ -610,14 +617,22 @@ const markFound = (found, tolerances, clear_first=true) => {
 const addOptions = (tolerance) => {
     let dropDown = d3.select(`#tolerance${tolerance}-filter`)
     let filterAll = d3.select(`#tolerance${tolerance}-filter-all`)
-    
+
     let options = dropDown.selectAll('option')
-        .data(['', ...store.allPerformers])
-        .enter()
-        .append('option');
+        .data(['', ...sortPerformersByCount(tolerance, true)])
+        .join(
+            enter => enter 
+                        .append('option'),
+            update => update,
+            exit => exit.remove()
+        )
 
     options.text(d => d)
-        .attr("value", d=>d);
+        .attr("value", d=>d)
+        .html(d=>{
+            if (d)
+                return `${d} (${countPerformer(d, tolerance)})`;
+        });
 
     dropDown.on("change", (evt) => {
         let performerName = dropDown.node().value;
@@ -644,12 +659,14 @@ TOLERANCES.forEach(tolerance=>{
 });
 
 Promise.all(loader).then(function(files) {
+    console.log('files loaded:', loader);
     TOLERANCES.forEach(tolerance => {
         files[tolerance].forEach(d=>{if (typeof d.date === 'string') { d.date = dateParser(d.date) } }); // fix dates
         store.data[`tolerance${tolerance}`] = files[tolerance].filter(d=>d.date.getFullYear() >= 1930 && d.date.getFullYear() < 1940)
     })
 }).then(() => {
     Promise.all(detail_loader).then(function(files) {
+        console.log('files loaded:', detail_loader);
         TOLERANCES.forEach(tolerance => {
             store.dataDetail[`tolerance${tolerance}`] = files[tolerance];
         });
@@ -692,3 +709,21 @@ window.addEventListener("resize", (evt)=>{
         renderContinousPerformanceData(tolerance);
     });
 });
+
+const countPerformer = (name, tolerance=1) => {
+    let results = 0;
+    Object.keys(store.dataDetail[`tolerance${tolerance}`]).forEach(year=>{
+        Object.keys(store.dataDetail[`tolerance${tolerance}`][year]).forEach(month => {
+            if (store.dataDetail[`tolerance${tolerance}`][year][month].includes(name))
+                results += 1;
+        });
+    });
+    return results;
+}
+
+const sortPerformersByCount = (tolerance=1, reverse=false) => {
+    if (reverse)
+        return store.allPerformers.sort((a, b) => (countPerformer(a, tolerance) > countPerformer(b, tolerance) ? -1 : 1))
+
+    return store.allPerformers.sort((a, b) => (countPerformer(a, tolerance) > countPerformer(b, tolerance) ? 1 : -1))
+}
