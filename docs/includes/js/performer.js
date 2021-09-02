@@ -3,7 +3,7 @@ const svg = d3.select('svg#network');
 const width = getComputedStyle(d3.select("#content .container").node()).width.replace('px', '');
 const height = 400;
 
-const simulation = d3.forceSimulation;
+const simulation = d3.forceSimulation();
 
 g = svg
     .attr("width", width)
@@ -61,6 +61,7 @@ if (window.node_id) {
             .attr('width', (d) => document.querySelector(`text#${d.node_id}`).getBBox().width);
 
         const tick = () => {
+            console.log('tick');
             link
                 .attr("x1", d => d.source.x)
                 .attr("y1", d => d.source.y)
@@ -78,7 +79,7 @@ if (window.node_id) {
             
             label.attr('y', d=>d.y);
         }
-        simulation(data.nodes)
+        simulation.nodes(data.nodes)
             .force("link", d3.forceLink()
                 .id(d => d.id)
                 .links(data.links)
@@ -86,14 +87,10 @@ if (window.node_id) {
             .force("charge", d3.forceManyBody().strength(-1000))
             .force("center", d3.forceCenter(width / 2, height / 2))
             .on("tick", tick);
-        
 
             const dragged = d3
             .drag()
             .on("start", (event, node) => {
-                console.log('start!');
-                console.log(node)
-                simulation().restart();
                 node.fx = node.x;
                 node.fy = node.y;
             })
@@ -105,7 +102,6 @@ if (window.node_id) {
                 tick();
             })
             .on("end", (event, node) => {
-                simulation().restart();
                 node.fx = null;
                 node.fy = null;
             })

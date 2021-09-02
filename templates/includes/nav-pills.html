@@ -1,6 +1,6 @@
 <ul class="nav nav-pills flex-column mb-auto">
     {% for category in NAVBAR.structure %}
-        <li class="nav-item ms-3 text-uppercase text-muted small fw-bold {% if not loop.index == 1 %}pt-4 {% endif %}pb-1">{{ category }}</li>
+        <li class="nav-item ms-3 text-uppercase text-muted small fw-bold user-select-none {% if not loop.index == 1 %}pt-4 {% endif %}pb-1">{{ category }}</li>
         {% for item in NAVBAR.structure[category] %}
             <li class="nav-item">
                 <a href="{{ item.url }}" class="d-flex nav-link text-white" aria-current="page"><!-- add `active` class here... -->
