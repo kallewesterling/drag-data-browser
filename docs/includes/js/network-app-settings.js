@@ -16,4 +16,6 @@ document.querySelector('#toggleFullscreen').addEventListener("click", (evt) => {
         d3.select('body').attr('data-fullscreen', 'true');
         return true;
     }
-})
+});
+
+window.changeSetting = changeSetting;
