@@ -28,10 +28,8 @@
             >
                 <thead>
                     <tr>
-                        <th id="sort" scope="col" style="min-width:300px; cursor:pointer;"><span><i></i> Venue name</span></th>
-                        {% for year in data.venues_years_range %}
-                        <th scope="col"><span>{{ year }}</span></th>
-                        {% endfor %}
+                        <th id="sort" scope="col" style="max-width:300px; width:300px; cursor:pointer;"><span><i></i> Venue name</span></th>
+                        <th scope="col"><svg width="100%" height="40px" class="timeline" id="scale" data-processed="true"></svg></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,13 +44,9 @@
                                 ></span
                             >
                         </th>
-                        {% for year in data.venues_years_range %}
                         <td>
-                            <span class="{% if year in years_active %}active{% endif %}"
-                                >{{ year }}</span
-                            >
+                            <svg width="100%" height="30px" class="timeline" data-venue="{{ get_venue_slug(venue) }}"></svg>
                         </td>
-                        {% endfor %}
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -61,5 +55,6 @@
     </div>
 </div>
 {% endblock %} {% block javascript %}
+<script src="{{ BASE_URL }}includes/js/venue-timelines.js" crossorigin="anonymous"></script>
 <script src="{{ BASE_URL }}includes/js/tableFilter.js" crossorigin="anonymous"></script>
 {% endblock %}

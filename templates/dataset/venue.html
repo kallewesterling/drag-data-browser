@@ -20,7 +20,13 @@
 </nav>
 <div class="row">
     <div class="col-12">
-        <h1>{{ data.name }}</h1>
+
+        <div id="timelineContainer" class="my-3">
+            <div class="text-uppercase text-muted small fw-bold user-select-none">Years in dataset</div>
+            <svg width="100%" height="40px" class="timeline" id="scale" data-processed="true">
+        </div>
+
+        <h1 class="my-3">{{ data.name }}</h1>
 
         <section id="comments">
             {% if data.comments %}
@@ -31,17 +37,6 @@
                 {% endfor %}
             </ul>
             {% endif %}
-        </section>
-
-        <section id="yearsActive">
-            <h2>Years</h2>
-            <ul>
-                {% for year in ALL_YEARS %} {% if year in data.years_active %}
-                <li>{{ year }}</li>
-                {% else %}
-                <li class="inactive"><span>{{ year }}</span></li>
-                {% endif %} {% endfor %}
-            </ul>
         </section>
 
         <section id="geoData">
@@ -67,4 +62,12 @@
         </section>
     </div>
 </div>
+{% endblock %}
+
+
+{% block javascript %}
+<script>
+    window.venueSlug = "{{ get_venue_slug(data.name) }}";
+</script>
+<script src="{{ BASE_URL }}includes/js/venue.js"></script>
 {% endblock %}

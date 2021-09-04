@@ -308,124 +308,29 @@
 </nav>
 <div class="row">
     <div class="col-12">
-        <h1>Bobby Johnson</h1>
+
+        <div id="timelineContainer" class="my-3">
+            <div class="text-uppercase text-muted small fw-bold user-select-none">Years in dataset</div>
+            <svg width="100%" height="40px" class="timeline" id="scale" data-processed="true">
+        </div>
+
+        <h1 class="my-3">Bobby Johnson</h1>
 
         
 
-        <section id="viz">
-            <h2>Visualization of Bobby Johnson's Connections</h2>
-            <p class="lead">The following is a visualization of the connections between Bobby Johnson and every other performer in the dataset (14-day, filtered), with which they are connected. The graph also includes secondary-relations (that is, persons not directly connected to the performer).</p>
-            <svg id="network"></svg>
+        <section id="viz" class="row">
+            <div class="col-12 col-lg-4">
+                <h4>Visualization of Bobby Johnson's Connections</h4>
+                <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Bobby Johnson and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
+                <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
+            </div>
+            <div class="col-12 col-lg-8" id="vizContainer">
+                <svg id="network"></svg>
+            </div>
         </section>
 
-        <section id="yearsActive">
-            <h2>Years</h2>
-            <ul>
-                 
-                <li class="inactive">1900</li>
-                  
-                <li class="inactive">1901</li>
-                  
-                <li class="inactive">1902</li>
-                  
-                <li class="inactive">1903</li>
-                  
-                <li class="inactive">1904</li>
-                  
-                <li class="inactive">1905</li>
-                  
-                <li class="inactive">1906</li>
-                  
-                <li class="inactive">1907</li>
-                  
-                <li class="inactive">1908</li>
-                  
-                <li class="inactive">1909</li>
-                  
-                <li class="inactive">1910</li>
-                  
-                <li class="inactive">1911</li>
-                  
-                <li class="inactive">1912</li>
-                  
-                <li class="inactive">1913</li>
-                  
-                <li class="inactive">1914</li>
-                  
-                <li class="inactive">1915</li>
-                  
-                <li class="inactive">1916</li>
-                  
-                <li class="inactive">1917</li>
-                  
-                <li class="inactive">1918</li>
-                  
-                <li class="inactive">1919</li>
-                  
-                <li class="inactive">1920</li>
-                  
-                <li class="inactive">1921</li>
-                  
-                <li class="inactive">1922</li>
-                  
-                <li class="inactive">1923</li>
-                  
-                <li class="inactive">1924</li>
-                  
-                <li class="inactive">1925</li>
-                  
-                <li class="inactive">1926</li>
-                  
-                <li class="inactive">1927</li>
-                  
-                <li class="inactive">1928</li>
-                  
-                <li class="inactive">1929</li>
-                  
-                <li class="inactive">1930</li>
-                  
-                <li class="inactive">1931</li>
-                  
-                <li class="inactive">1932</li>
-                  
-                <li class="inactive">1933</li>
-                  
-                <li class="inactive">1934</li>
-                  
-                <li>1935</li>
-                  
-                <li class="inactive">1936</li>
-                  
-                <li class="inactive">1937</li>
-                  
-                <li class="inactive">1938</li>
-                  
-                <li>1939</li>
-                  
-                <li class="inactive">1940</li>
-                  
-                <li>1941</li>
-                  
-                <li>1942</li>
-                  
-                <li class="inactive">1943</li>
-                  
-                <li class="inactive">1944</li>
-                  
-                <li class="inactive">1945</li>
-                  
-                <li class="inactive">1946</li>
-                  
-                <li class="inactive">1947</li>
-                  
-                <li class="inactive">1948</li>
-                  
-                <li>1949</li>
-                 
-            </ul>
-        </section>
-
-        <section id="comments accordion accordion-flush">
+        <section id="comments accordion accordion-flush my-3">
             
             <h2>Comments</h2>
             
@@ -515,23 +420,23 @@
              
         </section>
 
-        <section id="demoData">
+        <section id="demoData" class="my-3">
             
-            <h2>Indications of birth year</h2>
+            <h2 class="my-1">Indications of birth year</h2>
             <ul>
                 
                 <li>1913 (Miami Herald, March 24, 1939, C1)</li>
                 
             </ul>
              
-            <h2>Indications of age</h2>
+            <h2 class="my-1">Indications of age</h2>
             <ul>
                 
                 <li>26 (Miami Herald, March 24, 1939, C1)</li>
                 
             </ul>
              
-            <h2>Indications of legal name</h2>
+            <h2 class="my-1">Indications of legal name</h2>
             <ul>
                 
                 <li>Bob Johnson (Miami Herald, March 24, 1939, C1)</li>
@@ -540,10 +445,16 @@
             
         </section>
 
-        <section id="geoData">
+        <section id="geoData" class="my-3">
             
-            <h2>Venues</h2>
+            <h2 class="my-1">Venues</h2>
             <ul>
+                
+                <li><a href="/drag-data-browser/dataset/venue/village-grove-nut-club-new-york-ny/">Village Grove Nut Club (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/la-paloma-miami-fl/">La Paloma (Miami, FL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-top-hat-detroit-mi/">Club Top Hat (Detroit, MI)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/silver-dollar-tops-club-sacramento-ca/">Silver Dollar Tops Club (Sacramento, CA)</a></li>
                 
@@ -551,24 +462,18 @@
                 
                 <li><a href="/drag-data-browser/dataset/venue/club-frontenac-detroit-mi/">Club Frontenac (Detroit, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/club-top-hat-detroit-mi/">Club Top Hat (Detroit, MI)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/village-grove-nut-club-new-york-ny/">Village Grove Nut Club (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/la-paloma-miami-fl/">La Paloma (Miami, FL)</a></li>
-                
             </ul>
              
-            <h2>Cities</h2>
+            <h2 class="my-1">Cities</h2>
             <ul>
-                
-                <li>Miami, FL</li>
-                
-                <li>Detroit, MI</li>
                 
                 <li>Asbury Park, NJ</li>
                 
+                <li>Detroit, MI</li>
+                
                 <li>New York, NY</li>
+                
+                <li>Miami, FL</li>
                 
                 <li>Sacramento, CA</li>
                 
@@ -576,11 +481,11 @@
             
         </section>
 
-        <section id="images">
+        <section id="images" class="my-3">
             
         </section>
 
-        <section id="indications">
+        <section id="indications" class="my-3">
                
         </section>
     </div>
@@ -595,6 +500,7 @@
         
 <script>
     window.node_id = "bobby_johnson";
+    window.performerSlug = "bobby-johnson";
 </script>
 <script src="/drag-data-browser/includes/js/performer.js"></script>
 

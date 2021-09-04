@@ -21,7 +21,7 @@
 <div class="row">
     <div class="col-12 pb-5" id="viz-container">
         {% for padding in [0, 1, 2, 3, 4, 5] %}
-            <h2>Padding: {{ padding }}</h2>
+            <h2 class="mt-4">Padding: {{ padding }}</h2>
             <p class="lead">{{ data.leads[padding] }}</p>
             <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetPadding{{ padding }} role="button" aria-expanded="false" aria-controls="datasetPadding{{ padding }}" id="togglePadding{{ padding }}"><i></i> Show data</a>
             <div class="collapse" id="datasetPadding{{ padding }}">

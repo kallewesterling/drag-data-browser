@@ -308,128 +308,29 @@
 </nav>
 <div class="row">
     <div class="col-12">
-        <h1>Adrian Ames</h1>
+
+        <div id="timelineContainer" class="my-3">
+            <div class="text-uppercase text-muted small fw-bold user-select-none">Years in dataset</div>
+            <svg width="100%" height="40px" class="timeline" id="scale" data-processed="true">
+        </div>
+
+        <h1 class="my-3">Adrian Ames</h1>
 
         
-            <section id="clippingsExist">
-                <p>This performer exists in <a href="/drag-data-browser/dataset/clippings/">Kalle Westerling's clippings</a></p>
-            </section>
-        
 
-        <section id="viz">
-            <h2>Visualization of Adrian Ames's Connections</h2>
-            <p class="lead">The following is a visualization of the connections between Adrian Ames and every other performer in the dataset (14-day, filtered), with which they are connected. The graph also includes secondary-relations (that is, persons not directly connected to the performer).</p>
-            <svg id="network"></svg>
+        <section id="viz" class="row">
+            <div class="col-12 col-lg-4">
+                <h4>Visualization of Adrian Ames's Connections</h4>
+                <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Adrian Ames and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
+                <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
+            </div>
+            <div class="col-12 col-lg-8" id="vizContainer">
+                <svg id="network"></svg>
+            </div>
         </section>
 
-        <section id="yearsActive">
-            <h2>Years</h2>
-            <ul>
-                 
-                <li class="inactive">1900</li>
-                  
-                <li class="inactive">1901</li>
-                  
-                <li class="inactive">1902</li>
-                  
-                <li class="inactive">1903</li>
-                  
-                <li class="inactive">1904</li>
-                  
-                <li class="inactive">1905</li>
-                  
-                <li class="inactive">1906</li>
-                  
-                <li class="inactive">1907</li>
-                  
-                <li class="inactive">1908</li>
-                  
-                <li class="inactive">1909</li>
-                  
-                <li class="inactive">1910</li>
-                  
-                <li class="inactive">1911</li>
-                  
-                <li class="inactive">1912</li>
-                  
-                <li class="inactive">1913</li>
-                  
-                <li class="inactive">1914</li>
-                  
-                <li class="inactive">1915</li>
-                  
-                <li class="inactive">1916</li>
-                  
-                <li class="inactive">1917</li>
-                  
-                <li class="inactive">1918</li>
-                  
-                <li class="inactive">1919</li>
-                  
-                <li class="inactive">1920</li>
-                  
-                <li class="inactive">1921</li>
-                  
-                <li class="inactive">1922</li>
-                  
-                <li class="inactive">1923</li>
-                  
-                <li class="inactive">1924</li>
-                  
-                <li class="inactive">1925</li>
-                  
-                <li>1926</li>
-                  
-                <li>1927</li>
-                  
-                <li class="inactive">1928</li>
-                  
-                <li class="inactive">1929</li>
-                  
-                <li>1930</li>
-                  
-                <li>1931</li>
-                  
-                <li class="inactive">1932</li>
-                  
-                <li class="inactive">1933</li>
-                  
-                <li>1934</li>
-                  
-                <li>1935</li>
-                  
-                <li class="inactive">1936</li>
-                  
-                <li class="inactive">1937</li>
-                  
-                <li>1938</li>
-                  
-                <li class="inactive">1939</li>
-                  
-                <li class="inactive">1940</li>
-                  
-                <li>1941</li>
-                  
-                <li>1942</li>
-                  
-                <li class="inactive">1943</li>
-                  
-                <li class="inactive">1944</li>
-                  
-                <li class="inactive">1945</li>
-                  
-                <li class="inactive">1946</li>
-                  
-                <li>1947</li>
-                  
-                <li>1948</li>
-                  
-                <li>1949</li>
-                 
-            </ul>
-        </section>
-
-        <section id="comments accordion accordion-flush">
+        <section id="comments accordion accordion-flush my-3">
             
             <h2>Comments</h2>
             
@@ -598,23 +499,23 @@ Sept. 24, 1930, 68 corroborates that Mike Ames = Adrian Ames
              
         </section>
 
-        <section id="demoData">
+        <section id="demoData" class="my-3">
             
-            <h2>Indications of birth year</h2>
+            <h2 class="my-1">Indications of birth year</h2>
             <ul>
                 
                 <li>1913 (Hackensack NJ Record, September 13, 1934, 2 (488668361))</li>
                 
             </ul>
              
-            <h2>Indications of age</h2>
+            <h2 class="my-1">Indications of age</h2>
             <ul>
                 
                 <li>21 (Hackensack NJ Record, September 13, 1934, 2 (488668361))</li>
                 
             </ul>
              
-            <h2>Indications of legal name</h2>
+            <h2 class="my-1">Indications of legal name</h2>
             <ul>
                 
                 <li>Jerry Fields (Hackensack NJ Record, September 13, 1934, 2 (488668361))</li>
@@ -623,105 +524,105 @@ Sept. 24, 1930, 68 corroborates that Mike Ames = Adrian Ames
             
         </section>
 
-        <section id="geoData">
+        <section id="geoData" class="my-3">
             
-            <h2>Venues</h2>
+            <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/loew-s-plaza-theatre-new-york-ny/">Loew's Plaza Theatre (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/rainbow-room-philadelphia-pa/">Rainbow Room (Philadelphia, PA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/topper-cafe-delaware-nj/">Topper Cafe (Delaware, NJ)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/club-rendezvous-sacramento-ca/">Club Rendezvous (Sacramento, CA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/topper-cafe-philadelphia-pa/">Topper Cafe (Philadelphia, PA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/silver-dollar-tops-club-sacramento-ca/">Silver Dollar Tops Club (Sacramento, CA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/chateau-rochester-ny/">Chateau (Rochester, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/spruce-cafe-philadelphia-pa/">Spruce Cafe (Philadelphia, PA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/club-richman-new-york-ny/">Club Richman (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/airport-inn-new-york-ny/">Airport Inn (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/big-barn-miami-fl/">Big Barn (Miami, FL)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/richter-s-sheboygan-wi/">Richter's (Sheboygan, WI)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/music-hall-supper-club-portland-or/">Music Hall Supper Club (Portland, OR)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/florida-club-new-york-ny/">Florida Club (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/three-o-clock-club-palm-beach-fl/">Three O'Clock Club (Palm Beach, FL)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/tony-s-venetian-room-des-moines-ia/">Tony's Venetian Room (Des Moines, IA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/loew-s-theatre-new-york-ny/">Loew's Theatre (New York, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/blue-danube-buffalo-ny/">Blue Danube (Buffalo, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/havana-madrid-miami-fl/">Havana Madrid (Miami, FL)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/loew-s-state-new-york-ny/">Loew's State (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/club-flamingo-palm-beach-fl/">Club Flamingo (Palm Beach, FL)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/orpheum-los-angeles-ca/">Orpheum (Los Angeles, CA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/little-old-new-york-new-york-ny/">Little Old New York (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/loew-s-willard-theatre-new-york-ny/">Loew's Willard Theatre (New York, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/persian-palms-minneapolis-mn/">Persian Palms (Minneapolis, MN)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/stork-club-shreveport-la/">Stork Club (Shreveport, LA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/loew-s-theatre-new-york-ny/">Loew's Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/big-barn-miami-fl/">Big Barn (Miami, FL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/loew-s-willard-theatre-new-york-ny/">Loew's Willard Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/florida-club-new-york-ny/">Florida Club (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/little-old-new-york-new-york-ny/">Little Old New York (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/spruce-cafe-philadelphia-pa/">Spruce Cafe (Philadelphia, PA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/airport-inn-new-york-ny/">Airport Inn (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/music-hall-supper-club-portland-or/">Music Hall Supper Club (Portland, OR)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/silver-dollar-tops-club-sacramento-ca/">Silver Dollar Tops Club (Sacramento, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/richter-s-sheboygan-wi/">Richter's (Sheboygan, WI)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-flamingo-palm-beach-fl/">Club Flamingo (Palm Beach, FL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/havana-madrid-miami-fl/">Havana Madrid (Miami, FL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/three-o-clock-club-palm-beach-fl/">Three O'Clock Club (Palm Beach, FL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-richman-new-york-ny/">Club Richman (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/topper-cafe-delaware-nj/">Topper Cafe (Delaware, NJ)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/tony-s-venetian-room-des-moines-ia/">Tony's Venetian Room (Des Moines, IA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/topper-cafe-philadelphia-pa/">Topper Cafe (Philadelphia, PA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/chateau-rochester-ny/">Chateau (Rochester, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/orpheum-los-angeles-ca/">Orpheum (Los Angeles, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/loew-s-plaza-theatre-new-york-ny/">Loew's Plaza Theatre (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-rendezvous-sacramento-ca/">Club Rendezvous (Sacramento, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/loew-s-state-new-york-ny/">Loew's State (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/rainbow-room-philadelphia-pa/">Rainbow Room (Philadelphia, PA)</a></li>
                 
             </ul>
              
-            <h2>Cities</h2>
+            <h2 class="my-1">Cities</h2>
             <ul>
-                
-                <li>Minneapolis, MN</li>
-                
-                <li>Shreveport, LA</li>
-                
-                <li>Miami, FL</li>
-                
-                <li>Des Moines, IA</li>
-                
-                <li>Sheboygan, WI</li>
-                
-                <li>Rochester, NY</li>
-                
-                <li>Palm Beach, FL</li>
-                
-                <li>Philadelphia, PA</li>
-                
-                <li>Portland, OR</li>
                 
                 <li>Los Angeles, CA</li>
                 
-                <li>Delaware, NJ</li>
+                <li>Portland, OR</li>
                 
-                <li>New York, NY</li>
+                <li>Minneapolis, MN</li>
+                
+                <li>Rochester, NY</li>
                 
                 <li>Buffalo, NY</li>
                 
+                <li>Des Moines, IA</li>
+                
+                <li>Philadelphia, PA</li>
+                
+                <li>New York, NY</li>
+                
+                <li>Palm Beach, FL</li>
+                
+                <li>Delaware, NJ</li>
+                
                 <li>Sacramento, CA</li>
+                
+                <li>Miami, FL</li>
+                
+                <li>Shreveport, LA</li>
+                
+                <li>Sheboygan, WI</li>
                 
             </ul>
             
         </section>
 
-        <section id="images">
+        <section id="images" class="my-3">
             
         </section>
 
-        <section id="indications">
+        <section id="indications" class="my-3">
                
         </section>
     </div>
@@ -736,6 +637,7 @@ Sept. 24, 1930, 68 corroborates that Mike Ames = Adrian Ames
         
 <script>
     window.node_id = "adrian_ames";
+    window.performerSlug = "adrian-ames";
 </script>
 <script src="/drag-data-browser/includes/js/performer.js"></script>
 

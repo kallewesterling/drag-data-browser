@@ -308,128 +308,29 @@
 </nav>
 <div class="row">
     <div class="col-12">
-        <h1>Lyle Page</h1>
+
+        <div id="timelineContainer" class="my-3">
+            <div class="text-uppercase text-muted small fw-bold user-select-none">Years in dataset</div>
+            <svg width="100%" height="40px" class="timeline" id="scale" data-processed="true">
+        </div>
+
+        <h1 class="my-3">Lyle Page</h1>
 
         
-            <section id="clippingsExist">
-                <p>This performer exists in <a href="/drag-data-browser/dataset/clippings/">Kalle Westerling's clippings</a></p>
-            </section>
-        
 
-        <section id="viz">
-            <h2>Visualization of Lyle Page's Connections</h2>
-            <p class="lead">The following is a visualization of the connections between Lyle Page and every other performer in the dataset (14-day, filtered), with which they are connected. The graph also includes secondary-relations (that is, persons not directly connected to the performer).</p>
-            <svg id="network"></svg>
+        <section id="viz" class="row">
+            <div class="col-12 col-lg-4">
+                <h4>Visualization of Lyle Page's Connections</h4>
+                <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Lyle Page and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
+                <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
+            </div>
+            <div class="col-12 col-lg-8" id="vizContainer">
+                <svg id="network"></svg>
+            </div>
         </section>
 
-        <section id="yearsActive">
-            <h2>Years</h2>
-            <ul>
-                 
-                <li class="inactive">1900</li>
-                  
-                <li class="inactive">1901</li>
-                  
-                <li class="inactive">1902</li>
-                  
-                <li class="inactive">1903</li>
-                  
-                <li class="inactive">1904</li>
-                  
-                <li class="inactive">1905</li>
-                  
-                <li class="inactive">1906</li>
-                  
-                <li class="inactive">1907</li>
-                  
-                <li class="inactive">1908</li>
-                  
-                <li class="inactive">1909</li>
-                  
-                <li class="inactive">1910</li>
-                  
-                <li class="inactive">1911</li>
-                  
-                <li class="inactive">1912</li>
-                  
-                <li class="inactive">1913</li>
-                  
-                <li class="inactive">1914</li>
-                  
-                <li class="inactive">1915</li>
-                  
-                <li class="inactive">1916</li>
-                  
-                <li class="inactive">1917</li>
-                  
-                <li class="inactive">1918</li>
-                  
-                <li class="inactive">1919</li>
-                  
-                <li class="inactive">1920</li>
-                  
-                <li class="inactive">1921</li>
-                  
-                <li class="inactive">1922</li>
-                  
-                <li class="inactive">1923</li>
-                  
-                <li class="inactive">1924</li>
-                  
-                <li class="inactive">1925</li>
-                  
-                <li class="inactive">1926</li>
-                  
-                <li class="inactive">1927</li>
-                  
-                <li class="inactive">1928</li>
-                  
-                <li class="inactive">1929</li>
-                  
-                <li class="inactive">1930</li>
-                  
-                <li class="inactive">1931</li>
-                  
-                <li class="inactive">1932</li>
-                  
-                <li>1933</li>
-                  
-                <li>1934</li>
-                  
-                <li>1935</li>
-                  
-                <li>1936</li>
-                  
-                <li>1937</li>
-                  
-                <li>1938</li>
-                  
-                <li class="inactive">1939</li>
-                  
-                <li class="inactive">1940</li>
-                  
-                <li class="inactive">1941</li>
-                  
-                <li class="inactive">1942</li>
-                  
-                <li class="inactive">1943</li>
-                  
-                <li class="inactive">1944</li>
-                  
-                <li class="inactive">1945</li>
-                  
-                <li class="inactive">1946</li>
-                  
-                <li class="inactive">1947</li>
-                  
-                <li class="inactive">1948</li>
-                  
-                <li class="inactive">1949</li>
-                 
-            </ul>
-        </section>
-
-        <section id="comments accordion accordion-flush">
+        <section id="comments accordion accordion-flush my-3">
             
             <h2>Comments</h2>
             
@@ -663,9 +564,9 @@
              
         </section>
 
-        <section id="demoData">
+        <section id="demoData" class="my-3">
             
-            <h2>Indications of birth year</h2>
+            <h2 class="my-1">Indications of birth year</h2>
             <ul>
                 
                 <li>1910 (Schenectady NY Gazette, November 27, 1934, page unknown)</li>
@@ -674,7 +575,7 @@
                 
             </ul>
              
-            <h2>Indications of age</h2>
+            <h2 class="my-1">Indications of age</h2>
             <ul>
                 
                 <li>24 (Schenectady NY Gazette, November 27, 1934, page unknown)</li>
@@ -683,7 +584,7 @@
                 
             </ul>
              
-            <h2>Indications of legal name</h2>
+            <h2 class="my-1">Indications of legal name</h2>
             <ul>
                 
                 <li>Lyle Page (Schenectady NY Gazette, November 27, 1934, page unknown)</li>
@@ -700,89 +601,89 @@
             
         </section>
 
-        <section id="geoData">
+        <section id="geoData" class="my-3">
             
-            <h2>Venues</h2>
+            <h2 class="my-1">Venues</h2>
             <ul>
-                
-                <li><a href="/drag-data-browser/dataset/venue/cotton-club-sikeston-mo/">Cotton Club (Sikeston, MO)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/benson-royal-restaurant-new-york-ny/">Benson Royal Restaurant (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/kaufman-s-grill-new-york-ny/">Kaufman's Grill (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/triangle-gardens-peoria-il/">Triangle Gardens (Peoria, IL)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/club-royale-west-new-york-nj/">Club Royale (West New York, NJ)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/k9-club-chicago-il/">K9 Club (Chicago, IL)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/torch-club-chicago-il/">Torch Club (Chicago, IL)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/auto-inn-plattsburgh-ny/">Auto Inn (Plattsburgh, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/eldorado-paramus-nj/">Eldorado (Paramus, NJ)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/knolls-inn-wappingers-falls-ny/">Knolls Inn (Wappingers Falls, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/echo-tavern-albany-ny/">Echo Tavern (Albany, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/carteret-club-asbury-park-nj/">Carteret Club (Asbury Park, NJ)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/adirondack-grill-saranac-lake-ny/">Adirondack Grill (Saranac Lake, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/cat-and-fiddle-cincinnati-oh/">Cat and Fiddle (Cincinnati, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/k9-club-chicago-il/">K9 Club (Chicago, IL)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/lakeview-golf-and-country-club-paducah-ky/">Lakeview Golf and Country Club (Paducah, KY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/elm-lodge-syracuse-ny/">Elm Lodge (Syracuse, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/eldorado-paramus-nj/">Eldorado (Paramus, NJ)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/echo-tavern-albany-ny/">Echo Tavern (Albany, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-royale-west-new-york-nj/">Club Royale (West New York, NJ)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/triangle-gardens-peoria-il/">Triangle Gardens (Peoria, IL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/cotton-club-sikeston-mo/">Cotton Club (Sikeston, MO)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/cat-and-fiddle-cincinnati-oh/">Cat and Fiddle (Cincinnati, OH)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/carteret-club-asbury-park-nj/">Carteret Club (Asbury Park, NJ)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/circus-club-bloomington-il/">Circus Club (Bloomington, IL)</a></li>
                 
+                <li><a href="/drag-data-browser/dataset/venue/torch-club-chicago-il/">Torch Club (Chicago, IL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/benson-royal-restaurant-new-york-ny/">Benson Royal Restaurant (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/elm-lodge-syracuse-ny/">Elm Lodge (Syracuse, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/knolls-inn-wappingers-falls-ny/">Knolls Inn (Wappingers Falls, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/adirondack-grill-saranac-lake-ny/">Adirondack Grill (Saranac Lake, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/kaufman-s-grill-new-york-ny/">Kaufman's Grill (New York, NY)</a></li>
+                
             </ul>
              
-            <h2>Cities</h2>
+            <h2 class="my-1">Cities</h2>
             <ul>
+                
+                <li>Cincinnati, OH</li>
+                
+                <li>Chicago, IL</li>
+                
+                <li>Albany, NY</li>
+                
+                <li>Wappingers Falls, NY</li>
                 
                 <li>Paducah, KY</li>
                 
                 <li>Sikeston, MO</li>
                 
-                <li>Cincinnati, OH</li>
-                
-                <li>Peoria, IL</li>
-                
-                <li>Chicago, IL</li>
-                
-                <li>Bloomington, IL</li>
+                <li>Syracuse, NY</li>
                 
                 <li>Asbury Park, NJ</li>
-                
-                <li>Plattsburgh, NY</li>
                 
                 <li>Paramus, NJ</li>
                 
                 <li>New York, NY</li>
                 
+                <li>West New York, NJ</li>
+                
                 <li>Saranac Lake, NY</li>
                 
-                <li>Albany, NY</li>
+                <li>Plattsburgh, NY</li>
                 
-                <li>Syracuse, NY</li>
+                <li>Bloomington, IL</li>
                 
-                <li>Wappingers Falls, NY</li>
-                
-                <li>West New York, NJ</li>
+                <li>Peoria, IL</li>
                 
             </ul>
             
         </section>
 
-        <section id="images">
+        <section id="images" class="my-3">
             
         </section>
 
-        <section id="indications">
+        <section id="indications" class="my-3">
                
         </section>
     </div>
@@ -797,6 +698,7 @@
         
 <script>
     window.node_id = "lyle_page";
+    window.performerSlug = "lyle-page";
 </script>
 <script src="/drag-data-browser/includes/js/performer.js"></script>
 

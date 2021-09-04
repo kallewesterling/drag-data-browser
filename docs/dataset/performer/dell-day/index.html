@@ -308,206 +308,107 @@
 </nav>
 <div class="row">
     <div class="col-12">
-        <h1>Dell Day</h1>
+
+        <div id="timelineContainer" class="my-3">
+            <div class="text-uppercase text-muted small fw-bold user-select-none">Years in dataset</div>
+            <svg width="100%" height="40px" class="timeline" id="scale" data-processed="true">
+        </div>
+
+        <h1 class="my-3">Dell Day</h1>
 
         
-            <section id="clippingsExist">
-                <p>This performer exists in <a href="/drag-data-browser/dataset/clippings/">Kalle Westerling's clippings</a></p>
-            </section>
-        
 
-        <section id="viz">
-            <h2>Visualization of Dell Day's Connections</h2>
-            <p class="lead">The following is a visualization of the connections between Dell Day and every other performer in the dataset (14-day, filtered), with which they are connected. The graph also includes secondary-relations (that is, persons not directly connected to the performer).</p>
-            <svg id="network"></svg>
+        <section id="viz" class="row">
+            <div class="col-12 col-lg-4">
+                <h4>Visualization of Dell Day's Connections</h4>
+                <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Dell Day and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
+                <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
+            </div>
+            <div class="col-12 col-lg-8" id="vizContainer">
+                <svg id="network"></svg>
+            </div>
         </section>
 
-        <section id="yearsActive">
-            <h2>Years</h2>
-            <ul>
-                 
-                <li class="inactive">1900</li>
-                  
-                <li class="inactive">1901</li>
-                  
-                <li class="inactive">1902</li>
-                  
-                <li class="inactive">1903</li>
-                  
-                <li class="inactive">1904</li>
-                  
-                <li class="inactive">1905</li>
-                  
-                <li class="inactive">1906</li>
-                  
-                <li class="inactive">1907</li>
-                  
-                <li class="inactive">1908</li>
-                  
-                <li class="inactive">1909</li>
-                  
-                <li class="inactive">1910</li>
-                  
-                <li class="inactive">1911</li>
-                  
-                <li class="inactive">1912</li>
-                  
-                <li class="inactive">1913</li>
-                  
-                <li class="inactive">1914</li>
-                  
-                <li class="inactive">1915</li>
-                  
-                <li class="inactive">1916</li>
-                  
-                <li class="inactive">1917</li>
-                  
-                <li class="inactive">1918</li>
-                  
-                <li class="inactive">1919</li>
-                  
-                <li class="inactive">1920</li>
-                  
-                <li class="inactive">1921</li>
-                  
-                <li class="inactive">1922</li>
-                  
-                <li class="inactive">1923</li>
-                  
-                <li class="inactive">1924</li>
-                  
-                <li class="inactive">1925</li>
-                  
-                <li>1926</li>
-                  
-                <li>1927</li>
-                  
-                <li>1928</li>
-                  
-                <li class="inactive">1929</li>
-                  
-                <li class="inactive">1930</li>
-                  
-                <li class="inactive">1931</li>
-                  
-                <li class="inactive">1932</li>
-                  
-                <li class="inactive">1933</li>
-                  
-                <li class="inactive">1934</li>
-                  
-                <li class="inactive">1935</li>
-                  
-                <li class="inactive">1936</li>
-                  
-                <li class="inactive">1937</li>
-                  
-                <li class="inactive">1938</li>
-                  
-                <li class="inactive">1939</li>
-                  
-                <li class="inactive">1940</li>
-                  
-                <li class="inactive">1941</li>
-                  
-                <li class="inactive">1942</li>
-                  
-                <li class="inactive">1943</li>
-                  
-                <li class="inactive">1944</li>
-                  
-                <li class="inactive">1945</li>
-                  
-                <li class="inactive">1946</li>
-                  
-                <li class="inactive">1947</li>
-                  
-                <li class="inactive">1948</li>
-                  
-                <li class="inactive">1949</li>
-                 
-            </ul>
-        </section>
-
-        <section id="comments accordion accordion-flush">
+        <section id="comments accordion accordion-flush my-3">
             
         </section>
 
-        <section id="demoData">
+        <section id="demoData" class="my-3">
               
         </section>
 
-        <section id="geoData">
+        <section id="geoData" class="my-3">
             
-            <h2>Venues</h2>
+            <h2 class="my-1">Venues</h2>
             <ul>
-                
-                <li><a href="/drag-data-browser/dataset/venue/california-theatre-santa-rosa-ca/">California Theatre (Santa Rosa, CA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/orpheum-theatre-twin-falls-id/">Orpheum Theatre (Twin Falls, ID)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/carmel-theatre-los-angeles-ca/">Carmel Theatre (Los Angeles, CA)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/rialto-theatre-ironwood-mi/">Rialto Theatre (Ironwood, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/arabian-gardens-la-grande-or/">Arabian Gardens (La Grande, OR)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/strand-theatre-emporia-ks/">Strand Theatre (Emporia, KS)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/mahaiwe-theatre-great-barrington-ma/">Mahaiwe Theatre (Great Barrington, MA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/nile-theatre-bakersfield-ca/">Nile Theatre (Bakersfield, CA)</a></li>
-                
                 <li><a href="/drag-data-browser/dataset/venue/bligh-theatre-salem-or/">Bligh Theatre (Salem, OR)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/pine-tree-theatre-klamath-falls-or/">Pine Tree Theatre (Klamath Falls, OR)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/orpheum-theatre-twin-falls-id/">Orpheum Theatre (Twin Falls, ID)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/arabian-gardens-la-grande-or/">Arabian Gardens (La Grande, OR)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/california-theatre-petaluma-ca/">California Theatre (Petaluma, CA)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/west-coast-walker-theatre-santa-ana-ca/">West Coast-Walker Theatre (Santa Ana, CA)</a></li>
                 
+                <li><a href="/drag-data-browser/dataset/venue/carmel-theatre-los-angeles-ca/">Carmel Theatre (Los Angeles, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/mahaiwe-theatre-great-barrington-ma/">Mahaiwe Theatre (Great Barrington, MA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/strand-theatre-emporia-ks/">Strand Theatre (Emporia, KS)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/california-theatre-santa-rosa-ca/">California Theatre (Santa Rosa, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/pine-tree-theatre-klamath-falls-or/">Pine Tree Theatre (Klamath Falls, OR)</a></li>
+                
                 <li><a href="/drag-data-browser/dataset/venue/empress-theatre-fort-collins-co/">Empress Theatre (Fort Collins, CO)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/nile-theatre-bakersfield-ca/">Nile Theatre (Bakersfield, CA)</a></li>
                 
             </ul>
              
-            <h2>Cities</h2>
+            <h2 class="my-1">Cities</h2>
             <ul>
                 
                 <li>Salem, OR</li>
                 
-                <li>Great Barrington, MA</li>
-                
-                <li>Fort Collins, CO</li>
-                
-                <li>Twin Falls, ID</li>
-                
-                <li>Ironwood, MI</li>
-                
-                <li>Klamath Falls, OR</li>
+                <li>La Grande, OR</li>
                 
                 <li>Los Angeles, CA</li>
                 
-                <li>Santa Rosa, CA</li>
+                <li>Bakersfield, CA</li>
                 
-                <li>Emporia, KS</li>
+                <li>Fort Collins, CO</li>
+                
+                <li>Ironwood, MI</li>
                 
                 <li>Petaluma, CA</li>
                 
-                <li>Bakersfield, CA</li>
+                <li>Great Barrington, MA</li>
+                
+                <li>Klamath Falls, OR</li>
+                
+                <li>Twin Falls, ID</li>
+                
+                <li>Emporia, KS</li>
                 
                 <li>Santa Ana, CA</li>
                 
-                <li>La Grande, OR</li>
+                <li>Santa Rosa, CA</li>
                 
             </ul>
             
         </section>
 
-        <section id="images">
+        <section id="images" class="my-3">
             
         </section>
 
-        <section id="indications">
+        <section id="indications" class="my-3">
                
         </section>
     </div>
@@ -522,6 +423,7 @@
         
 <script>
     window.node_id = "dell_day";
+    window.performerSlug = "dell-day";
 </script>
 <script src="/drag-data-browser/includes/js/performer.js"></script>
 

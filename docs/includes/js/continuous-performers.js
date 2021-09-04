@@ -69,8 +69,7 @@ const searchPerformer = (name) => {
 const searchPerformerAcrossAll = (name) => {
     let found = searchPerformer(name);
     PADDINGS.forEach(padding=>{
-        // console.log();
-        markFound(found[`padding${padding}`], padding);
+        markFound(found[`padding${padding}`], padding, name);
     });
 }
 
@@ -78,12 +77,12 @@ const getDetailData = (padding, year, month) => {
     return store['dataDetail'][`padding${padding}`][year][month].sort();
 }
 
-const showPerformers = (padding, dataPoint) => {
+const showPerformers = (padding, dataPoint, highlightName) => {
     let performers = getDetailData(padding, dataPoint.year, dataPoint.month);
     d3.selectAll(`.performer-lists`).classed('d-none', true);
     let html = "";
     performers.forEach(performer => {
-        if (window.searchName && window.searchName === performer) {
+        if (highlightName === performer) {
             html += `<span class="d-inline-block px-2 py-1 rounded-3 bg-danger m-1"><a class="text-white text-decoration-none" href="?name=${performer}">${performer}</a></span>`;
         } else {
             html += `<span class="d-inline-block px-2 py-1 rounded-3 bg-dark m-1"><a class="text-white text-decoration-none" href="?name=${performer}">${performer}</a></span>`;
@@ -94,12 +93,13 @@ const showPerformers = (padding, dataPoint) => {
 }
 
 const mouseClick = (loc, event, snap=true, padding) => {
+    let highlightName = d3.select(`svg#padding${padding}`).attr('data-performer')
     let data = store.data['padding' + padding];
     let [xLoc, yLoc] = loc;
     let xScale = getScale('x', padding);
     let datePoint = xScale.invert(xLoc);
     let dataPoint = reverseData(data, datePoint);
-    showPerformers(padding, dataPoint);
+    showPerformers(padding, dataPoint, highlightName);
 }
 
 const reverseData = (localData, datePoint) => {
@@ -563,7 +563,7 @@ const setupInteractivity = (padding) => {
         .on('mouseout', () => mouseEvent(false, padding))
         .on('mouseover', () => mouseEvent(true, padding))
         .on('mousemove', (evt) => mouseMove(d3.pointer(evt), evt, true, padding))
-        .on('mousedown', (evt) => {console.log('mousedown')})
+        // .on('mousedown', (evt) => {console.log('mousedown')})
         .on('click', (evt) => mouseClick(d3.pointer(evt), evt, true, padding));
 }
 
@@ -608,7 +608,7 @@ const addDataToTables = (padding) => {
 
 }
 
-const markFound = (found, paddings, clear_first=true) => {
+const markFound = (found, paddings, performer_name, clear_first=true) => {
     if (typeof paddings === 'number') {
         paddings = [paddings];
     }
@@ -624,6 +624,7 @@ const markFound = (found, paddings, clear_first=true) => {
             d3.select(`svg#padding${padding} g.circles circle#${month}-${year}`).classed('selected', true).transition().duration(1000).attr('r', 5);
         })
         d3.selectAll(`svg#padding${padding} .foundPerformer`).classed('hidden', false);
+        d3.selectAll(`svg#padding${padding}`).attr('data-performer', performer_name)
     })
 }
 
@@ -654,7 +655,7 @@ const addOptions = (padding) => {
             d3.selectAll(`svg#padding${padding} g.circles circle`).classed('selected', false).attr('r', STANDARD_CIRCLE);
         } else {
             let found = searchPerformer(performerName)[`padding${padding}`];
-            markFound(found, padding);
+            markFound(found, padding, performerName);
             filterAll.classed('d-none', false);
             d3.select(`#padding${padding}-filter-all a`).attr('href', window.location.pathname + '?name=' + performerName);
         }

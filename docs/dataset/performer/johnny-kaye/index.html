@@ -308,128 +308,29 @@
 </nav>
 <div class="row">
     <div class="col-12">
-        <h1>Johnny Kaye</h1>
+
+        <div id="timelineContainer" class="my-3">
+            <div class="text-uppercase text-muted small fw-bold user-select-none">Years in dataset</div>
+            <svg width="100%" height="40px" class="timeline" id="scale" data-processed="true">
+        </div>
+
+        <h1 class="my-3">Johnny Kaye</h1>
 
         
-            <section id="clippingsExist">
-                <p>This performer exists in <a href="/drag-data-browser/dataset/clippings/">Kalle Westerling's clippings</a></p>
-            </section>
-        
 
-        <section id="viz">
-            <h2>Visualization of Johnny Kaye's Connections</h2>
-            <p class="lead">The following is a visualization of the connections between Johnny Kaye and every other performer in the dataset (14-day, filtered), with which they are connected. The graph also includes secondary-relations (that is, persons not directly connected to the performer).</p>
-            <svg id="network"></svg>
+        <section id="viz" class="row">
+            <div class="col-12 col-lg-4">
+                <h4>Visualization of Johnny Kaye's Connections</h4>
+                <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Johnny Kaye and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
+                <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
+            </div>
+            <div class="col-12 col-lg-8" id="vizContainer">
+                <svg id="network"></svg>
+            </div>
         </section>
 
-        <section id="yearsActive">
-            <h2>Years</h2>
-            <ul>
-                 
-                <li class="inactive">1900</li>
-                  
-                <li class="inactive">1901</li>
-                  
-                <li class="inactive">1902</li>
-                  
-                <li class="inactive">1903</li>
-                  
-                <li class="inactive">1904</li>
-                  
-                <li class="inactive">1905</li>
-                  
-                <li class="inactive">1906</li>
-                  
-                <li class="inactive">1907</li>
-                  
-                <li class="inactive">1908</li>
-                  
-                <li class="inactive">1909</li>
-                  
-                <li class="inactive">1910</li>
-                  
-                <li class="inactive">1911</li>
-                  
-                <li class="inactive">1912</li>
-                  
-                <li class="inactive">1913</li>
-                  
-                <li class="inactive">1914</li>
-                  
-                <li class="inactive">1915</li>
-                  
-                <li class="inactive">1916</li>
-                  
-                <li class="inactive">1917</li>
-                  
-                <li class="inactive">1918</li>
-                  
-                <li class="inactive">1919</li>
-                  
-                <li class="inactive">1920</li>
-                  
-                <li class="inactive">1921</li>
-                  
-                <li class="inactive">1922</li>
-                  
-                <li class="inactive">1923</li>
-                  
-                <li class="inactive">1924</li>
-                  
-                <li class="inactive">1925</li>
-                  
-                <li class="inactive">1926</li>
-                  
-                <li class="inactive">1927</li>
-                  
-                <li class="inactive">1928</li>
-                  
-                <li class="inactive">1929</li>
-                  
-                <li class="inactive">1930</li>
-                  
-                <li class="inactive">1931</li>
-                  
-                <li class="inactive">1932</li>
-                  
-                <li class="inactive">1933</li>
-                  
-                <li>1934</li>
-                  
-                <li>1935</li>
-                  
-                <li>1936</li>
-                  
-                <li>1937</li>
-                  
-                <li>1938</li>
-                  
-                <li class="inactive">1939</li>
-                  
-                <li class="inactive">1940</li>
-                  
-                <li class="inactive">1941</li>
-                  
-                <li class="inactive">1942</li>
-                  
-                <li class="inactive">1943</li>
-                  
-                <li class="inactive">1944</li>
-                  
-                <li class="inactive">1945</li>
-                  
-                <li class="inactive">1946</li>
-                  
-                <li class="inactive">1947</li>
-                  
-                <li class="inactive">1948</li>
-                  
-                <li class="inactive">1949</li>
-                 
-            </ul>
-        </section>
-
-        <section id="comments accordion accordion-flush">
+        <section id="comments accordion accordion-flush my-3">
             
             <h2>Comments</h2>
             
@@ -663,9 +564,9 @@
              
         </section>
 
-        <section id="demoData">
+        <section id="demoData" class="my-3">
               
-            <h2>Indications of legal name</h2>
+            <h2 class="my-1">Indications of legal name</h2>
             <ul>
                 
                 <li>John Tolopka (Lowville Journal and Republican, February 7, 1935, 5)</li>
@@ -682,113 +583,113 @@
             
         </section>
 
-        <section id="geoData">
+        <section id="geoData" class="my-3">
             
-            <h2>Venues</h2>
+            <h2 class="my-1">Venues</h2>
             <ul>
-                
-                <li><a href="/drag-data-browser/dataset/venue/frolic-inn-los-angeles-ca/">Frolic Inn (Los Angeles, CA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/wonder-bar-new-york-ny/">Wonder Bar (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/village-grove-nut-club-new-york-ny/">Village Grove Nut Club (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/nite-spot-san-antonio-tx/">Nite Spot (San Antonio, TX)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/wagon-wheel-houston-tx/">Wagon Wheel (Houston, TX)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/estates-casino-atlantic-city-nj/">Estates Casino (Atlantic City, NJ)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/plaza-cafe-at-the-plaza-villa-pittsburgh-pa/">Plaza Cafe (at the Plaza Villa) (Pittsburgh, PA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/club-richman-new-york-ny/">Club Richman (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/dude-ranch-washington-dc/">Dude Ranch (Washington DC)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/spinning-wheel-kansas-city-mo/">Spinning Wheel (Kansas City, MO)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/little-club-utica-ny/">Little Club (Utica, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/wonder-bar-nassau-ny/">Wonder Bar (Nassau, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/club-candee-syracuse-ny/">Club Candee (Syracuse, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/del-monico-s-syracuse-ny/">Del Monico's (Syracuse, NY)</a></li>
-                
                 <li><a href="/drag-data-browser/dataset/venue/echo-tavern-albany-ny/">Echo Tavern (Albany, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/band-box-syracuse-ny/">Band Box (Syracuse, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/blue-danube-buffalo-ny/">Blue Danube (Buffalo, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/torch-club-massillon-oh/">Torch Club (Massillon, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/dude-ranch-washington-dc/">Dude Ranch (Washington DC)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/dog-house-reno-nv/">Dog House (Reno, NV)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/estates-casino-atlantic-city-nj/">Estates Casino (Atlantic City, NJ)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/club-washington-east-liverpool-oh/">Club Washington (East Liverpool, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/village-grove-nut-club-new-york-ny/">Village Grove Nut Club (New York, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/forrest-inn-hazleton-pa/">Forrest Inn (Hazleton, PA)</a></li>
                 
+                <li><a href="/drag-data-browser/dataset/venue/spinning-wheel-kansas-city-mo/">Spinning Wheel (Kansas City, MO)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/del-monico-s-syracuse-ny/">Del Monico's (Syracuse, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/nite-spot-san-antonio-tx/">Nite Spot (San Antonio, TX)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/band-box-syracuse-ny/">Band Box (Syracuse, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-patio-buffalo-ny/">Club Patio (Buffalo, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/wonder-bar-nassau-ny/">Wonder Bar (Nassau, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-richman-new-york-ny/">Club Richman (New York, NY)</a></li>
+                
                 <li><a href="/drag-data-browser/dataset/venue/spinning-wheel-seattle-wa/">Spinning Wheel (Seattle, WA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/frolic-inn-los-angeles-ca/">Frolic Inn (Los Angeles, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-candee-syracuse-ny/">Club Candee (Syracuse, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-washington-east-liverpool-oh/">Club Washington (East Liverpool, OH)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/wagon-wheel-houston-tx/">Wagon Wheel (Houston, TX)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/ver-s-restaurant-grill-lowville-ny/">Ver's Restaurant & Grill (Lowville, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/club-patio-buffalo-ny/">Club Patio (Buffalo, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/torch-club-massillon-oh/">Torch Club (Massillon, OH)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/wonder-bar-new-york-ny/">Wonder Bar (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/plaza-cafe-at-the-plaza-villa-pittsburgh-pa/">Plaza Cafe (at the Plaza Villa) (Pittsburgh, PA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/dog-house-reno-nv/">Dog House (Reno, NV)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/elm-lodge-syracuse-ny/">Elm Lodge (Syracuse, NY)</a></li>
                 
             </ul>
              
-            <h2>Cities</h2>
+            <h2 class="my-1">Cities</h2>
             <ul>
-                
-                <li>Washington DC</li>
-                
-                <li>Atlantic City, NJ</li>
-                
-                <li>Pittsburgh, PA</li>
-                
-                <li>New York, NY</li>
                 
                 <li>Buffalo, NY</li>
                 
-                <li>Lowville, NY</li>
-                
-                <li>Hazleton, PA</li>
-                
-                <li>San Antonio, TX</li>
-                
-                <li>Los Angeles, CA</li>
-                
-                <li>Seattle, WA</li>
-                
-                <li>Massillon, OH</li>
-                
-                <li>Kansas City, MO</li>
-                
                 <li>Nassau, NY</li>
                 
-                <li>Syracuse, NY</li>
+                <li>New York, NY</li>
+                
+                <li>Pittsburgh, PA</li>
                 
                 <li>Utica, NY</li>
                 
+                <li>Houston, TX</li>
+                
                 <li>Reno, NV</li>
+                
+                <li>Syracuse, NY</li>
+                
+                <li>Massillon, OH</li>
+                
+                <li>Atlantic City, NJ</li>
+                
+                <li>Seattle, WA</li>
+                
+                <li>San Antonio, TX</li>
+                
+                <li>Lowville, NY</li>
+                
+                <li>Washington DC</li>
+                
+                <li>Kansas City, MO</li>
+                
+                <li>Los Angeles, CA</li>
                 
                 <li>Albany, NY</li>
                 
-                <li>East Liverpool, OH</li>
+                <li>Hazleton, PA</li>
                 
-                <li>Houston, TX</li>
+                <li>East Liverpool, OH</li>
                 
             </ul>
             
         </section>
 
-        <section id="images">
+        <section id="images" class="my-3">
             
         </section>
 
-        <section id="indications">
+        <section id="indications" class="my-3">
                
         </section>
     </div>
@@ -803,6 +704,7 @@
         
 <script>
     window.node_id = "johnny_kaye";
+    window.performerSlug = "johnny-kaye";
 </script>
 <script src="/drag-data-browser/includes/js/performer.js"></script>
 

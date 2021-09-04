@@ -1,7 +1,7 @@
 const svg = d3.select('svg#network');
 
-const width = getComputedStyle(d3.select("#content .container").node()).width.replace('px', '');
-const height = 400;
+const width = getComputedStyle(d3.select("#vizContainer").node()).width.replace('px', '');
+const height = 600;
 
 const simulation = d3.forceSimulation();
 
@@ -117,3 +117,72 @@ if (window.node_id) {
         }
     });
 }
+
+
+getCurrentWidth = () => document.querySelector('#timelineContainer').getBoundingClientRect().width;
+
+let getCurrentXScale = () => {
+    dataExtent = [d3.min(Object.values(data))[0], d3.max(Object.values(data))[0]];
+    return d3.scaleTime().range([20, getCurrentWidth()]).domain(dataExtent)
+}
+
+const data = {};
+const slugToPerformer = {};
+const performerToSlug = {};
+performer = undefined;
+slug = undefined;
+artistData = undefined;
+
+Promise.all([
+    d3.json(DATA_DIR + 'years-active.json'),
+    d3.json(DATA_DIR + 'performer-slugs.json'),
+]).then((files)=>{
+    _data = files[0]
+    Object.keys(_data).forEach(k=>{
+        data[k] = _data[k];
+    });
+
+    // performer slugs
+    _data = files[1]
+    Object.keys(_data).forEach(slug=>{
+        slugToPerformer[slug] = _data[slug]
+        performerToSlug[_data[slug]] = slug
+    });
+}).then(() => {
+    performer = slugToPerformer[performerSlug];
+    slug = performerToSlug[performer]
+    artistData = data[performer]
+    showScale();
+});
+
+showScale = () => {
+    let svg = d3.select('svg#scale')
+    scaleHeight = 40;
+    x = getCurrentXScale();
+
+    circle = svg.selectAll('circle')
+        .data(d3.range(dataExtent[0],dataExtent[1]))
+        .join("circle")
+        .attr("r", "5")
+        .attr("fill", d=>artistData.includes(d) ? "red" : "lightsteelblue")
+        .attr("cx", d=>x(d))
+        .attr("cy", scaleHeight/1.5)
+        .style("cursor", d=>artistData.includes(d) ? "pointer" : "inherit");
+
+    svg.selectAll('text')
+        .data(d3.range(dataExtent[0],dataExtent[1]))
+        .join("text")
+        .attr('x', d=>x(d))
+        .attr('y', d=>scaleHeight/2.5)
+        .html(d=>d)
+        .classed("user-select-none", true)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', '10px')
+        .attr('fill', d=>artistData.includes(d) ? "black" : "lightgray")
+        .attr('font-weight', d=>artistData.includes(d) ? "bold" : "normal");
+
+    circle.on('click', (evt, year)=> {
+        document.location = BASE_URL + `continuous-performers/?name=${performer}`;
+    });
+}
+

@@ -308,124 +308,29 @@
 </nav>
 <div class="row">
     <div class="col-12">
-        <h1>Ivey "Caldonia" Anderson</h1>
+
+        <div id="timelineContainer" class="my-3">
+            <div class="text-uppercase text-muted small fw-bold user-select-none">Years in dataset</div>
+            <svg width="100%" height="40px" class="timeline" id="scale" data-processed="true">
+        </div>
+
+        <h1 class="my-3">Ivey "Caldonia" Anderson</h1>
 
         
 
-        <section id="viz">
-            <h2>Visualization of Ivey "Caldonia" Anderson's Connections</h2>
-            <p class="lead">The following is a visualization of the connections between Ivey "Caldonia" Anderson and every other performer in the dataset (14-day, filtered), with which they are connected. The graph also includes secondary-relations (that is, persons not directly connected to the performer).</p>
-            <svg id="network"></svg>
+        <section id="viz" class="row">
+            <div class="col-12 col-lg-4">
+                <h4>Visualization of Ivey "Caldonia" Anderson's Connections</h4>
+                <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Ivey "Caldonia" Anderson and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
+                <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
+            </div>
+            <div class="col-12 col-lg-8" id="vizContainer">
+                <svg id="network"></svg>
+            </div>
         </section>
 
-        <section id="yearsActive">
-            <h2>Years</h2>
-            <ul>
-                 
-                <li class="inactive">1900</li>
-                  
-                <li class="inactive">1901</li>
-                  
-                <li class="inactive">1902</li>
-                  
-                <li class="inactive">1903</li>
-                  
-                <li class="inactive">1904</li>
-                  
-                <li class="inactive">1905</li>
-                  
-                <li class="inactive">1906</li>
-                  
-                <li class="inactive">1907</li>
-                  
-                <li class="inactive">1908</li>
-                  
-                <li class="inactive">1909</li>
-                  
-                <li class="inactive">1910</li>
-                  
-                <li class="inactive">1911</li>
-                  
-                <li class="inactive">1912</li>
-                  
-                <li class="inactive">1913</li>
-                  
-                <li class="inactive">1914</li>
-                  
-                <li class="inactive">1915</li>
-                  
-                <li class="inactive">1916</li>
-                  
-                <li class="inactive">1917</li>
-                  
-                <li class="inactive">1918</li>
-                  
-                <li class="inactive">1919</li>
-                  
-                <li class="inactive">1920</li>
-                  
-                <li class="inactive">1921</li>
-                  
-                <li class="inactive">1922</li>
-                  
-                <li class="inactive">1923</li>
-                  
-                <li class="inactive">1924</li>
-                  
-                <li class="inactive">1925</li>
-                  
-                <li class="inactive">1926</li>
-                  
-                <li class="inactive">1927</li>
-                  
-                <li class="inactive">1928</li>
-                  
-                <li class="inactive">1929</li>
-                  
-                <li class="inactive">1930</li>
-                  
-                <li class="inactive">1931</li>
-                  
-                <li class="inactive">1932</li>
-                  
-                <li class="inactive">1933</li>
-                  
-                <li class="inactive">1934</li>
-                  
-                <li class="inactive">1935</li>
-                  
-                <li class="inactive">1936</li>
-                  
-                <li class="inactive">1937</li>
-                  
-                <li class="inactive">1938</li>
-                  
-                <li class="inactive">1939</li>
-                  
-                <li class="inactive">1940</li>
-                  
-                <li class="inactive">1941</li>
-                  
-                <li class="inactive">1942</li>
-                  
-                <li class="inactive">1943</li>
-                  
-                <li class="inactive">1944</li>
-                  
-                <li class="inactive">1945</li>
-                  
-                <li class="inactive">1946</li>
-                  
-                <li class="inactive">1947</li>
-                  
-                <li>1948</li>
-                  
-                <li>1949</li>
-                 
-            </ul>
-        </section>
-
-        <section id="comments accordion accordion-flush">
+        <section id="comments accordion accordion-flush my-3">
             
             <h2>Comments</h2>
             
@@ -459,24 +364,24 @@
              
         </section>
 
-        <section id="demoData">
+        <section id="demoData" class="my-3">
               
         </section>
 
-        <section id="geoData">
+        <section id="geoData" class="my-3">
             
-            <h2>Venues</h2>
+            <h2 class="my-1">Venues</h2>
             <ul>
-                
-                <li><a href="/drag-data-browser/dataset/venue/joe-s-deluxe-chicago-il/">Joe's Deluxe (Chicago, IL)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/subway-lounge-chicago-il/">Subway Lounge (Chicago, IL)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/joes-deluxe-chicago-il/">Joe’s Deluxe (Chicago, IL)</a></li>
                 
+                <li><a href="/drag-data-browser/dataset/venue/joe-s-deluxe-chicago-il/">Joe's Deluxe (Chicago, IL)</a></li>
+                
             </ul>
              
-            <h2>Cities</h2>
+            <h2 class="my-1">Cities</h2>
             <ul>
                 
                 <li>Chicago, IL</li>
@@ -485,11 +390,11 @@
             
         </section>
 
-        <section id="images">
+        <section id="images" class="my-3">
             
         </section>
 
-        <section id="indications">
+        <section id="indications" class="my-3">
                
         </section>
     </div>
@@ -504,6 +409,7 @@
         
 <script>
     window.node_id = "ivey_caldonia_anderson";
+    window.performerSlug = "ivey-caldonia-anderson";
 </script>
 <script src="/drag-data-browser/includes/js/performer.js"></script>
 

@@ -308,128 +308,29 @@
 </nav>
 <div class="row">
     <div class="col-12">
-        <h1>Karyl Norman</h1>
+
+        <div id="timelineContainer" class="my-3">
+            <div class="text-uppercase text-muted small fw-bold user-select-none">Years in dataset</div>
+            <svg width="100%" height="40px" class="timeline" id="scale" data-processed="true">
+        </div>
+
+        <h1 class="my-3">Karyl Norman</h1>
 
         
-            <section id="clippingsExist">
-                <p>This performer exists in <a href="/drag-data-browser/dataset/clippings/">Kalle Westerling's clippings</a></p>
-            </section>
-        
 
-        <section id="viz">
-            <h2>Visualization of Karyl Norman's Connections</h2>
-            <p class="lead">The following is a visualization of the connections between Karyl Norman and every other performer in the dataset (14-day, filtered), with which they are connected. The graph also includes secondary-relations (that is, persons not directly connected to the performer).</p>
-            <svg id="network"></svg>
+        <section id="viz" class="row">
+            <div class="col-12 col-lg-4">
+                <h4>Visualization of Karyl Norman's Connections</h4>
+                <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Karyl Norman and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
+                <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
+            </div>
+            <div class="col-12 col-lg-8" id="vizContainer">
+                <svg id="network"></svg>
+            </div>
         </section>
 
-        <section id="yearsActive">
-            <h2>Years</h2>
-            <ul>
-                 
-                <li class="inactive">1900</li>
-                  
-                <li class="inactive">1901</li>
-                  
-                <li class="inactive">1902</li>
-                  
-                <li class="inactive">1903</li>
-                  
-                <li class="inactive">1904</li>
-                  
-                <li class="inactive">1905</li>
-                  
-                <li class="inactive">1906</li>
-                  
-                <li class="inactive">1907</li>
-                  
-                <li class="inactive">1908</li>
-                  
-                <li class="inactive">1909</li>
-                  
-                <li class="inactive">1910</li>
-                  
-                <li class="inactive">1911</li>
-                  
-                <li class="inactive">1912</li>
-                  
-                <li class="inactive">1913</li>
-                  
-                <li class="inactive">1914</li>
-                  
-                <li class="inactive">1915</li>
-                  
-                <li class="inactive">1916</li>
-                  
-                <li class="inactive">1917</li>
-                  
-                <li class="inactive">1918</li>
-                  
-                <li class="inactive">1919</li>
-                  
-                <li>1920</li>
-                  
-                <li>1921</li>
-                  
-                <li>1922</li>
-                  
-                <li>1923</li>
-                  
-                <li>1924</li>
-                  
-                <li>1925</li>
-                  
-                <li>1926</li>
-                  
-                <li>1927</li>
-                  
-                <li>1928</li>
-                  
-                <li>1929</li>
-                  
-                <li>1930</li>
-                  
-                <li>1931</li>
-                  
-                <li>1932</li>
-                  
-                <li>1933</li>
-                  
-                <li>1934</li>
-                  
-                <li>1935</li>
-                  
-                <li>1936</li>
-                  
-                <li>1937</li>
-                  
-                <li class="inactive">1938</li>
-                  
-                <li>1939</li>
-                  
-                <li>1940</li>
-                  
-                <li>1941</li>
-                  
-                <li>1942</li>
-                  
-                <li>1943</li>
-                  
-                <li class="inactive">1944</li>
-                  
-                <li class="inactive">1945</li>
-                  
-                <li class="inactive">1946</li>
-                  
-                <li>1947</li>
-                  
-                <li class="inactive">1948</li>
-                  
-                <li class="inactive">1949</li>
-                 
-            </ul>
-        </section>
-
-        <section id="comments accordion accordion-flush">
+        <section id="comments accordion accordion-flush my-3">
             
             <h2>Comments</h2>
             
@@ -1335,16 +1236,16 @@
              
         </section>
 
-        <section id="demoData">
+        <section id="demoData" class="my-3">
             
-            <h2>Indications of birth year</h2>
+            <h2 class="my-1">Indications of birth year</h2>
             <ul>
                 
                 <li>1904 (Detroit Free Press, February 7, 1940, 12)</li>
                 
             </ul>
              
-            <h2>Indications of age</h2>
+            <h2 class="my-1">Indications of age</h2>
             <ul>
                 
                 <li>36 (Detroit Free Press, February 7, 1940, 12)</li>
@@ -1353,125 +1254,125 @@
              
         </section>
 
-        <section id="geoData">
+        <section id="geoData" class="my-3">
             
-            <h2>Venues</h2>
+            <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/warner-theatre-new-york-ny/">Warner Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/torch-club-cleveland-oh/">Torch Club (Cleveland, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/samovar-chicago-il/">Samovar (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/e-f-albee-s-theatre-new-york-ny/">E. F. Albee's Theatre (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/keith-s-theater-cleveland-oh/">Keith's Theater (Cleveland, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/fox-theatre-philadelphia-pa/">Fox Theatre (Philadelphia, PA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/club-jewel-box-miami-fl/">Club Jewel Box (Miami, FL)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/rochester-theatre-rochester-ny/">Rochester Theatre (Rochester, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/bradford-cascades-hotel-bradford-boston-ma/">Bradford Cascades, Hotel Bradford (Boston, MA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/orpheum-theatre-salt-lake-city-ut/">Orpheum Theatre (Salt Lake City, UT)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/palace-theatre-new-york-ny/">Palace Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/new-amsterdam-theatre-new-york-ny/">New Amsterdam Theatre (New York, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/orpheum-theatre-lincoln-ne/">Orpheum Theatre (Lincoln, NE)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/keith-s-theater-philadelphia-pa/">Keith's Theater (Philadelphia, PA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/castle-farms-nite-club-detroit-mi/">Castle Farms Nite Club (Detroit, MI)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/bushwick-theatre-new-york-ny/">Bushwick Theatre (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/karyl-norman-supper-club-chicago-il/">Karyl Norman Supper Club (Chicago, IL)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/la-boheme-club-los-angeles-ca/">La Boheme Club (Los Angeles, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/palace-theatre-new-york-ny/">Palace Theatre (New York, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/loew-s-hillside-theatre-new-york-ny/">Loew's Hillside Theatre (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/president-theatre-des-moines-ia/">President Theatre (Des Moines, IA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/chez-maurice-montreal-canada/">Chez Maurice (Montreal, Canada)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/la-boheme-club-los-angeles-ca/">La Boheme Club (Los Angeles, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/samovar-chicago-il/">Samovar (Chicago, IL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/orpheum-theatre-salt-lake-city-ut/">Orpheum Theatre (Salt Lake City, UT)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/pansy-club-new-york-ny/">Pansy Club (New York, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/loew-s-metropolitan-theatre-new-york-ny/">Loew's Metropolitan Theatre (New York, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/torch-club-new-york-ny/">Torch Club (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/fox-theatre-new-york-ny/">Fox Theatre (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/club-frontenac-detroit-mi/">Club Frontenac (Detroit, MI)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/torch-club-cleveland-oh/">Torch Club (Cleveland, OH)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/grey-wolf-tavern-masury-oh/">Grey Wolf Tavern (Masury, OH)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/e-f-albee-s-theatre-new-york-ny/">E. F. Albee's Theatre (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/werba-s-brooklyn-new-york-ny/">Werba's Brooklyn (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/warner-theatre-new-york-ny/">Warner Theatre (New York, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/new-lookout-house-cincinnati-oh/">New Lookout House (Cincinnati, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/finocchio-s-san-francisco-ca/">Finocchio's (San Francisco, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/grey-wolf-tavern-masury-oh/">Grey Wolf Tavern (Masury, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/pansy-club-new-york-ny/">Pansy Club (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/bushwick-theatre-new-york-ny/">Bushwick Theatre (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/new-amsterdam-theatre-new-york-ny/">New Amsterdam Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/president-theatre-des-moines-ia/">President Theatre (Des Moines, IA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/chez-maurice-montreal-canada/">Chez Maurice (Montreal, Canada)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/colosimo-s-chicago-il/">Colosimo's (Chicago, IL)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/orpheum-theatre-sioux-city-ia/">Orpheum Theatre (Sioux City, IA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/oakland-orpheum-san-francisco-ca/">Oakland Orpheum (San Francisco, CA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/fox-theatre-philadelphia-pa/">Fox Theatre (Philadelphia, PA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/fox-theatre-new-york-ny/">Fox Theatre (New York, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/riverside-theatre-new-york-ny/">Riverside Theatre (New York, NY)</a></li>
                 
+                <li><a href="/drag-data-browser/dataset/venue/colosimo-s-chicago-il/">Colosimo's (Chicago, IL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/castle-farms-nite-club-detroit-mi/">Castle Farms Nite Club (Detroit, MI)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/finocchio-s-san-francisco-ca/">Finocchio's (San Francisco, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-frontenac-detroit-mi/">Club Frontenac (Detroit, MI)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/bradford-cascades-hotel-bradford-boston-ma/">Bradford Cascades, Hotel Bradford (Boston, MA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/keith-s-theater-cleveland-oh/">Keith's Theater (Cleveland, OH)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-jewel-box-miami-fl/">Club Jewel Box (Miami, FL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/werba-s-brooklyn-new-york-ny/">Werba's Brooklyn (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/oakland-orpheum-san-francisco-ca/">Oakland Orpheum (San Francisco, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/karyl-norman-supper-club-chicago-il/">Karyl Norman Supper Club (Chicago, IL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/keith-s-theater-philadelphia-pa/">Keith's Theater (Philadelphia, PA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/orpheum-theatre-sioux-city-ia/">Orpheum Theatre (Sioux City, IA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/rochester-theatre-rochester-ny/">Rochester Theatre (Rochester, NY)</a></li>
+                
             </ul>
              
-            <h2>Cities</h2>
+            <h2 class="my-1">Cities</h2>
             <ul>
+                
+                <li>Cincinnati, OH</li>
+                
+                <li>Sioux City, IA</li>
+                
+                <li>Chicago, IL</li>
                 
                 <li>San Francisco, CA</li>
                 
+                <li>Los Angeles, CA</li>
+                
+                <li>Rochester, NY</li>
+                
+                <li>Montreal, Canada</li>
+                
                 <li>Masury, OH</li>
+                
+                <li>Des Moines, IA</li>
+                
+                <li>Detroit, MI</li>
+                
+                <li>Philadelphia, PA</li>
+                
+                <li>New York, NY</li>
+                
+                <li>Salt Lake City, UT</li>
                 
                 <li>Lincoln, NE</li>
                 
                 <li>Miami, FL</li>
                 
-                <li>Montreal, Canada</li>
-                
-                <li>Salt Lake City, UT</li>
-                
-                <li>Sioux City, IA</li>
-                
-                <li>Cincinnati, OH</li>
-                
-                <li>Rochester, NY</li>
-                
-                <li>Cleveland, OH</li>
-                
-                <li>Chicago, IL</li>
-                
-                <li>Philadelphia, PA</li>
-                
-                <li>Des Moines, IA</li>
-                
-                <li>Los Angeles, CA</li>
-                
-                <li>Detroit, MI</li>
-                
                 <li>Boston, MA</li>
                 
-                <li>New York, NY</li>
+                <li>Cleveland, OH</li>
                 
             </ul>
             
         </section>
 
-        <section id="images">
+        <section id="images" class="my-3">
             
-            <h2>Images</h2>
+            <h2 class="my-1">Images</h2>
             <ul>
                 
                 <li>Variety, October 14, 1921, page unknown</li>
@@ -1486,7 +1387,7 @@
             
         </section>
 
-        <section id="indications">
+        <section id="indications" class="my-3">
                
         </section>
     </div>
@@ -1501,6 +1402,7 @@
         
 <script>
     window.node_id = "karyl_norman";
+    window.performerSlug = "karyl-norman";
 </script>
 <script src="/drag-data-browser/includes/js/performer.js"></script>
 

@@ -308,128 +308,29 @@
 </nav>
 <div class="row">
     <div class="col-12">
-        <h1>Merry Pickford</h1>
+
+        <div id="timelineContainer" class="my-3">
+            <div class="text-uppercase text-muted small fw-bold user-select-none">Years in dataset</div>
+            <svg width="100%" height="40px" class="timeline" id="scale" data-processed="true">
+        </div>
+
+        <h1 class="my-3">Merry Pickford</h1>
 
         
-            <section id="clippingsExist">
-                <p>This performer exists in <a href="/drag-data-browser/dataset/clippings/">Kalle Westerling's clippings</a></p>
-            </section>
-        
 
-        <section id="viz">
-            <h2>Visualization of Merry Pickford's Connections</h2>
-            <p class="lead">The following is a visualization of the connections between Merry Pickford and every other performer in the dataset (14-day, filtered), with which they are connected. The graph also includes secondary-relations (that is, persons not directly connected to the performer).</p>
-            <svg id="network"></svg>
+        <section id="viz" class="row">
+            <div class="col-12 col-lg-4">
+                <h4>Visualization of Merry Pickford's Connections</h4>
+                <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Merry Pickford and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
+                <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
+            </div>
+            <div class="col-12 col-lg-8" id="vizContainer">
+                <svg id="network"></svg>
+            </div>
         </section>
 
-        <section id="yearsActive">
-            <h2>Years</h2>
-            <ul>
-                 
-                <li class="inactive">1900</li>
-                  
-                <li class="inactive">1901</li>
-                  
-                <li class="inactive">1902</li>
-                  
-                <li class="inactive">1903</li>
-                  
-                <li class="inactive">1904</li>
-                  
-                <li class="inactive">1905</li>
-                  
-                <li class="inactive">1906</li>
-                  
-                <li class="inactive">1907</li>
-                  
-                <li class="inactive">1908</li>
-                  
-                <li class="inactive">1909</li>
-                  
-                <li class="inactive">1910</li>
-                  
-                <li class="inactive">1911</li>
-                  
-                <li class="inactive">1912</li>
-                  
-                <li class="inactive">1913</li>
-                  
-                <li class="inactive">1914</li>
-                  
-                <li class="inactive">1915</li>
-                  
-                <li class="inactive">1916</li>
-                  
-                <li class="inactive">1917</li>
-                  
-                <li class="inactive">1918</li>
-                  
-                <li class="inactive">1919</li>
-                  
-                <li class="inactive">1920</li>
-                  
-                <li class="inactive">1921</li>
-                  
-                <li class="inactive">1922</li>
-                  
-                <li class="inactive">1923</li>
-                  
-                <li class="inactive">1924</li>
-                  
-                <li class="inactive">1925</li>
-                  
-                <li class="inactive">1926</li>
-                  
-                <li class="inactive">1927</li>
-                  
-                <li class="inactive">1928</li>
-                  
-                <li class="inactive">1929</li>
-                  
-                <li class="inactive">1930</li>
-                  
-                <li class="inactive">1931</li>
-                  
-                <li class="inactive">1932</li>
-                  
-                <li class="inactive">1933</li>
-                  
-                <li>1934</li>
-                  
-                <li>1935</li>
-                  
-                <li>1936</li>
-                  
-                <li>1937</li>
-                  
-                <li class="inactive">1938</li>
-                  
-                <li class="inactive">1939</li>
-                  
-                <li class="inactive">1940</li>
-                  
-                <li>1941</li>
-                  
-                <li>1942</li>
-                  
-                <li>1943</li>
-                  
-                <li class="inactive">1944</li>
-                  
-                <li>1945</li>
-                  
-                <li>1946</li>
-                  
-                <li>1947</li>
-                  
-                <li>1948</li>
-                  
-                <li class="inactive">1949</li>
-                 
-            </ul>
-        </section>
-
-        <section id="comments accordion accordion-flush">
+        <section id="comments accordion accordion-flush my-3">
             
             <h2>Comments</h2>
             
@@ -659,23 +560,23 @@
              
         </section>
 
-        <section id="demoData">
+        <section id="demoData" class="my-3">
             
-            <h2>Indications of birth year</h2>
+            <h2 class="my-1">Indications of birth year</h2>
             <ul>
                 
                 <li>1924 (Boston Globe, March 26, 1949, 17)</li>
                 
             </ul>
              
-            <h2>Indications of age</h2>
+            <h2 class="my-1">Indications of age</h2>
             <ul>
                 
                 <li>24 (Boston Globe, March 26, 1949, 17)</li>
                 
             </ul>
              
-            <h2>Indications of legal name</h2>
+            <h2 class="my-1">Indications of legal name</h2>
             <ul>
                 
                 <li>David Mullen (Boston Globe, March 26, 1949, 17)</li>
@@ -684,113 +585,113 @@
             
         </section>
 
-        <section id="geoData">
+        <section id="geoData" class="my-3">
             
-            <h2>Venues</h2>
+            <h2 class="my-1">Venues</h2>
             <ul>
-                
-                <li><a href="/drag-data-browser/dataset/venue/white-owl-inn-philadelphia-pa/">White Owl Inn (Philadelphia, PA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/frolic-inn-los-angeles-ca/">Frolic Inn (Los Angeles, CA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/red-shutter-cafe-boston-ma/">Red Shutter Cafe (Boston, MA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/club-flamingo-new-york-ny/">Club Flamingo (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/frolics-tampa-fl/">Frolics (Tampa, FL)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/wagon-wheel-akron-oh/">Wagon Wheel (Akron, OH)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/estates-casino-atlantic-city-nj/">Estates Casino (Atlantic City, NJ)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/new-york-s-world-s-fair-new-york-ny/">New York's World's Fair (New York, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/plaza-cafe-at-the-plaza-villa-pittsburgh-pa/">Plaza Cafe (at the Plaza Villa) (Pittsburgh, PA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/hotel-nut-shell-lake-huntington-ny/">Hotel Nut Shell (Lake Huntington, NY)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/hotel-touraine-boston-ma/">Hotel Touraine (Boston, MA)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/ha-ha-club-hollywood-fl/">Ha-Ha Club (Hollywood, FL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/frankie-n-johnny-s-port-huron-mi/">Frankie 'n' Johnny's (Port Huron, MI)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/riviera-pittsburgh-pa/">Riviera (Pittsburgh, PA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/hotel-nut-shell-lake-huntington-ny/">Hotel Nut Shell (Lake Huntington, NY)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/usa-grill-wilmington-de/">USA Grill (Wilmington, DE)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/egypt-temple-shrine-tampa-fl/">Egypt Temple Shrine (Tampa, FL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/latchis-memorial-brattleboro-vt/">Latchis Memorial (Brattleboro, VT)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/hotel-dauphin-harrisburg-pa/">Hotel Dauphin (Harrisburg, PA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/new-york-s-world-s-fair-new-york-ny/">New York's World's Fair (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/estates-casino-atlantic-city-nj/">Estates Casino (Atlantic City, NJ)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/wagon-wheel-akron-oh/">Wagon Wheel (Akron, OH)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/hollywood-nite-club-akron-oh/">Hollywood Nite Club (Akron, OH)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/band-box-syracuse-ny/">Band Box (Syracuse, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/latchis-memorial-brattleboro-vt/">Latchis Memorial (Brattleboro, VT)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/hotel-touraine-boston-ma/">Hotel Touraine (Boston, MA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/white-owl-inn-philadelphia-pa/">White Owl Inn (Philadelphia, PA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/riviera-pittsburgh-pa/">Riviera (Pittsburgh, PA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/frolic-inn-los-angeles-ca/">Frolic Inn (Los Angeles, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-flamingo-new-york-ny/">Club Flamingo (New York, NY)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/hotel-dauphin-harrisburg-pa/">Hotel Dauphin (Harrisburg, PA)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/club-washington-east-liverpool-oh/">Club Washington (East Liverpool, OH)</a></li>
                 
+                <li><a href="/drag-data-browser/dataset/venue/egypt-temple-shrine-tampa-fl/">Egypt Temple Shrine (Tampa, FL)</a></li>
+                
                 <li><a href="/drag-data-browser/dataset/venue/sweetheart-theater-bar-detroit-mi/">Sweetheart Theater Bar (Detroit, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/hollywood-nite-club-akron-oh/">Hollywood Nite Club (Akron, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/frolics-tampa-fl/">Frolics (Tampa, FL)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/plaza-cafe-at-the-plaza-villa-pittsburgh-pa/">Plaza Cafe (at the Plaza Villa) (Pittsburgh, PA)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/club-fernandino-hartford-ct/">Club Fernandino (Hartford, CT)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/elm-lodge-syracuse-ny/">Elm Lodge (Syracuse, NY)</a></li>
                 
+                <li><a href="/drag-data-browser/dataset/venue/frankie-n-johnny-s-port-huron-mi/">Frankie 'n' Johnny's (Port Huron, MI)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/red-shutter-cafe-boston-ma/">Red Shutter Cafe (Boston, MA)</a></li>
+                
             </ul>
              
-            <h2>Cities</h2>
+            <h2 class="my-1">Cities</h2>
             <ul>
                 
-                <li>Wilmington, DE</li>
+                <li>Hartford, CT</li>
                 
-                <li>Atlantic City, NJ</li>
+                <li>Philadelphia, PA</li>
                 
-                <li>Port Huron, MI</li>
+                <li>New York, NY</li>
                 
                 <li>Pittsburgh, PA</li>
                 
-                <li>New York, NY</li>
+                <li>Port Huron, MI</li>
+                
+                <li>Syracuse, NY</li>
+                
+                <li>Boston, MA</li>
+                
+                <li>Atlantic City, NJ</li>
                 
                 <li>Akron, OH</li>
                 
                 <li>Harrisburg, PA</li>
                 
-                <li>Hartford, CT</li>
+                <li>Cleveland, OH</li>
                 
-                <li>Detroit, MI</li>
+                <li>Tampa, FL</li>
                 
                 <li>Los Angeles, CA</li>
                 
                 <li>Brattleboro, VT</li>
                 
-                <li>Syracuse, NY</li>
+                <li>Lake Huntington, NY</li>
                 
                 <li>Hollywood, FL</li>
                 
-                <li>Philadelphia, PA</li>
-                
-                <li>Lake Huntington, NY</li>
-                
-                <li>Tampa, FL</li>
+                <li>Wilmington, DE</li>
                 
                 <li>East Liverpool, OH</li>
                 
-                <li>Cleveland, OH</li>
-                
-                <li>Boston, MA</li>
+                <li>Detroit, MI</li>
                 
             </ul>
             
         </section>
 
-        <section id="images">
+        <section id="images" class="my-3">
             
         </section>
 
-        <section id="indications">
+        <section id="indications" class="my-3">
               
-            <h2>Indications that they were fan dancers</h2>
+            <h2 class="my-1">Indications that they were fan dancers</h2>
             <ul>
                 
                 <li>Billboard, August 25, 1934, 21</li>
@@ -818,6 +719,7 @@
         
 <script>
     window.node_id = "merry_pickford";
+    window.performerSlug = "merry-pickford";
 </script>
 <script src="/drag-data-browser/includes/js/performer.js"></script>
 
