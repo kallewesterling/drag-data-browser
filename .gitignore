@@ -1,1 +1,9 @@
 .ipynb_checkpoints
+Notebooks/billboards/
+Notebooks/newspapers-api/
+Notebooks/geckodriver.log
+Notebooks/sources-data.json
+Notebooks/billboard-data.json
+Notebooks/data.json
+Notebooks/billboard-data.json
+*.log
