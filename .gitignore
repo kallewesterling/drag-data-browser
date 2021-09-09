@@ -7,3 +7,4 @@ Notebooks/billboard-data.json
 Notebooks/data.json
 Notebooks/billboard-data.json
 *.log
+.DirectoryCache

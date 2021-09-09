@@ -1,0 +1,12 @@
+<nav id="mainNav" class="d-none d-{{ min_size|default('xl') }}-flex flex-column flex-shrink-0 p-3 text-white bg-dark navbar-nav-scroll">
+    <a href="{{ BASE_URL }}" class="d-flex align-items-start mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32" fill="white"><use xlink:href="#speedometer2"></use></svg>
+        <span class="fs-4">{{ SITE_TITLE }}</span>
+    </a>
+    <hr>
+    {% include 'includes/nav-pills.html' %}
+    <hr>
+    <div class="dropdown">
+        <a href="{{ BASE_URL }}about/" class="text-white text-decoration-none small">About this website</a>
+    </div>
+</nav>

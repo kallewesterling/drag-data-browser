@@ -66,6 +66,10 @@
         <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
         <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
     </symbol>
+    <symbol id="migration" viewBox="0 0 16 16">
+        <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zM1 9h4a1 1 0 0 1 0 2H1V9z"/>
+        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>      
+    </symbol>
 </svg>
         <main>
             <nav id="mainNav" class="d-none d-xl-flex flex-column flex-shrink-0 p-3 text-white bg-dark navbar-nav-scroll">
@@ -127,6 +131,14 @@
                     <li><a href="/drag-data-browser/network/overview/" class="text-white rounded">Network Overview</a></li>
                 
                 </ul>
+            
+        
+            <li class="nav-item">
+                <a href="/drag-data-browser/great-migration/" class="d-flex nav-link text-white" aria-current="page"><!-- add `active` class here... -->
+                    <svg class="bi me-2" width="16" height="16" fill="white" style="min-width:16px;"><use xlink:href="#migration"></use></svg>
+                    Great Migration
+                </a>
+            </li>
             
         
             <li class="nav-item">
@@ -209,6 +221,12 @@
                 <li><!--  class="nav-item" -->
                     <a href="/drag-data-browser/network/" class="nav-link py-3 border-bottom" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Network">
                         <svg class="bi" width="24" height="24" role="img" aria-label="Network"><use xlink:href="#network"></use></svg>
+                    </a>
+                </li>
+            
+                <li><!--  class="nav-item" -->
+                    <a href="/drag-data-browser/great-migration/" class="nav-link py-3 border-bottom" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Great Migration">
+                        <svg class="bi" width="24" height="24" role="img" aria-label="Great Migration"><use xlink:href="#migration"></use></svg>
                     </a>
                 </li>
             
@@ -348,7 +366,7 @@
                         aria-expanded="true"
                         aria-controls="comment-1-sources"
                     >
-                        Eighth month at the venue
+                        "Current show includes"
                     </button>
                 </p>
                 <div
@@ -359,7 +377,11 @@
                     <div class="accordion-body">
                         
                         <div class="source">
-                            Billboard, December 5, 1942, 14
+                            <a
+                                    href="http://search.proquest.com/docview/1032075787"
+                                    target="_blank"
+                                    >Billboard, October 26, 1935, 15</a
+                            >
                         </div>
                         
                     </div>
@@ -376,7 +398,7 @@
                         aria-expanded="true"
                         aria-controls="comment-2-sources"
                     >
-                        "Current show includes"
+                        "after 58 weeks at Frolic Inn, Hollywood, now current at Washington Club, East Liverpool, O."
                     </button>
                 </p>
                 <div
@@ -388,9 +410,9 @@
                         
                         <div class="source">
                             <a
-                                    href="http://search.proquest.com/docview/1032075787"
+                                    href="http://search.proquest.com/docview/1032112993"
                                     target="_blank"
-                                    >Billboard, October 26, 1935, 15 (1032075787)</a
+                                    >Billboard, October 31, 1936, 13</a
                             >
                         </div>
                         
@@ -408,7 +430,7 @@
                         aria-expanded="true"
                         aria-controls="comment-3-sources"
                     >
-                        "after 58 weeks at Frolic Inn, Hollywood, now current at Washington Club, East Liverpool, O."
+                        "billed as the 'Male Fanny Brice,' is in his sixth week at the Ballyhoo, Columbus, O.
                     </button>
                 </p>
                 <div
@@ -419,11 +441,7 @@
                     <div class="accordion-body">
                         
                         <div class="source">
-                            <a
-                                    href="http://search.proquest.com/docview/1032112993"
-                                    target="_blank"
-                                    >Billboard, October 31, 1936, 13 (1032112993)</a
-                            >
+                            Billboard, January 23, 1937, 13
                         </div>
                         
                     </div>
@@ -440,7 +458,7 @@
                         aria-expanded="true"
                         aria-controls="comment-4-sources"
                     >
-                        "billed as the 'Male Fanny Brice,' is in his sixth week at the Ballyhoo, Columbus, O.
+                        "has spent half a year here [at Club Piccadilly]"
                     </button>
                 </p>
                 <div
@@ -451,7 +469,11 @@
                     <div class="accordion-body">
                         
                         <div class="source">
-                            Billboard, January 23, 1937, 13
+                            <a
+                                    href="http://search.proquest.com/docview/1032136441"
+                                    target="_blank"
+                                    >Billboard, November 6, 1937, 24</a
+                            >
                         </div>
                         
                     </div>
@@ -468,7 +490,7 @@
                         aria-expanded="true"
                         aria-controls="comment-5-sources"
                     >
-                        "has spent half a year here [at Club Piccadilly]"
+                        "the new emsee at the Club Piccadilly"
                     </button>
                 </p>
                 <div
@@ -479,11 +501,7 @@
                     <div class="accordion-body">
                         
                         <div class="source">
-                            <a
-                                    href="http://search.proquest.com/docview/1032136441"
-                                    target="_blank"
-                                    >Billboard, November 6, 1937, 24 (1032136441)</a
-                            >
+                            Billboard, December 11, 1937, 24
                         </div>
                         
                     </div>
@@ -500,7 +518,7 @@
                         aria-expanded="true"
                         aria-controls="comment-6-sources"
                     >
-                        "the new emsee at the Club Piccadilly"
+                        "after six months at Club Piccadilly . . . now current at Club Blackstone"
                     </button>
                 </p>
                 <div
@@ -511,7 +529,11 @@
                     <div class="accordion-body">
                         
                         <div class="source">
-                            Billboard, December 11, 1937, 24 (Club Talent)
+                            <a
+                                    href="http://search.proquest.com/docview/1032148363"
+                                    target="_blank"
+                                    >Billboard, January 1, 1938, 29</a
+                            >
                         </div>
                         
                     </div>
@@ -528,7 +550,7 @@
                         aria-expanded="true"
                         aria-controls="comment-7-sources"
                     >
-                        "after six months at Club Piccadilly . . . now current at Club Blackstone"
+                        "Vern Valdez signs out of the Blackstone . . . and goes into Club Blase, that city"
                     </button>
                 </p>
                 <div
@@ -540,9 +562,9 @@
                         
                         <div class="source">
                             <a
-                                    href="http://search.proquest.com/docview/1032148363"
+                                    href="http://search.proquest.com/docview/1032140448"
                                     target="_blank"
-                                    >Billboard, January 1, 1938, 29 (1032148363)</a
+                                    >Billboard, January 22, 1938, 6</a
                             >
                         </div>
                         
@@ -560,7 +582,7 @@
                         aria-expanded="true"
                         aria-controls="comment-8-sources"
                     >
-                        "Vern Valdez signs out of the Blackstone . . . and goes into Club Blase, that city"
+                        "appearing at the Wagon Wheel, Houston, after an eight-week run in Cleveland." (Last stop in Cleveland was at Club Blase, according to Club Talent, The Billboard, January 22, 1938, 6)
                     </button>
                 </p>
                 <div
@@ -572,9 +594,9 @@
                         
                         <div class="source">
                             <a
-                                    href="http://search.proquest.com/docview/1032140448"
+                                    href="http://search.proquest.com/docview/1032166181"
                                     target="_blank"
-                                    >Billboard, January 22, 1938, 6 (1032140448)</a
+                                    >Billboard, March 26, 1938, 21</a
                             >
                         </div>
                         
@@ -592,7 +614,7 @@
                         aria-expanded="true"
                         aria-controls="comment-9-sources"
                     >
-                        "appearing at the Wagon Wheel, Houston, after an eight-week run in Cleveland." (Last stop in Cleveland was at Club Blase, according to Club Talent, The Billboard, January 22, 1938, 6)
+                        "is now completing his second month at the Wagon Wheel"
                     </button>
                 </p>
                 <div
@@ -603,11 +625,7 @@
                     <div class="accordion-body">
                         
                         <div class="source">
-                            <a
-                                    href="http://search.proquest.com/docview/1032166181"
-                                    target="_blank"
-                                    >Billboard, March 26, 1938, 21 (1032166181)</a
-                            >
+                            Billboard, May 14, 1938, 18
                         </div>
                         
                     </div>
@@ -624,7 +642,7 @@
                         aria-expanded="true"
                         aria-controls="comment-10-sources"
                     >
-                        "is now completing his second month at the Wagon Wheel"
+                        "after 10 weeks at Wagon Wheel . . . has moved to Finrcchio's [sic] . . . for indefinite run."
                     </button>
                 </p>
                 <div
@@ -635,7 +653,11 @@
                     <div class="accordion-body">
                         
                         <div class="source">
-                            Billboard, May 14, 1938, 18
+                            <a
+                                    href="http://search.proquest.com/docview/1032160025"
+                                    target="_blank"
+                                    >Billboard, July 9, 1938, 16</a
+                            >
                         </div>
                         
                     </div>
@@ -652,7 +674,7 @@
                         aria-expanded="true"
                         aria-controls="comment-11-sources"
                     >
-                        "after 10 weeks at Wagon Wheel . . . has moved to Finrcchio's [sic] . . . for indefinite run."
+                        "closed a six-week engagement at Finocchio's . . and located at Club Tivoli there"
                     </button>
                 </p>
                 <div
@@ -664,9 +686,9 @@
                         
                         <div class="source">
                             <a
-                                    href="http://search.proquest.com/docview/1032160025"
+                                    href="http://search.proquest.com/docview/1032173470"
                                     target="_blank"
-                                    >Billboard, July 9, 1938, 16 (1032160025)</a
+                                    >Billboard, November 19, 1938, 18</a
                             >
                         </div>
                         
@@ -684,7 +706,7 @@
                         aria-expanded="true"
                         aria-controls="comment-12-sources"
                     >
-                        "closed a six-week engagement at Finocchio's . . and located at Club Tivoli there"
+                        "black-faced . . . blues singer, in his Aunt Jemina specialty, furnishes some Tucker style vocalizing."
                     </button>
                 </p>
                 <div
@@ -695,11 +717,7 @@
                     <div class="accordion-body">
                         
                         <div class="source">
-                            <a
-                                    href="http://search.proquest.com/docview/1032173470"
-                                    target="_blank"
-                                    >Billboard, November 19, 1938, 18 (1032173470)</a
-                            >
+                            Billboard, June 17, 1939, 20
                         </div>
                         
                     </div>
@@ -716,7 +734,7 @@
                         aria-expanded="true"
                         aria-controls="comment-13-sources"
                     >
-                        "black-faced . . . blues singer, in his Aunt Jemina specialty, furnishes some Tucker style vocalizing."
+                        "Comedy Singer and Dancer"
                     </button>
                 </p>
                 <div
@@ -727,7 +745,7 @@
                     <div class="accordion-body">
                         
                         <div class="source">
-                            Billboard, June 17, 1939, 20 (C M. Litteljohn, "Night Club Reviews: Spinning Wheel, Seattle")
+                            Detroit MI Free Press, November 20, 1942, page unknown
                         </div>
                         
                     </div>
@@ -744,7 +762,7 @@
                         aria-expanded="true"
                         aria-controls="comment-14-sources"
                     >
-                        "Comedy Singer and Dancer"
+                        Eighth month at the venue
                     </button>
                 </p>
                 <div
@@ -755,7 +773,7 @@
                     <div class="accordion-body">
                         
                         <div class="source">
-                            Detroit Free Press, November 20, 1942, page unknown
+                            Billboard, December 5, 1942, 14
                         </div>
                         
                     </div>
@@ -773,70 +791,70 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/club-tivoli-san-francisco-ca/">Club Tivoli (San Francisco, CA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/wonder-bar-new-orleans-la/">Wonder Bar (New Orleans, LA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/club-blase-cleveland-oh/">Club Blase (Cleveland, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/plaza-cafe-at-the-plaza-villa-pittsburgh-pa/">Plaza Cafe (at the Plaza Villa) (Pittsburgh, PA)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/club-lido-youngstown-oh/">Club Lido (Youngstown, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/club-top-hat-detroit-mi/">Club Top Hat (Detroit, MI)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/wagon-wheel-houston-tx/">Wagon Wheel (Houston, TX)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/spinning-wheel-seattle-wa/">Spinning Wheel (Seattle, WA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-piccadilly-baltimore-md/">Club Piccadilly (Baltimore, MD)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/club-el-rio-san-francisco-ca/">Club El Rio (San Francisco, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/club-piccadilly-baltimore-md/">Club Piccadilly (Baltimore, MD)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-blase-cleveland-oh/">Club Blase (Cleveland, OH)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/wonder-bar-new-orleans-la/">Wonder Bar (New Orleans, LA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/torch-club-massillon-oh/">Torch Club (Massillon, OH)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/ballyhoo-club-columbus-oh/">Ballyhoo Club (Columbus, OH)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/finocchio-s-san-francisco-ca/">Finocchio's (San Francisco, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/spinning-wheel-seattle-wa/">Spinning Wheel (Seattle, WA)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/club-washington-east-liverpool-oh/">Club Washington (East Liverpool, OH)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/club-frontenac-detroit-mi/">Club Frontenac (Detroit, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/club-blackstone-cleveland-oh/">Club Blackstone (Cleveland, OH)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/torch-club-massillon-oh/">Torch Club (Massillon, OH)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/finocchio-s-san-francisco-ca/">Finocchio's (San Francisco, CA)</a></li>
-                
-                <li><a href="/drag-data-browser/dataset/venue/plaza-cafe-at-the-plaza-villa-pittsburgh-pa/">Plaza Cafe (at the Plaza Villa) (Pittsburgh, PA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-tivoli-san-francisco-ca/">Club Tivoli (San Francisco, CA)</a></li>
                 
                 <li><a href="/drag-data-browser/dataset/venue/frolic-inn-los-angeles-ca/">Frolic Inn (Los Angeles, CA)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-top-hat-detroit-mi/">Club Top Hat (Detroit, MI)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/club-blackstone-cleveland-oh/">Club Blackstone (Cleveland, OH)</a></li>
+                
+                <li><a href="/drag-data-browser/dataset/venue/wagon-wheel-houston-tx/">Wagon Wheel (Houston, TX)</a></li>
                 
             </ul>
              
             <h2 class="my-1">Cities</h2>
             <ul>
                 
-                <li>San Francisco, CA</li>
-                
-                <li>Massillon, OH</li>
-                
-                <li>Detroit, MI</li>
-                
-                <li>Columbus, OH</li>
-                
-                <li>East Liverpool, OH</li>
-                
-                <li>Baltimore, MD</li>
-                
-                <li>Cleveland, OH</li>
-                
-                <li>Houston, TX</li>
-                
-                <li>New Orleans, LA</li>
-                
-                <li>Pittsburgh, PA</li>
-                
-                <li>Youngstown, OH</li>
-                
                 <li>Seattle, WA</li>
                 
                 <li>Los Angeles, CA</li>
+                
+                <li>Pittsburgh, PA</li>
+                
+                <li>Detroit, MI</li>
+                
+                <li>Massillon, OH</li>
+                
+                <li>Cleveland, OH</li>
+                
+                <li>Baltimore, MD</li>
+                
+                <li>Columbus, OH</li>
+                
+                <li>New Orleans, LA</li>
+                
+                <li>East Liverpool, OH</li>
+                
+                <li>San Francisco, CA</li>
+                
+                <li>Youngstown, OH</li>
+                
+                <li>Houston, TX</li>
                 
             </ul>
             
@@ -851,7 +869,7 @@
             <h2 class="my-1">Indications that they appeared in blackface</h2>
             <ul>
                 
-                <li>Billboard, June 17, 1939, 20 (C M. Litteljohn, "Night Club Reviews: Spinning Wheel, Seattle")</li>
+                <li>Billboard, June 17, 1939, 20</li>
                 
             </ul>
                

@@ -1,0 +1,44 @@
+{% extends 'base-small-nav.html' %}
+
+{% block title %}The Great Migration{% endblock %}
+
+{% block extra_head %}
+    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+    <link href="{{ BASE_URL }}includes/sankey.css" rel="stylesheet" crossorigin="anonymous" />
+{% endblock %}
+
+
+<div class="p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+        <h1 class="display-4 fw-normal">The Great Migration</h1>
+        <p class="lead fw-normal">Given that the dataset of drag performers in the 1930s is likely very limited due to the record, etc., here I outline some assumptions that can be made to run algorithms in order to show what the dataset could look like under certain assumed conditions.</p>
+        <p>In this particular visualization, I have assumed that any given performer who ever appeared in the data in the decade remained in the same state until they appeared again.</p>
+    </div>
+</div>
+
+
+
+{% block precontainer %}
+<section id="screenSizeWarning">
+    <div id="lockIndicator" class="text-center py-2"><i class="bi bi-lock-fill me-2"></i>The view is locked</div>
+    <div id="information" class="overflow-scroll"></div>
+    <div class="container-fluid" id='viz-container'>
+        <svg id="sankey"></svg>
+    </div>
+    <div id="pointer"></div>
+</section>
+<section id="screenSizeWarningInfo" class="h-100 d-none flex-column justify-content-center align-items-center">
+    <p class="lead">This part of the website requires a browser window of at least 1,300 pixels width.</p>
+    <p>Resize your browser window to the largest size possible and the visualization should load.</p>
+</section>
+{% endblock %}
+
+
+
+{% block body %}
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ BASE_URL }}includes/js/sankey.js" crossorigin="anonymous"></script>
+<!--<script src="{{ BASE_URL }}includes/js/load-live-data.js" crossorigin="anonymous"></script>-->
+{% endblock %}
