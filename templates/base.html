@@ -7,11 +7,11 @@
     </head>
     <body>
         {% include 'includes/symbols.html' %}
-        <main>
+        <main class="overflow-scroll">
             {% include 'includes/mainNav.html' %}
             <div id="horizontal-separator"></div>
             {% block precontent %}{% endblock %}
-            <section id="content" class="d-flex flex-column overflow-auto w-100 mb-5">
+            <section id="content" class="d-flex flex-column overflow-auto w-100 mb-5 h-100">
                 {% block precontainer %}{% endblock %}
                 <div class="container">
                     {% block body %}{% endblock %}

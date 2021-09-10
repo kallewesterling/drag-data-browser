@@ -8,3 +8,4 @@ Notebooks/data.json
 Notebooks/billboard-data.json
 *.log
 .DirectoryCache
+node_modules

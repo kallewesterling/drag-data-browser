@@ -280,8 +280,8 @@ d3.json("sankey-names.json")
         });
         link.on("mouseenter", (event, d) => {
             if (!window.locked) {
-                dimAllTexts();
-                dimAllPaths();
+                Dim.all.texts();
+                Dim.all.paths();
 
                 let relatedTexts = d3.selectAll(
                     `text[data-state="${d.state}"]`

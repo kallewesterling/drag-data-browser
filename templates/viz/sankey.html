@@ -25,7 +25,8 @@
     <div class="container-fluid" id='viz-container'>
         <svg id="sankey"></svg>
     </div>
-    <div id="pointer"></div>
+    <div id="displayState"></div>
+    <div id="legend" class="shadow-sm d-none"></div>
 </section>
 <section id="screenSizeWarningInfo" class="h-100 d-none flex-column justify-content-center align-items-center">
     <p class="lead">This part of the website requires a browser window of at least 1,300 pixels width.</p>
@@ -39,6 +40,10 @@
 {% endblock %}
 
 {% block javascript %}
+<script src="{{ BASE_URL }}includes/js/sankey/load.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/sankey/interactivity.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/sankey/draw.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/sankey/scale.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/sankey/legend.js" crossorigin="anonymous"></script>
 <script src="{{ BASE_URL }}includes/js/sankey.js" crossorigin="anonymous"></script>
-<!--<script src="{{ BASE_URL }}includes/js/load-live-data.js" crossorigin="anonymous"></script>-->
 {% endblock %}

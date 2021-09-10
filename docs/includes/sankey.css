@@ -1,17 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css");
 
+:root {
+    --bg-color: rgb(252, 252, 251);
+    --lockIndicator-bg: rgba(255, 191, 0, 0.5);
+}
 body {
-    background-color: rgba(245, 245, 220, 0.181);
+    background-color: var(--bg-color);
     margin: 0;
     padding: 0;
 }
 div#lockIndicator {
     display: none;
     position: absolute;
-    top: 0;
+    bottom: 0;
     width: 100%;
-    background: rgba(255, 191, 0, 0.154);
+    background-color: var(--lockIndicator-bg);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    z-index: 400;
 }
 body.locked div#lockIndicator {
     display: block;
@@ -26,6 +33,22 @@ div.informationBox {
     padding: 1em;
     font-family: "Open Sans";
     font-size: 0.7rem;
+    padding-bottom: 75px;
+}
+
+div.informationBox h3 {
+    margin-left: -12px !important;
+    padding-left: 12px !important;
+    margin-right: -12px !important;
+    padding-right: 12px !important;
+    margin-top: -12px !important;
+    padding-top: 12px !important;
+    background-color: var(--bg-color);
+    /* sticky-top */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
 }
 
 div.informationBox h3,
@@ -43,7 +66,6 @@ div.informationBox ul {
 }
 
 div.informationBox ul li {
-    color: rgba(0, 0, 0, 0.9);
     padding: 0.25em;
     display: inline-block;
     margin-right: 0.25em;
@@ -51,12 +73,15 @@ div.informationBox ul li {
 }
 
 div.informationBox ul li a {
+    color: rgba(0, 0, 0, 0.9);
     text-decoration: none;
 }
 
-div#pointer {
+div#displayState {
+    transform: rotate(90deg);
+    transform-origin: 50% 50%;
     position: absolute;
-    padding: 1em;
+    right: 5px !important;
     font-family: "Open Sans";
 }
 
@@ -66,6 +91,7 @@ div#pointer {
 
 text {
     font-family: "Open Sans";
+    pointer-events: none;
 }
 
 .node text {
@@ -92,4 +118,17 @@ text {
 
 [data-performerCount="0"] {
     display: none !important;
+}
+
+div#legend {
+    position: absolute;
+    top: 450px;
+    left: 175px;
+    max-width: 300px;
+    pointer-events: none;
+    padding: 12px;
+    -webkit-backdrop-filter: blur(1px);
+    backdrop-filter: blur(1px);
+    background-color:rgb(252, 252, 251, 0.5);
+    border: solid 1px rgba(0, 0, 0, 0.1);
 }
