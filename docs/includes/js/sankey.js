@@ -48,7 +48,6 @@ const svg = d3
   .select('svg#sankey')
   .attr('width', width())
   .attr('height', height() + margin.top + margin.bottom)
-  .classed('border', true)
   .on('mouseout', SVGInteract.mouseOut);
 
 const g = svg

@@ -29,7 +29,8 @@ const setOpacities = (d) => {
 };
 
 const SVGInteract = {
-  mouseOut: () => {
+  mouseOut: (evt) => {
+    log(evt.stopPropagation())
     if (!window.locked) {
       resetView();
     } else {
