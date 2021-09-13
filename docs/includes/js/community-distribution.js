@@ -25,6 +25,7 @@ d3.json(DATA_DIR + `v1-14-days-filtered-node-weight-distributions.json`).then(da
         })),
         weights: columns.map(k=>k.replace('weight-', ''))
     }
+    store.data = data;
 
     let svg = d3.select('svg#communities');
 
