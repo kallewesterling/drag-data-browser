@@ -4,9 +4,12 @@
 log('draw.js loaded');
 
 const drawTexts = () => {
-  log('drawTexts called');
-  graph.text = graph.node
-    .append('text')
+  const labelG = g.append('g').attr('id', 'labels');
+
+  graph.text = labelG
+    .selectAll('text')
+    .data(graph.nodes)
+    .join('text')
     .attr('x', (d) => d.x0 - 6)
     .attr('y', (d) => (d.y1 + d.y0) / 2)
     .attr('dy', '0.35em')
@@ -14,6 +17,8 @@ const drawTexts = () => {
     .attr('text-anchor', 'end')
     .attr('data-performerCount', (d) => d.performerCounts.total)
     .attr('data-state', (d) => d.state)
+    .attr('data-year', (d) => d.year)
+    .attr('data-incomingStates', (d) => d.targetLinks.map((link) => link.performerCount ? link.startState : 'x`').join('|'))
     .text((d) => d.displayState)
     .filter((d) => d.x0 < width() / 2)
     .attr('x', (d) => d.x1 + 6)

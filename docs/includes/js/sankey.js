@@ -6,7 +6,6 @@ const datafiles = [
   `${DATA_DIR}performer-slugs.json`,
 ];
 
-window.ERROR_LEVEL = 1;
 window.locked = false;
 window.MINSIZE = 1300;
 
@@ -49,6 +48,20 @@ const svg = d3
   .attr('width', width())
   .attr('height', height() + margin.top + margin.bottom)
   .on('mouseout', SVGInteract.mouseOut);
+
+const marker = svg.select('defs')
+  .append('marker')
+  .attr('id', 'arrowhead')
+  .attr('markerWidth', '10')
+  .attr('markerHeight', '7')
+  .attr('refX', '0')
+  .attr('refY', '3.5')
+  .attr('fill', 'rgb(235, 235, 225)')
+  .attr('orientation', 'auto')
+  .attr('viewBox', '0 0 20 20');
+
+marker.append('polygon')
+  .attr('points', '0 0, 10 3.5, 0 7');
 
 const g = svg
   .append('g')
@@ -237,15 +250,6 @@ const hideTravels = () => {
   });
 };
 
-const resetView = () => {
-  hideTravels();
-  d3.select('div#pointer').classed('d-none', true);
-  d3.select('div#legend').classed('d-none', true);
-  Reset.all.texts();
-  Reset.all.paths();
-};
-
-
 document.onkeydown = (event) => {
   evt = event || window.event;
   let isEscape = false;
@@ -272,6 +276,9 @@ const dropEmptyPaths = () => {
   d3.selectAll('path[data-performerCount="0"]').remove();
   return true;
 };
+
+const dropTextElements = () => true;
+// [1931, 1933, 1935, 1937, 1939].forEach((year) => d3.select(`text[data-year="${year}"]`).remove())
 
 const checkScreenSize = () => {
   if (window.innerWidth >= window.MINSIZE) {
@@ -309,9 +316,13 @@ Promise.all(datafiles.map((datafile) => d3.json(datafile))).then((files) => {
 
   log('Setting up info container...');
   drawInfoContainer();
+
+  log('Adding arrowheads...');
+  graph.link.attr('marker-end', (link) => (link.startYear === 1939 && link.width > 1 && link.width < 10 ? 'url(#arrowhead)' : ''));
 }).then(() => {
   log('Running utilities...');
   checkScreenSize();
   dropEmptyPaths(); // drop all paths with no performer counts
+  dropTextElements(); // drop every other text element (inactive)
   window.addEventListener('resize', () => { window.location.reload(); }); // TODO: Not optimal but for now reload on resize window
 });
