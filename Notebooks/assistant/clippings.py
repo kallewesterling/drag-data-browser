@@ -130,6 +130,7 @@ class Clippings():
             self.CACHE_ALL_CLIPPINGS_FILES.write_json(ALL_CLIPPINGS_FILES)
         self.ALL_CLIPPINGS = self.CACHE_ALL_CLIPPINGS.read_json()
         self.ALL_CLIPPINGS_FILES = self.CACHE_ALL_CLIPPINGS_FILES.read_json()
+        self.ALL_CLIPPINGS = {k.replace('null', ''): {x.replace('null', ''): y for x, y in v.items()} for k,v in self.ALL_CLIPPINGS.items()}
     
     def cache_exists(self):
         return self.CACHE_ALL_CLIPPINGS.exists() and self.CACHE_ALL_CLIPPINGS_FILES.exists()
