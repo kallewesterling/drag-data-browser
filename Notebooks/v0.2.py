@@ -15,7 +15,8 @@ YEAR_RANGE = (1900, 1950)
 
 TITLE = "Gayboys and Playboys"
 # SUBTITLE = "U.S. Drag Performers in 1930s Burlesque and Night Clubs"
-SUBTITLE = "Queer World Making By Peripatetic Drag Performers Building Queer Worlds Across U.S. Burlesque and Night Clubs in the 1930s"
+# SUBTITLE = "Queer World Making By Peripatetic Drag Performers Building Queer Worlds Across U.S. Burlesque and Night Clubs in the 1930s"
+SUBTITLE = "Constructing Queer Collectivities in Peripatetic Burlesque and Nightclub Shows in 1930s United States"
 
 BASE_URL = "/docs/"
 if PRODUCTION:
