@@ -440,7 +440,7 @@ similar_names_data = {
 
 # %%
 # Write performers
-
+from collections import OrderedDict
 
 def get_performer_data(performer, row, key=None):
     full_venues = list(
@@ -451,9 +451,10 @@ def get_performer_data(performer, row, key=None):
         )
     )
     full_venues = {venue: ALL_VENUES[venue] for venue in full_venues}
+    full_venues = OrderedDict(sorted(full_venues.items()))
 
-    cities = list(set(city for city in row["City"] if city))
-    years_active = list(set(date.year for date in pd.to_datetime(row["Date"])))
+    cities = sorted(list(set(city for city in row["City"] if city)))
+    years_active = sorted(list(set(date.year for date in pd.to_datetime(row["Date"]))))
 
     next_performer = keyshift(ALL_PERFORMERS, performer, +1)
     prev_performer = keyshift(ALL_PERFORMERS, performer, -1)
@@ -537,7 +538,9 @@ print(
 def get_venue_data(venue, row, key=None):
     associated_performers = list(set(x for x in row["Performer"] if x))
     associated_performers = {x: ALL_PERFORMERS[x] for x in associated_performers}
-    years_active = list(set(x.year for x in pd.to_datetime(row["Date"])))
+    associated_performers = OrderedDict(sorted(associated_performers.items()))
+
+    years_active = sorted(list(set(x.year for x in pd.to_datetime(row["Date"]))))
 
     next_venue = keyshift(ALL_VENUES, venue, +1)
     prev_venue = keyshift(ALL_VENUES, venue, -1)
