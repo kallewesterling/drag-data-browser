@@ -13,6 +13,10 @@ start = time.time()
 PRODUCTION = True
 YEAR_RANGE = (1900, 1950)
 
+TITLE = "Gayboys and Playboys"
+# SUBTITLE = "U.S. Drag Performers in 1930s Burlesque and Night Clubs"
+SUBTITLE = "Queer World Making By Peripatetic Drag Performers Building Queer Worlds Across U.S. Burlesque and Night Clubs in the 1930s"
+
 BASE_URL = "/docs/"
 if PRODUCTION:
     BASE_URL = "/drag-data-browser/"
@@ -60,6 +64,14 @@ CASE_STUDY_TITLES = {
 NAVBAR = {
     "width": 280,
     "structure": {
+        "Meta": [
+            {
+                "icon": "case-study",
+                "title": "Theorizing the Peripatetic",
+                "url": CASE_STUDY_URL + "theorizing-the-peripatetic/",
+                "subcategories": []
+            }
+        ],
         "Case Studies": [
             {
                 "icon": "case-study",
@@ -283,10 +295,8 @@ e.globals["DATASET_URL"] = DATASET_URL
 e.globals["CASE_STUDY_URL"] = CASE_STUDY_URL
 e.globals["DATA_URL"] = DATA_URL
 e.globals["DATA_SHEET"] = DATA_SHEET
-e.globals["SITE_TITLE"] = "Gayboys and Playboys"
-e.globals[
-    "SITE_SUBTITLE"
-] = "Expanding the Field of U.S. Drag Performers in 1930s Burlesque and Night Clubs"
+e.globals["SITE_TITLE"] = TITLE
+e.globals["SITE_SUBTITLE"] = SUBTITLE
 e.globals["NAVBAR"] = NAVBAR
 
 # Add jinja functions to globals
@@ -682,6 +692,31 @@ def get_case_study_data(number=None, CASE_STUDY_TITLES=CASE_STUDY_TITLES):
 
 
 # %%
+meta_case_study_data = {
+    "title": "Theorizing the Peripatetic",
+    "subtitle": "(Re)Constructing a Network of Itinerant Queer Nightlife Performers in the 1930s Through Data-Assisted Historiography",
+    "sections": [(x, slugify(x)) for x in ['Section Title']],
+    "abstract": "",
+    "url": "theorizing-the-peripatetic",
+    "footnotes": {},
+    "chapter": {
+        "unfinished": True,
+        "title": "XXXX",
+        "subtitle": "XXXX",
+        "slug": slugify("Section Title"),
+        "sections": [
+            {
+                "title": "XXXX",
+                "subtitle": "",
+                "paragraphs": [
+                    "<p>Paragraph 1</p>"
+                ]
+            }
+        ]
+    }
+}
+
+# %%
 # Case studies
 [
     write_html(
@@ -698,6 +733,7 @@ write_html(
     data={"case_studies": {k: get_case_study_data(k) for k in [1, 2, 3, 4]}},
     path=("case-study",),
 )
+write_html(e, "case-study/meta.html", data=meta_case_study_data, path=("case-study", "theorizing-the-peripatetic",))
 
 # Similar name report
 write_html(e, "similar-names.html", data=similar_names_data, path=("similar-names",))
@@ -734,10 +770,6 @@ write_html(e, "viz/sankey.html", path=("great-migration",))
 end = time.time()
 print(f'Done at {dt.now().strftime("%H:%M:%S")} - after {round(end-start, 2)} seconds.')
 
-
-# %%
-
-# %%
 
 # %%
 

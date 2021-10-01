@@ -1,0 +1,89 @@
+{% extends 'base-fluid.html' %}
+
+{% block title %}Case Study: {{ case_study_title }}{% endblock %}
+
+{% block extra_head %}<link href="{{ BASE_URL }}includes/case-study.css" rel="stylesheet" crossorigin="anonymous" />{% endblock %}
+
+
+{% block scrollspy %}
+<div class="d-none d-lg-block flex-shrink-0 p-3 text-dark" style="width: 280px;  height: -webkit-fill-available; height: 100vh; max-height: 100vh; z-index: 600;">
+    <nav class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
+
+        <p class="ms-3 text-uppercase text-muted small fw-bold pb-1">Meta:<br/>{{ data.title }}</p>
+
+        <nav class="nav nav-pills flex-column" id="navbar-example3">
+            {% for section, slug in data.sections %}
+                <a class="nav-link" href="#{{ slug }}">{{ section }}</a>
+            {% endfor %}
+            <hr />
+            <a class="nav-link" href="#footnotes">Footnotes</a>
+        </nav>
+
+    </nav>
+</div>
+{% endblock %}
+
+{% block precontainer %}
+<nav class="px-5 navbar d-lg-none navbar-light bg-light shadow" aria-label="Navigate case study" id="caseStudyMenu">
+    <a class="navbar-brand" href="#"  data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">Case Study: {{ data.title }}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Sections</a>
+            </li>
+            <li class="nav-item dropdown">
+                <ul class="dropdown-menu show" aria-labelledby="dropdown09">
+                    {% for section, slug in data.sections %}
+                        <li><a class="dropdown-item" href="#{{ slug }}">{{ section }}</a></li>
+                        {% endfor %}
+                        <hr />
+                        <li><a class="dropdown-item" href="#footnotes">Footnotes</a></li>
+                </ul>
+            </li>
+        </ul>
+        <!--
+        <form>
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form>
+        -->
+    </div>
+</nav>
+
+{% endblock %}
+
+{% block body %}
+
+    <div id="chapterTitle" class="my-5 py-5">
+        <h1>{{ data.title }}</h1>
+        <h2>{{ data.subtitle }}</h2>
+    </div>
+
+    {% if data.chapter.unfinished %}
+        <div><em>This case study is still in process of writing.</em></div>
+    {% else %}
+        <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0">
+        {% for section in data.chapter.sections %}
+            <div id="section-{{ loop.index }}">
+                <h3 id="{{ section.slug }}">{{ section.title }}{% if section.subtitle %}: {{ section.subtitle }}{% endif %}</h3>
+                {% for para in section.paragraphs %}
+                    {{ para }}
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <div id="section-footnotes">
+            <div class="pt-5">
+                <h3 id="footnotes">Footnotes</h3>
+                {% for counter, footnote in data.footnotes.items() %}
+                    <p><a name="fn{{counter}}"></a>{{ counter }}. {{ footnote }} <a href="#inlineFoootnote{{ counter }}" class="footnote-back"><i class="bi bi-arrow-up-square-fill"></i></a></p>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block javascript %}
+{% endblock %}
