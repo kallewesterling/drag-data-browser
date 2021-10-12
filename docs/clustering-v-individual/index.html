@@ -30,8 +30,8 @@
         const DATASET_URL = "/docs/dataset/";
         const DATA_DIR = "/docs/data/";
     </script>
-        <title>Gayboys and Playboys | Continuous Performers</title>
-        <link href="/docs/includes/continuous-performers.css" rel="stylesheet" crossorigin="anonymous" />
+        <title>Gayboys and Playboys | Clustering v. Individual Performers</title>
+        <link href="/docs/includes/clustering-v-individual.css" rel="stylesheet" crossorigin="anonymous" />
     </head>
     <body>
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -80,18 +80,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
     
-        <li class="nav-item ms-3 text-uppercase text-muted small fw-bold user-select-none pb-1">Meta</li>
-        
-            <li class="nav-item">
-                <a href="/drag-data-browser/case-study/theorizing-the-peripatetic/" class="d-flex nav-link text-white" aria-current="page"><!-- add `active` class here... -->
-                    <svg class="bi me-2" width="16" height="16" fill="white" style="min-width:16px;"><use xlink:href="#case-study"></use></svg>
-                    Theorizing the Peripatetic
-                </a>
-            </li>
-            
-        
-    
-        <li class="nav-item ms-3 text-uppercase text-muted small fw-bold user-select-none pt-4 pb-1">Case Studies</li>
+        <li class="nav-item ms-3 text-uppercase text-muted small fw-bold user-select-none pb-1">Case Studies</li>
         
             <li class="nav-item">
                 <a href="/docs/case-study/intimate-accoutrements-as-somatechnical-network-devices/" class="d-flex nav-link text-white" aria-current="page"><!-- add `active` class here... -->
@@ -220,16 +209,6 @@
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
     
         
-            
-                <li><!--  class="nav-item" -->
-                    <a href="/drag-data-browser/case-study/theorizing-the-peripatetic/" class="nav-link py-3 border-bottom" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Theorizing the Peripatetic">
-                        <svg class="bi" width="24" height="24" role="img" aria-label="Theorizing the Peripatetic"><use xlink:href="#case-study"></use></svg>
-                    </a>
-                </li>
-            
-        
-    
-        
             <li><!--  class="nav-item" -->
                 <a href="/docs/case-study/" class="nav-link py-3 border-bottom" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Case Studies">
                     <svg class="bi" width="24" height="24" role="img" aria-label="Case Studies"><use xlink:href="#case-study"></use></svg>
@@ -299,8 +278,8 @@
 
 <div class="p-3 p-md-5 m-md-3 text-center bg-light">
     <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 fw-normal">Continuous Performers</h1>
-        <p class="lead fw-normal">Given that the dataset of drag performers in the 1930s is likely very limited due to the record, etc., here I outline some assumptions that can be made to run algorithms in order to show what the dataset could look like under certain assumed conditions.</p>
+        <h1 class="display-4 fw-normal">Clustering v. Individual Performers</h1>
+        <p class="lead fw-normal">Introduction of visualization.</p>
     </div>
 </div>
 
@@ -309,85 +288,7 @@
                     
 <div class="row">
     <div class="col-12 pb-5" id="viz-container">
-        
-            <h2 class="mt-4">Padding: 0</h2>
-            <p class="lead">This is the dataset's actual content. Each dot represents each month where the artist selected appears in the dataset.</p>
-            <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetPadding0 role="button" aria-expanded="false" aria-controls="datasetPadding0" id="togglePadding0"><i></i> Show data</a>
-            <div class="collapse" id="datasetPadding0">
-                <table id="padding0" class="table table-sm table-light table-striped">
-                    <thead></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div class="d-flex flex-row-reverse"><div class="d-flex"><span class="me-1">Filter by performer name:</span><select id="padding0-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="padding0-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-            <svg class="overflow-auto border shadow-sm my-4" id="padding0" style="width:100%;"></svg>
-            <div id="performers-0" class="performer-lists d-none mb-3"></div>
-        
-            <h2 class="mt-4">Padding: 1</h2>
-            <p class="lead">The padding of the dataset here ranges ±1 month, which means that if the selected artist appeared in one month in the dataset, it is assumed that the same artist appeared in the surrounding two months (1 month before and 1 month after the date in the dataset).</p>
-            <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetPadding1 role="button" aria-expanded="false" aria-controls="datasetPadding1" id="togglePadding1"><i></i> Show data</a>
-            <div class="collapse" id="datasetPadding1">
-                <table id="padding1" class="table table-sm table-light table-striped">
-                    <thead></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div class="d-flex flex-row-reverse"><div class="d-flex"><span class="me-1">Filter by performer name:</span><select id="padding1-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="padding1-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-            <svg class="overflow-auto border shadow-sm my-4" id="padding1" style="width:100%;"></svg>
-            <div id="performers-1" class="performer-lists d-none mb-3"></div>
-        
-            <h2 class="mt-4">Padding: 2</h2>
-            <p class="lead">The padding of the dataset here ranges ±2 months, which means that if the selected artist appeared in one month in the dataset, it is assumed that the same artist appeared in the surrounding four months (2 months before and 2 months after the date in the dataset).</p>
-            <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetPadding2 role="button" aria-expanded="false" aria-controls="datasetPadding2" id="togglePadding2"><i></i> Show data</a>
-            <div class="collapse" id="datasetPadding2">
-                <table id="padding2" class="table table-sm table-light table-striped">
-                    <thead></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div class="d-flex flex-row-reverse"><div class="d-flex"><span class="me-1">Filter by performer name:</span><select id="padding2-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="padding2-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-            <svg class="overflow-auto border shadow-sm my-4" id="padding2" style="width:100%;"></svg>
-            <div id="performers-2" class="performer-lists d-none mb-3"></div>
-        
-            <h2 class="mt-4">Padding: 3</h2>
-            <p class="lead">The padding of the dataset here ranges ±3 months, which means that if the selected artist appeared in one month in the dataset, it is assumed that the same artist appeared in the surrounding six months (3 months before and 3 months after the date in the dataset).</p>
-            <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetPadding3 role="button" aria-expanded="false" aria-controls="datasetPadding3" id="togglePadding3"><i></i> Show data</a>
-            <div class="collapse" id="datasetPadding3">
-                <table id="padding3" class="table table-sm table-light table-striped">
-                    <thead></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div class="d-flex flex-row-reverse"><div class="d-flex"><span class="me-1">Filter by performer name:</span><select id="padding3-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="padding3-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-            <svg class="overflow-auto border shadow-sm my-4" id="padding3" style="width:100%;"></svg>
-            <div id="performers-3" class="performer-lists d-none mb-3"></div>
-        
-            <h2 class="mt-4">Padding: 4</h2>
-            <p class="lead">The padding of the dataset here ranges ±4 months, which means that if the selected artist appeared in one month in the dataset, it is assumed that the same artist appeared in the surrounding eight months (4 months before and 4 months after the date in the dataset).</p>
-            <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetPadding4 role="button" aria-expanded="false" aria-controls="datasetPadding4" id="togglePadding4"><i></i> Show data</a>
-            <div class="collapse" id="datasetPadding4">
-                <table id="padding4" class="table table-sm table-light table-striped">
-                    <thead></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div class="d-flex flex-row-reverse"><div class="d-flex"><span class="me-1">Filter by performer name:</span><select id="padding4-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="padding4-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-            <svg class="overflow-auto border shadow-sm my-4" id="padding4" style="width:100%;"></svg>
-            <div id="performers-4" class="performer-lists d-none mb-3"></div>
-        
-            <h2 class="mt-4">Padding: 5</h2>
-            <p class="lead">The padding of the dataset here ranges ±5 months, which means that if the selected artist appeared in one month in the dataset, it is assumed that the same artist appeared in the surrounding ten months (5 months before and 5 months after the date in the dataset).</p>
-            <a class="d-block my-2 text-decoration-none text-uppercase text-muted small fw-bold" data-bs-toggle="collapse" href="#datasetPadding5 role="button" aria-expanded="false" aria-controls="datasetPadding5" id="togglePadding5"><i></i> Show data</a>
-            <div class="collapse" id="datasetPadding5">
-                <table id="padding5" class="table table-sm table-light table-striped">
-                    <thead></thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div class="d-flex flex-row-reverse"><div class="d-flex"><span class="me-1">Filter by performer name:</span><select id="padding5-filter"></select><span class="d-none ms-1 p-2 badge bg-primary" id="padding5-filter-all"><a href="" class="text-white text-decoration-none">apply to all</a></span></div></div>
-            <svg class="overflow-auto border shadow-sm my-4" id="padding5" style="width:100%;"></svg>
-            <div id="performers-5" class="performer-lists d-none mb-3"></div>
-        
+        <svg class="overflow-auto border shadow-sm my-4" id="viz" style="width:100%;"></svg>
     </div>
 </div>
 <div id="popup" class="d-none text-center d-block p-1 bg-light rounded shadow border border-dark small">
@@ -401,8 +302,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
         
-<script src="/docs/includes/js/continuous-performers.js" crossorigin="anonymous"></script>
-<script src="/docs/includes/js/load-live-data.js" crossorigin="anonymous"></script>
+<script src="/docs/includes/js/clustering-v-individual.js" crossorigin="anonymous"></script>
 
         <script src="/docs/includes/js/tooltip-init.js"></script>
     </body>
