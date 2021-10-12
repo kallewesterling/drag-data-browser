@@ -9,3 +9,5 @@ Notebooks/billboard-data.json
 *.log
 .DirectoryCache
 node_modules
+.clippings_cache
+*.pyc
