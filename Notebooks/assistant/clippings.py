@@ -1,4 +1,4 @@
-from pathlib import Path
+from .utils import Path
 from datetime import datetime as dt
 import glob
 import re
