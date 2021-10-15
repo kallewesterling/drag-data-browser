@@ -11,3 +11,4 @@ Notebooks/billboard-data.json
 node_modules
 .clippings_cache
 *.pyc
+venv
