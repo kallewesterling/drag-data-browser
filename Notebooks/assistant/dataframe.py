@@ -1,10 +1,5 @@
 from .settings import Settings
-import pandas as pd
-from datetime import datetime as dt
-import re
-from slugify import slugify
-from collections import OrderedDict
-from nameparser import HumanName
+from .dependencies import pd, dt, re, slugify, OrderedDict, HumanName
 
 
 def get_basic_df(get_filter=False):
@@ -15,7 +10,7 @@ def get_basic_df(get_filter=False):
     (see function `filtered` below for more documentation).
     """
 
-    def filtered(row, filter_year_range=Settings.YEAR_RANGE):
+    def filtered(row, filter_year_range=Settings.YEAR_RANGE, trues=False):
         """
         Takes a DataFrame's `row` and returns False if the row does NOT contains disqualifying information:
             (1) Row should be excluded or whether we're unsure whether they should be included
@@ -39,19 +34,27 @@ def get_basic_df(get_filter=False):
         unnamed_performer = 'unnamed' in row['Performer'].lower()
 
         if no_city and no_performer and no_venue:
+            if trues:
+                return True
             return 'insufficient_data'
 
         if unnamed_performer:
+            if trues:
+                return True
             return 'unnamed_performer'
 
         try:
             date = dt.strptime(row.Date, '%Y-%m-%d')
         except ValueError:
+            if trues:
+                return True
             return 'no_date'
 
         if filter_year_range and filter_year_range[0] <= date.year <= filter_year_range[1]:
             pass  # in the range!
         else:
+            if trues:
+                return True
             return 'outside_year_scope'
 
         return False
@@ -127,7 +130,7 @@ def get_basic_df(get_filter=False):
     df = df.drop_columns(normalization_columns)
 
     if get_filter:
-        df['filter'] = df.apply(lambda row: filtered(row), axis=1)
+        df['filter'] = df.apply(lambda row: filtered(row, trues=True), axis=1)
 
     return df
 

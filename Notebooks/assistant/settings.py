@@ -1,7 +1,4 @@
-from pathlib import Path
-from jinja2 import Environment, FileSystemLoader
-from slugify import slugify
-import os
+from .dependencies import Path, Environment, FileSystemLoader, slugify, os
 
 PRODUCTION = True
 YEAR_RANGE = (1900, 1950)
@@ -218,7 +215,6 @@ class Settings(object):
 
 
 Settings.e.globals['BASE_URL'] = BASE_URL
-print(f'Base URL set to {BASE_URL}')
 Settings.e.globals['DATASET_URL'] = DATASET_URL
 Settings.e.globals['CASE_STUDY_URL'] = CASE_STUDY_URL
 Settings.e.globals['DATA_URL'] = DATA_URL
@@ -227,9 +223,7 @@ Settings.e.globals['SITE_TITLE'] = TITLE
 Settings.e.globals['SITE_SUBTITLE'] = SUBTITLE
 Settings.e.globals['NAVBAR'] = NAVBAR
 Settings.e.globals['slugify'] = slugify
-escape_quote = lambda string: string.replace('"', '\\"')
-Settings.e.globals['escape'] = escape_quote
+Settings.e.globals['escape'] = lambda string: string.replace('"', '\\"')
 Settings.e.globals['str'] = str
 
-# Ensure our output directories exist (since dataset is inside OUTPUT_DIR, we only need to check one)
-Path(Settings.DATASET_OUTPUT_DIR).verify_parent()
+print(f'Base URL set to {BASE_URL}')

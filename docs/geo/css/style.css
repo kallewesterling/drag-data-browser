@@ -114,7 +114,7 @@ svg#map {
 #settingsContent {
     overflow: hidden;
     overflow-y: scroll;
-    /* background-color: var(--background-settings) !important; */
+    /* background-color: variable(--background-settings) !important; */
 }
 
 #settingsToggle {

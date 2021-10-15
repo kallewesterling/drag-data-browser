@@ -1,24 +1,30 @@
 from .dependencies import *
 from .settings import Settings
-from .dataframe import pd, dt, re, get_basic_df, extract_addresses_dict, get_comments, get_revue_comments_dict, get_performer_comments_dict, get_venue_comments_dict, get_city_comments_dict, drop_columns
-from .utils import keyshift, Path, copy_and_overwrite, write_html, reverse_comment_dict, slugify_node, copyfile, slugify, get_abstract_from_html
-from .clippings import make_performer_clippings, Clippings
-
-'''
-from jinja2 import FileSystemLoader
-from htmlmin import minify as minify_html
-import bs4
-import itertools
-import json
-import os
-import re
-import time
-'''
+from .dataframe import *
+from .utils import *
+from .clippings import *
 
 ARTISTS = re.compile(r'\[\[(?:[^|\]]*\|)?([^\]]+)\]\]')  # follows wikipedia standard
 FOOTNOTES = re.compile(r'\[fn=([^\[]+)\]')
 
 
 def minify_html(text):
-    """ a function that disables minify_html for the development phase """
+    """ A function that disables minify_html for the development phase """
     return text
+
+
+# Wipe directories that will be automatically generated
+def wipe_temp_dirs(directories=[
+    os.path.join(Settings.OUTPUT_DIR, x) for x in
+    ['about', 'case-study', 'clustering-v-individual', 'code', 'continuous-performers', 'dataset', 'geo',
+     'great-migration', 'network', 'process', 'similar-names']
+]):
+    for directory in directories:
+        wipe_dir(directory, raise_error=False)
+
+wipe_temp_dirs()
+
+
+# Ensure our output directories exist (since dataset is inside OUTPUT_DIR, we only need to check one)
+Path(Settings.DATASET_OUTPUT_DIR).verify_parent()
+Path(Settings.DATA_OUTPUT_DIR).verify_parent()

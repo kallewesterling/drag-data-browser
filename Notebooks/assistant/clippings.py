@@ -1,8 +1,11 @@
 from .utils import Path
-from datetime import datetime as dt
-import glob
-import re
+from .dependencies import dt, glob, re
 
+try:
+    from IPython.display import clear_output
+    ipython = True
+except ModuleNotFoundError:
+    ipython = False
 
 MAPPINGS = {
     ('Albert', 'Henry', 'Cook'): ['Albert Henry', 'Cook'],
@@ -35,25 +38,33 @@ MAPPINGS = {
 
 def make_performer_clippings(list_of_performers):
     _ = {}
-    
-    def get_comment(name):
-        if FILE_COMMENT.search(name):
-            return FILE_COMMENT.search(name).groups()[1]
+
+    def get_comment(name) -> str:
+        if file_comment.search(name):
+            return file_comment.search(name).groups()[1]
         return ''
 
-    ARCHIVE_PNG_PATHS = [x.lower() for x in glob.glob('/Volumes/GoogleDrive/My Drive/Ongoing Projects/Dissertation - Archive/- My own clippings and photos/**/*.png', recursive=True)]
-    ARCHIVE_FOLDERS = [x.lower() for x in glob.glob('/Volumes/GoogleDrive/My Drive/Ongoing Projects/Dissertation - Archive/- My own clippings and photos/*')]
-    FILE_COMMENT = re.compile(r'(.*) ?\[(.*)\]')
+    # ARCHIVE_PNG_PATHS = [x.lower()
+    #   for x in glob.glob(
+    #   '/Volumes/GoogleDrive/My Drive/Ongoing Projects/Dissertation - Archive/- My own clippings and photos/**/*.png',
+    #   recursive=True)]
+    archive_folders = [x.lower() for x in glob.glob(
+        '/Volumes/GoogleDrive/My Drive/Ongoing Projects/Dissertation - Archive/- My own clippings and photos/*')]
+    file_comment = re.compile(r'(.*) ?\[(.*)]')
 
     for performer in list_of_performers:
-        found = False
+        found: str = ''
 
         if not performer:
             continue
 
         names = performer.split(' ')
         if len(names) == 3:
-            if names[1] == 'La' or names[1] == 'Le' or names[1] == 'De' or names[1] == 'Del' or names[1] == 'St.' or names[1] == 'Van' or names[1] == 'Val' or names[1] == 'the':
+            if names[1] == 'La' or names[1] == 'Le' \
+                    or names[1] == 'De' or names[1] == 'Del' \
+                    or names[1] == 'St.' \
+                    or names[1] == 'Van' or names[1] == 'Val' \
+                    or names[1] == 'the':
                 names = [f'{names[0]}', f'{names[1]} {names[2]}']
             elif names[1] == '&' or names[1] == 'and':
                 names = [f'{names[0]} {names[1]} {names[2]}']
@@ -79,99 +90,107 @@ def make_performer_clippings(list_of_performers):
                 names = MAPPINGS.get(tuple(names))
 
         names = [x.lower() for x in names]
-        
-        if len(names) == 2:
-            search = [x for x in ARCHIVE_FOLDERS if (f'{names[1]}, {names[0]}' in x or f'{names[0]} {names[1]}' in x) and 'performer' in get_comment(x)]
-            if len(search) == 1:
-                found = search[0]
-            else:
-                pass # print(f'{names[1]}, {names[0]}', search)
-                
-        elif len(names) == 1:
-            search = [x for x in ARCHIVE_FOLDERS if Path(x).stem.startswith(names[0])]
-            if len(search) == 1:
-                found = search[0]
-            else:
-                pass # print(names, search)
-        elif len(names) == 3:
-            search = [x for x in ARCHIVE_FOLDERS if (f'{names[2]}, {names[0]} {names[1]}' in x or f'{names[0]} {names[1]}' in x) and 'performer' in get_comment(x)]
-            if len(search) == 1:
-                found = search[0]
-            else:
-                pass # print(f'{names[2]}, {names[0]} {names[1]}', search)
 
-        if found:
-            if not 'performer' in get_comment(Path(found).name) and not 'producer' in get_comment(Path(found).name):
-                print(f'Warning: Found matching clippings folder with wrong name, so decoupling: {performer} ≠ {Path(found).name}')
-                found = False # if not a performer or producer
+        if len(names) == 2:
+            search = [x for x in archive_folders
+                      if (f'{names[1]}, {names[0]}' in x
+                          or f'{names[0]} {names[1]}' in x)
+                      and 'performer' in get_comment(x)]
+            if len(search) == 1:
+                found: str = search[0]
+            else:
+                pass  # print(f'{names[1]}, {names[0]}', search)
+
+        elif len(names) == 1:
+            search = [x for x in archive_folders if Path(x).stem.startswith(names[0])]
+            if len(search) == 1:
+                found: str = search[0]
+            else:
+                pass  # print(names, search)
+        elif len(names) == 3:
+            search = [x for x in archive_folders
+                      if (f'{names[2]}, {names[0]} {names[1]}' in x
+                          or f'{names[0]} {names[1]}' in x)
+                      and 'performer' in get_comment(x)]
+            if len(search) == 1:
+                found: str = search[0]
+            else:
+                pass  # print(f'{names[2]}, {names[0]} {names[1]}', search)
+
+        if found != '':
+            file_name = Path(found).name
+            comment: str = get_comment(file_name)
+            if 'performer' not in comment and 'producer' not in comment:
+                print(f'Warning: Found matching clippings folder with wrong name, so decoupling:'
+                      f'{performer} ≠ {file_name}')
+                found = ''  # if not a performer or producer
         else:
             print(f'Warning: {performer} does not exist in clippings')
             found = ''
-            
+
         _[performer] = found
-    
+
     return _
 
 
-class Clippings():
+class Clippings:
     EXPIRY_DAYS = 7
-    
+
     CACHE_ALL_CLIPPINGS = '.clippings_cache/CACHE_ALL_CLIPPINGS.json'
     CACHE_ALL_CLIPPINGS_FILES = '.clippings_cache/CACHE_ALL_CLIPPINGS_FILES.json'
     CACHE_ALL_CLIPPINGS = Path(CACHE_ALL_CLIPPINGS)
     CACHE_ALL_CLIPPINGS.verify_parent()
     CACHE_ALL_CLIPPINGS_FILES = Path(CACHE_ALL_CLIPPINGS_FILES)
     CACHE_ALL_CLIPPINGS_FILES.verify_parent()
-    
+
     def __init__(self):
         if not self.cache_exists() or self.cache_expired():
-            ALL_CLIPPINGS, ALL_CLIPPINGS_FILES = self.make()
-            self.CACHE_ALL_CLIPPINGS.write_json(ALL_CLIPPINGS)
-            self.CACHE_ALL_CLIPPINGS_FILES.write_json(ALL_CLIPPINGS_FILES)
+            all_clippings, all_clippings_files = self.make()
+            self.CACHE_ALL_CLIPPINGS.write_json(all_clippings)
+            self.CACHE_ALL_CLIPPINGS_FILES.write_json(all_clippings_files)
         self.ALL_CLIPPINGS = self.CACHE_ALL_CLIPPINGS.read_json()
         self.ALL_CLIPPINGS_FILES = self.CACHE_ALL_CLIPPINGS_FILES.read_json()
-        self.ALL_CLIPPINGS = {k.replace('null', ''): {x.replace('null', ''): y for x, y in v.items()} for k,v in self.ALL_CLIPPINGS.items()}
-    
+        self.ALL_CLIPPINGS = {k.replace('null', ''): {x.replace('null', ''): y for x, y in v.items()} for k, v in
+                              self.ALL_CLIPPINGS.items()}
+
     def cache_exists(self):
         return self.CACHE_ALL_CLIPPINGS.exists() and self.CACHE_ALL_CLIPPINGS_FILES.exists()
-    
+
     def cache_expired(self, days=EXPIRY_DAYS):
         ts = self.CACHE_ALL_CLIPPINGS.stat().st_mtime
         past_date = dt.fromtimestamp(ts)
         difference = dt.utcnow() - past_date
         return difference.days > days
-    
-    def make(self):
-        import glob
 
-        try:
-            from IPython.display import clear_output
-            ipython = True
-        except:
-            ipython = False
+    @staticmethod
+    def make():
         files = {}
-        ARCHIVE_FOLDERS = [x for x in glob.glob('/Volumes/GoogleDrive/My Drive/Ongoing Projects/Dissertation - Archive/- My own clippings and photos/*')]
-        FILE_COMMENT = re.compile(r'(.*) ?\[(.*)\]')
+        archive_folders = [x for x in glob.glob(
+            '/Volumes/GoogleDrive/My Drive/Ongoing Projects/Dissertation - Archive/- My own clippings and photos/*')]
+        file_comment = re.compile(r'(.*) ?\[(.*)]')
         categories = {None: {None: []}}
-        for folder_count, name in enumerate(ARCHIVE_FOLDERS):
+        for folder_count, name in enumerate(archive_folders):
             if ipython:
-                print(f'{folder_count}/{len(ARCHIVE_FOLDERS)}: {name}')
+                print(f'{folder_count}/{len(archive_folders)}: {name}')
                 clear_output(wait=True)
-            if FILE_COMMENT.search(name):
-                folder, category = FILE_COMMENT.search(name).groups()
+            if file_comment.search(name):
+                folder, category = file_comment.search(name).groups()
                 clean_folder_name = Path(folder).name.strip()
                 print(clean_folder_name)
                 folder_categories = [x.strip() for x in category.split(';')]
                 primary_cat = folder_categories.pop(0)
-                if not primary_cat in categories:
+                if primary_cat not in categories:
                     categories[primary_cat] = {None: []}
                 if not folder_categories:
                     categories[primary_cat][None].append(clean_folder_name)
                 else:
                     if not '; '.join(folder_categories) in categories[primary_cat]:
+                        # noinspection PyTypeChecker
                         categories[primary_cat]['; '.join(folder_categories)] = []
+                    # noinspection PyTypeChecker
                     categories[primary_cat]['; '.join(folder_categories)].append(clean_folder_name)
             else:
+                # noinspection
                 categories[None].append(Path(name).name.strip())
 
             p = Path(name)
@@ -185,7 +204,7 @@ class Clippings():
             for subcat in sorted([str(x) for x in categories[cat].keys()]):
                 if subcat == 'None':
                     subcat = None
-                if not cat in _:
+                if cat not in _:
                     _[cat] = {}
                 _[cat][subcat] = categories[cat][subcat]
 

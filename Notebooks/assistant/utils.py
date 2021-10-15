@@ -1,18 +1,10 @@
 from .settings import Settings
-from pathlib import PosixPath
-from shutil import copyfile
-from slugify import slugify
-import bs4
-import json
-import os
-import re
-import shutil
-import unicodedata
+from .dependencies import PosixPath, bs4, inspect, json, os, re, shutil, unicodedata
 
 
 def keyshift(dictionary, key, diff) -> object:
     """
-    see https://stackoverflow.com/questions/28035490
+    modified from https://stackoverflow.com/questions/28035490
     """
     if key in dictionary:
         token = object()
@@ -31,10 +23,8 @@ class Path(PosixPath):
         if not self.parent.exists():
             self.parent.mkdir(parents=True)
 
-
     def write_json(self, obj):
         return self.write_text(json.dumps(obj))
-
 
     def read_json(self):
         return json.loads(self.read_text())
@@ -85,27 +75,39 @@ def write_html(
         return True
 
 
-def copy_and_overwrite(from_path, to_path):
-    if os.path.exists(to_path):
-        try:
-            shutil.rmtree(to_path)
-        except OSError as e:
+def wipe_dir(path, raise_error=True):
+    try:
+        shutil.rmtree(path)
+    except OSError as e:
+        if raise_error:
             print(f'Error occurred: {e}. Will try again...')
-            try:
-                shutil.rmtree(to_path)
-            except OSError as e:
+        try:
+            shutil.rmtree(path)
+        except OSError as e:
+            if raise_error:
                 raise RuntimeError(f'Tried again and failed. Original error: {e}')
+            print(f'Path {path} did not exist so unable to remove.')
+
+
+def copy_and_overwrite(from_path, to_path, verbose=False):
+    if os.path.exists(to_path):
+        wipe_dir(to_path)
     else:
-        print(f'Could not find directory {to_path}')
+        # Could not find directory to_path, so we can move ahead
+        if verbose:
+            print(f'Could not find directory {to_path} so moving head.')
+        else:
+            pass
     shutil.copytree(from_path, to_path)
 
 
 def slugify_node(value, verbose=False):
     init_value = str(value)
     value = init_value
-    value = (
-        unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
-    )
+    value = (unicodedata
+             .normalize("NFKD", value)
+             .encode("ascii", "ignore")
+             .decode("ascii"))
     value = re.sub(r"[^\w\s-]", "", value.lower())
     value = re.sub(r"^(\d+)", r"n\1", value)
     value = re.sub(r"[-\s]+", "_", value).strip("-_")
@@ -121,3 +123,14 @@ def get_abstract_from_html(html):
         if isinstance(x, bs4.element.NavigableString):
             text.append(x.strip())
     return " ".join(text)
+
+
+def get_variable_name(variable):
+    for fi in reversed(inspect.stack()):
+        names = [var_name for var_name, var_val in fi.frame.f_locals.items() if var_val is variable]
+        if len(names) > 0:
+            return names[0]
+
+
+def set_globals(e, variable):
+    e.globals[get_variable_name(variable)] = variable
