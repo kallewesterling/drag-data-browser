@@ -4,7 +4,6 @@
 
 {% block extra_head %}<link href="{{ BASE_URL }}includes/case-study.css" rel="stylesheet" crossorigin="anonymous" />{% endblock %}
 
-
 {% block scrollspy %}
 <div class="sticky-lg-top d-none d-lg-block flex-shrink-0 p-3 text-dark" style="width: 280px;  height: -webkit-fill-available; height: 100vh; max-height: 100vh; z-index: 600;">
     <nav class="navbar navbar-light bg-light flex-column align-items-stretch p-3">
@@ -65,7 +64,7 @@
     {% if data.chapter.unfinished %}
         <div><em>This case study is still in process of writing.</em></div>
     {% else %}
-        <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-offset="0">
+        <div>
         {% for section in data.chapter.sections %}
             <div id="section-{{ loop.index }}">
                 <h3 id="{{ section.slug }}">{{ section.title }}{% if section.subtitle %}: {{ section.subtitle }}{% endif %}</h3>
@@ -78,7 +77,7 @@
             <div class="pt-5">
                 <h3 id="footnotes">Footnotes</h3>
                 {% for counter, footnote in data.footnotes.items() %}
-                    <p><a name="fn{{counter}}"></a>{{ counter }}. {{ footnote }} <a href="#inlineFoootnote{{ counter }}" class="footnote-back"><i class="bi bi-arrow-up-square-fill"></i></a></p>
+                    <p><a name="fn{{counter}}"></a>{{ counter }}. {{ footnote }} <a href="#inlineFoootnote{{ counter }}" data-inline-footnote="{{ counter }}" class="footnote-back"></a></p>
                 {% endfor %}
             </div>
         </div>
@@ -86,4 +85,5 @@
 {% endblock %}
 
 {% block javascript %}
+<script src="{{ BASE_URL }}includes/js/case-study-footnotes.js" crossorigin="anonymous"></script>
 {% endblock %}
