@@ -1,6 +1,6 @@
 from .dependencies import Path, Environment, FileSystemLoader, slugify, os
 
-PRODUCTION = False
+PRODUCTION = True
 YEAR_RANGE = (1900, 1950)
 
 TITLE = 'Gayboys and Playboys'
