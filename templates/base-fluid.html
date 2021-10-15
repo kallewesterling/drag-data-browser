@@ -5,9 +5,9 @@
         <title>{{ SITE_TITLE }} | {% block title %}{% endblock %}</title>
         {% block extra_head %}{% endblock %}
     </head>
-    <body>
+    <body {% block body_inline_tag_content %}{% endblock %}>
         {% include 'includes/symbols.html' %}
-        <main class="overflow-scroll">
+        <main class="overflow-scroll" data-bs-spy="scroll" data-bs-target="#navbar-example3" style="position: relative !important;">
             {% with min_size='xl' %}
                 {% include 'includes/mainNav.html' %}
             {% endwith %}
@@ -15,7 +15,7 @@
             {% block scrollspy %}{% endblock %}
             <section id="content" class="d-flex flex-wrap overflow-auto w-100 mb-5 h-100">
                 {% block precontainer %}{% endblock %}
-                <div class="container-xl px-5"  data-bs-spy="scroll" data-bs-target="#navbar-example3">
+                <div class="container-xl px-5 mt-5 mt-lg-0">
                     {% block body %}{% endblock %}
                 </div>
             </sectl>
