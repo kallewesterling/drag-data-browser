@@ -127,7 +127,7 @@ body {
 }
 
 svg#main {
-    /* background-color: variable(--background); */
+    /* background-color: var(--background); */
     z-index: 100;
 }
 

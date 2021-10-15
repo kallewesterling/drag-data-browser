@@ -61,7 +61,7 @@ const drawAllTravels = (performerName, skipClearTravel) => {
             })
             .on("end", () => {
                 // fix the cx, cy, and reset transform when the transition is finished
-                // variable p = route.node().getPointAtLength(1 * l);
+                // var p = route.node().getPointAtLength(1 * l);
                 // console.log(p)
                 //
                 //console.log(store.currentTransform)
