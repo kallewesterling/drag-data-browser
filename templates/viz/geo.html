@@ -3,9 +3,9 @@
 {% block title %}Geodata (alpha){% endblock %}
 
 {% block extra_head %}
-<link href="{{ BASE_URL }}geo/includes/nouislider.css" rel="stylesheet" />
-<link href="{{ BASE_URL }}geo/css/style.css" rel="stylesheet" />
-<script src="{{ BASE_URL }}geo/includes/nouislider.js"></script>
+<link href="{{ BASE_URL }}/geo/includes/nouislider.css" rel="stylesheet" />
+<link href="{{ BASE_URL }}/geo/css/style.css" rel="stylesheet" />
+<script src="{{ BASE_URL }}/geo/includes/nouislider.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
 <style>
     /* last minute change for new site */
@@ -201,18 +201,18 @@
 
 
 {% block javascript %}
-<script src="{{ BASE_URL }}geo/app/colors.js"></script>
-<script src="{{ BASE_URL }}geo/app/utils.js"></script>
-<script src="{{ BASE_URL }}geo/app/warnings.js"></script>
-<script src="{{ BASE_URL }}geo/app/build.js"></script>
-<script src="{{ BASE_URL }}geo/app/load.js"></script>
-<script src="{{ BASE_URL }}geo/app/mainViews.js"></script>
-<script src="{{ BASE_URL }}geo/app/sizing.js"></script>
-<script src="{{ BASE_URL }}geo/app/travelling.js"></script>
-<script src="{{ BASE_URL }}geo/app/interactivity.js"></script>
-<script src="{{ BASE_URL }}geo/app/dragging.js"></script>
-<script src="{{ BASE_URL }}geo/app/help.js"></script>
-<script src="{{ BASE_URL }}geo/app/dataUtils.js"></script>
+<script src="{{ BASE_URL }}/geo/app/colors.js"></script>
+<script src="{{ BASE_URL }}/geo/app/utils.js"></script>
+<script src="{{ BASE_URL }}/geo/app/warnings.js"></script>
+<script src="{{ BASE_URL }}/geo/app/build.js"></script>
+<script src="{{ BASE_URL }}/geo/app/load.js"></script>
+<script src="{{ BASE_URL }}/geo/app/mainViews.js"></script>
+<script src="{{ BASE_URL }}/geo/app/sizing.js"></script>
+<script src="{{ BASE_URL }}/geo/app/travelling.js"></script>
+<script src="{{ BASE_URL }}/geo/app/interactivity.js"></script>
+<script src="{{ BASE_URL }}/geo/app/dragging.js"></script>
+<script src="{{ BASE_URL }}/geo/app/help.js"></script>
+<script src="{{ BASE_URL }}/geo/app/dataUtils.js"></script>
 <script>
     document.querySelector('#toggleFullscreen').addEventListener("click", (evt) => {
         if (d3.select('body').attr('data-fullscreen') === 'true') {

@@ -11,7 +11,7 @@
 <nav aria-label="breadcrumb" class="d-flex align-items-center rounded p-4 my-4 shadow-sm justify-content-between">
     <ol class="breadcrumb m-0">
         <li class="breadcrumb-item"><a href="{{ DATASET_URL }}">Dataset</a></li>
-        <li class="breadcrumb-item"><a href="{{ DATASET_URL }}venue/">Venues</a></li>
+        <li class="breadcrumb-item"><a href="{{ DATASET_URL }}/venue/">Venues</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ data.name }}</li>
     </ol>
     <div>
@@ -55,7 +55,7 @@
             <h2>Associated Performers</h2>
             <ul>
                 {% for name, slug in data.associated_performers.items() %}
-                <li><a href="{{ DATASET_URL }}performer/{{ slug }}/">{{ name }}</a></li>
+                <li><a href="{{ DATASET_URL }}/performer/{{ slug }}/">{{ name }}</a></li>
                 {% endfor %}
             </ul>
             {% endif %}
@@ -69,5 +69,5 @@
 <script>
     window.venueSlug = "{{ get_venue_slug(data.name) }}";
 </script>
-<script src="{{ BASE_URL }}includes/js/venue.js"></script>
+<script src="{{ BASE_URL }}/includes/js/venue.js"></script>
 {% endblock %}

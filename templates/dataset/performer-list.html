@@ -2,7 +2,7 @@
 
 {% block title %}All Performers{% endblock %}
 
-{% block extra_head %}<script src="{{ BASE_URL }}includes/js/tableSort.js" crossorigin="anonymous"></script>{% endblock %}
+{% block extra_head %}<script src="{{ BASE_URL }}/includes/js/tableSort.js" crossorigin="anonymous"></script>{% endblock %}
 
 {% block precontainer %}
 {% endblock %}
@@ -40,8 +40,8 @@
                     <tr>
                         <th scope="row">
                             <span
-                                >{% if performer in PERFORMER_CLIPPINGS %}<a href="{{ DATASET_URL }}clippings/"><i class="me-1 bi bi-file-earmark-check"></i></a>{% endif %}<a
-                                    href="{{ DATASET_URL }}performer/{{ get_performer_slug(performer) }}/"
+                                >{% if performer in PERFORMER_CLIPPINGS %}<a href="{{ DATASET_URL }}/clippings/"><i class="me-1 bi bi-file-earmark-check"></i></a>{% endif %}<a
+                                    href="{{ DATASET_URL }}/performer/{{ get_performer_slug(performer) }}/"
                                     >{% if NAME_MAPPING[performer][2] and NAME_MAPPING[performer][0] %}
                                         {{ NAME_MAPPING[performer][2] }}, {{ NAME_MAPPING[performer][0] }}
                                     {% elif NAME_MAPPING[performer][0] %}
@@ -63,6 +63,6 @@
     </div>
 </div>
 {% endblock %} {% block javascript %}
-<script src="{{ BASE_URL }}includes/js/tableFilter.js" crossorigin="anonymous"></script>
-<script src="{{ BASE_URL }}includes/js/performer-timelines.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}/includes/js/tableFilter.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}/includes/js/performer-timelines.js" crossorigin="anonymous"></script>
 {% endblock %}

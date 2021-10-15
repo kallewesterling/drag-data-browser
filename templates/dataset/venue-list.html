@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block title %}All Venues{% endblock %}
 
-{% block extra_head %}<script src="{{ BASE_URL }}includes/js/tableSort.js" crossorigin="anonymous"></script>{% endblock %}
+{% block extra_head %}<script src="{{ BASE_URL }}/includes/js/tableSort.js" crossorigin="anonymous"></script>{% endblock %}
 
 {% block precontainer %}
 {% endblock %}
@@ -39,7 +39,7 @@
                         <th scope="row">
                             <span
                                 ><a
-                                    href="{{ DATASET_URL }}venue/{{ get_venue_slug(venue) }}/"
+                                    href="{{ DATASET_URL }}/venue/{{ get_venue_slug(venue) }}/"
                                     >{{ venue }}</a
                                 ></span
                             >
@@ -55,6 +55,6 @@
     </div>
 </div>
 {% endblock %} {% block javascript %}
-<script src="{{ BASE_URL }}includes/js/venue-timelines.js" crossorigin="anonymous"></script>
-<script src="{{ BASE_URL }}includes/js/tableFilter.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}/includes/js/venue-timelines.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}/includes/js/tableFilter.js" crossorigin="anonymous"></script>
 {% endblock %}
