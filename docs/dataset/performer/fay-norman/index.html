@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | Fay Norman</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Fay-Elliot"
+                href="/drag-data-browser/dataset/performer/fay-elliot"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Fay Elliot</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Ferne-Proctor"
+                href="/drag-data-browser/dataset/performer/ferne-proctor"
                 tabindex="-1"
                 aria-disabled="false"
                 >Ferne Proctor &#8594;</a
@@ -366,7 +369,7 @@
                 <h4>Visualization of Fay Norman's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Fay Norman and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -386,35 +389,35 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/9-Mile-House-Cincinnati-OH/">9 Mile House (Cincinnati, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/9-mile-house-cincinnati-oh/">9 Mile House (Cincinnati, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Broadway-Jamestown-NY/">Broadway (Jamestown, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/broadway-jamestown-ny/">Broadway (Jamestown, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Ambassador-Dayton-OH/">Club Ambassador (Dayton, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-ambassador-dayton-oh/">Club Ambassador (Dayton, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Connies-Inn-New-York-NY/">Connie's Inn (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/connie-s-inn-new-york-ny/">Connie's Inn (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Coyne-Club-Scranton-PA/">Coyne Club (Scranton, PA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/coyne-club-scranton-pa/">Coyne Club (Scranton, PA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Dixie-Grove-South-Bend-IN/">Dixie Grove (South Bend, IN)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/dixie-grove-south-bend-in/">Dixie Grove (South Bend, IN)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Dwans-Recreation-Gardens-Benton-Harbor-MI/">Dwan's Recreation Gardens (Benton Harbor, MI)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/dwan-s-recreation-gardens-benton-harbor-mi/">Dwan's Recreation Gardens (Benton Harbor, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Frank-Whites-Buffalo-NY/">Frank White's (Buffalo, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/frank-white-s-buffalo-ny/">Frank White's (Buffalo, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Koenigs-Clubhouse-Fort-Mitchell-KY/">Koenig's Clubhouse (Fort Mitchell, KY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/koenig-s-clubhouse-fort-mitchell-ky/">Koenig's Clubhouse (Fort Mitchell, KY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/La-Villa-Syracuse-NY/">La Villa (Syracuse, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/la-villa-syracuse-ny/">La Villa (Syracuse, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Paddock-Louisville-KY/">Paddock (Louisville, KY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/paddock-louisville-ky/">Paddock (Louisville, KY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Palais-Royal-Lansing-MI/">Palais Royal (Lansing, MI)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/palais-royal-lansing-mi/">Palais Royal (Lansing, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/President-Cafe-St-Louis-MO/">President Cafe (St. Louis, MO)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/president-cafe-st-louis-mo/">President Cafe (St. Louis, MO)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Terrace-Gardens-Warren-PA/">Terrace Gardens (Warren, PA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/terrace-gardens-warren-pa/">Terrace Gardens (Warren, PA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Wagon-Wheel-Nashville-TN/">Wagon Wheel (Nashville, TN)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/wagon-wheel-nashville-tn/">Wagon Wheel (Nashville, TN)</a></li>
                 
             </ul>
              
@@ -474,10 +477,10 @@
         
 <script>
     window.node_id = "fay_norman";
-    window.performerSlug = "Fay-Norman";
+    window.performerSlug = "fay-norman";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

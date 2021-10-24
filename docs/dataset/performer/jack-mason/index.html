@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | Jack Mason</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Jack-Leystan"
+                href="/drag-data-browser/dataset/performer/jack-leystan"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Jack Leystan</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Jack-Polle"
+                href="/drag-data-browser/dataset/performer/jack-polle"
                 tabindex="-1"
                 aria-disabled="false"
                 >Jack Polle &#8594;</a
@@ -362,7 +365,7 @@
                 <h4>Visualization of Jack Mason's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Jack Mason and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -504,33 +507,33 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/American-Hotel-New-York-NY/">American Hotel (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/american-hotel-new-york-ny/">American Hotel (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Broadway-Room-New-York-NY/">Broadway Room (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/broadway-room-new-york-ny/">Broadway Room (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Clover-Gardens-New-York-NY/">Clover Gardens (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/clover-gardens-new-york-ny/">Clover Gardens (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Piccadilly-Baltimore-MD/">Club Piccadilly (Baltimore, MD)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-piccadilly-baltimore-md/">Club Piccadilly (Baltimore, MD)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Richman-New-York-NY/">Club Richman (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-richman-new-york-ny/">Club Richman (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Echo-Tavern-Albany-NY/">Echo Tavern (Albany, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/echo-tavern-albany-ny/">Echo Tavern (Albany, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Five-Corners-Chateau-Paterson-NJ/">Five Corners Chateau (Paterson, NJ)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/five-corners-chateau-paterson-nj/">Five Corners Chateau (Paterson, NJ)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Jeanes-New-York-NY/">Jeane's (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/jeane-s-new-york-ny/">Jeane's (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Little-Club-Glens-Falls-NY/">Little Club (Glens Falls, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/little-club-glens-falls-ny/">Little Club (Glens Falls, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Little-Club-Saratoga-Springs-NY/">Little Club (Saratoga Springs, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/little-club-saratoga-springs-ny/">Little Club (Saratoga Springs, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Madison-Square-Garden-New-York-NY/">Madison Square Garden (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/madison-square-garden-new-york-ny/">Madison Square Garden (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Nut-Club-New-York-NY/">Nut Club (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/nut-club-new-york-ny/">Nut Club (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Rainbow-Gardens-Monticello-NY/">Rainbow Gardens (Monticello, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/rainbow-gardens-monticello-ny/">Rainbow Gardens (Monticello, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Village-Grove-Nut-Club-New-York-NY/">Village Grove Nut Club (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/village-grove-nut-club-new-york-ny/">Village Grove Nut Club (New York, NY)</a></li>
                 
             </ul>
              
@@ -581,10 +584,10 @@
         
 <script>
     window.node_id = "jack_mason";
-    window.performerSlug = "Jack-Mason";
+    window.performerSlug = "jack-mason";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

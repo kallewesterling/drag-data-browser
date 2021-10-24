@@ -13,8 +13,8 @@ let getCurrentXScale = () => {
 }
 
 Promise.all([
-    d3.json(DATA_DIR + 'years-active.json'),
-    d3.json(DATA_DIR + 'performer-slugs.json'),
+    d3.json(DATA_DIR + '/years-active.json'),
+    d3.json(DATA_DIR + '/performer-slugs.json'),
 ]).then((files)=>{
     _data = files[0]
     Object.keys(_data).forEach(k=>{

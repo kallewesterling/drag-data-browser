@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | Jerry Trevor</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Jerry-Sullivan"
+                href="/drag-data-browser/dataset/performer/jerry-sullivan"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Jerry Sullivan</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Jerry-Vaughn"
+                href="/drag-data-browser/dataset/performer/jerry-vaughn"
                 tabindex="-1"
                 aria-disabled="false"
                 >Jerry Vaughn &#8594;</a
@@ -362,7 +365,7 @@
                 <h4>Visualization of Jerry Trevor's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Jerry Trevor and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -382,7 +385,7 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Variety-Club-Baltimore-MD/">Variety Club (Baltimore, MD)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/variety-club-baltimore-md/">Variety Club (Baltimore, MD)</a></li>
                 
             </ul>
              
@@ -414,10 +417,10 @@
         
 <script>
     window.node_id = "jerry_trevor";
-    window.performerSlug = "Jerry-Trevor";
+    window.performerSlug = "jerry-trevor";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

@@ -14,7 +14,8 @@ if PRODUCTION:
     BASE_URL = '/drag-data-browser/'
 
 # Foundational directories
-ROOT = [parent for parent in Path(__file__).parents if str(parent).endswith('drag-data-browser')][0]
+ROOT = [parent for parent in Path(__file__).parents
+        if str(parent).endswith('drag-data-browser')][0]
 TEMPLATE_DIR = os.path.join(ROOT, 'templates')
 
 # Google stuff

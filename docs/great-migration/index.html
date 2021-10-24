@@ -24,16 +24,19 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | The Great Migration</title>
         
     <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
-    <link href="/drag-data-browser//includes/sankey.css" rel="stylesheet" crossorigin="anonymous" />
+    <link href="/drag-data-browser/includes/sankey.css" rel="stylesheet" crossorigin="anonymous" />
     <script>
         if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
             window.DATA_DIR = "/docs/data";
@@ -164,7 +167,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             
@@ -196,13 +199,13 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 
         
-<script src="/drag-data-browser//includes/js/sankey/load.js" crossorigin="anonymous"></script>
-<script src="/drag-data-browser//includes/js/sankey/interactivity.js" crossorigin="anonymous"></script>
-<script src="/drag-data-browser//includes/js/sankey/draw.js" crossorigin="anonymous"></script>
-<script src="/drag-data-browser//includes/js/sankey/scale.js" crossorigin="anonymous"></script>
-<script src="/drag-data-browser//includes/js/sankey/legend.js" crossorigin="anonymous"></script>
-<script src="/drag-data-browser//includes/js/sankey.js" crossorigin="anonymous"></script>
+<script src="/drag-data-browser/includes/js/sankey/load.js" crossorigin="anonymous"></script>
+<script src="/drag-data-browser/includes/js/sankey/interactivity.js" crossorigin="anonymous"></script>
+<script src="/drag-data-browser/includes/js/sankey/draw.js" crossorigin="anonymous"></script>
+<script src="/drag-data-browser/includes/js/sankey/scale.js" crossorigin="anonymous"></script>
+<script src="/drag-data-browser/includes/js/sankey/legend.js" crossorigin="anonymous"></script>
+<script src="/drag-data-browser/includes/js/sankey.js" crossorigin="anonymous"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | Billy Richards</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Billy-Reed"
+                href="/drag-data-browser/dataset/performer/billy-reed"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Billy Reed</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Billy-Rohmer"
+                href="/drag-data-browser/dataset/performer/billy-rohmer"
                 tabindex="-1"
                 aria-disabled="false"
                 >Billy Rohmer &#8594;</a
@@ -362,7 +365,7 @@
                 <h4>Visualization of Billy Richards's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Billy Richards and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -816,27 +819,27 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Belvedere-Club-Echo-LA/">Belvedere Club (Echo, LA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/belvedere-club-echo-la/">Belvedere Club (Echo, LA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Jewel-Box-Miami-FL/">Club Jewel Box (Miami, FL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-jewel-box-miami-fl/">Club Jewel Box (Miami, FL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-La-Masque-Chicago-IL/">Club La Masque (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-la-masque-chicago-il/">Club La Masque (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Picardy-Chicago-IL/">Club Picardy (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-picardy-chicago-il/">Club Picardy (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Dantes-Inferno-Kansas-City-MO/">Dante's Inferno (Kansas City, MO)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/dante-s-inferno-kansas-city-mo/">Dante's Inferno (Kansas City, MO)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Dog-House-Reno-NV/">Dog House (Reno, NV)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/dog-house-reno-nv/">Dog House (Reno, NV)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Domino-Club-San-Francisco-CA/">Domino Club (San Francisco, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/domino-club-san-francisco-ca/">Domino Club (San Francisco, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Jungle-Inn-Youngstown-OH/">Jungle Inn (Youngstown, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/jungle-inn-youngstown-oh/">Jungle Inn (Youngstown, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/K9-Club-Chicago-IL/">K9 Club (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/k9-club-chicago-il/">K9 Club (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/New-Lookout-House-Cincinnati-OH/">New Lookout House (Cincinnati, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/new-lookout-house-cincinnati-oh/">New Lookout House (Cincinnati, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Riverside-Gardens-San-Antonio-TX/">Riverside Gardens (San Antonio, TX)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/riverside-gardens-san-antonio-tx/">Riverside Gardens (San Antonio, TX)</a></li>
                 
             </ul>
              
@@ -891,10 +894,10 @@
         
 <script>
     window.node_id = "billy_richards";
-    window.performerSlug = "Billy-Richards";
+    window.performerSlug = "billy-richards";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | Jackie Adams</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Jack-Polle"
+                href="/drag-data-browser/dataset/performer/jack-polle"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Jack Polle</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Jackie-Bennett"
+                href="/drag-data-browser/dataset/performer/jackie-bennett"
                 tabindex="-1"
                 aria-disabled="false"
                 >Jackie Bennett &#8594;</a
@@ -362,7 +365,7 @@
                 <h4>Visualization of Jackie Adams's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Jackie Adams and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -468,27 +471,27 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Aldine-Theater-Atlantic-City-NJ/">Aldine Theater (Atlantic City, NJ)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/aldine-theater-atlantic-city-nj/">Aldine Theater (Atlantic City, NJ)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Piccadilly-Baltimore-MD/">Club Piccadilly (Baltimore, MD)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-piccadilly-baltimore-md/">Club Piccadilly (Baltimore, MD)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Richman-New-York-NY/">Club Richman (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-richman-new-york-ny/">Club Richman (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Dantes-Inferno-Kansas-City-MO/">Dante's Inferno (Kansas City, MO)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/dante-s-inferno-kansas-city-mo/">Dante's Inferno (Kansas City, MO)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Echo-Tavern-Albany-NY/">Echo Tavern (Albany, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/echo-tavern-albany-ny/">Echo Tavern (Albany, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/K-E-P-Restaurant-Buffalo-NY/">K.E.P. Restaurant (Buffalo, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/k-e-p-restaurant-buffalo-ny/">K.E.P. Restaurant (Buffalo, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Purple-Derby-Atlantic-City-NJ/">Purple Derby (Atlantic City, NJ)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/purple-derby-atlantic-city-nj/">Purple Derby (Atlantic City, NJ)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Red-Gables-Club-Indianapolis-IN/">Red Gables Club (Indianapolis, IN)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/red-gables-club-indianapolis-in/">Red Gables Club (Indianapolis, IN)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Variety-Club-Baltimore-MD/">Variety Club (Baltimore, MD)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/variety-club-baltimore-md/">Variety Club (Baltimore, MD)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Winnie-Winkel-Club-Kansas-City-MO/">Winnie Winkel Club (Kansas City, MO)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/winnie-winkel-club-kansas-city-mo/">Winnie Winkel Club (Kansas City, MO)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Wonder-Bar-Nassau-NY/">Wonder Bar (Nassau, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/wonder-bar-nassau-ny/">Wonder Bar (Nassau, NY)</a></li>
                 
             </ul>
              
@@ -534,10 +537,10 @@
         
 <script>
     window.node_id = "jackie_adams";
-    window.performerSlug = "Jackie-Adams";
+    window.performerSlug = "jackie-adams";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

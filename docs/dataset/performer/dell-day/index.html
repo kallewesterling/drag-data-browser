@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | Dell Day</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Del-Raye"
+                href="/drag-data-browser/dataset/performer/del-raye"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Del Raye</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Delores-Del-Rio"
+                href="/drag-data-browser/dataset/performer/delores-del-rio"
                 tabindex="-1"
                 aria-disabled="false"
                 >Delores Del Rio &#8594;</a
@@ -366,7 +369,7 @@
                 <h4>Visualization of Dell Day's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Dell Day and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -386,31 +389,31 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Arabian-Gardens-La-Grande-OR/">Arabian Gardens (La Grande, OR)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/arabian-gardens-la-grande-or/">Arabian Gardens (La Grande, OR)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Bligh-Theatre-Salem-OR/">Bligh Theatre (Salem, OR)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/bligh-theatre-salem-or/">Bligh Theatre (Salem, OR)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/California-Theatre-Petaluma-CA/">California Theatre (Petaluma, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/california-theatre-petaluma-ca/">California Theatre (Petaluma, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/California-Theatre-Santa-Rosa-CA/">California Theatre (Santa Rosa, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/california-theatre-santa-rosa-ca/">California Theatre (Santa Rosa, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Carmel-Theatre-Los-Angeles-CA/">Carmel Theatre (Los Angeles, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/carmel-theatre-los-angeles-ca/">Carmel Theatre (Los Angeles, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Empress-Theatre-Fort-Collins-CO/">Empress Theatre (Fort Collins, CO)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/empress-theatre-fort-collins-co/">Empress Theatre (Fort Collins, CO)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Mahaiwe-Theatre-Great-Barrington-MA/">Mahaiwe Theatre (Great Barrington, MA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/mahaiwe-theatre-great-barrington-ma/">Mahaiwe Theatre (Great Barrington, MA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Nile-Theatre-Bakersfield-CA/">Nile Theatre (Bakersfield, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/nile-theatre-bakersfield-ca/">Nile Theatre (Bakersfield, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Orpheum-Theatre-Twin-Falls-ID/">Orpheum Theatre (Twin Falls, ID)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/orpheum-theatre-twin-falls-id/">Orpheum Theatre (Twin Falls, ID)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Pine-Tree-Theatre-Klamath-Falls-OR/">Pine Tree Theatre (Klamath Falls, OR)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/pine-tree-theatre-klamath-falls-or/">Pine Tree Theatre (Klamath Falls, OR)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Rialto-Theatre-Ironwood-MI/">Rialto Theatre (Ironwood, MI)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/rialto-theatre-ironwood-mi/">Rialto Theatre (Ironwood, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Strand-Theatre-Emporia-KS/">Strand Theatre (Emporia, KS)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/strand-theatre-emporia-ks/">Strand Theatre (Emporia, KS)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/West-Coast-Walker-Theatre-Santa-Ana-CA/">West Coast-Walker Theatre (Santa Ana, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/west-coast-walker-theatre-santa-ana-ca/">West Coast-Walker Theatre (Santa Ana, CA)</a></li>
                 
             </ul>
              
@@ -466,10 +469,10 @@
         
 <script>
     window.node_id = "dell_day";
-    window.performerSlug = "Dell-Day";
+    window.performerSlug = "dell-day";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

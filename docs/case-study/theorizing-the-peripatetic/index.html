@@ -24,14 +24,17 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Case Study: </title>
-        <link href="/drag-data-browser//includes/case-study.css" rel="stylesheet" crossorigin="anonymous" />
+        <link href="/drag-data-browser/includes/case-study.css" rel="stylesheet" crossorigin="anonymous" />
     </head>
     <body >
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -210,7 +213,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -290,7 +293,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             
@@ -303,7 +306,7 @@
 
         <nav class="nav nav-pills flex-column" id="navbar-example3">
             
-                <a class="nav-link" href="#Section-Title">Section Title</a>
+                <a class="nav-link" href="#section-title">Section Title</a>
             
             <hr />
             <a class="nav-link" href="#footnotes">Footnotes</a>
@@ -328,7 +331,7 @@
             <li class="nav-item dropdown">
                 <ul class="dropdown-menu show" aria-labelledby="dropdown09">
                     
-                        <li><a class="dropdown-item" href="#Section-Title">Section Title</a></li>
+                        <li><a class="dropdown-item" href="#section-title">Section Title</a></li>
                         
                         <hr />
                         <li><a class="dropdown-item" href="#footnotes">Footnotes</a></li>
@@ -364,6 +367,6 @@
 
         
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

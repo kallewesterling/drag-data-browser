@@ -1,37 +1,50 @@
-function sortTable(table, col, reverse) {
-    document.body.style.setProperty('cursor', 'progress', 'important');
-    console.log('sortTable called');
-    var tb = table.tBodies[0], // use `<tbody>` to ignore `<thead>` and `<tfoot>` rows
-        tr = Array.prototype.slice.call(tb.rows, 0), // put rows into array
-        i;
-    reverse = -((+reverse) || -1);
-    tr = tr.sort(function (a, b) { // sort rows
-        return reverse // `-1 *` if want opposite order
-            * (a.cells[col].textContent.trim() // using `.textContent.trim()` for test
-                .localeCompare(b.cells[col].textContent.trim())
-               );
+/* eslint-disable no-param-reassign */
+
+function sorter(rows = [], reverseOrder = 1, col = 0) {
+  return new Promise((resolve) => {
+    resolve(rows.sort((a, b) => {
+      const aContent = a.cells[col].textContent.trim();
+      const bContent = b.cells[col].textContent.trim();
+      return reverseOrder * (aContent.localeCompare(bContent));
+    }));
+  });
+}
+
+async function sortTable(table, col, reverse) {
+  document.body.style.setProperty('cursor', 'progress', 'important');
+
+  const reverseOrder = -((+reverse) || -1);
+
+  // isolate table's body (and exclude thead and tfoot)
+  const tableBody = table.tBodies[0];
+
+  // sort rows
+  let rows = [...tableBody.rows];
+  rows = await sorter(rows, reverseOrder, col);
+
+  // append each row in order
+  rows.forEach((row) => tableBody.appendChild(row));
+
+  table.dataset.sorted = reverseOrder === 1 ? 'asc' : 'desc';
+
+  document.body.style.setProperty('cursor', 'default');
+}
+
+function makeSortable(tableElem) {
+  if (!tableElem.tHead) {
+    return;
+  }
+  const cells = [...tableElem.tHead.rows[0].cells];
+
+  cells.forEach((cell, col) => {
+    let direction = 1;
+    cell.addEventListener('click', () => {
+      sortTable(tableElem, col, (direction = 1 - direction));
     });
-    for(i = 0; i < tr.length; ++i) tb.appendChild(tr[i]); // append each row in order
-    table.dataset.sorted = reverse === 1 ? 'asc' : 'desc';
-    document.body.style.setProperty('cursor', 'default');
+  });
 }
 
-function makeSortable(table) {
-    var th = table.tHead, i;
-    th && (th = th.rows[0]) && (th = th.cells);
-    if (th) i = th.length;
-    else return; // if no `<thead>` then do nothing
-    while (--i >= 0) (function (i) {
-        var dir = 1;
-        th[i].addEventListener('click', function () {sortTable(table, i, (dir = 1 - dir))});
-    }(i));
-}
-
-function makeAllSortable(parent) {
-    console.log('makeAllSortable called')
-    parent = parent || document.body;
-    var t = parent.getElementsByTagName('table'), i = t.length;
-    while (--i >= 0) makeSortable(t[i]);
-}
-
-window.onload = function () {console.log('window loaded!'); makeAllSortable();};
+window.onload = () => {
+  const tables = [...document.querySelectorAll('table')];
+  tables.forEach((table) => makeSortable(table));
+};

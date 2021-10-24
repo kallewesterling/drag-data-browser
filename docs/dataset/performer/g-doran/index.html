@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | G. Doran</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Funny-Fanny"
+                href="/drag-data-browser/dataset/performer/funny-fanny"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Funny Fanny</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Gabby-Lee"
+                href="/drag-data-browser/dataset/performer/gabby-lee"
                 tabindex="-1"
                 aria-disabled="false"
                 >Gabby Lee &#8594;</a
@@ -362,7 +365,7 @@
                 <h4>Visualization of G. Doran's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between G. Doran and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -616,37 +619,37 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Binghamton-Theatre-Binghamton-NY/">Binghamton Theatre (Binghamton, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/binghamton-theatre-binghamton-ny/">Binghamton Theatre (Binghamton, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Castillion-Royal-Inn-New-York-NY/">Castillion Royal Inn (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/castillion-royal-inn-new-york-ny/">Castillion Royal Inn (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Ha-Ha-Chicago-IL/">Club Ha-Ha (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-ha-ha-chicago-il/">Club Ha-Ha (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Englewood-Theatre-Chicago-IL/">Englewood Theatre (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/englewood-theatre-chicago-il/">Englewood Theatre (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Foxs-Crotona-New-York-NY/">Fox's Crotona (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/fox-s-crotona-new-york-ny/">Fox's Crotona (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/K9-Club-Chicago-IL/">K9 Club (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/k9-club-chicago-il/">K9 Club (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Loews-Lincoln-Square-Theatre-New-York-NY/">Loew's Lincoln Square Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/loew-s-lincoln-square-theatre-new-york-ny/">Loew's Lincoln Square Theatre (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Lyric-Theatre-Indianapolis-IN/">Lyric Theatre (Indianapolis, IN)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/lyric-theatre-indianapolis-in/">Lyric Theatre (Indianapolis, IN)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/New-Amsterdam-Theatre-New-York-NY/">New Amsterdam Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/new-amsterdam-theatre-new-york-ny/">New Amsterdam Theatre (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Opera-House-New-Brunswick-NJ/">Opera House (New Brunswick, NJ)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/opera-house-new-brunswick-nj/">Opera House (New Brunswick, NJ)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Oriental-Theatre-Detroit-MI/">Oriental Theatre (Detroit, MI)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/oriental-theatre-detroit-mi/">Oriental Theatre (Detroit, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Pansy-Club-New-York-NY/">Pansy Club (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/pansy-club-new-york-ny/">Pansy Club (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Paramount-Theatre-Des-Moines-IA/">Paramount Theatre (Des Moines, IA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/paramount-theatre-des-moines-ia/">Paramount Theatre (Des Moines, IA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Sheboygan-Theatre-Sheboygan-WI/">Sheboygan Theatre (Sheboygan, WI)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/sheboygan-theatre-sheboygan-wi/">Sheboygan Theatre (Sheboygan, WI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Shubert-Theatre-Newark-NJ/">Shubert Theatre (Newark, NJ)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/shubert-theatre-newark-nj/">Shubert Theatre (Newark, NJ)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Strand-Theatre-Lansing-MI/">Strand Theatre (Lansing, MI)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/strand-theatre-lansing-mi/">Strand Theatre (Lansing, MI)</a></li>
                 
             </ul>
              
@@ -696,10 +699,10 @@
         
 <script>
     window.node_id = "g_doran";
-    window.performerSlug = "G-Doran";
+    window.performerSlug = "g-doran";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

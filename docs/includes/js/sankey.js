@@ -2,8 +2,8 @@
 /* eslint-disable no-unused-vars */
 
 const datafiles = [
-  `${DATA_DIR}sankey-data.json`,
-  `${DATA_DIR}performer-slugs.json`,
+  `${DATA_DIR}/sankey-data.json`,
+  `${DATA_DIR}/performer-slugs.json`,
 ];
 
 window.locked = false;

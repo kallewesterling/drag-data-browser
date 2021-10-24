@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | Lyle Mack</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Luzetta-Hall"
+                href="/drag-data-browser/dataset/performer/luzetta-hall"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Luzetta Hall</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Lyle-Page"
+                href="/drag-data-browser/dataset/performer/lyle-page"
                 tabindex="-1"
                 aria-disabled="false"
                 >Lyle Page &#8594;</a
@@ -366,7 +369,7 @@
                 <h4>Visualization of Lyle Mack's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Lyle Mack and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -500,27 +503,27 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Birds-Nest-New-York-NY/">Bird's Nest (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/bird-s-nest-new-york-ny/">Bird's Nest (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Frontenac-Detroit-MI/">Club Frontenac (Detroit, MI)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-frontenac-detroit-mi/">Club Frontenac (Detroit, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Lido-Youngstown-OH/">Club Lido (Youngstown, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-lido-youngstown-oh/">Club Lido (Youngstown, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Echo-Tavern-Albany-NY/">Echo Tavern (Albany, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/echo-tavern-albany-ny/">Echo Tavern (Albany, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Giddys-Asbury-Park-NJ/">Giddy's (Asbury Park, NJ)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/giddy-s-asbury-park-nj/">Giddy's (Asbury Park, NJ)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Merry-Go-Round-Tap-Room-Akron-OH/">Merry Go-Round Tap Room (Akron, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/merry-go-round-tap-room-akron-oh/">Merry Go-Round Tap Room (Akron, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Oasis-Detroit-MI/">Oasis (Detroit, MI)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/oasis-detroit-mi/">Oasis (Detroit, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Torch-Club-Akron-OH/">Torch Club (Akron, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/torch-club-akron-oh/">Torch Club (Akron, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Torch-Club-Chicago-IL/">Torch Club (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/torch-club-chicago-il/">Torch Club (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Torch-Club-Cleveland-OH/">Torch Club (Cleveland, OH)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/torch-club-cleveland-oh/">Torch Club (Cleveland, OH)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Torch-Club-Miami-FL/">Torch Club (Miami, FL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/torch-club-miami-fl/">Torch Club (Miami, FL)</a></li>
                 
             </ul>
              
@@ -568,10 +571,10 @@
         
 <script>
     window.node_id = "lyle_mack";
-    window.performerSlug = "Lyle-Mack";
+    window.performerSlug = "lyle-mack";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

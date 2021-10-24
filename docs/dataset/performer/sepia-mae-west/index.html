@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | Sepia Mae West</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Sepia-Greta-Garbo"
+                href="/drag-data-browser/dataset/performer/sepia-greta-garbo"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Sepia Greta Garbo</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Shirline"
+                href="/drag-data-browser/dataset/performer/shirline"
                 tabindex="-1"
                 aria-disabled="false"
                 >Shirline &#8594;</a
@@ -366,7 +369,7 @@
                 <h4>Visualization of Sepia Mae West's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Sepia Mae West and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -731,35 +734,35 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/101-Ranch-New-York-NY/">101 Ranch (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/101-ranch-new-york-ny/">101 Ranch (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/1642-Milliman-Street-Baltimore-MD/">1642 Milliman Street (Baltimore, MD)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/1642-milliman-street-baltimore-md/">1642 Milliman Street (Baltimore, MD)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/33rd-Street-Tavern-Chicago-IL/">33rd Street Tavern (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/33rd-street-tavern-chicago-il/">33rd Street Tavern (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/65-Club-Chicago-IL/">65 Club (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/65-club-chicago-il/">65 Club (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/808-Club-Los-Angeles-CA/">808 Club (Los Angeles, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/808-club-los-angeles-ca/">808 Club (Los Angeles, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Cabin-Inn-Chicago-IL/">Cabin Inn (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/cabin-inn-chicago-il/">Cabin Inn (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Creole-Inn-Chicago-IL/">Creole Inn (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/creole-inn-chicago-il/">Creole Inn (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Joes-Deluxe-Chicago-IL/">Joe's Deluxe (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/joe-s-deluxe-chicago-il/">Joe's Deluxe (Chicago, IL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Lincoln-Theatre-Los-Angeles-CA/">Lincoln Theatre (Los Angeles, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/lincoln-theatre-los-angeles-ca/">Lincoln Theatre (Los Angeles, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Loews-State-Theatre-Los-Angeles-CA/">Loew's State Theatre (Los Angeles, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/loew-s-state-theatre-los-angeles-ca/">Loew's State Theatre (Los Angeles, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Lone-Star-Night-Club-and-Open-Air-Garden-Kansas-City-MO/">Lone Star Night Club and Open Air Garden (Kansas City, MO)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/lone-star-night-club-and-open-air-garden-kansas-city-mo/">Lone Star Night Club and Open Air Garden (Kansas City, MO)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Paseo-Hall-Kansas-City-MO/">Paseo Hall (Kansas City, MO)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/paseo-hall-kansas-city-mo/">Paseo Hall (Kansas City, MO)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Smalls-New-York-NY/">Small's (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/small-s-new-york-ny/">Small's (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Smalls-Paradise-New-York-NY/">Small's Paradise (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/small-s-paradise-new-york-ny/">Small's Paradise (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/The-Annex-Chicago-IL/">The Annex (Chicago, IL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/the-annex-chicago-il/">The Annex (Chicago, IL)</a></li>
                 
             </ul>
              
@@ -838,10 +841,10 @@
         
 <script>
     window.node_id = "sepia_mae_west";
-    window.performerSlug = "Sepia-Mae-West";
+    window.performerSlug = "sepia-mae-west";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | Olyn Landick</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Norman-Lewis"
+                href="/drag-data-browser/dataset/performer/norman-lewis"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Norman Lewis</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Ora-Monte"
+                href="/drag-data-browser/dataset/performer/ora-monte"
                 tabindex="-1"
                 aria-disabled="false"
                 >Ora Monte &#8594;</a
@@ -366,7 +369,7 @@
                 <h4>Visualization of Olyn Landick's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Olyn Landick and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -472,25 +475,25 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Avery-Memorial-Hartford-CT/">Avery Memorial (Hartford, CT)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/avery-memorial-hartford-ct/">Avery Memorial (Hartford, CT)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Capitol-Theatre-Lancaster-PA/">Capitol Theatre (Lancaster, PA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/capitol-theatre-lancaster-pa/">Capitol Theatre (Lancaster, PA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Flatbush-Theatre-New-York-NY/">Flatbush Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/flatbush-theatre-new-york-ny/">Flatbush Theatre (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Fox-Theatre-Detroit-MI/">Fox Theatre (Detroit, MI)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/fox-theatre-detroit-mi/">Fox Theatre (Detroit, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Hipp-Baltimore-MD/">Hipp (Baltimore, MD)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/hipp-baltimore-md/">Hipp (Baltimore, MD)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Keith-Albees-Madison-Theatre-New-York-NY/">Keith-Albee's Madison Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/keith-albee-s-madison-theatre-new-york-ny/">Keith-Albee's Madison Theatre (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Loews-Orpheum-New-York-NY/">Loew's Orpheum (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/loew-s-orpheum-new-york-ny/">Loew's Orpheum (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Loews-Pitkin-Theatre-New-York-NY/">Loew's Pitkin Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/loew-s-pitkin-theatre-new-york-ny/">Loew's Pitkin Theatre (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Orpheum-Los-Angeles-CA/">Orpheum (Los Angeles, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/orpheum-los-angeles-ca/">Orpheum (Los Angeles, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Proctors-Theatre-New-York-NY/">Proctor's Theatre (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/proctor-s-theatre-new-york-ny/">Proctor's Theatre (New York, NY)</a></li>
                 
             </ul>
              
@@ -532,10 +535,10 @@
         
 <script>
     window.node_id = "olyn_landick";
-    window.performerSlug = "Olyn-Landick";
+    window.performerSlug = "olyn-landick";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>

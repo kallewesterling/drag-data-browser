@@ -4,7 +4,7 @@
 
 {% block extra_head %}
     <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
-    <link href="{{ BASE_URL }}/includes/sankey.css" rel="stylesheet" crossorigin="anonymous" />
+    <link href="{{ BASE_URL }}includes/sankey.css" rel="stylesheet" crossorigin="anonymous" />
     <script>
         if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
             window.DATA_DIR = "/docs/data";
@@ -51,10 +51,10 @@
 {% endblock %}
 
 {% block javascript %}
-<script src="{{ BASE_URL }}/includes/js/sankey/load.js" crossorigin="anonymous"></script>
-<script src="{{ BASE_URL }}/includes/js/sankey/interactivity.js" crossorigin="anonymous"></script>
-<script src="{{ BASE_URL }}/includes/js/sankey/draw.js" crossorigin="anonymous"></script>
-<script src="{{ BASE_URL }}/includes/js/sankey/scale.js" crossorigin="anonymous"></script>
-<script src="{{ BASE_URL }}/includes/js/sankey/legend.js" crossorigin="anonymous"></script>
-<script src="{{ BASE_URL }}/includes/js/sankey.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/sankey/load.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/sankey/interactivity.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/sankey/draw.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/sankey/scale.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/sankey/legend.js" crossorigin="anonymous"></script>
+<script src="{{ BASE_URL }}includes/js/sankey.js" crossorigin="anonymous"></script>
 {% endblock %}

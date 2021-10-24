@@ -24,11 +24,14 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
         crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/drag-data-browser//includes/style.css" />
+    <link rel="stylesheet" href="/drag-data-browser/includes/style.css" />
     <script>
         const BASE_URL = "/drag-data-browser/";
         const DATASET_URL = "/drag-data-browser/dataset";
         const DATA_DIR = "/drag-data-browser/data";
+        window.DATA_DIR = DATA_DIR;
+        window.BASE_URL = BASE_URL;
+        window.DATASET_URL = DATASET_URL;
     </script>
         <title>Gayboys and Playboys | Performer | Nicki Gallucci</title>
         
@@ -209,7 +212,7 @@
 </ul>
     <hr>
     <div class="dropdown">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
 <nav id="mainNavSmall" class="sticky-top d-flex d-xl-none flex-column flex-shrink-0 bg-dark navbar-nav-scroll">
@@ -289,7 +292,7 @@
     
 </ul>
     <div class="dropdown border-top">
-        <a href="/drag-data-browser//about/" class="text-white text-decoration-none small">About this website</a>
+        <a href="/drag-data-browser/about/" class="text-white text-decoration-none small">About this website</a>
     </div>
 </nav>
             <div id="horizontal-separator"></div>
@@ -321,7 +324,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Nelson"
+                href="/drag-data-browser/dataset/performer/nelson"
                 tabindex="-1"
                 aria-disabled="false"
                 >&#8592; Nelson</a
@@ -333,7 +336,7 @@
         <li class="page-item">
             <a
                 class="page-link"
-                href="/drag-data-browser/dataset/performer/Niki-Nash"
+                href="/drag-data-browser/dataset/performer/niki-nash"
                 tabindex="-1"
                 aria-disabled="false"
                 >Niki Nash &#8594;</a
@@ -362,7 +365,7 @@
                 <h4>Visualization of Nicki Gallucci's Connections</h4>
                 <p class="lead"><span class="d-none d-lg-inline-block">On the right</span><span class="d-inline-block d-lg-none">Below</span> is a visualization of the connections between Nicki Gallucci and every other performer in the dataset (14-day, filtered), with which they are connected.</p>
                 <p class="lead">The graph only includes first-degree connections, that is, only other persons directly connected to the performer in the dataset.</p>
-                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser//process/">the methodology section of this site</a>.</p>
+                <p>You can read more about what a connection between two performers mean in <a href="/drag-data-browser/process/">the methodology section of this site</a>.</p>
             </div>
             <div class="col-12 col-lg-8" id="vizContainer">
                 <svg id="network"></svg>
@@ -565,23 +568,23 @@
             <h2 class="my-1">Venues</h2>
             <ul>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Ciros-San-Francisco-CA/">Ciro's (San Francisco, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/ciro-s-san-francisco-ca/">Ciro's (San Francisco, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-31-Philadelphia-PA/">Club 31 (Philadelphia, PA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-31-philadelphia-pa/">Club 31 (Philadelphia, PA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Frontenac-Detroit-MI/">Club Frontenac (Detroit, MI)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-frontenac-detroit-mi/">Club Frontenac (Detroit, MI)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Club-Richman-New-York-NY/">Club Richman (New York, NY)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/club-richman-new-york-ny/">Club Richman (New York, NY)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Finocchios-San-Francisco-CA/">Finocchio's (San Francisco, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/finocchio-s-san-francisco-ca/">Finocchio's (San Francisco, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Ha-Ha-Club-Miami-FL/">Ha-Ha Club (Miami, FL)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/ha-ha-club-miami-fl/">Ha-Ha Club (Miami, FL)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Tivoli-San-Francisco-CA/">Tivoli (San Francisco, CA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/tivoli-san-francisco-ca/">Tivoli (San Francisco, CA)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/Variety-Club-Baltimore-MD/">Variety Club (Baltimore, MD)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/variety-club-baltimore-md/">Variety Club (Baltimore, MD)</a></li>
                 
-                <li><a href="/drag-data-browser/dataset/venue/WIP-Homemakers-Club-Philadelphia-PA/">WIP Homemaker's Club (Philadelphia, PA)</a></li>
+                <li><a href="/drag-data-browser/dataset/venue/wip-homemaker-s-club-philadelphia-pa/">WIP Homemaker's Club (Philadelphia, PA)</a></li>
                 
             </ul>
              
@@ -632,10 +635,10 @@
         
 <script>
     window.node_id = "nicki_gallucci";
-    window.performerSlug = "Nicki-Gallucci";
+    window.performerSlug = "nicki-gallucci";
 </script>
-<script src="/drag-data-browser//includes/js/performer.js"></script>
+<script src="/drag-data-browser/includes/js/performer.js"></script>
 
-        <script src="/drag-data-browser//includes/js/tooltip-init.js"></script>
+        <script src="/drag-data-browser/includes/js/tooltip-init.js"></script>
     </body>
 </html>
