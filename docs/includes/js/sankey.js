@@ -228,7 +228,7 @@ const showTravels = (d, startYear = 1930, endYear = 1940) => {
       html += `<h4><strong>${n.endDisplayState}</strong></h4><ul>`;
       n.performers.sort().forEach((performer) => {
         html += `<li style='${liStyle}'>`;
-        html += graph.performerToSlug[performer] ? `<a href='${DATASET_URL}performer/${graph.performerToSlug[performer]}'>` : '';
+        html += graph.performerToSlug[performer] ? `<a href='${DATASET_URL}/performer/${graph.performerToSlug[performer]}'>` : '';
         html += `${performer}`;
         html += graph.performerToSlug[performer] ? '</a>' : '';
         html += '</li>';

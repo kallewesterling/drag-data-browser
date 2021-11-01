@@ -18,7 +18,7 @@ const drawTexts = () => {
     .attr('data-performerCount', (d) => d.performerCounts.total)
     .attr('data-state', (d) => d.state)
     .attr('data-year', (d) => d.year)
-    .attr('data-incomingStates', (d) => d.targetLinks.map((link) => link.performerCount ? link.startState : 'x`').join('|'))
+    .attr('data-incomingStates', (d) => d.targetLinks.map((link) => (link.performerCount ? link.startState : 'x`')).join('|'))
     .text((d) => d.displayState)
     .filter((d) => d.x0 < width() / 2)
     .attr('x', (d) => d.x1 + 6)

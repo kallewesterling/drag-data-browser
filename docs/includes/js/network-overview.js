@@ -193,14 +193,14 @@ function make_y_gridlines(y) {
 */
 
 d3.json(`${window.DATA_DIR}/node-overview.json`).then((data) => {
-  store.data = Object.assign({}, data);
+  store.data = { ...data };
   store.categories = Object.keys(store.data);
   store.performers = [];
   store.categories.forEach((category) => {
     store.performers.push(...Object.keys(store.data[category]));
     store.performers = [...new Set(store.performers)];
   });
-  console.log(store.data)
+  console.log(store.data);
   store.performers.forEach((performer) => {
     const d = {
       performer,
@@ -216,7 +216,7 @@ d3.json(`${window.DATA_DIR}/node-overview.json`).then((data) => {
 });
 
 const draw = (arg = { xVal: 'node_degrees', yVal: 'most_direct_edges' }) => {
-  const {xVal, yVal} = arg;
+  const { xVal, yVal } = arg;
 
   xOrientation = {
     field: xVal,

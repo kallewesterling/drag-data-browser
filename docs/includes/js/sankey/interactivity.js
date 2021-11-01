@@ -1,11 +1,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 
-
-
 const displayState = (link) => d3.select('div#displayState')
   .html(link.displayState)
-  .style('top', `${getStatePaths(link.source.state, true).endPoint.y + margin.top }px`)
+  .style('top', `${getStatePaths(link.source.state, true).endPoint.y + margin.top}px`)
   .classed('d-none', false)
   .style('height', '0px')
   .style('text-align', 'center')
@@ -72,8 +70,6 @@ const setOpacities = (link) => {
   }
 };
 
-
-
 const Dim = {
   all: {
     texts: () => d3.selectAll('text[data-state]').attr('opacity', 0.3),
@@ -91,7 +87,7 @@ const Reset = {
 const View = {
   set: (link, restrictedToYear = false, timerid = undefined) => {
     window.viewSet = link.startState;
-    log(window.viewSet)
+    log(window.viewSet);
     log('View.set called');
     if (restrictedToYear) {
       showTravels(link, link.startYear, link.endYear);
@@ -114,7 +110,7 @@ const View = {
 
   reset: () => {
     delete window.viewSet;
-    log('View.reset called')
+    log('View.reset called');
     hideTravels();
     d3.select('div#legend').classed('d-none', true);
     d3.select('div#displayState').classed('d-none', true);
