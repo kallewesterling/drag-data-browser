@@ -44,7 +44,7 @@ Now, you should be able to use an web browser (preferably Google Chrome) to navi
 
 ## About the Site
 
-When you navigate around this site, you will find that it allows you to move beyond the particular focus on the social organization in a particular city or in cities in general, and to a more general knowledge and descrioption of what the culture of drag looked like across the United States in the 1930s.
+When you navigate around this site, you will find that it allows you to move beyond the particular focus on the social organization in a particular city or in cities in general, and to a more general knowledge and description of what the culture of drag looked like across the United States in the 1930s.
 
 This methodology behind the digital component can been described as _data-assisted historiography_, where a “birds-eye view” analysis makes clear the necessity of other more in-depth studies of parts of the historiographic field outlined.
 
