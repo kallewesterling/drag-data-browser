@@ -17,25 +17,25 @@ An easy way of doing so is to “serve” the site using Python of minimum versi
 Start by cloning the repository (or unzipping the `.zip` file if you have access to a `.zip file`):
 
 ```sh
-git clone https://github.com/kallewesterling/drag-data-browser
+$ git clone https://github.com/kallewesterling/drag-data-browser
 ```
 
 Enter the correct directory:
 
 ```sh
-cd drag-data-browser
+$ cd drag-data-browser
 ```
 
 Check out the particular branch (if you have access to a `.zip` file, you do not need to follow this step):
 
 ```sh
-git checkout depositing-docs
+$ git checkout depositing-docs
 ```
 
 Then, use Python’s convenient command-line [`http.server` command](https://docs.python.org/3/library/http.server.html):
 
 ```sh
-python -m http.server
+$ python -m http.server
 ```
 
 Now, you should be able to use an web browser (preferably Google Chrome) to navigate to: http://localhost:8000/docs, on your local machine, to explore the data.
