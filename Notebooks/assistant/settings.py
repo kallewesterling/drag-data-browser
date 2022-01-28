@@ -1,10 +1,11 @@
 from .dependencies import Path, Environment, FileSystemLoader, slugify, os
 
-PRODUCTION = True
+PRODUCTION = False
 YEAR_RANGE = (1900, 1950)
 
-TITLE = 'Gayboys and Playboys'
-SUBTITLE = 'Constructing Queer Collectivities in Peripatetic Burlesque and Nightclub Shows in 1930s United States'
+TITLE = 'Gay Boy and Playboy Revues'
+SUBTITLE = 'Constructing U.S. Queer Collectivities in Networks of Peripatetic Burlesque and Nightclub Drag Performers, 1933–1939'
+# SUBTITLE = 'Constructing Queer Collectivities in Peripatetic Burlesque and Nightclub Shows in 1930s United States'
 # SUBTITLE = 'U.S. Drag Performers in 1930s Burlesque and Night Clubs'
 # SUBTITLE = 'Queer World Making By Peripatetic Drag Performers Building Queer Worlds Across U.S. Burlesque and
 #             Night Clubs in the 1930s'
@@ -65,40 +66,40 @@ CASE_STUDY_TITLES = {
 NAVBAR = {
     'width': 280,
     'structure': {
-        'Meta': [
-            {
-                'icon': 'case-study',
-                'title': 'Theorizing the Peripatetic',
-                'url': os.path.join(CASE_STUDY_URL, 'theorizing-the-peripatetic/'),
-                'subcategories': []
-            }
-        ],
-        'Case Studies': [
-            {
-                'icon': 'case-study',
-                'title': 'Intimate Accoutrements as Somatechnical Network Devices',
-                'url': os.path.join(CASE_STUDY_URL, 'intimate-accoutrements-as-somatechnical-network-devices'),
-                'subcategories': [],
-            },
-            {
-                'icon': 'case-study',
-                'title': '“An Expanse of Hairy Chest Above a Beaded Brassiere”',
-                'url': os.path.join(CASE_STUDY_URL, 'an-expanse-of-hairy-chest-above-a-beaded-brassiere'),
-                'subcategories': [],
-            },
-            {
-                'icon': 'case-study',
-                'title': 'Camping in the Clubs and the County Courts',
-                'url': os.path.join(CASE_STUDY_URL, 'camping-in-the-clubs-and-the-county-courts'),
-                'subcategories': [],
-            },
-            {
-                'icon': 'case-study',
-                'title': '“See it—Live it—Dance it”',
-                'url': os.path.join(CASE_STUDY_URL, 'see-it-live-it-dance-it'),
-                'subcategories': [],
-            },
-        ],
+        # 'Meta': [
+        #     {
+        #         'icon': 'case-study',
+        #         'title': 'Theorizing the Peripatetic',
+        #         'url': os.path.join(CASE_STUDY_URL, 'theorizing-the-peripatetic/'),
+        #         'subcategories': []
+        #     }
+        # ],
+        # 'Case Studies': [
+        #     {
+        #         'icon': 'case-study',
+        #         'title': 'Intimate Accoutrements as Somatechnical Network Devices',
+        #         'url': os.path.join(CASE_STUDY_URL, 'intimate-accoutrements-as-somatechnical-network-devices'),
+        #         'subcategories': [],
+        #     },
+        #     {
+        #         'icon': 'case-study',
+        #         'title': '“An Expanse of Hairy Chest Above a Beaded Brassiere”',
+        #         'url': os.path.join(CASE_STUDY_URL, 'an-expanse-of-hairy-chest-above-a-beaded-brassiere'),
+        #         'subcategories': [],
+        #     },
+        #     {
+        #         'icon': 'case-study',
+        #         'title': 'Camping in the Clubs and the County Courts',
+        #         'url': os.path.join(CASE_STUDY_URL, 'camping-in-the-clubs-and-the-county-courts'),
+        #         'subcategories': [],
+        #     },
+        #     {
+        #         'icon': 'case-study',
+        #         'title': '“See it—Live it—Dance it”',
+        #         'url': os.path.join(CASE_STUDY_URL, 'see-it-live-it-dance-it'),
+        #         'subcategories': [],
+        #     },
+        # ],
         'Visualizations': [
             {
                 'icon': 'network',
@@ -127,18 +128,18 @@ NAVBAR = {
                 'url': os.path.join(BASE_URL, 'continuous-performers'),
                 'subcategories': [],
             },
-            {
-                'icon': 'globe',
-                'title': 'Geodata (alpha)',
-                'url': os.path.join(BASE_URL, 'geo'),
-                'subcategories': [],
-            },
-            {
-                'icon': 'process',
-                'title': 'Research Process',
-                'url': os.path.join(BASE_URL, 'process'),
-                'subcategories': [],
-            },
+            # {
+            #     'icon': 'globe',
+            #     'title': 'Geodata (alpha)',
+            #     'url': os.path.join(BASE_URL, 'geo'),
+            #     'subcategories': [],
+            # },
+            # {
+            #     'icon': 'process',
+            #     'title': 'Research Process',
+            #     'url': os.path.join(BASE_URL, 'process'),
+            #     'subcategories': [],
+            # },
         ],
         'Data': [
             {
@@ -160,12 +161,12 @@ NAVBAR = {
                     },
                 ],
             },
-            {
-                'icon': 'clippings',
-                'title': 'Clippings',
-                'url': os.path.join(DATASET_URL, 'clippings'),
-                'subcategories': [],
-            },
+            # {
+            #     'icon': 'clippings',
+            #     'title': 'Clippings',
+            #     'url': os.path.join(DATASET_URL, 'clippings'),
+            #     'subcategories': [],
+            # },
         ],
     },
 }

@@ -6,7 +6,15 @@
     <hr>
     {% include 'includes/nav-pills.html' %}
     <hr>
-    <div class="dropdown">
-        <a href="{{ BASE_URL }}about/" class="text-white text-decoration-none small">About this website</a>
+    <a href="{{ BASE_URL }}about/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <svg class="bi me-2" width="32" height="32" fill="white"><use xlink:href="#info"></use></svg>
+        <span class="fs-6 fw-bold">About this website</span>
+    </a>
+    <!--
+    <div>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item ms-3 text-uppercase small fw-bold user-select-none pb-1"><a href="{{ BASE_URL }}about/" class="text-white text-decoration-none">About this website</a></li>
+        </ul>
     </div>
+    -->
 </nav>

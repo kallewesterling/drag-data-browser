@@ -8,19 +8,29 @@
     <div class="col-12 col-sm-9 p-lg-5 mx-auto my-5">
         <h1 class="display-4 fw-normal">{{ SITE_TITLE }}</h1>
         <p class="lead fw-normal">{{ SITE_SUBTITLE }}</p>
-        <a class="btn btn-outline-secondary" href="#">Action</a>
+        <hr class="mt-5" />
+        <div class="pt-2 d-flex flex-column">
+            <strong class="text-uppercase text-muted">Visualizations</strong>
+            <div class="pt-2">
+                <a class="btn btn-sm btn-outline-primary" href="{{ BASE_URL }}network/">Network</a>
+                <a class="btn btn-sm btn-outline-secondary" href="{{ BASE_URL }}great-migration/">Migration</a>
+            </div>
+        </div>
     </div>
 </div>
 
 {% endblock %}
 
 {% block body %}
-<p class="lead">Id nostrud cupidatat ea duis eu. Exercitation sint eu aute cupidatat. Non sint ea ullamco pariatur do laborum ex amet commodo sint do anim ea. Eu officia Lorem anim laborum exercitation Lorem. Enim ex proident consectetur laboris mollit pariatur consectetur.</p>
-<p>Eu ipsum occaecat nisi reprehenderit veniam culpa esse exercitation sunt laborum. Commodo pariatur ex pariatur ut non dolor sit ullamco officia. Deserunt ut sunt sit quis est sit. Culpa sit eu in ad minim aliqua eiusmod pariatur deserunt fugiat laboris. Enim incididunt aliquip enim excepteur cillum incididunt nisi reprehenderit eiusmod excepteur ut elit eiusmod laborum.</p>
-<p>Cillum enim ea id laborum dolor incididunt consequat ad. Aliquip est veniam nisi ullamco officia id magna. Et reprehenderit incididunt deserunt nisi cupidatat in incididunt duis. Labore tempor nostrud incididunt do ipsum.</p>
-<hr />
-<h2>About the Researcher</h2>
-<p>Kalle Westerling is a performance scholar and historian. He has also written on topics ranging from queer indie wrestlers, boylesque and male-identified strippers in neo-burlesque, and the influence of RuPaul’s Drag Race on the livelihood and aesthetics of contemporary New York City drag queens.</p>
-<p>Previously, he was the project manager for the NEH-funded project “Expanding Communities of Practice,” aimed at helping to create infrastructure for digital humanities across several higher education institutions across the U.S. He is a member of the Steering Committee of HASTAC, the Humanities, Arts, Science, and Technology Alliance and Collaboratory.</p>
-<p><a href="/">Read more about Kalle Westerling on his website.</a></p>
+<div class="px-3">
+    <p class="lead">Across the United States, in the mid-1930s, drag made a transition, along with much other entertainment, from vaudeville into night clubs. There, concomitant with developing notions of gender and sexuality, it became increasingly associated with the contemporary expressions of drag that we see today in popular television shows like <em>RuPaul’s Drag Race</em> and in gay nightclubs across the country. In short, it became <em>the</em> queer form of entertainment.</p>
+    <p>But in the 1930s, with such developing notions of gender and sexuality, it was not as easy as saying that it was a gay art form. Rather, as heterosexuality and heteronormativity took shape, drag was an active participant in both the formation of normativity as well as the articulation of a resistance to that normativity. Drag, in these venues, did not simply mean female impersonation. Emergent terms, such as pansies and queers, should be understood as vibrant and complex terms that both engendered a normativity to be articulated but simultaneously enabled the resistance to such a normativity, articulated not as its opposite but in its own vibrancy through a large network of performers.</p>
+    <p>In this dissertation’s case studies, I analyze some examples of the routes of resistance that drag enabled for some of the artists that were primarily active during this time. Departing from previously well-established terms like the gay and lesbian “pansy craze,” I encourage a new perspective on this period’s drag, and possibly beyond, as a distributed form of resistance, dependent on the relay of information between individuals.</p>
+    <p><strong>This digital component, built by the researcher, shows some visualizations of the dataset that was built to support the arguments made in the dissertation.</strong> You will find more visualizations and explanations of the data <a href="https://observablehq.com/@kallewesterling">on Observable</a>. The <a href="https://figshare.com/articles/dataset/drag-data_csv/19078235">dataset exists on Figshare</a>.</p>
+    <hr />
+    <h2>About the Researcher</h2>
+    <p>Kalle Westerling is a performance scholar and historian. He has also written on topics ranging from queer indie wrestlers, boylesque and male-identified strippers in neo-burlesque, and the influence of RuPaul’s Drag Race on the livelihood and aesthetics of contemporary New York City drag queens.</p>
+    <p>Most recently, he was the project manager for the NEH-funded project “Expanding Communities of Practice,” aimed at helping to create infrastructure for digital humanities across several higher education institutions across the U.S. He is a member of the Steering Committee of HASTAC, the Humanities, Arts, Science, and Technology Alliance and Collaboratory.</p>
+    <p><a href="http://www.westerling.nu/" target="_blank">Read more about Kalle Westerling on his website.</a></p>
+<div>
 {% endblock %}
