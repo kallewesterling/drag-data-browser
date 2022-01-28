@@ -8,6 +8,8 @@ Due to the shortcomings of existing tools and the non-existence of alternatives,
 
 My hope is that the technology can make the research project accessible to audiences outside the traditional boundaries of academia. In all, the dissertation project is situated in the intersection of Public and Digital Humanities, Theatre and Performance Studies, and Queer Studies.
 
+The digital component you find here, built by the researcher, shows some visualizations of the dataset that was built to support the arguments made in the dissertation. Since the data is live and continuously built out, you will find more visualizations and explanations of the data [on Observable](https://observablehq.com/@kallewesterling). The dataset exists [on Figshare](https://doi.org/10.6084/m9.figshare.19078235.v1).
+
 ## Accessing the Site
 
 This file contains one directory, `docs` which can be served as a static website.
