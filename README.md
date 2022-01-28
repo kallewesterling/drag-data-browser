@@ -20,10 +20,16 @@ Start by cloning the repository (or unzipping the `.zip` file if you have access
 git clone https://github.com/kallewesterling/drag-data-browser
 ```
 
+Enter the correct directory:
+
+```sh
+cd drag-data-browser
+```
+
 Check out the particular branch (if you have access to a `.zip` file, you do not need to follow this step):
 
 ```sh
-git checkout depositing-docs && cd depositing-docs
+git checkout depositing-docs
 ```
 
 Then, use Python’s convenient command-line [`http.server` command](https://docs.python.org/3/library/http.server.html):
