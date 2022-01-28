@@ -1,6 +1,0 @@
-[submodule "drag-network"]
-	path = drag-network
-	url = https://www.github.com/kallewesterling/drag-network
-[submodule "drag-geo"]
-	path = drag-geo
-	url = https://www.github.com/kallewesterling/drag-geo
